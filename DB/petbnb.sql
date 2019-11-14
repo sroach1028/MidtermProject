@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `active` TINYINT NULL,
+  `active` TINYINT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -44,7 +44,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `User` (`id`, `username`, `password`, `active`) VALUES (1, 'testuser', 'test', NULL);
+INSERT INTO `User` (`id`, `username`, `password`, `active`) VALUES (1, 'testuser', 'test', true);
 
 COMMIT;
 
