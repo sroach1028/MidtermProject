@@ -19,6 +19,8 @@ b. Service user fills out information  such as availability, services and type o
 c User lands onto profile page and able to perform CRUD on profile
 5. Client user conducts search for services for their pet
 6. User picks a service they want to have done to their pet and confirmation screen appears confirming that the request has been finalized.
+### Implementation
+ERDiagram
 ### Technologies used
 * `SQL & MySQL Workbench`
 - For Database
@@ -39,3 +41,7 @@ c User lands onto profile page and able to perform CRUD on profile
 - Group project
 - Agile
 - Scrum
+### Lessons Learned
+Git branching
+### Stretch Goals
+1. Calendar feature
