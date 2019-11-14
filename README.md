@@ -5,11 +5,13 @@
 - Shaun Roach
 - Noel Castillo
 ### How to use
-1. User logs in
-2. User can search or register
-3. User registers as a client user or service user
+1. User starts on landing page.
+2. User can search or register/login
+3. a. User registers as a client user or service user
+3. b. User logs in
 4. a. Client user fills out information such as the pet they have
 4. b. Service user fills out information  such as availability, services and type of stay for pet.
+4. c User lands onto profile page and able to perform CRUD on profile
 5. Client user conducts search for services for their pet
 6. User picks a service they want to have done to their pet and confirmation screen appears confirming that the request has been finalized.
 ### Technologies used
