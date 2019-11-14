@@ -28,3 +28,10 @@ compile project(':JPAPetBnB')
 test {
 	useJUnitPlatform()
 }
+
+apply plugin: 'war'
+war {
+  enabled = true
+  archiveName = "PetBnB.war"     // Our app name, as defined in settings.gradle
+  destinationDir = file("./")         // Project root directory
+}
