@@ -1,9 +1,12 @@
-# PET BnB
+# PET BnB - Pet Stay App
+## Midterm Team Project for Skill Distillery
 ## Members
 - Adam Onwan
 - Jesse Trew
 - Shaun Roach
 - Noel Castillo
+### Overview
+
 ### How to use
 1. User starts on landing page.
 2. User can search or register/login
@@ -29,6 +32,7 @@ c User lands onto profile page and able to perform CRUD on profile
 - For displaying web information
 * `Github, Git`
 - For development coordination
+* `Gradle`
 ### Why we built PET BnB
 - Want to help people find a place for their pets while they are away
 ### Methodologies used to build the application
