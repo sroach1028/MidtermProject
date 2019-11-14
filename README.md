@@ -13,19 +13,20 @@
 5. Client user conducts search for services for their pet
 6. User picks a service they want to have done to their pet and confirmation screen appears confirming that the request has been finalized.
 ### Technologies used
-* SQL & MySQL Workbench
--
-* Spring Tool Suite, & Spring Boot
--
-* Trello
--
-* JPA
--
-* JSP, CSS, & HTML
--
-* Github, Git
--
+* `SQL & MySQL Workbench`
+- For Database
+* `Spring Tool Suite, & Spring Boot`
+-  For development
+* `Trello`
+-  For work progress
+* `JPA`
+- For communication from development to web
+* `JSP, CSS, & HTML`
+- For displaying web information
+* `Github, Git`
+- For development coordination
 ### Why we built PET BnB
+- Want to help people find a place for their pets while they are away
 ### Methodologies used to build the application
 - Group project
 - Agile
