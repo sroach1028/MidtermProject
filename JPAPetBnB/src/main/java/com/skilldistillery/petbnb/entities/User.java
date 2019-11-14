@@ -21,7 +21,7 @@ public class User {
 //	private String email;
 
 	private boolean active;
-
+// TODO add more fields for user
 //	C O N S T R U C T O R S
 
 	public User() {
