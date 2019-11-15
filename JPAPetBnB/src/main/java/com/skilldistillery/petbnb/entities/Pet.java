@@ -2,6 +2,7 @@ package com.skilldistillery.petbnb.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,13 @@ public class Pet {
 	private String name;
 	
 	private String type;
+	
+	private String breed;
+	
+	@Column(name="special_needs")
+	private String specialNeeds;
+	
+	private String description;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
