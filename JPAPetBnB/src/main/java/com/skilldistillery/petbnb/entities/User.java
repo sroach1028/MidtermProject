@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -44,6 +45,26 @@ public class User {
 
 //	C O N S T R U C T O R
 
+	public void addPet(Pet pet) {
+		if (pets == null) {
+			pets = new ArrayList<>();
+		}
+		if (!pets.contains(pet)) {
+			pets.add(pet);
+			if (pet.getUser() != null) {
+				pet.getUser().getPets().remove(pet);
+			}
+		}
+		pet.setUser(this);
+	}
+
+	public void removePet(Pet pet) {
+		pet.setUser(null);
+		if (pets != null) {
+			pets.remove(pet);
+		}
+	}
+	
 	public User() {
 		super();
 	}
