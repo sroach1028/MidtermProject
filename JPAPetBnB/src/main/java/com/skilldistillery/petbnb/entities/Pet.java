@@ -35,10 +35,7 @@ public class Pet {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany
-	@JoinTable(name = "reservation", 
-	joinColumns = @JoinColumn(name = "pet_id"), 
-	inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+	@OneToMany(mappedBy = "pet")
 	private List<ReviewOfPet> reviews;
 	
 	@ManyToOne

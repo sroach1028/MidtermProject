@@ -74,7 +74,7 @@ class PetTest {
 	@Test
 	@DisplayName("Pet relationship with Review")
 	void test7() {
-		assertEquals(1, em.find(Pet.class, 1).getReviews().get(0).getRating());
+		assertEquals(5, em.find(Pet.class, 1).getReviews().get(0).getRating());
 	}
 
 }
