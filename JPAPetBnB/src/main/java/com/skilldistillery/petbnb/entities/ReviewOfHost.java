@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +22,7 @@ public class ReviewOfHost {
 
 	private String review;
 
-	@OneToOne
-	@JoinColumn(name = "host_id")
-	private Host host;
+
 
 //	C O N S T R U C T O R
 
@@ -63,19 +61,10 @@ public class ReviewOfHost {
 		this.review = review;
 	}
 
-	public Host getHost() {
-		return host;
-	}
-
-	public void setHost(Host host) {
-		this.host = host;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((host == null) ? 0 : host.hashCode());
 		result = prime * result + id;
 		result = prime * result + rating;
 		result = prime * result + ((review == null) ? 0 : review.hashCode());
@@ -91,11 +80,6 @@ public class ReviewOfHost {
 		if (getClass() != obj.getClass())
 			return false;
 		ReviewOfHost other = (ReviewOfHost) obj;
-		if (host == null) {
-			if (other.host != null)
-				return false;
-		} else if (!host.equals(other.host))
-			return false;
 		if (id != other.id)
 			return false;
 		if (rating != other.rating)

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,8 +24,6 @@ public class Pet {
 
 	private String name;
 
-	private String type;
-
 	private String breed;
 
 	@Column(name = "special_needs")
@@ -35,13 +34,18 @@ public class Pet {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@OneToMany
+	@JoinTable(name = "reservation", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+	private List<ReviewOfHost> reviews;
+	
+	@ManyToOne
+	@JoinColumn(name = "type_id")
+	private PetType petType;
 
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
 	
-	@OneToOne(mappedBy = "pet")
-	private PetType petType;
-
 //	C O N S T R U C T O R 
 
 	public Pet() {
@@ -52,7 +56,8 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", type=" + type + "]";
+		return "Pet [id=" + id + ", name=" + name + ", breed=" + breed + ", specialNeeds=" + specialNeeds
+				+ ", description=" + description + ", user=" + user + ", petType=" + petType + "]";
 	}
 
 	public int getId() {
@@ -69,14 +74,6 @@ public class Pet {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getBreed() {
@@ -127,9 +124,9 @@ public class Pet {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((petType == null) ? 0 : petType.hashCode());
 		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
 		result = prime * result + ((specialNeeds == null) ? 0 : specialNeeds.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -160,6 +157,11 @@ public class Pet {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (petType == null) {
+			if (other.petType != null)
+				return false;
+		} else if (!petType.equals(other.petType))
+			return false;
 		if (reservations == null) {
 			if (other.reservations != null)
 				return false;
@@ -169,11 +171,6 @@ public class Pet {
 			if (other.specialNeeds != null)
 				return false;
 		} else if (!specialNeeds.equals(other.specialNeeds))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
 			return false;
 		if (user == null) {
 			if (other.user != null)
