@@ -43,7 +43,28 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Pet> pets;
 
-//	C O N S T R U C T O R
+//	C O N S T R U C T O R S
+	
+	public User() {
+		super();
+	}
+	
+	public User(int id, String firstName, String lastName, String username, String password, String email, boolean active,
+			int addressId, Host host, List<Pet> pets) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.active = active;
+		this.addressId = addressId;
+		this.host = host;
+		this.pets = pets;
+	}
+
+//	M E T H O D S
 
 	public void addPet(Pet pet) {
 		if (pets == null) {
@@ -57,19 +78,13 @@ public class User {
 		}
 		pet.setUser(this);
 	}
-
+	
 	public void removePet(Pet pet) {
 		pet.setUser(null);
 		if (pets != null) {
 			pets.remove(pet);
 		}
 	}
-	
-	public User() {
-		super();
-	}
-
-//	M E T H O D S
 
 	@Override
 	public String toString() {

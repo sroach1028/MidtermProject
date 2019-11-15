@@ -48,7 +48,7 @@ class UserTest {
 	@Test
 	@DisplayName("user entity test case")
 	void test1() {
-		System.out.println(user.getPets().get(0).getReviews().get(0));
+		System.out.println(user.getPets().get(0).getReviewsOfPet().get(0));
 		assertNotNull(user);
 		assertEquals("jclient", user.getUsername());
 	}

@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,26 +33,94 @@ public class Host {
 	@OneToMany(mappedBy = "host")
 	private List<Reservation> reservations;
 	
-	@OneToMany(mappedBy = "pet")
-	private List<ReviewOfPet> reviews;
+	@OneToMany(mappedBy = "host")
+	private List<ReviewOfHost> reviewsOfHost;
 
 	@ManyToMany
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
 	private List<Service> services;
 
-//	C O N S T R U C T O R 
+//	C O N S T R U C T O R S
 
 	public Host() {
 		super();
 	}
 
+	public Host(int id, User user, String description, List<Reservation> reservations, List<ReviewOfHost> reviewsOfHost,
+			List<Service> services) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.description = description;
+		this.reservations = reservations;
+		this.reviewsOfHost = reviewsOfHost;
+		this.services = services;
+	}
+
+	//	M E T H O D S
+
 	@Override
 	public String toString() {
 		return "Host [id=" + id + ", user=" + user + ", description=" + description + ", reservations=" + reservations
-				+ ", reviews=" + reviews + ", services=" + services + "]";
+				+ ", reviews=" + reviewsOfHost + ", services=" + services + "]";
 	}
-
-//	M E T H O D S
+	
+	public void addReservation(Reservation reservation) {
+		if (reservations == null) {
+			reservations = new ArrayList<>();
+		}
+		if (!reservations.contains(reservation)) {
+			reservations.add(reservation);
+			if (reservation.getHost() != null) {
+				reservation.getHost().getReservations().remove(reservation);
+			}
+		}
+		reservation.setHost(this);
+	}
+	
+	public void removeReservation(Reservation reservation) {
+		reservation.setHost(null);
+		if (reservations != null) {
+			reservations.remove(reservation);
+		}
+	}
+	
+	public void addReviewOfHost(ReviewOfHost reviewOfHost) {
+		if (reviewsOfHost == null) {
+			reviewsOfHost = new ArrayList<>();
+		}
+		if (!reviewsOfHost.contains(reviewOfHost)) {
+			reviewsOfHost.add(reviewOfHost);
+			if (reviewOfHost.getHost() != null) {
+				reviewOfHost.getHost().getReviewsOfHost().remove(reviewOfHost);
+			}
+		}
+		reviewOfHost.setHost(this);
+	}
+	
+	public void removeReviewOfHost(ReviewOfHost reviewOfHost) {
+		reviewOfHost.setHost(null);
+		if (reviewsOfHost != null) {
+			reviewsOfHost.remove(reviewOfHost);
+		}
+	}
+	
+	public void addService(Service service) {
+		if (services == null) {
+			services = new ArrayList<>();
+		}
+		if (!services.contains(service)) {
+			services.add(service);
+			service.addHost(this);
+			}
+		}
+	
+	public void removeService(Service service) {
+		if(services != null && services.contains(service)) {
+			services.remove(service);
+			service.removeHost(this);
+		}
+	}
 
 	public int getId() {
 		return id;
@@ -68,7 +137,6 @@ public class Host {
 	public void setClient(User user) {
 		this.user = user;
 	}
-
 
 
 	public List<Reservation> getReservations() {
@@ -103,13 +171,14 @@ public class Host {
 		this.description = description;
 	}
 
-	public List<ReviewOfPet> getReviews() {
-		return reviews;
+	public List<ReviewOfHost> getReviewsOfHost() {
+		return reviewsOfHost;
 	}
 
-	public void setReviews(List<ReviewOfPet> reviews) {
-		this.reviews = reviews;
+	public void setReviewsOfHost(List<ReviewOfHost> reviewsOfHost) {
+		this.reviewsOfHost = reviewsOfHost;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -118,7 +187,7 @@ public class Host {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
-		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((reviewsOfHost == null) ? 0 : reviewsOfHost.hashCode());
 		result = prime * result + ((services == null) ? 0 : services.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -145,10 +214,10 @@ public class Host {
 				return false;
 		} else if (!reservations.equals(other.reservations))
 			return false;
-		if (reviews == null) {
-			if (other.reviews != null)
+		if (reviewsOfHost == null) {
+			if (other.reviewsOfHost != null)
 				return false;
-		} else if (!reviews.equals(other.reviews))
+		} else if (!reviewsOfHost.equals(other.reviewsOfHost))
 			return false;
 		if (services == null) {
 			if (other.services != null)

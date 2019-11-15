@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,14 +29,39 @@ public class Service {
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "host_id"))
 	private List<Host> hosts;
 
-//	C O N S T R U C T O R
+//	C O N S T R U C T O R S
 
 	public Service() {
 		super();
 	}
 
+	public Service(int id, String name, double rate, List<Host> hosts) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.rate = rate;
+		this.hosts = hosts;
+	}
+
 //	M E T H O D S 
 
+	public void addHost(Host host) {
+		if (hosts == null) {
+			hosts = new ArrayList<>();
+		}
+		if (!hosts.contains(host)) {
+			hosts.add(host);
+			host.addService(this);
+			}
+		}
+	
+	public void removeHost(Host host) {
+		if(hosts != null && hosts.contains(host)) {
+			hosts.remove(host);
+			host.removeService(this);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Service [id=" + id + ", name=" + name + "]";

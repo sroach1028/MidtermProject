@@ -4,24 +4,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "pet_type")
 public class PetType {
 
+// F I E L D S
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String type;
 
+// C O N S T R U C T O R S
+	
 	public PetType() {
 		super();
 	}
 
+	public PetType(int id, String type) {
+		super();
+		this.id = id;
+		this.type = type;
+	}
+
+// M E T H O D S
+	
 	@Override
 	public String toString() {
 		return "PetType [id=" + id + ", type=" + type + "]";
