@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Client {
+public class User {
 
 //	F I E L D S
 
@@ -35,21 +35,15 @@ public class Client {
 	@Column(name = "address_id")
 	private int addressId;
 
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "user")
 	private Host host;
 
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "user")
 	private List<Pet> pets;
-
-	@OneToMany(mappedBy = "client")
-	private List<Reservation> reservations;
-
-	@OneToMany(mappedBy = "client")
-	private List<ReviewOfClient> reviews;
 
 //	C O N S T R U C T O R
 
-	public Client() {
+	public User() {
 		super();
 	}
 
@@ -141,22 +135,6 @@ public class Client {
 		this.pets = pets;
 	}
 
-	public List<Reservation> getReservations() {
-		return reservations;
-	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
-	}
-
-	public List<ReviewOfClient> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<ReviewOfClient> reviews) {
-		this.reviews = reviews;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -170,8 +148,6 @@ public class Client {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((pets == null) ? 0 : pets.hashCode());
-		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
-		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -184,7 +160,7 @@ public class Client {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Client other = (Client) obj;
+		User other = (User) obj;
 		if (active != other.active)
 			return false;
 		if (addressId != other.addressId)
@@ -220,16 +196,6 @@ public class Client {
 			if (other.pets != null)
 				return false;
 		} else if (!pets.equals(other.pets))
-			return false;
-		if (reservations == null) {
-			if (other.reservations != null)
-				return false;
-		} else if (!reservations.equals(other.reservations))
-			return false;
-		if (reviews == null) {
-			if (other.reviews != null)
-				return false;
-		} else if (!reviews.equals(other.reviews))
 			return false;
 		if (username == null) {
 			if (other.username != null)

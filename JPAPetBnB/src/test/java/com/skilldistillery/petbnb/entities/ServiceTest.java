@@ -1,7 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,11 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ClientTest {
-	
+class ServiceTest {
+
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private Client client;
+	private Service service;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,20 +32,19 @@ class ClientTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		client = em.find(Client.class, 1);
+		service = em.find(Service.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		client = null;
+		service = null;
 	}
 
 	@Test
 	@DisplayName("very simple test case")
 	void test1() {
-		assertNotNull(client);
-//		assertEquals("testuser", client.getUsername());
+		assertNotNull(service);
 	}
 
 }
