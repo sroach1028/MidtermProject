@@ -60,7 +60,7 @@ class HostTest {
 		assertEquals("Grooming", em.find(Host.class, 1).getServices().get(0).getName());
 	}
 	@Test
-	@DisplayName("Host relationship with Host_Services")
+	@DisplayName("Host relationship with Review_Of_Host")
 	void test4() {
 		assertEquals(2, em.find(Host.class, 1).getReviews().get(0).getRating());
 	}
