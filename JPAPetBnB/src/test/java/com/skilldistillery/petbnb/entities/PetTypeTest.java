@@ -46,5 +46,11 @@ class PetTypeTest {
 	void test1() {
 		assertNotNull(petType);
 	}
+	@Test
+	@DisplayName("very simple test case")
+	void test2() {
+		assertEquals("Dog", petType.getType());
+//		assertEquals("Dog", film.getActors().get(1).getFirstName());
+	}
 
 }
