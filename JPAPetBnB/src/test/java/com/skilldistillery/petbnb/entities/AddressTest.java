@@ -44,7 +44,8 @@ class AddressTest {
 	@Test
 	@DisplayName("very simple test case")
 	void test1() {
-		assertNotNull(address);
+		String street = address.getStreet();
+		assertNotNull("2120 6th Ave", street);
 	}
 
 }

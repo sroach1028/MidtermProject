@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class Reservation {
+class ReservationTest {
 
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
@@ -44,6 +44,9 @@ class Reservation {
 	@Test
 	@DisplayName("very simple test case")
 	void test1() {
+		System.out.println(reservation);
 		assertNotNull(reservation);
+//		assertEquals("testuser", client.getUsername());
 	}
+
 }

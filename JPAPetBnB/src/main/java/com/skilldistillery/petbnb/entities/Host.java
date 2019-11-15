@@ -26,13 +26,14 @@ public class Host {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@Column(name = "home_features")
-	private String homeFeatures;
+	@Column(name = "description")
+	private String description;
 
 	@OneToMany(mappedBy = "host")
 	private List<Reservation> reservations;
 
-	@OneToMany(mappedBy = "host")
+	@OneToMany
+	@JoinTable(name = "reservation", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "reservation_id"))
 	private List<ReviewOfHost> reviews;
 
 	@ManyToMany
@@ -47,7 +48,8 @@ public class Host {
 
 	@Override
 	public String toString() {
-		return "Host [id=" + id + ", user=" + user + "]";
+		return "Host [id=" + id + ", user=" + user + ", description=" + description + ", reservations=" + reservations
+				+ ", reviews=" + reviews + ", services=" + services + "]";
 	}
 
 //	M E T H O D S
@@ -68,13 +70,7 @@ public class Host {
 		this.user = user;
 	}
 
-	public String getHomeFeatures() {
-		return homeFeatures;
-	}
 
-	public void setHomeFeatures(String homeFeatures) {
-		this.homeFeatures = homeFeatures;
-	}
 
 	public List<Reservation> getReservations() {
 		return reservations;
@@ -100,11 +96,27 @@ public class Host {
 		this.services = services;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((homeFeatures == null) ? 0 : homeFeatures.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
 		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
@@ -122,10 +134,10 @@ public class Host {
 		if (getClass() != obj.getClass())
 			return false;
 		Host other = (Host) obj;
-		if (homeFeatures == null) {
-			if (other.homeFeatures != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!homeFeatures.equals(other.homeFeatures))
+		} else if (!description.equals(other.description))
 			return false;
 		if (id != other.id)
 			return false;

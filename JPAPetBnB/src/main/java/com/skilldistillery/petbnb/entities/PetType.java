@@ -18,10 +18,6 @@ public class PetType {
 
 	private String type;
 
-	@OneToOne
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
-
 	public PetType() {
 		super();
 	}
