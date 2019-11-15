@@ -29,11 +29,20 @@ public class ReviewOfPet {
 	inverseJoinColumns = @JoinColumn(name="pet_id"))
 	private Pet pet;
 
-//	C O N S T R U C T O R
+//	C O N S T R U C T O R S
 
 	public ReviewOfPet() {
 		super();
 	}
+
+	public ReviewOfPet(int id, int rating, String review, Pet pet) {
+		super();
+		this.id = id;
+		this.rating = rating;
+		this.review = review;
+		this.pet = pet;
+	}
+
 
 //	M E T H O D S
 
@@ -64,6 +73,14 @@ public class ReviewOfPet {
 
 	public void setPet(Pet pet) {
 		this.pet = pet;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
 	}
 
 	@Override

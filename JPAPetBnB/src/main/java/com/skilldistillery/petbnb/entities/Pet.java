@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,10 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Pet {
@@ -36,7 +35,7 @@ public class Pet {
 	private User user;
 	
 	@OneToMany(mappedBy = "pet")
-	private List<ReviewOfPet> reviews;
+	private List<ReviewOfPet> reviewsOfPet;
 	
 	@ManyToOne
 	@JoinColumn(name = "type_id")
@@ -45,14 +44,68 @@ public class Pet {
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
 	
-//	C O N S T R U C T O R 
+//	C O N S T R U C T O R S
 
 	public Pet() {
 		super();
 	}
+	
+	public Pet(int id, String name, String breed, String specialNeeds, String description, User user,
+			List<ReviewOfPet> reviewsOfPet, PetType petType, List<Reservation> reservations) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.breed = breed;
+		this.specialNeeds = specialNeeds;
+		this.description = description;
+		this.user = user;
+		this.reviewsOfPet = reviewsOfPet;
+		this.petType = petType;
+		this.reservations = reservations;
+	}
 
 //	M E T H O D S
 
+	public void addReservation(Reservation reservation) {
+		if (reservations == null) {
+			reservations = new ArrayList<>();
+		}
+		if (!reservations.contains(reservation)) {
+			reservations.add(reservation);
+			if (reservation.getPet() != null) {
+				reservation.getPet().getReservations().remove(reservation);
+			}
+		}
+		reservation.setPet(this);
+	}
+	
+	public void removeReservation(Reservation reservation) {
+		reservation.setPet(null);
+		if (reservations != null) {
+			reservations.remove(reservation);
+		}
+	}
+	
+	public void addReviewOfPet(ReviewOfPet review) {
+		if (reviewsOfPet == null) {
+			reviewsOfPet = new ArrayList<>();
+		}
+		if (!reviewsOfPet.contains(review)) {
+			reviewsOfPet.add(review);
+			if (review.getPet() != null) {
+				review.getPet().getReviewsOfPet().remove(review);
+			}
+		}
+		review.setPet(this);
+	}
+	
+	public void removeReviewOfPet(ReviewOfPet review) {
+		review.setPet(null);
+		if (reviewsOfPet != null) {
+			reviewsOfPet.remove(review);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", breed=" + breed + ", specialNeeds=" + specialNeeds
@@ -115,12 +168,12 @@ public class Pet {
 		this.reservations = reservations;
 	}
 
-	public List<ReviewOfPet> getReviews() {
-		return reviews;
+	public List<ReviewOfPet> getReviewsOfPet() {
+		return reviewsOfPet;
 	}
 
-	public void setReviews(List<ReviewOfPet> reviews) {
-		this.reviews = reviews;
+	public void setReviewsOfPet(List<ReviewOfPet> reviewsOfPet) {
+		this.reviewsOfPet = reviewsOfPet;
 	}
 
 	public PetType getPetType() {

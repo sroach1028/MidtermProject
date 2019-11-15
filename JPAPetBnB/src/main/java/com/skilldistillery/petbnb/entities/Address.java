@@ -24,10 +24,20 @@ public class Address {
 
 	private String phone;
 
-//	C O N S T R U C T O R 
+//	C O N S T R U C T O R S
 
 	public Address() {
 		super();
+	}
+
+	public Address(int id, String street, String city, String state, String zip, String phone) {
+		super();
+		this.id = id;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
 	}
 
 //	M E T H O D S
