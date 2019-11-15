@@ -46,5 +46,35 @@ class PetTest {
 	void test1() {
 		assertNotNull(pet);
 	}
+	@Test
+	@DisplayName("Pet internal test")
+	void test2() {
+		assertEquals("Kitten", pet.getBreed());
+	}
+	@Test
+	@DisplayName("Pet relationship with PetType")
+	void test3() {
+		assertEquals("Dog", em.find(Pet.class, 1).getPetType().getType());
+	}
+	@Test
+	@DisplayName("Pet relationship with User")
+	void test5() {
+		assertEquals("Jonny", em.find(Pet.class, 1).getUser().getFirstName());
+	}
+	@Test
+	@DisplayName("Pet relationship with Reservation")
+	void test4() {
+		assertEquals("Brad", em.find(Pet.class, 1).getReservations().get(0).getHost().getUser().getFirstName());
+	}
+	@Test
+	@DisplayName("Pet relationship with Reservation2")
+	void test6() {
+		assertEquals(1, em.find(Pet.class, 1).getReservations().get(0).getId());
+	}
+	@Test
+	@DisplayName("Pet relationship with Review")
+	void test7() {
+		assertEquals(1, em.find(Pet.class, 1).getReviews().get(0).getRating());
+	}
 
 }

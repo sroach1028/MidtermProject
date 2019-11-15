@@ -20,7 +20,8 @@ c User lands onto profile page and able to perform CRUD on profile
 5. Client user conducts search for services for their pet
 6. User picks a service they want to have done to their pet and confirmation screen appears confirming that the request has been finalized.
 ### Implementation
-- Wireframe [PetBnB Wireframe](https://miro.com/app/board/o9J_kw3Z9CY=/ "PetBnB Wireframe")
+- Wireframe [PetBnB Wireframe]("https://miro.com/app/board/o9J_kw3Z9CY=/ "PetBnB Wireframe")
+- Trello [PetBnB Trell Kanban]("https://trello.com/b/xJIVQhZV/midterm")
 ERDiagram
 More stuff
 ### Technologies used
