@@ -44,7 +44,6 @@ class HostTest {
 	@Test
 	@DisplayName("test host entity mapping")
 	void test1() {
-//		assertNotNull();
 		String string = host.getDescription();
 		assertEquals("Fenced yard", string);
 	}
@@ -54,5 +53,15 @@ class HostTest {
 	void test2() {
 		String string = host.getServices().get(0).getName();
 		assertEquals("Grooming", string);
+	}
+	@Test
+	@DisplayName("Host relationship with Host_Services")
+	void test3() {
+		assertEquals("Grooming", em.find(Host.class, 1).getServices().get(0).getName());
+	}
+	@Test
+	@DisplayName("Host relationship with Host_Services")
+	void test4() {
+		assertEquals(2, em.find(Host.class, 1).getReviews().get(0).getRating());
 	}
 }
