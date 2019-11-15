@@ -22,6 +22,7 @@ c User lands onto profile page and able to perform CRUD on profile
 ### Implementation
 - Wireframe [PetBnB Wireframe](https://miro.com/app/board/o9J_kw3Z9CY=/ "PetBnB Wireframe")
 ERDiagram
+More stuff
 ### Technologies used
 * `SQL & MySQL Workbench`
 - For Database
