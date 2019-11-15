@@ -44,7 +44,7 @@ class UserTest {
 	@Test
 	@DisplayName("very simple test case")
 	void test1() {
-		System.out.println(user);
+		System.out.println(user.getPets().get(0).getReviews().get(0));
 		assertNotNull(user);
 //		assertEquals("testuser", client.getUsername());
 	}

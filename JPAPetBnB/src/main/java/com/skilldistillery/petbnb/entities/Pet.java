@@ -36,8 +36,10 @@ public class Pet {
 	private User user;
 	
 	@OneToMany
-	@JoinTable(name = "reservation", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "reservation_id"))
-	private List<ReviewOfHost> reviews;
+	@JoinTable(name = "reservation", 
+	joinColumns = @JoinColumn(name = "pet_id"), 
+	inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+	private List<ReviewOfPet> reviews;
 	
 	@ManyToOne
 	@JoinColumn(name = "type_id")
@@ -57,7 +59,7 @@ public class Pet {
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", breed=" + breed + ", specialNeeds=" + specialNeeds
-				+ ", description=" + description + ", user=" + user + ", petType=" + petType + "]";
+				+ ", description=" + description + ", petType=" + petType + "]";
 	}
 
 	public int getId() {
@@ -114,6 +116,22 @@ public class Pet {
 
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
+	}
+
+	public List<ReviewOfPet> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<ReviewOfPet> reviews) {
+		this.reviews = reviews;
+	}
+
+	public PetType getPetType() {
+		return petType;
+	}
+
+	public void setPetType(PetType petType) {
+		this.petType = petType;
 	}
 
 	@Override
