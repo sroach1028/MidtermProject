@@ -47,10 +47,14 @@ class PetTypeTest {
 		assertNotNull(petType);
 	}
 	@Test
-	@DisplayName("very simple test case")
+	@DisplayName("PetType internal test")
 	void test2() {
 		assertEquals("Dog", petType.getType());
-//		assertEquals("Dog", film.getActors().get(1).getFirstName());
+	}
+	@Test
+	@DisplayName("PetType relationship with Pet")
+	void test3() {
+		assertEquals("Dog", em.find(Pet.class, 1).getPetType().getType());
 	}
 
 }
