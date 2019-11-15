@@ -22,10 +22,6 @@ public class ReviewOfPet {
 
 	private String review;
 
-	@OneToOne
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
-
 //	C O N S T R U C T O R
 
 	public ReviewOfPet() {
@@ -36,7 +32,7 @@ public class ReviewOfPet {
 
 	@Override
 	public String toString() {
-		return "ReviewOfClient [id=" + id + ", rating=" + rating + ", review=" + review + "]";
+		return "ReviewOfPet [id=" + id + ", rating=" + rating + ", review=" + review + "]";
 	}
 
 	public int getId() {
@@ -63,20 +59,11 @@ public class ReviewOfPet {
 		this.review = review;
 	}
 
-	public Pet getPet() {
-		return pet;
-	}
-
-	public void setPet(Pet pet) {
-		this.pet = pet;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((pet == null) ? 0 : pet.hashCode());
 		result = prime * result + rating;
 		result = prime * result + ((review == null) ? 0 : review.hashCode());
 		return result;
@@ -92,11 +79,6 @@ public class ReviewOfPet {
 			return false;
 		ReviewOfPet other = (ReviewOfPet) obj;
 		if (id != other.id)
-			return false;
-		if (pet == null) {
-			if (other.pet != null)
-				return false;
-		} else if (!pet.equals(other.pet))
 			return false;
 		if (rating != other.rating)
 			return false;

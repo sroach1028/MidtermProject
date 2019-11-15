@@ -34,7 +34,6 @@ public class Reservation {
 	@Column(name = "close_date")
 	private Date closeDate;
 
-	private int rating;
 
 //	C O N S T R U C T O R 
 
@@ -46,7 +45,8 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + "]";
+		return "Reservation [id=" + id + "openDate=" + openDate + ", closeDate="
+				+ closeDate + "]";
 	}
 
 	public int getId() {
@@ -89,13 +89,6 @@ public class Reservation {
 		this.closeDate = closeDate;
 	}
 
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
 
 	@Override
 	public int hashCode() {
@@ -106,7 +99,6 @@ public class Reservation {
 		result = prime * result + id;
 		result = prime * result + ((openDate == null) ? 0 : openDate.hashCode());
 		result = prime * result + ((pet == null) ? 0 : pet.hashCode());
-		result = prime * result + rating;
 		return result;
 	}
 
@@ -140,8 +132,6 @@ public class Reservation {
 			if (other.pet != null)
 				return false;
 		} else if (!pet.equals(other.pet))
-			return false;
-		if (rating != other.rating)
 			return false;
 		return true;
 	}
