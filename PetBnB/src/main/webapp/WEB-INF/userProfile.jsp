@@ -44,7 +44,7 @@
 					<th>List of Pets</th>
 						<c:forEach items="${user.pets }" var="pet">
 							<tr>
-								<td><a href="getPet.do?heroId=${pet.id}"
+								<td><a href="getPet.do?petId=${pet.id}"
 								class="btTxt submit">${pet.name }</a></td>
 							</tr>
 							</c:forEach>

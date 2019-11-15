@@ -14,7 +14,7 @@
 
 	<ul>
 		<li><a href="/" class="nav-button">Home</a></li>
-		<li><a href="coming.do" class="nav-button">Pets</a></li>
+		<li><a href="getAllPets.do" class="nav-button">Pets</a></li>
 		<li><a href="coming.do" class="nav-button">Sitters</a></li>
 		<li><a href="coming.do" class="nav-button">Videos</a></li>
 	</ul>
