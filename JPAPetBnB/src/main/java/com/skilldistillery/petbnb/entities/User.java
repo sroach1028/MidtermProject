@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -35,7 +36,7 @@ public class User {
 	@Column(name = "address_id")
 	private int addressId;
 
-	@OneToMany(mappedBy = "user")
+	@OneToOne(mappedBy = "user")
 	private Host host;
 
 	@OneToMany(mappedBy = "user")
