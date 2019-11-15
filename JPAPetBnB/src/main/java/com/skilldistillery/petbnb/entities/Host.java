@@ -31,10 +31,9 @@ public class Host {
 
 	@OneToMany(mappedBy = "host")
 	private List<Reservation> reservations;
-
-	@OneToMany
-	@JoinTable(name = "reservation", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "reservation_id"))
-	private List<ReviewOfHost> reviews;
+	
+	@OneToMany(mappedBy = "pet")
+	private List<ReviewOfPet> reviews;
 
 	@ManyToMany
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
@@ -80,14 +79,6 @@ public class Host {
 		this.reservations = reservations;
 	}
 
-	public List<ReviewOfHost> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<ReviewOfHost> reviews) {
-		this.reviews = reviews;
-	}
-
 	public List<Service> getServices() {
 		return services;
 	}
@@ -110,6 +101,14 @@ public class Host {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<ReviewOfPet> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<ReviewOfPet> reviews) {
+		this.reviews = reviews;
 	}
 
 	@Override
