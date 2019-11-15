@@ -62,6 +62,6 @@ class HostTest {
 	@Test
 	@DisplayName("Host relationship with Host_Services")
 	void test4() {
-		assertEquals(2, em.find(Host.class, 1).getReviews().get(0).getRating());
+		assertEquals(5, em.find(Host.class, 1).getReviews().get(0).getRating());
 	}
 }

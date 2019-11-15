@@ -20,6 +20,9 @@ public class ReviewOfPet {
 	private int id;
 
 	private int rating;
+	
+	private String review;
+	
 	@ManyToOne
 	@JoinTable(name="reservation",
 	joinColumns=@JoinColumn(name = "id"),
