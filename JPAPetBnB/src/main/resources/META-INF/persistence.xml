@@ -9,7 +9,14 @@
     </provider>
 
 	<!-- Class Definitions -->
-	<class>com.skilldistillery.petbnb.entities.User</class>
+	<class>com.skilldistillery.petbnb.entities.Address</class>
+	<class>com.skilldistillery.petbnb.entities.Client</class>
+	<class>com.skilldistillery.petbnb.entities.Host</class>
+	<class>com.skilldistillery.petbnb.entities.Pet</class>
+	<class>com.skilldistillery.petbnb.entities.Reservation</class>
+	<class>com.skilldistillery.petbnb.entities.ReviewOfClient</class>
+	<class>com.skilldistillery.petbnb.entities.ReviewOfHost</class>
+	<class>com.skilldistillery.petbnb.entities.Service</class>
 
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PetBnB?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
