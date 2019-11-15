@@ -42,7 +42,7 @@ class AddressTest {
 	}
 
 	@Test
-	@DisplayName("very simple test case")
+	@DisplayName("address entity mapping")
 	void test1() {
 		String street = address.getStreet();
 		assertNotNull("2120 6th Ave", street);

@@ -42,8 +42,17 @@ class HostTest {
 	}
 
 	@Test
-	@DisplayName("very simple test case")
+	@DisplayName("test host entity mapping")
 	void test1() {
-		assertNotNull(host);
+//		assertNotNull();
+		String string = host.getDescription();
+		assertEquals("Fenced yard", string);
+	}
+	
+	@Test
+	@DisplayName("test host service association")
+	void test2() {
+		String string = host.getServices().get(0).getName();
+		assertEquals("Grooming", string);
 	}
 }
