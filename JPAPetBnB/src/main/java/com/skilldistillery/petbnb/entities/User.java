@@ -58,7 +58,7 @@ public class User {
 		pet.setUser(this);
 	}
 
-	public void removeRental(Pet pet) {
+	public void removePet(Pet pet) {
 		pet.setUser(null);
 		if (pets != null) {
 			pets.remove(pet);
