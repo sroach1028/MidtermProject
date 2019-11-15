@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +22,7 @@ public class ReviewOfHost {
 
 	private String review;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "host_id")
 	private Host host;
 

@@ -24,7 +24,7 @@ public class Host {
 
 	@OneToOne
 	@JoinColumn(name = "client_id")
-	private Client client;
+	private User client;
 
 	@Column(name = "home_features")
 	private String homeFeatures;
@@ -49,7 +49,7 @@ public class Host {
 	public String toString() {
 		return "Host [id=" + id + ", client=" + client + "]";
 	}
-	
+
 //	M E T H O D S
 
 	public int getId() {
@@ -60,11 +60,11 @@ public class Host {
 		this.id = id;
 	}
 
-	public Client getClient() {
+	public User getClient() {
 		return client;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(User client) {
 		this.client = client;
 	}
 

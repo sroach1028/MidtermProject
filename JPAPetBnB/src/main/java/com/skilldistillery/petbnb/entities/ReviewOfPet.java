@@ -5,12 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "review_of_client")
-public class ReviewOfClient {
+@Table(name = "review_of_pet")
+public class ReviewOfPet {
 
 //	F I E L D S
 
@@ -22,13 +22,13 @@ public class ReviewOfClient {
 
 	private String review;
 
-	@ManyToOne
-	@JoinColumn(name = "client_id")
-	private Client client;
+	@OneToOne
+	@JoinColumn(name = "pet_id")
+	private Pet pet;
 
 //	C O N S T R U C T O R
 
-	public ReviewOfClient() {
+	public ReviewOfPet() {
 		super();
 	}
 
@@ -63,20 +63,20 @@ public class ReviewOfClient {
 		this.review = review;
 	}
 
-	public Client getClient() {
-		return client;
+	public Pet getPet() {
+		return pet;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((pet == null) ? 0 : pet.hashCode());
 		result = prime * result + rating;
 		result = prime * result + ((review == null) ? 0 : review.hashCode());
 		return result;
@@ -90,13 +90,13 @@ public class ReviewOfClient {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ReviewOfClient other = (ReviewOfClient) obj;
-		if (client == null) {
-			if (other.client != null)
-				return false;
-		} else if (!client.equals(other.client))
-			return false;
+		ReviewOfPet other = (ReviewOfPet) obj;
 		if (id != other.id)
+			return false;
+		if (pet == null) {
+			if (other.pet != null)
+				return false;
+		} else if (!pet.equals(other.pet))
 			return false;
 		if (rating != other.rating)
 			return false;

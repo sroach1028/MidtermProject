@@ -32,8 +32,8 @@ public class Pet {
 	private String description;
 
 	@ManyToOne
-	@JoinColumn(name = "client_id")
-	private Client client;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
@@ -44,9 +44,8 @@ public class Pet {
 		super();
 	}
 
-	
 //	M E T H O D S
-	
+
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", type=" + type + "]";
@@ -100,12 +99,12 @@ public class Pet {
 		this.description = description;
 	}
 
-	public Client getClient() {
-		return client;
+	public User getUser() {
+		return user;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public List<Reservation> getReservations() {
@@ -121,13 +120,13 @@ public class Pet {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
-		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
 		result = prime * result + ((specialNeeds == null) ? 0 : specialNeeds.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -144,11 +143,6 @@ public class Pet {
 			if (other.breed != null)
 				return false;
 		} else if (!breed.equals(other.breed))
-			return false;
-		if (client == null) {
-			if (other.client != null)
-				return false;
-		} else if (!client.equals(other.client))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -176,6 +170,11 @@ public class Pet {
 			if (other.type != null)
 				return false;
 		} else if (!type.equals(other.type))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
