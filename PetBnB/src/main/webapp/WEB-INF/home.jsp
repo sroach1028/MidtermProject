@@ -27,6 +27,14 @@
 
 				</form>
 			</li>
+			<li class="subheader-button">
+				<form style="margin-bottom: 15px" action="getUser.do"
+					method="GET">
+					<input type="number" min="0" name="userId"/> <input type="submit"
+						class="sprite" value="Search for User by ID">
+
+				</form>
+			</li>
 		</ul>
 	</div>
 
