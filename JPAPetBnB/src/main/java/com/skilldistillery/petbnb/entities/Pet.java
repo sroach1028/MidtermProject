@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pet {
@@ -37,6 +38,9 @@ public class Pet {
 
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
+	
+	@OneToOne(mappedBy = "pet")
+	private PetType petType;
 
 //	C O N S T R U C T O R 
 
