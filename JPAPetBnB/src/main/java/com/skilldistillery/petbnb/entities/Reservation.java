@@ -36,10 +36,19 @@ public class Reservation {
 
 	private int rating;
 
-//	C O N S T R U C T O R 
+//	C O N S T R U C T O R S
 
 	public Reservation() {
 		super();
+	}
+	
+	public Reservation(int id, Host host, Pet pet, Date openDate, Date closeDate) {
+		super();
+		this.id = id;
+		this.host = host;
+		this.pet = pet;
+		this.openDate = openDate;
+		this.closeDate = closeDate;
 	}
 
 //	M E T H O D S

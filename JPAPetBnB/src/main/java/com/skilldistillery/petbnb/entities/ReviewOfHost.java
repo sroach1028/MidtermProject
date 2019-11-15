@@ -30,11 +30,18 @@ public class ReviewOfHost {
 	private Host host;
 
 
-
-//	C O N S T R U C T O R
+//	C O N S T R U C T O R S
 
 	public ReviewOfHost() {
 		super();
+	}
+
+	public ReviewOfHost(int id, int rating, String review, Host host) {
+		super();
+		this.id = id;
+		this.rating = rating;
+		this.review = review;
+		this.host = host;
 	}
 
 //	M E T H O D S
@@ -60,7 +67,21 @@ public class ReviewOfHost {
 		this.rating = rating;
 	}
 
+	public String getReview() {
+		return review;
+	}
 
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public Host getHost() {
+		return host;
+	}
+
+	public void setHost(Host host) {
+		this.host = host;
+	}
 
 	@Override
 	public int hashCode() {
