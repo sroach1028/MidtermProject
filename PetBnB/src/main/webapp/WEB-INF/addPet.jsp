@@ -30,10 +30,6 @@
 		<form:input path="name" type="text" required="required" />
 		<form:errors path="name" />
 		<br>
-<<<<<<< HEAD
-		<form:label path="petType">Breed: </form:label>
-		<form:input path="breed" type="text" value="${addPet.breed}"/>
-=======
 		<form:label path="petType.id">Pet Type:</form:label>
 		<form:select path="petType.id" required="required">
 			<option value= 1>Dog</option>
@@ -45,7 +41,6 @@
 		<br />
 		<form:label path="breed">Breed: </form:label>
 		<form:input path="breed" type="text" />
->>>>>>> 473334321abbbb19cdae4226fc3709a7c4a8e069
 		<form:errors path="breed" />
 		<br>
 		<form:label path="specialNeeds">Special Needs: </form:label>
