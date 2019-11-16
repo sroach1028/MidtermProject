@@ -35,6 +35,13 @@
 				<li>Special Needs: ${pet.specialNeeds}</li>
 				<li>Owner: ${pet.user.firstName }</li>
 			</ul>
+				<h3>List of Reviews</h3>
+				<c:forEach items="${pet.reviewsOfPet}" var="reviews">
+				<ul>
+				<li>Rating: ${reviews.rating }</li>
+				<li>Summary: ${reviews.review }</li>
+				</ul>
+				</c:forEach>
 
 			<form action="goToUpdatePet.do" method="GET">
 				<input type="hidden" name="petId" value="${pet.id }"> 

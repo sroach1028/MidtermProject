@@ -82,8 +82,7 @@
 							</c:forEach>
 						</table>
 						<form action="goToAddPet.do" method="GET">
-							<input type="hidden" name="petId" value="${pet.id }"> 
-							<input
+							<input type="hidden" name="petId" value="${pet.id }"> <input
 								type="submit" class="btn btn-outline-light" value="Add Pet" />
 						</form>
 
