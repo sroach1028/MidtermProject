@@ -16,7 +16,7 @@
 <title>Animal Profile</title>
 </head>
 <body>
-
+<img src="${pet.image }"/>
 	<div>
 		<c:if test="${not empty pets }">
 			<c:forEach items="${pets }" var="pet">
@@ -35,6 +35,7 @@
 				<li>Special Needs: ${pet.specialNeeds}</li>
 				<li>Owner: ${pet.user.firstName }</li>
 			</ul>
+				
 			<form action="goToUpdatePet.do" method="GET">
 				<input type="hidden" name="petId" value="${pet.id }"> <input
 					type="submit" class="btn btn-outline-light" value="Update Pet" />
