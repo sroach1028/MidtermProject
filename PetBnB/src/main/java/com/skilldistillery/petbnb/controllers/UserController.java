@@ -2,6 +2,7 @@ package com.skilldistillery.petbnb.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,20 +96,25 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "addPet.do", method = RequestMethod.GET)
-	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId) {
+	@RequestMapping(path = "addPet.do", method = RequestMethod.POST)
+	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Pet addPet = pettrDAO.addPet(pet, userId);
 		mv.addObject("pet", addPet);
+		User user = pettrDAO.findUserById(addPet.getUser().getId());
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
 		mv.setViewName("animalProfile");
 		return mv;
 	}
 	
 	@RequestMapping(path = "removePet.do", method = RequestMethod.GET)
-	public ModelAndView removePet(@RequestParam("petId") int petId) {
+	public ModelAndView removePet(@RequestParam("petId") int petId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		boolean result = pettrDAO.removePetById(petId);
-		mv.setViewName("");
+		User user = pettrDAO.removePetById(petId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
+		mv.setViewName("userProfile");
 		return mv;
 	}
 	
