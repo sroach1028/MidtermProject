@@ -9,7 +9,7 @@
     <title>Register</title>
   </head>
   <body>
-  <form:form action="register.do" method="GET" modelAttribute="userDTO">
+  <form:form action="register.do" method="GET" modelAttribute="user">
   <form:label path="firstName">First Name:</form:label>
   <form:input path="firstName" required="required"/>
   <form:errors path="firstName" />
@@ -30,25 +30,25 @@
   <form:input path="email" required="required"/>
   <form:errors path="email" />
   <br />
-  <form:label path="street">Street:</form:label>
-  <form:input path="street" required="required"/>
-  <form:errors path="street" />
+  <form:label path="address.street">Street:</form:label>
+  <form:input path="address.street" required="required"/>
+  <form:errors path="address.street" />
   <br />
-  <form:label path="city">City:</form:label>
-  <form:input path="city" required="required"/>
-  <form:errors path="city" />
+  <form:label path="address.city">City:</form:label>
+  <form:input path="address.city" required="required"/>
+  <form:errors path="address.city" />
   <br />
-  <form:label path="state">State:</form:label>
-  <form:input path="state" required="required"/>
-  <form:errors path="state" />
+  <form:label path="address.state">State:</form:label>
+  <form:input path="address.state" required="required"/>
+  <form:errors path="address.state" />
   <br />
-  <form:label path="zip">Zip:</form:label>
-  <form:input path="zip" required="required"/>
-  <form:errors path="zip" />
+  <form:label path="address.zip">Zip:</form:label>
+  <form:input path="address.zip" required="required"/>
+  <form:errors path="address.zip" />
   <br />
-  <form:label path="phone">Phone:</form:label>
-  <form:input path="phone" required="required"/>
-  <form:errors path="phone" />
+  <form:label path="address.phone">Phone:</form:label>
+  <form:input path="address.phone" required="required"/>
+  <form:errors path="address.phone" />
   <br />
   <c:if test="${not empty error}">
   <h3>

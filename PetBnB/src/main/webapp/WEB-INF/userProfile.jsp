@@ -41,42 +41,40 @@
 
 				<div class="resultsSingle">
 					<table class="table">
-					<th>List of Pets</th>
+						<th>List of Pets</th>
 						<c:forEach items="${user.pets }" var="pet">
 							<tr>
 								<td><a href="getPet.do?petId=${pet.id}"
-								class="btTxt submit">${pet.name }</a></td>
+									class="btTxt submit">${pet.name }</a></td>
 							</tr>
-							</c:forEach>
+						</c:forEach>
 					</table>
 
 				</div>
-
 		</c:if>
 		<c:if test="${not empty sessionUser }">
 			<c:if test="${empty user}">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<h1>
-						<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
-					</h1>
-					<h2>${sessionUser.username}</h2>
-					<h2>${sessionUser.email }</h2>
-				</div>
-
-				<div class="resultsSingle">
-					<table class="table">
-					<th>List of Pets</th>
-						<c:forEach items="${sessionUser.pets }" var="pet">
-							<tr>
-								<td><a href="getPet.do?petId=${pet.id}"
-								class="btTxt submit">${pet.name }</a></td>
-							</tr>
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+						<h1>
+							<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
+						</h1>
+						<h2>${sessionUser.username}</h2>
+						<h2>${sessionUser.email }</h2>
+					</div>
+					<div class="resultsSingle">
+						<table class="table">
+							<th>List of Pets</th>
+							<c:forEach items="${sessionUser.pets }" var="pet">
+								<tr>
+									<td><a href="getPet.do?petId=${pet.id}"
+										class="btTxt submit">${pet.name }</a></td>
+								</tr>
 							</c:forEach>
-					</table>
+						</table>
 
-				</div>
-		</c:if>
+					</div>
+			</c:if>
 		</c:if>
 </body>
 </html>

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.RegisterDAO;
 import com.skilldistillery.petbnb.entities.User;
-import com.skilldistillery.petbnb.entities.UserAddressDTO;
 
 @Controller
 public class RegisterController {
@@ -20,18 +19,18 @@ public class RegisterController {
 	@RequestMapping(path = "goRegister.do", method = RequestMethod.GET)
 	public ModelAndView goRegister() {
 		ModelAndView mv = new ModelAndView();
-		UserAddressDTO userDTO = new UserAddressDTO();
-		mv.addObject("userDTO", userDTO);
+		User user = new User();
+		mv.addObject("user", user);
 		mv.setViewName("register");
 		return mv;
 	}
 
 	@RequestMapping(path = "register.do", method = RequestMethod.GET)
-	public ModelAndView register(@Valid UserAddressDTO userDTO) {
+	public ModelAndView register(@Valid User user) {
 		ModelAndView mv = new ModelAndView();
-		User newUser = registerDAO.registerUser(userDTO);
+		User newUser = registerDAO.registerUser(user);
 		if (newUser != null) {
-			userDTO = null;
+			user = null;
 			mv.addObject("user", newUser);
 			mv.setViewName("userProfile");
 			return mv;
