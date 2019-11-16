@@ -31,7 +31,7 @@
 		<form:input path="name" type="text" required="required" value="${addPet.name}"/>
 		<form:errors path="name" />
 		<br>
-		<form:label path="breed">Breed: </form:label>
+		<form:label path="petType">Breed: </form:label>
 		<form:input path="breed" type="text" value="${addPet.breed}"/>
 		<form:errors path="breed" />
 		<br>
