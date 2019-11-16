@@ -54,13 +54,6 @@ public class Pet {
 		super();
 	}
 	
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 	public Pet(int id, String name, String breed, String specialNeeds, String description, User user,
 			List<ReviewOfPet> reviewsOfPet, PetType petType, List<Reservation> reservations) {
@@ -77,6 +70,14 @@ public class Pet {
 	}
 
 //	M E T H O D S
+
+	public String getImage() {
+		return image;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public void addReservation(Reservation reservation) {
 		if (reservations == null) {
