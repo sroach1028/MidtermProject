@@ -43,6 +43,8 @@ public class Pet {
 
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
+	@Column(name="image_url")
+	private String image;
 	
 //	C O N S T R U C T O R S
 
@@ -50,6 +52,14 @@ public class Pet {
 		super();
 	}
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Pet(int id, String name, String breed, String specialNeeds, String description, User user,
 			List<ReviewOfPet> reviewsOfPet, PetType petType, List<Reservation> reservations) {
 		super();
