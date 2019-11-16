@@ -33,11 +33,18 @@ public class LoginController {
 			session.setAttribute("sessionUser", u);
 			user = null;
 			mv.addObject("user", user);
-			mv.setViewName("userProfile");
+			mv.setViewName("home");
 			return mv;
 		}
 		mv.setViewName("login");
 		mv.addObject("error", "No matching users found for that username and password combination. Try again");
+		return mv;
+	}
+	@RequestMapping(path="logout.do", method= RequestMethod.GET)
+	public ModelAndView log(@Valid User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		session.removeAttribute("sessionUser");
+		mv.setViewName("home");
 		return mv;
 	}
 }

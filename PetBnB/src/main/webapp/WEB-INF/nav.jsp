@@ -13,7 +13,9 @@
 	crossorigin="anonymous">
 
 <nav class="navbar">
-
+<c:if test="${not empty sessionUser }">
+<p>Welcome, ${sessionUser.firstName }</p>
+</c:if>
 	<ul>
 		<li><a href="/" class="nav-button">Home</a></li>
 		<li><a href="getAllPets.do" class="nav-button">Pets</a></li>
@@ -23,8 +25,8 @@
 			<li><a href="goLogin.do" class="nav-button">Login</a></li>
 		</c:if>
 		<c:if test="${not empty sessionUser }">
-			<li><a href="getUser.do?userId=${sessionUser.id}" class="nav-button">My Account</a></li>
-			<li><a href="goLogout.do" class="nav-button">Logout</a></li>
+			<li><a href="goAccountPage.do" class="nav-button">My Account</a></li>
+			<li><a href="logout.do" class="nav-button">Logout</a></li>
 		</c:if>
 	</ul>
 </nav>
