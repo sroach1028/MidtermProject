@@ -42,6 +42,12 @@
 		<form:label path="description">Description:</form:label>
 		<form:input path="description" type="text" required="required" default="${oldPet.description }" placeholder="${oldPet.description}" value="${oldPet.description}"/>
 		<form:errors path="description" />
+
+		<form:label path="image"> ImageURL </form:label>
+		<form:input path="image" type="text" name="image"/>
+		<form:errors path="image" />
+		
+		
 		<br>
 		<div class="container">
 		<input type="hidden" name="petId" value="${oldPet.id }">
