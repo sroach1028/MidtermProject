@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +18,14 @@
 		<li><a href="/" class="nav-button">Home</a></li>
 		<li><a href="getAllPets.do" class="nav-button">Pets</a></li>
 		<li><a href="coming.do" class="nav-button">Sitters</a></li>
-		<li><a href="coming.do" class="nav-button">Videos</a></li>
-		<li><a href="goLogin.do" class="nav-button">Login</a></li>
+		<c:if test="${empty sessionUser }">
+			<li><a href="goRegister.do" class="nav-button">Register</a></li>
+			<li><a href="goLogin.do" class="nav-button">Login</a></li>
+		</c:if>
+		<c:if test="${not empty sessionUser }">
+			<li><a href="goAccountPage.do" class="nav-button">My Account</a></li>
+			<li><a href="goLogout.do" class="nav-button">Logout</a></li>
+		</c:if>
 	</ul>
 </nav>
 </html>
