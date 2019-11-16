@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.petbnb.entities.Address;
 import com.skilldistillery.petbnb.entities.User;
+import com.skilldistillery.petbnb.entities.UserAddressDTO;
 
 @Transactional
 @Service
@@ -17,16 +18,23 @@ public class RegisterDAOImpl implements RegisterDAO {
 	private EntityManager em;
 
 	@Override
-	public User registerUser(User user) {
+	public User registerUser(UserAddressDTO user) {
 
-		Address address = new Address(user.getAddress().getStreet(), user.getAddress().getCity(),
-				user.getAddress().getState(), user.getAddress().getZip(), user.getAddress().getPhone());
+		User newUser = new User(user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(),
+				user.getEmail());
+
+		Address address = new Address(user.getStreet(), user.getCity(),
+				user.getState(), user.getZip(), user.getPhone());
+		
 		em.persist(address);
-		user.setAddress(address);
-		em.persist(user);
+		em.flush();
+		
+		newUser.setAddress(address);
+		
+		em.persist(newUser);
 		em.flush();
 
-		return user;
+		return newUser;
 
 	}
 

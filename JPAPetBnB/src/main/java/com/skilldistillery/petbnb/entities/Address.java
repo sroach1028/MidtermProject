@@ -41,11 +41,17 @@ public class Address {
 		this.zip = zip;
 		this.phone = phone;
 	}
+	
+	public Address(String street, String city, String state, String zip, String phone) {
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
+	}
 
 //	M E T H O D S
 
-	public Address(String street, String city, String state, String zip, String phone) {
-	}
 
 	@Override
 	public String toString() {

@@ -9,7 +9,7 @@
     <title>Register</title>
   </head>
   <body>
-  <form:form action="register.do" method="GET" modelAttribute="user">
+  <form:form action="register.do" method="GET" modelAttribute="userDTO">
   <form:label path="firstName">First Name:</form:label>
   <form:input path="firstName" required="required"/>
   <form:errors path="firstName" />
@@ -30,32 +30,32 @@
   <form:input path="email" required="required"/>
   <form:errors path="email" />
   <br />
-  <form:label path="address.street">Street:</form:label>
-  <form:input path="address.street" required="required"/>
-  <form:errors path="address.street" />
+  <form:label path="street">Street:</form:label>
+  <form:input path="street" required="required"/>
+  <form:errors path="street" />
   <br />
-  <form:label path="address.city">City:</form:label>
-  <form:input path="address.city" required="required"/>
-  <form:errors path="address.city" />
+  <form:label path="city">City:</form:label>
+  <form:input path="city" required="required"/>
+  <form:errors path="city" />
   <br />
-  <form:label path="address.state">State:</form:label>
-  <form:input path="address.state" required="required"/>
-  <form:errors path="address.state" />
+  <form:label path="state">State:</form:label>
+  <form:input path="state" required="required"/>
+  <form:errors path="state" />
   <br />
-  <form:label path="address.zip">Zip:</form:label>
-  <form:input path="address.zip" required="required"/>
-  <form:errors path="address.zip" />
+  <form:label path="zip">Zip:</form:label>
+  <form:input path="zip" required="required"/>
+  <form:errors path="zip" />
   <br />
-  <form:label path="address.phone">Phone:</form:label>
-  <form:input path="address.phone" required="required"/>
-  <form:errors path="address.phone" />
+  <form:label path="phone">Phone:</form:label>
+  <form:input path="phone" required="required"/>
+  <form:errors path="phone" />
   <br />
   <c:if test="${not empty error}">
   <h3>
   ${error }
   </h3>
   </c:if>
-  <input type="submit" value="Login" />
+  <input type="submit" value="Register" />
 </form:form>
   </body>
 </html>

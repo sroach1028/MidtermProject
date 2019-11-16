@@ -10,25 +10,28 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.RegisterDAO;
 import com.skilldistillery.petbnb.entities.User;
+import com.skilldistillery.petbnb.entities.UserAddressDTO;
 
 @Controller
 public class RegisterController {
 	@Autowired
 	private RegisterDAO registerDAO;
-	
-	@RequestMapping(path="goRegister.do", method= RequestMethod.GET)
-	public ModelAndView goRegister(@Valid User user) {
+
+	@RequestMapping(path = "goRegister.do", method = RequestMethod.GET)
+	public ModelAndView goRegister() {
 		ModelAndView mv = new ModelAndView();
+		UserAddressDTO userDTO = new UserAddressDTO();
+		mv.addObject("userDTO", userDTO);
 		mv.setViewName("register");
 		return mv;
 	}
-	
-	@RequestMapping(path="register.do", method= RequestMethod.GET)
-	public ModelAndView register(@Valid User user) {
+
+	@RequestMapping(path = "register.do", method = RequestMethod.GET)
+	public ModelAndView register(@Valid UserAddressDTO userDTO) {
 		ModelAndView mv = new ModelAndView();
-		User newUser = registerDAO.registerUser(user);
+		User newUser = registerDAO.registerUser(userDTO);
 		if (newUser != null) {
-			user = null;
+			userDTO = null;
 			mv.addObject("user", newUser);
 			mv.setViewName("userProfile");
 			return mv;
