@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,7 +66,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "goToUpdatePet.do", params = "petId", method = RequestMethod.GET)
-	public ModelAndView goToUpdateHero(@Valid Pet pet, int petId) {
+	public ModelAndView goToUpdatePet(@Valid Pet pet, int petId) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("oldPet", pettrDAO.findPet(petId));
 		mv.setViewName("updatePet");
@@ -73,7 +74,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "updatePet.do", params = "petId", method = RequestMethod.GET)
-	public ModelAndView updateHero(@Valid Pet pet, int petId) {
+	public ModelAndView updatePet(@Valid Pet pet, int petId) {
 		ModelAndView mv = new ModelAndView();
 		Pet updatedPet = pettrDAO.updatePet(pet, petId);
 		mv.addObject("pet", updatedPet);
@@ -81,15 +82,33 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "updatePet.do", method = RequestMethod.GET)
-	public ModelAndView updatePet(@RequestParam("petId") int petId) {
+	@RequestMapping(path = "goToAddPet.do")
+	public ModelAndView goToAdd() {
 		ModelAndView mv = new ModelAndView();
-		
-		Pet pet = pettrDAO.findPet(petId);
+		Pet pet = new Pet();
 		mv.addObject("pet", pet);
+		mv.setViewName("addPet");
+		return mv;
+	}
+	
+	@RequestMapping(path = "addPet.do", params = {"name", "breed", "specialNeeds", "description", "image"}, method = RequestMethod.GET)
+	public ModelAndView newPet(@Valid Pet pet) {
+		ModelAndView mv = new ModelAndView();
+		Pet addpet = pettrDAO.addPet(pet);
+		mv.addObject("pet", new Pet());
 		mv.setViewName("animalProfile");
 		return mv;
 	}
+	
+	@RequestMapping(path = "removePet.do", method = RequestMethod.GET)
+	public ModelAndView removePet(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView();
+		pettrDAO.removePetById(id);
+		mv.setViewName("home");
+		return mv;
+	}
+	
+	
 	
 	
 }

@@ -17,4 +17,7 @@ public interface PettrDAO {
 
 	Pet updatePet(Pet pet, int petId);
 	
+	Pet addPet(Pet addpet);
+	
+	boolean removePetById(int id);	
 }

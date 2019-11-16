@@ -63,4 +63,23 @@ public class PettrDAOImpl implements PettrDAO {
 		return updatedPet;
 	}
 
+	@Override
+	public Pet addPet(Pet addpet) {
+			em.persist(addpet);
+			em.flush();
+			return addpet;
+		}
+
+	@Override
+	public boolean removePetById(int id) {
+		if (em != null) {
+			Pet petremoved = em.find(Pet.class, id);
+			em.remove(petremoved);
+			em.flush();
+			return true;
+		} else
+			return false;
+	}
+	
+
 }
