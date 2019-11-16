@@ -18,6 +18,8 @@ class ServiceTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private Service service;
+	private Host newHost;
+	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,6 +35,7 @@ class ServiceTest {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		service = em.find(Service.class, 1);
+		newHost = new Host();
 	}
 
 	@AfterEach
@@ -42,9 +45,25 @@ class ServiceTest {
 	}
 
 	@Test
-	@DisplayName("very simple test case")
+	@DisplayName("simple not null service test")
 	void test1() {
 		assertNotNull(service);
 	}
-
+	
+	@Test
+	@DisplayName("test service entity mapping")
+	void test2() {
+		String name = service.getName();
+		assertNotNull("Grooming", name);
+	}
+	
+	@Test
+	@DisplayName ("Testing service add host")
+	void test3() {
+		assertEquals(2, service.getHosts().size());
+		service.addHost(newHost);
+		assertEquals(3, service.getHosts().size());
+		service.removeHost(newHost);
+		assertEquals(2, service.getHosts().size());
+	}
 }
