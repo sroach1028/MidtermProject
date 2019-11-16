@@ -73,17 +73,12 @@
 										<td><a href="getPet.do?petId=${pet.id}"
 											class="btTxt submit">${pet.name }</a></td>
 									</tr>
-									<form action="removePet.do" method="GET">
-										<input type="hidden" name="petId" value="${pet.id }">
-										<input type="submit" class="btn btn-outline-light"
-											value="Remove Pet" />
-									</form>
 								</c:if>
 							</c:forEach>
 						</table>
 						<form action="goToAddPet.do" method="GET">
-							<input type="hidden" name="petId" value="${pet.id }"> <input
-								type="submit" class="btn btn-outline-light" value="Add Pet" />
+							<input type="submit" class="btn btn-outline-light"
+								value="Add Pet" />
 						</form>
 
 					</div>

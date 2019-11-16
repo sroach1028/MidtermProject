@@ -73,18 +73,14 @@ public class PettrDAOImpl implements PettrDAO {
 		}
 
 	@Override
-	public boolean removePetById(int id) {
+	public User removePetById(int id) {
 		System.out.println("AM I HERE?");
 			Pet petRemoved = em.find(Pet.class, id);
 			petRemoved.setActive(false);
 			em.flush();
 			
-			if(em.find(Pet.class, id).isActive() == true) {
-				return false;
-			} else {
-				return true;
-			}
 			
+			return em.find(User.class, petRemoved.getUser().getId());
 			
 	}
 	
