@@ -42,12 +42,5 @@
 			</form>
 		</c:if>
 	</div>
-	<form action="removePet.do" method="GET">
-		<input type="hidden" name="petId" value="${pet.id }"> <input
-			type="submit" class="btn btn-outline-light" value="Remove Pet2" />
-	</form>
-	<form action="goToAddPet.do" method="GET">
-		<input type="submit" class="btn btn-outline-light" value="Add Pet" />
-	</form>
 </body>
 </html>

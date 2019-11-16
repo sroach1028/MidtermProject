@@ -43,10 +43,12 @@
 					<table class="table">
 						<th>List of Pets</th>
 						<c:forEach items="${user.pets }" var="pet">
+							<c:if test="${pet.active == true}">
 							<tr>
 								<td><a href="getPet.do?petId=${pet.id}"
 									class="btTxt submit">${pet.name }</a></td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</table>
 
@@ -66,10 +68,22 @@
 						<table class="table">
 							<th>List of Pets</th>
 							<c:forEach items="${sessionUser.pets }" var="pet">
-								<tr>
-									<td><a href="getPet.do?petId=${pet.id}"
-										class="btTxt submit">${pet.name }</a></td>
-								</tr>
+								<c:if test="${pet.active == true}">
+									<tr>
+										<td><a href="getPet.do?petId=${pet.id}"
+											class="btTxt submit">${pet.name }</a></td>
+									</tr>
+									<form action="removePet.do" method="GET">
+										<input type="hidden" name="petId" value="${pet.id }">
+										<input type="submit" class="btn btn-outline-light"
+											value="Remove Pet" />
+									</form>
+									<form action="goToAddPet.do" method="GET">
+										<input type="hidden" name="petId" value="${pet.id }">
+										<input type="submit" class="btn btn-outline-light"
+											value="Add Pet" />
+									</form>
+								</c:if>
 							</c:forEach>
 						</table>
 
