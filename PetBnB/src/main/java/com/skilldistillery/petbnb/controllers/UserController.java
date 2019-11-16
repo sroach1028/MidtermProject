@@ -99,7 +99,8 @@ public class UserController {
 	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId) {
 		ModelAndView mv = new ModelAndView();
 		Pet addPet = pettrDAO.addPet(pet, userId);
-		mv.setViewName("userProfile");
+		mv.addObject("pet", addPet);
+		mv.setViewName("animalProfile");
 		return mv;
 	}
 	
@@ -107,7 +108,7 @@ public class UserController {
 	public ModelAndView removePet(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
 		boolean result = pettrDAO.removePetById(petId);
-		mv.setViewName("home");
+		mv.setViewName("");
 		return mv;
 	}
 	

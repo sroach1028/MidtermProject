@@ -74,6 +74,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public boolean removePetById(int id) {
+		System.out.println("AM I HERE?");
 			Pet petRemoved = em.find(Pet.class, id);
 			petRemoved.setActive(false);
 			em.flush();
