@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +30,11 @@ public class UserController {
 	@RequestMapping(path = "coming.do")
 	public String comingSoon() {
 		return "comingSoon";
+	}
+	
+	@RequestMapping(path = "goAccountPage.do")
+	public String goToAccountPage() {
+		return "userProfile";
 	}
 	
 	@RequestMapping(path = "getUser.do", method = RequestMethod.GET)
@@ -91,12 +95,11 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "addPet.do", params = {"name", "breed", "specialNeeds", "description", "image"}, method = RequestMethod.GET)
-	public ModelAndView newPet(@Valid Pet pet) {
+	@RequestMapping(path = "addPet.do", method = RequestMethod.GET)
+	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId) {
 		ModelAndView mv = new ModelAndView();
-		Pet addpet = pettrDAO.addPet(pet);
-		mv.addObject("pet", new Pet());
-		mv.setViewName("animalProfile");
+		Pet addPet = pettrDAO.addPet(pet, userId);
+		mv.setViewName("userProfile");
 		return mv;
 	}
 	

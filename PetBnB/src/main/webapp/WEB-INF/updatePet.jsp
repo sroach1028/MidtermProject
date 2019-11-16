@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 
 <title>Update Pet</title>
-<%@include file="/WEB-INF/nav.jsp" %>
+<%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -28,35 +27,37 @@
 	</div>
 	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
-		<form:input path="name" required="required" default="${oldPet.name }" placeholder="${oldPet.name}" value="${oldPet.name}"/>
+		<form:input path="name" required="required" default="${oldPet.name }"
+			placeholder="${oldPet.name}" value="${oldPet.name}" />
 		<form:errors path="name" />
 		<br>
 		<form:label path="breed">Breed: </form:label>
-		<form:input path="breed" default="${oldPet.breed }" placeholder="${oldPet.breed}" value="${oldPet.breed}"/>
+		<form:input path="breed" default="${oldPet.breed }"
+			placeholder="${oldPet.breed}" value="${oldPet.breed}" />
 		<form:errors path="breed" />
 		<br>
 		<form:label path="specialNeeds">Special Needs: </form:label>
-		<form:input path="specialNeeds" default="${oldPet.specialNeeds }" placeholder="${oldPet.specialNeeds}" value="${oldPet.specialNeeds}"/>
+		<form:input path="specialNeeds" default="${oldPet.specialNeeds }"
+			placeholder="${oldPet.specialNeeds}" value="${oldPet.specialNeeds}" />
 		<form:errors path="specialNeeds" />
 		<br>
 		<form:label path="description">Description:</form:label>
-		<form:input path="description" type="text" required="required" default="${oldPet.description }" placeholder="${oldPet.description}" value="${oldPet.description}"/>
+		<form:input path="description" type="text" required="required"
+			default="${oldPet.description }" placeholder="${oldPet.description}"
+			value="${oldPet.description}" />
 		<form:errors path="description" />
 
 		<form:label path="image"> ImageURL </form:label>
-		<form:input path="image" type="text" name="image"/>
+		<form:input path="image" type="text" name="image" />
 		<form:errors path="image" />
-		
-		
+
+
 		<br>
 		<div class="container">
-		<input type="hidden" name="petId" value="${oldPet.id }">
-		<input type="submit" id = "updatePet"  class="btn btn-outline-light" value="Update Pet" />
+			<input type="hidden" name="petId" value="${oldPet.id }"> <input
+				type="submit" id="updatePet" class="btn btn-outline-light"
+				value="Update Pet" />
 		</div>
 	</form:form>
-	<form action="removePet.do" method="GET">
-		<input type="hidden" name="petId" value="${pet.id }"> <input
-			type="submit" class="btn btn-outline-light" value="Remove Pet2" />
-	</form>
 </body>
 </html>

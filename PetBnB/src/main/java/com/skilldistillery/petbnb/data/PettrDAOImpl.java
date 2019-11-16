@@ -64,10 +64,12 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
-	public Pet addPet(Pet addpet) {
-			em.persist(addpet);
+	public Pet addPet(Pet addPet, int userId) {
+			addPet.setUser(em.find(User.class, userId));
+			addPet.setActive(true);
+			em.persist(addPet);
 			em.flush();
-			return addpet;
+			return addPet;
 		}
 
 	@Override
