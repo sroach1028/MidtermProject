@@ -46,6 +46,8 @@ public class Pet {
 	@Column(name="image_url")
 	private String image;
 	
+	private boolean active;
+	
 //	C O N S T R U C T O R S
 
 	public Pet() {
@@ -194,17 +196,30 @@ public class Pet {
 	public void setPetType(PetType petType) {
 		this.petType = petType;
 	}
+	
+	
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (active ? 1231 : 1237);
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((petType == null) ? 0 : petType.hashCode());
 		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
+		result = prime * result + ((reviewsOfPet == null) ? 0 : reviewsOfPet.hashCode());
 		result = prime * result + ((specialNeeds == null) ? 0 : specialNeeds.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -219,6 +234,8 @@ public class Pet {
 		if (getClass() != obj.getClass())
 			return false;
 		Pet other = (Pet) obj;
+		if (active != other.active)
+			return false;
 		if (breed == null) {
 			if (other.breed != null)
 				return false;
@@ -230,6 +247,11 @@ public class Pet {
 		} else if (!description.equals(other.description))
 			return false;
 		if (id != other.id)
+			return false;
+		if (image == null) {
+			if (other.image != null)
+				return false;
+		} else if (!image.equals(other.image))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -245,6 +267,11 @@ public class Pet {
 			if (other.reservations != null)
 				return false;
 		} else if (!reservations.equals(other.reservations))
+			return false;
+		if (reviewsOfPet == null) {
+			if (other.reviewsOfPet != null)
+				return false;
+		} else if (!reviewsOfPet.equals(other.reviewsOfPet))
 			return false;
 		if (specialNeeds == null) {
 			if (other.specialNeeds != null)

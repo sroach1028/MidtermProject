@@ -51,6 +51,14 @@ public class User {
 		super();
 	}
 
+	public User(String firstName, String lastName, String username, String password, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
 	public User(int id, String firstName, String lastName, String username, String password, String email,
 			boolean active, Address address, Host host, List<Pet> pets) {
 		super();
@@ -67,6 +75,7 @@ public class User {
 	}
 
 //	M E T H O D S
+
 
 	public void addPet(Pet pet) {
 		if (pets == null) {

@@ -1,9 +1,11 @@
 package com.skilldistillery.petbnb.data;
 
+import javax.validation.Valid;
+
 import com.skilldistillery.petbnb.entities.User;
 
 public interface RegisterDAO {
 
-	User registerUser(User user);
+	User registerUser(@Valid User user);
 
 }

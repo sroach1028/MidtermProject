@@ -101,9 +101,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "removePet.do", method = RequestMethod.GET)
-	public ModelAndView removePet(@RequestParam("id") int id) {
+	public ModelAndView removePet(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
-		pettrDAO.removePetById(id);
+		boolean result = pettrDAO.removePetById(petId);
 		mv.setViewName("home");
 		return mv;
 	}
