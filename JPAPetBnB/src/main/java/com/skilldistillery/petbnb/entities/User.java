@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Host host;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Pet> pets;
 
 //	C O N S T R U C T O R S
@@ -58,7 +59,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 	}
-	
+
 	public User(int id, String firstName, String lastName, String username, String password, String email,
 			boolean active, Address address, Host host, List<Pet> pets) {
 		super();
@@ -75,7 +76,6 @@ public class User {
 	}
 
 //	M E T H O D S
-
 
 	public void addPet(Pet pet) {
 		if (pets == null) {
@@ -158,7 +158,6 @@ public class User {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-
 
 	public Address getAddress() {
 		return address;
