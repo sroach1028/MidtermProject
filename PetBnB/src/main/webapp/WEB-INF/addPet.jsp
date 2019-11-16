@@ -23,24 +23,24 @@
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Pet Update</h1>
+			<h1>Add Pet</h1>
 		</div>
 	</div>
-	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
+	<form:form action="addPet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
-		<form:input path="name" required="required" default="${oldPet.name }" placeholder="${oldPet.name}" value="${oldPet.name}"/>
+		<form:input path="name" type="text" required="required" value="${addPet.name}"/>
 		<form:errors path="name" />
 		<br>
 		<form:label path="breed">Breed: </form:label>
-		<form:input path="breed" default="${oldPet.breed }" placeholder="${oldPet.breed}" value="${oldPet.breed}"/>
+		<form:input path="breed" type="text" value="${addPet.breed}"/>
 		<form:errors path="breed" />
 		<br>
-		<form:label path="specialNeeds">Special Needs: </form:label>
-		<form:input path="specialNeeds" default="${oldPet.specialNeeds }" placeholder="${oldPet.specialNeeds}" value="${oldPet.specialNeeds}"/>
+		<form:label path="specialNeeds">Special Needs: value="${addPet.specialNeeds}"</form:label>
+		<form:input path="specialNeeds" type="text"/>
 		<form:errors path="specialNeeds" />
 		<br>
 		<form:label path="description">Description:</form:label>
-		<form:input path="description" type="text" required="required" default="${oldPet.description }" placeholder="${oldPet.description}" value="${oldPet.description}"/>
+		<form:input path="description" type="text" required="required" value="${addPet.description}"/>
 		<form:errors path="description" />
 
 		<form:label path="image"> ImageURL </form:label>
@@ -50,13 +50,8 @@
 		
 		<br>
 		<div class="container">
-		<input type="hidden" name="petId" value="${oldPet.id }">
-		<input type="submit" id = "updatePet"  class="btn btn-outline-light" value="Update Pet" />
+		<input type="submit" id = "addPet"  class="btn btn-outline-light" value="Add Pet" />
 		</div>
 	</form:form>
-	<form action="removePet.do" method="GET">
-		<input type="hidden" name="petId" value="${pet.id }"> <input
-			type="submit" class="btn btn-outline-light" value="Remove Pet2" />
-	</form>
 </body>
 </html>
