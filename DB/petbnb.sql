@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `pet` (
   `breed` VARCHAR(45) NULL,
   `special_needs` TEXT NULL,
   `description` TEXT NULL,
+  `image_url` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_pet_client1_idx` (`user_id` ASC),
   INDEX `fk_pet_pettype_idx` (`type_id` ASC),
@@ -307,9 +308,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`) VALUES (1, 1, 'Judy', 1, 'Kitten', '', 'A great cat with no claws and no cares');
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`) VALUES (2, 2, 'Greg', 2, 'Hound', 'No stairs, No cats', 'A great dog that hates cats');
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`) VALUES (3, 2, 'Terry', 3, NULL, NULL, NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (1, 1, 'Judy', 2, 'Kitten', '', 'A great cat with no claws and no cares', NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (2, 2, 'Greg', 1, 'Hound', 'No stairs, No cats', 'A great dog that hates cats', NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (3, 2, 'Terry', 3, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
