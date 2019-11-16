@@ -31,7 +31,7 @@ public class Reservation {
 	@Column(name = "open_date")
 	private Date openDate;
 
-	@Column(name = "close_date ")
+	@Column(name = "close_date")
 	private Date closeDate;
 
 //	C O N S T R U C T O R S
