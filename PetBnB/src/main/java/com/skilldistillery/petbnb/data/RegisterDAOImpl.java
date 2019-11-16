@@ -21,8 +21,12 @@ public class RegisterDAOImpl implements RegisterDAO {
 
 		Address address = new Address(user.getAddress().getStreet(), user.getAddress().getCity(),
 				user.getAddress().getState(), user.getAddress().getZip(), user.getAddress().getPhone());
+		
 		em.persist(address);
+		em.flush();
+		
 		user.setAddress(address);
+		
 		em.persist(user);
 		em.flush();
 

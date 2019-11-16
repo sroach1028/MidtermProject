@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address_id` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `active` TINYINT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   `email` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_client_address_idx` (`address_id` ASC),
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `host` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` TEXT NULL,
   `user_id` INT NOT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_host_client1_idx` (`user_id` ASC),
   CONSTRAINT `fk_host_client1`
@@ -92,13 +93,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `pet` ;
 
 CREATE TABLE IF NOT EXISTS `pet` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `type_id` INT NOT NULL,
   `breed` VARCHAR(45) NULL,
   `special_needs` TEXT NULL,
   `description` TEXT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   `image_url` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_pet_client1_idx` (`user_id` ASC),
@@ -271,10 +273,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (1, 'Jonny', 'Client', 1, 'jclient', 'jclient', 0, 'jclient@email.com');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (2, 'Freddy', 'Kitchens', 2, 'fkitchens', 'fkitchens', 0, 'fkitchens@email.com');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (3, 'Francis', 'Noname', 3, 'fnoname', 'fnoname', 0, 'fnoname@email.com');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (4, 'Brad', 'Forsberg', 4, 'bforsberg', 'bforsberg', 0, 'bforsberg@email.com');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (1, 'Jonny', 'Client', 1, 'jclient', 'jclient', 1, 'jclient@email.com');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (2, 'Freddy', 'Kitchens', 2, 'fkitchens', 'fkitchens', 1, 'fkitchens@email.com');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (3, 'Francis', 'Noname', 3, 'fnoname', 'fnoname', 1, 'fnoname@email.com');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`) VALUES (4, 'Brad', 'Forsberg', 4, 'bforsberg', 'bforsberg', 1, 'bforsberg@email.com');
 
 COMMIT;
 
@@ -284,8 +286,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `host` (`id`, `description`, `user_id`) VALUES (1, 'Fenced yard', 3);
-INSERT INTO `host` (`id`, `description`, `user_id`) VALUES (2, 'Open fields', 4);
+INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (1, 'Fenced yard', 3, 1);
+INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (2, 'Open fields', 4, 1);
 
 COMMIT;
 
@@ -308,9 +310,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (1, 1, 'Judy', 2, 'Kitten', '', 'A great cat with no claws and no cares', NULL);
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (2, 2, 'Greg', 1, 'Hound', 'No stairs, No cats', 'A great dog that hates cats', NULL);
-INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `image_url`) VALUES (3, 2, 'Terry', 3, NULL, NULL, NULL, NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `active`, `image_url`) VALUES (1, 1, 'Judy', 1, 'Kitten', '', 'A great cat with no claws and no cares', 1, NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `active`, `image_url`) VALUES (2, 2, 'Greg', 2, 'Hound', 'No stairs, No cats', 'A great dog that hates cats', 1, NULL);
+INSERT INTO `pet` (`id`, `user_id`, `name`, `type_id`, `breed`, `special_needs`, `description`, `active`, `image_url`) VALUES (3, 2, 'Terry', 3, NULL, NULL, NULL, 1, NULL);
 
 COMMIT;
 
@@ -333,8 +335,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `review_of_host` (`id`, `rating`, `review`, `reservation_id`) VALUES (1, 5, 'My little foo foo had so much fun', 2);
-INSERT INTO `review_of_host` (`id`, `rating`, `review`, `reservation_id`) VALUES (2, 1, 'Their cat ate my bird and they refused to buy me a new bird.', 4);
+INSERT INTO `review_of_host` (`id`, `rating`, `review`, `reservation_id`) VALUES (1, 5, 'My little foo foo had so much fun', 1);
+INSERT INTO `review_of_host` (`id`, `rating`, `review`, `reservation_id`) VALUES (2, 1, 'Their cat ate my bird and they refused to buy me a new bird.', 2);
 
 COMMIT;
 
@@ -345,7 +347,7 @@ COMMIT;
 START TRANSACTION;
 USE `PetBnB`;
 INSERT INTO `review_of_pet` (`id`, `rating`, `review`, `reservation_id`) VALUES (1, 5, 'Great Dog', 1);
-INSERT INTO `review_of_pet` (`id`, `rating`, `review`, `reservation_id`) VALUES (2, 1, 'Bad Dog', 3);
+INSERT INTO `review_of_pet` (`id`, `rating`, `review`, `reservation_id`) VALUES (2, 1, 'Bad Dog', 2);
 
 COMMIT;
 

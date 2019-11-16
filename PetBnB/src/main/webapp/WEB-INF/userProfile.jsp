@@ -41,42 +41,54 @@
 
 				<div class="resultsSingle">
 					<table class="table">
-					<th>List of Pets</th>
+						<th>List of Pets</th>
 						<c:forEach items="${user.pets }" var="pet">
+							<c:if test="${pet.active == true}">
 							<tr>
 								<td><a href="getPet.do?petId=${pet.id}"
-								class="btTxt submit">${pet.name }</a></td>
+									class="btTxt submit">${pet.name }</a></td>
 							</tr>
-							</c:forEach>
+							</c:if>
+						</c:forEach>
 					</table>
 
 				</div>
-
 		</c:if>
 		<c:if test="${not empty sessionUser }">
 			<c:if test="${empty user}">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<h1>
-						<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
-					</h1>
-					<h2>${sessionUser.username}</h2>
-					<h2>${sessionUser.email }</h2>
-				</div>
-
-				<div class="resultsSingle">
-					<table class="table">
-					<th>List of Pets</th>
-						<c:forEach items="${sessionUser.pets }" var="pet">
-							<tr>
-								<td><a href="getPet.do?petId=${pet.id}"
-								class="btTxt submit">${pet.name }</a></td>
-							</tr>
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+						<h1>
+							<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
+						</h1>
+						<h2>${sessionUser.username}</h2>
+						<h2>${sessionUser.email }</h2>
+					</div>
+					<div class="resultsSingle">
+						<table class="table">
+							<th>List of Pets</th>
+							<c:forEach items="${sessionUser.pets }" var="pet">
+								<c:if test="${pet.active == true}">
+									<tr>
+										<td><a href="getPet.do?petId=${pet.id}"
+											class="btTxt submit">${pet.name }</a></td>
+									</tr>
+									<form action="removePet.do" method="GET">
+										<input type="hidden" name="petId" value="${pet.id }">
+										<input type="submit" class="btn btn-outline-light"
+											value="Remove Pet" />
+									</form>
+									<form action="goToAddPet.do" method="GET">
+										<input type="hidden" name="petId" value="${pet.id }">
+										<input type="submit" class="btn btn-outline-light"
+											value="Add Pet" />
+									</form>
+								</c:if>
 							</c:forEach>
-					</table>
+						</table>
 
-				</div>
-		</c:if>
+					</div>
+			</c:if>
 		</c:if>
 </body>
 </html>

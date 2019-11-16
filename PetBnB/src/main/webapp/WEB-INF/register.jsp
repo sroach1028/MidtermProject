@@ -55,7 +55,7 @@
   ${error }
   </h3>
   </c:if>
-  <input type="submit" value="Login" />
+  <input type="submit" value="Register" />
 </form:form>
   </body>
 </html>

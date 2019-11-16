@@ -15,15 +15,17 @@ import com.skilldistillery.petbnb.entities.User;
 public class RegisterController {
 	@Autowired
 	private RegisterDAO registerDAO;
-	
-	@RequestMapping(path="goRegister.do", method= RequestMethod.GET)
-	public ModelAndView goRegister(@Valid User user) {
+
+	@RequestMapping(path = "goRegister.do", method = RequestMethod.GET)
+	public ModelAndView goRegister() {
 		ModelAndView mv = new ModelAndView();
+		User user = new User();
+		mv.addObject("user", user);
 		mv.setViewName("register");
 		return mv;
 	}
-	
-	@RequestMapping(path="register.do", method= RequestMethod.GET)
+
+	@RequestMapping(path = "register.do", method = RequestMethod.GET)
 	public ModelAndView register(@Valid User user) {
 		ModelAndView mv = new ModelAndView();
 		User newUser = registerDAO.registerUser(user);
