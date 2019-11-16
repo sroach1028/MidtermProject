@@ -17,6 +17,7 @@
 		<li><a href="getAllPets.do" class="nav-button">Pets</a></li>
 		<li><a href="coming.do" class="nav-button">Sitters</a></li>
 		<li><a href="coming.do" class="nav-button">Videos</a></li>
+		<li><a href="goLogin.do" class="nav-button">Login</a></li>
 	</ul>
 </nav>
 </html>
