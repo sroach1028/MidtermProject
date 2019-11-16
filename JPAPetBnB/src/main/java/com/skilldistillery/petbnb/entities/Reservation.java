@@ -34,8 +34,6 @@ public class Reservation {
 	@Column(name = "close_date")
 	private Date closeDate;
 
-//	private int rating;
-
 //	C O N S T R U C T O R S
 
 	public Reservation() {
@@ -98,7 +96,6 @@ public class Reservation {
 		this.closeDate = closeDate;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
