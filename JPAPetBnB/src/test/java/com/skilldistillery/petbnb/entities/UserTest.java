@@ -53,7 +53,6 @@ class UserTest {
 		assertEquals("jclient", user.getUsername());
 	}
 	
-	
 	@Test
 	@DisplayName ("Testing User add Pet")
 	void testUserAddPet() {
@@ -62,6 +61,5 @@ class UserTest {
 	assertEquals(2, user.getPets().size());
 	user.removePet(newPet);
 	assertEquals(1, user.getPets().size());
-}
-
+	}
 }
