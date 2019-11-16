@@ -93,7 +93,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `pet` ;
 
 CREATE TABLE IF NOT EXISTS `pet` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `type_id` INT NOT NULL,
