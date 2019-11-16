@@ -7,6 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Register</title>
+    <%@include file="/WEB-INF/nav.jsp"%>
   </head>
   <body>
   <form:form action="register.do" method="GET" modelAttribute="user">
