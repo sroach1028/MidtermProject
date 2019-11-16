@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address {
@@ -41,6 +43,9 @@ public class Address {
 	}
 
 //	M E T H O D S
+
+	public Address(String street, String city, String state, String zip, String phone) {
+	}
 
 	@Override
 	public String toString() {

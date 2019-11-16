@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -34,8 +35,9 @@ public class User {
 
 	private boolean active;
 
-	@Column(name = "address_id")
-	private int addressId;
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	@OneToOne(mappedBy = "user")
 	private Host host;
@@ -44,13 +46,13 @@ public class User {
 	private List<Pet> pets;
 
 //	C O N S T R U C T O R S
-	
+
 	public User() {
 		super();
 	}
-	
-	public User(int id, String firstName, String lastName, String username, String password, String email, boolean active,
-			int addressId, Host host, List<Pet> pets) {
+
+	public User(int id, String firstName, String lastName, String username, String password, String email,
+			boolean active, Address address, Host host, List<Pet> pets) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -59,7 +61,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.active = active;
-		this.addressId = addressId;
+		this.address = address;
 		this.host = host;
 		this.pets = pets;
 	}
@@ -78,7 +80,7 @@ public class User {
 		}
 		pet.setUser(this);
 	}
-	
+
 	public void removePet(Pet pet) {
 		pet.setUser(null);
 		if (pets != null) {
@@ -148,12 +150,13 @@ public class User {
 		this.active = active;
 	}
 
-	public int getAddressId() {
-		return addressId;
+
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public Host getHost() {
@@ -177,7 +180,7 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (active ? 1231 : 1237);
-		result = prime * result + addressId;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((host == null) ? 0 : host.hashCode());
@@ -200,7 +203,10 @@ public class User {
 		User other = (User) obj;
 		if (active != other.active)
 			return false;
-		if (addressId != other.addressId)
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
 			return false;
 		if (email == null) {
 			if (other.email != null)
