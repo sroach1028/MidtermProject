@@ -17,8 +17,14 @@
 </head>
 <body>
 	<form style = "margin-bottom: 15px" action= "searchHost.do">
-		<input type = "text" name = "city"/>
-		<input type = "text" name = "state"/>
+		<input type = "text" name = "city"/>City<br>
+		<select name="state">State
+  			<option value="null" selected>--</option>
+  			<option value="CO">CO</option>
+  			<option value="WY">WY</option>
+ 			<option value="NM">NM</option>
+ 			<option value="KS">KS</option>
+		</select><br>
 		<input type="submit" value="Search" />
 
 	<div class="header">Pettr</div>
