@@ -37,8 +37,13 @@ public class UserController {
 	public ModelAndView goToAccountPage(@RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = pettrDAO.refreshUser(userId);
+		Host host = pettrDAO.refreshHost(userId);
 		session.removeAttribute("sessionUser");
 		session.setAttribute("sessionUser", user);
+		if(host != null) {
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", host);
+		}
 		mv.setViewName("userProfile");
 		return mv;
 	}
@@ -128,5 +133,25 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
+	
+	@RequestMapping(path="becomeHost.do", method = RequestMethod.GET)
+	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Host host = pettrDAO.becomeHost(id);
+		mv.addObject("host", host);
+		session.setAttribute("sessionHost", host);
+		mv.setViewName("becomeHost");
+		return mv;
+	}
+	@RequestMapping(path="updateHost.do", method = RequestMethod.GET)
+	public ModelAndView updateHost(@Valid Host host, @RequestParam("hostId") int hostId, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Host updatedHost = pettrDAO.updateHost(host, hostId);
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", updatedHost);
+		mv.setViewName("userProfile");
+		return mv;
+	}
+	
 
 }

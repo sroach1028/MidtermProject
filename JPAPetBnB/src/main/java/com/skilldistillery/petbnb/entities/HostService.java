@@ -11,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Service {
+@Table(name="service")
+public class HostService {
 
 //	F I E L D S
 
@@ -24,6 +26,8 @@ public class Service {
 	private String name;
 
 	private double rate;
+	
+	private boolean active;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "host_id"))
@@ -31,11 +35,11 @@ public class Service {
 
 //	C O N S T R U C T O R S
 
-	public Service() {
+	public HostService() {
 		super();
 	}
 
-	public Service(int id, String name, double rate, List<Host> hosts) {
+	public HostService(int id, String name, double rate, List<Host> hosts) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -99,10 +103,19 @@ public class Service {
 		this.hosts = hosts;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (active ? 1231 : 1237);
 		result = prime * result + ((hosts == null) ? 0 : hosts.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -120,7 +133,9 @@ public class Service {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Service other = (Service) obj;
+		HostService other = (HostService) obj;
+		if (active != other.active)
+			return false;
 		if (hosts == null) {
 			if (other.hosts != null)
 				return false;
