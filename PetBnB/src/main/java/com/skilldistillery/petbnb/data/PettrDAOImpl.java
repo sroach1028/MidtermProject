@@ -30,7 +30,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Pet> findAllPets() {
-		
+
 		String queryString = "SELECT p FROM Pet p ORDER BY p.name";
 		List<Pet> results = em.createQuery(queryString, Pet.class).getResultList();
 
@@ -43,9 +43,9 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet findPet(int petId) {
-		
+
 		Pet pet = em.find(Pet.class, petId);
-		
+
 		return pet;
 	}
 
@@ -64,25 +64,27 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
+	public User refreshUser(int userId) {
+		return em.find(User.class, userId);
+	}
+
+	@Override
 	public Pet addPet(Pet addPet, int userId) {
-			addPet.setUser(em.find(User.class, userId));
-			addPet.setActive(true);
-			em.persist(addPet);
-			em.flush();
-			return addPet;
-		}
+		addPet.setUser(em.find(User.class, userId));
+		addPet.setActive(true);
+		em.persist(addPet);
+		em.flush();
+		return em.find(Pet.class, addPet.getId());
+	}
 
 	@Override
 	public User removePetById(int id) {
-		System.out.println("AM I HERE?");
-			Pet petRemoved = em.find(Pet.class, id);
-			petRemoved.setActive(false);
-			em.flush();
-			
-			
-			return em.find(User.class, petRemoved.getUser().getId());
-			
+		Pet petRemoved = em.find(Pet.class, id);
+		petRemoved.setActive(false);
+		em.flush();
+
+		return em.find(User.class, petRemoved.getUser().getId());
+
 	}
-	
 
 }
