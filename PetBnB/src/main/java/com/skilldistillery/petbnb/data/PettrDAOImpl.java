@@ -57,7 +57,7 @@ public class PettrDAOImpl implements PettrDAO {
 		updatedPet.setBreed(pet.getBreed());
 		updatedPet.setSpecialNeeds(pet.getSpecialNeeds());
 		updatedPet.setDescription(pet.getDescription());
-		updatedPet.setImage(pet.getImage());
+		updatedPet.setImages(pet.getImages());
 
 		em.flush();
 
@@ -112,12 +112,13 @@ public class PettrDAOImpl implements PettrDAO {
 	public Host becomeHost(int id) {
 		Host host = new Host();
 		host.setUser(em.find(User.class, id));
-		System.out.println(host.getUser().getFirstName());
-//		host.addService(em.find(HostService.class, 1));
-//		for(int i = 1; i<=8; i++) {
-//			host.addService(em.find(HostService.class, i));
-//		}
 		em.persist(host);
+		em.flush();
+		System.out.println(host.getServices());
+//		host.addService(em.find(HostService.class, 8));
+		for(int i = 1; i<=8; i++) {
+			host.addService(em.find(HostService.class, i));
+		}
 		em.flush();
 		return host;
 	}
@@ -127,7 +128,8 @@ public class PettrDAOImpl implements PettrDAO {
 		System.out.println(host.getDescription());
 		Host updatedHost = em.find(Host.class, hostId);
 		System.out.println(updatedHost.getUser().getFirstName());
-//		updatedHost.setServices(host.getServices());
+		updatedHost.setServices(host.getServices());
+		System.out.println(host.getServices());
 		updatedHost.setDescription(host.getDescription());
 		System.out.println(updatedHost.getDescription());
 		em.flush();

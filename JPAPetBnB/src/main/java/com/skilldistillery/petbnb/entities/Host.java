@@ -3,6 +3,7 @@ package com.skilldistillery.petbnb.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,9 +37,13 @@ public class Host {
 	@OneToMany(mappedBy = "host")
 	private List<ReviewOfHost> reviewsOfHost;
 
+<<<<<<< HEAD
+	@ManyToMany(mappedBy="hosts")
+=======
 	@ManyToMany
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
 
+>>>>>>> 9f09b2ba3a18c23a0164d31d3fb38f516d665433
 	private List<HostService> services;
 	
 	@OneToMany(mappedBy = "host")
