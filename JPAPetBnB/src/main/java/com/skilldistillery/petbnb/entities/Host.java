@@ -38,10 +38,12 @@ public class Host {
 
 	@ManyToMany
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-	private List<Service> services;
+
+	private List<HostService> services;
 	
 	@OneToMany(mappedBy = "host")
 	private List<Image> images;
+
 
 //	C O N S T R U C T O R S
 
@@ -50,14 +52,14 @@ public class Host {
 	}
 
 	public Host(int id, User user, String description, List<Reservation> reservations, List<ReviewOfHost> reviewsOfHost,
-			List<Service> services) {
+			List<HostService> hostServices) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.description = description;
 		this.reservations = reservations;
 		this.reviewsOfHost = reviewsOfHost;
-		this.services = services;
+		this.services = hostServices;
 	}
 
 	//	M E T H O D S
@@ -127,20 +129,20 @@ public class Host {
 		}
 	}
 	
-	public void addService(Service service) {
+	public void addService(HostService hostService) {
 		if (services == null) {
 			services = new ArrayList<>();
 		}
-		if (!services.contains(service)) {
-			services.add(service);
-			service.addHost(this);
+		if (!services.contains(hostService)) {
+			services.add(hostService);
+			hostService.addHost(this);
 			}
 		}
 	
-	public void removeService(Service service) {
-		if(services != null && services.contains(service)) {
-			services.remove(service);
-			service.removeHost(this);
+	public void removeService(HostService hostService) {
+		if(services != null && services.contains(hostService)) {
+			services.remove(hostService);
+			hostService.removeHost(this);
 		}
 	}
 
@@ -169,12 +171,12 @@ public class Host {
 		this.reservations = reservations;
 	}
 
-	public List<Service> getServices() {
+	public List<HostService> getServices() {
 		return services;
 	}
 
-	public void setServices(List<Service> services) {
-		this.services = services;
+	public void setServices(List<HostService> hostServices) {
+		this.services = hostServices;
 	}
 
 	public User getUser() {

@@ -20,7 +20,7 @@ class HostTest {
 	private Host host;
 	private Reservation newReservation;
 	private ReviewOfHost newReviewOfHost;
-	private Service newService;
+	private HostService newService;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -38,7 +38,7 @@ class HostTest {
 		host = em.find(Host.class, 1);
 		newReservation = new Reservation();
 		newReviewOfHost = new ReviewOfHost();
-		newService = new Service();
+		newService = new HostService();
 	}
 
 	@AfterEach

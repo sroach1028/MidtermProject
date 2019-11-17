@@ -23,4 +23,10 @@ public interface PettrDAO {
 	User refreshUser(int userId);
 	
 	List<Host> searchHostByLocation (String city, String state);
+
+	Host becomeHost(int id);
+
+	Host updateHost(Host host, int hostId);
+
+	Host refreshHost(int userId);
 }

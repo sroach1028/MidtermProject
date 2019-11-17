@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,12 @@ public class RegisterController {
 	}
 
 	@RequestMapping(path = "register.do", method = RequestMethod.GET)
-	public ModelAndView register(@Valid User user) {
+	public ModelAndView register(@Valid User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User newUser = registerDAO.registerUser(user);
 		if (newUser != null) {
 			user = null;
+			session.setAttribute("sessionUser", newUser);
 			mv.addObject("user", newUser);
 			mv.setViewName("userProfile");
 			return mv;

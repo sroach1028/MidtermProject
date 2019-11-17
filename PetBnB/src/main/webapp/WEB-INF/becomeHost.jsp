@@ -25,25 +25,20 @@
 			<h1>Host Details</h1>
 		</div>
 	</div>
-	<form:form action="becomeHost.do" method="POST" modelAttribute="host">
+	<form:form action="updateHost.do" method="GET" modelAttribute="host">
 		<form:label path="services">Services:</form:label>
-		<input type="checkbox" name="services" value=1>Grooming<br>
-		<input type="checkbox" name="services" value=2>Custom Meal Making<br>
-		<input type="checkbox" name="services" value=3>Walking<br>
-		<input type="checkbox" name="services" value=4>Petting<br>
-		<input type="checkbox" name="services" value=5>Overnight Stays<br>
-		<input type="checkbox" name="services" value=6>Nail Trim<br>
-		<input type="checkbox" name="services" value=7>Day Sitting<br>
-		<input type="checkbox" name="services" value=8>Hourly<br>
+		<c:forEach items = "${host.services }" var = "service">
+		<input type="checkbox" name="service.active" value=true>${service.name }<br>
+		</c:forEach>
 		<br>
 		<form:label path="description">Description: </form:label>
-		<form:input path="description" type="text" />
+		<form:input path="description" type="text" name="description"/>
 		<form:errors path="description" />
 
 		<div class="container">
-			<input type="hidden" name="userId" value="${sessionUser.id }">
-			<input type="submit" id="becomeHost" class="btn btn-outline-light"
-				value="Become Host" />
+		<input type="hidden" name="hostId" value=${sessionHost.id } />
+			<input type="submit" id="updateHost" class="btn btn-outline-light"
+				value="Update Settings" />
 		</div>
 	</form:form>
 </body>
