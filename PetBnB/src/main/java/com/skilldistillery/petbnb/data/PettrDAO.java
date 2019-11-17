@@ -2,8 +2,7 @@ package com.skilldistillery.petbnb.data;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
+import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -21,5 +20,7 @@ public interface PettrDAO {
 	
 	User removePetById(int id);
 
-	User refreshUser(int userId);	
+	User refreshUser(int userId);
+	
+	List<Host> searchHostByLocation (String city, String state);
 }
