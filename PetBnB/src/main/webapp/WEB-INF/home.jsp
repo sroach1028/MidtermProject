@@ -16,6 +16,11 @@
 <title>Home Page</title>
 </head>
 <body>
+	<form style = "margin-bottom: 15px" action= "searchHost.do">
+		<input type = "text" name = "city"/>
+		<input type = "text" name = "state"/>
+		<input type="submit" value="Search" />
+
 	<div class="header">Pettr</div>
 	<div class="subheader">
 		<ul>

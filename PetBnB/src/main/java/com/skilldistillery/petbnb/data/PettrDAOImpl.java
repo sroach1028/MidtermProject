@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -85,6 +87,13 @@ public class PettrDAOImpl implements PettrDAO {
 
 		return em.find(User.class, petRemoved.getUser().getId());
 
+	}
+
+	@Override
+	public List<Host> searchHostByLocation(String city, String state) {
+		String query = "Select host from Host host where host.user.address.city = :city and host.user.address.state = :state";
+	List<Host> hosts = em.createQuery(query, Host.class).setParameter("city", city).setParameter("state", state).getResultList();
+	return hosts;
 	}
 
 }
