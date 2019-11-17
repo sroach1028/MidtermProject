@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
+import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -116,6 +117,15 @@ public class UserController {
 		session.removeAttribute("sessionUser");
 		session.setAttribute("sessionUser", user);
 		mv.setViewName("userProfile");
+		return mv;
+	}
+	
+	@RequestMapping(path = "searchHost.do")
+	public ModelAndView searchHost(@RequestParam("city") String city, @RequestParam("state") String state) {
+		ModelAndView mv = new ModelAndView();
+		List<Host> hosts = pettrDAO.searchHostByLocation(city, state);
+		mv.addObject("hosts", hosts);
+		mv.setViewName("searchResults");
 		return mv;
 	}
 
