@@ -26,10 +26,14 @@
 		</div>
 	</div>
 	<form:form action="updateHost.do" method="GET" modelAttribute="host">
-		<form:label path="services">Services:</form:label>
+		
 		<c:forEach items = "${host.services }" var = "service">
-		<input type="checkbox" name="service.active" value=true>${service.name }<br>
+				<form:label path="services">${service.name }: </form:label>
+		
+		<form:checkbox path="services" value = "services" /> <br>
 		</c:forEach>
+		<form:errors path="services" />
+		<br>
 		<br>
 		<form:label path="description">Description: </form:label>
 		<form:input path="description" type="text" name="description"/>
