@@ -91,7 +91,7 @@
 						<table class="table">
 							<th>List of Services</th>
 							<c:forEach items="${sessionHost.services }" var="service">
-								<c:if test="${service.active == false}">
+								<c:if test="${service.active == true}">
 									<tr>
 										<td>${service.name }</td>
 										<td>${service.rate }</td>
