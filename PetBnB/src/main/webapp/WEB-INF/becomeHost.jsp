@@ -26,14 +26,20 @@
 		</div>
 	</div>
 	<form:form action="becomeHost.do" method="POST" modelAttribute="host">
-		<form:label path="services">Services: </form:label>
-		<form:input path="services" type="text" required="required" />
-		<form:errors path="services" />
+		<form:label path="services">Services:</form:label>
+		<input type="checkbox" name="services" value=1>Grooming<br>
+		<input type="checkbox" name="services" value=2>Custom Meal Making<br>
+		<input type="checkbox" name="services" value=3>Walking<br>
+		<input type="checkbox" name="services" value=4>Petting<br>
+		<input type="checkbox" name="services" value=5>Overnight Stays<br>
+		<input type="checkbox" name="services" value=6>Nail Trim<br>
+		<input type="checkbox" name="services" value=7>Day Sitting<br>
+		<input type="checkbox" name="services" value=8>Hourly<br>
 		<br>
 		<form:label path="description">Description: </form:label>
 		<form:input path="description" type="text" />
 		<form:errors path="description" />
-		
+
 		<div class="container">
 			<input type="hidden" name="userId" value="${sessionUser.id }">
 			<input type="submit" id="becomeHost" class="btn btn-outline-light"
