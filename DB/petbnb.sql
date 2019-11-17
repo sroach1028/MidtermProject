@@ -194,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `service` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
   `rate` DOUBLE NULL,
+  `active` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -476,14 +477,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (1, 'Grooming', 12);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (2, 'Custom Meal Making', 6);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (3, 'Walking', 5);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (4, 'Petting', 1.99);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (5, 'Overnight Stays', 59.99);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (6, 'Nail Trim', 10);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (7, 'Day Sitting', 29.99);
-INSERT INTO `service` (`id`, `name`, `rate`) VALUES (8, 'Hourly', 10);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (1, 'Grooming', 12, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (2, 'Custom Meal Making', 6, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (3, 'Walking', 5, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (4, 'Petting', 1.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (5, 'Overnight Stays', 59.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (6, 'Nail Trim', 10, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (7, 'Day Sitting', 29.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (8, 'Hourly', 10, 0);
 
 COMMIT;
 
