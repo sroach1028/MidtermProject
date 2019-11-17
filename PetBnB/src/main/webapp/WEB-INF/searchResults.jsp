@@ -17,6 +17,30 @@
 <link rel="stylesheet" href="css/style.css">
 <title>Search Results</title>
 <%@include file="/WEB-INF/nav.jsp"%>
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
 </head>
 
 <body>
@@ -36,18 +60,31 @@
 				<c:forEach items = "${hosts}" var = "host">
 				<li>
 					<h3>${host.user.firstName } </h3>
-					<h6> ${host.user.address.city }, ${host.user.address.state }</h6>
-					<ul> Services
+					<h4> ${host.user.address.city }, ${host.user.address.state }</h4>
+					
+					<h2>Services</h2>
+					<button type="button" class="collapsible">Show All Services</button>
+					<div class="content">
+					<ol>
 					<c:forEach items = "${host.services }" var = "service">
-					<li> ${service.name } --> ${service.rate }</li>
+					<li> ${service.name } --> ${service.rate }
+					</li>
 					</c:forEach>
-					</ul>
-					<ul> Reviews
+					</ol>
+					</div>
+					<h2>Reviews</h2>
+					<button type="button" class="collapsible">Show All reviews</button>
+					<div class="content">
+					<ol>
 					<c:forEach items = "${host.reviewsOfHost }" var = "review">
 					<li> ${review.rating }/5
-							${review.review}</li>
+							${review.review}
+					</li>
 					</c:forEach>
-					</ul>
+					</ol>
+					</div>
+					
+					
 					
 				</li>
 				</ol>
@@ -59,5 +96,21 @@
 </div>
 </div>
 </c:if>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 </html>
