@@ -39,6 +39,9 @@ public class Host {
 	@ManyToMany
 	@JoinTable(name = "host_service", joinColumns = @JoinColumn(name = "host_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
 	private List<Service> services;
+	
+	@OneToMany(mappedBy = "host")
+	private List<Image> images;
 
 //	C O N S T R U C T O R S
 
@@ -58,11 +61,30 @@ public class Host {
 	}
 
 	//	M E T H O D S
+	
+	public void addImage(Image image) {
+		if (images == null) {
+			images = new ArrayList<>();
+		}
+		if (!images.contains(image)) {
+			images.add(image);
+			if (image.getHost() != null) {
+				image.getHost().getImages().remove(image);
+			}
+		}
+		image.setHost(this);
+	}
+	
+	public void removeImage(Image image) {
+		image.setHost(null);
+		if (images != null) {
+			images.remove(image);
+		}
+	}
 
 	@Override
 	public String toString() {
-		return "Host [id=" + id + ", user=" + user + ", description=" + description + ", reservations=" + reservations
-				+ ", reviews=" + reviewsOfHost + ", services=" + services + "]";
+		return "Host [id=" + id + ", user=" + user + ", description=" + description;
 	}
 	
 	public void addReservation(Reservation reservation) {
@@ -180,16 +202,19 @@ public class Host {
 	}
 
 
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
-		result = prime * result + ((reviewsOfHost == null) ? 0 : reviewsOfHost.hashCode());
-		result = prime * result + ((services == null) ? 0 : services.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -202,32 +227,7 @@ public class Host {
 		if (getClass() != obj.getClass())
 			return false;
 		Host other = (Host) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
 		if (id != other.id)
-			return false;
-		if (reservations == null) {
-			if (other.reservations != null)
-				return false;
-		} else if (!reservations.equals(other.reservations))
-			return false;
-		if (reviewsOfHost == null) {
-			if (other.reviewsOfHost != null)
-				return false;
-		} else if (!reviewsOfHost.equals(other.reviewsOfHost))
-			return false;
-		if (services == null) {
-			if (other.services != null)
-				return false;
-		} else if (!services.equals(other.services))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
