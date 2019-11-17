@@ -43,10 +43,11 @@ public class Pet {
 
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
-	@Column(name="image_url")
-	private String image;
 	
 	private boolean active;
+	
+	@OneToMany(mappedBy = "pet")
+	private List<Image> images;
 	
 //	C O N S T R U C T O R S
 
@@ -71,14 +72,26 @@ public class Pet {
 
 //	M E T H O D S
 
-	public String getImage() {
-		return image;
+	public void addImage(Image image) {
+		if (images == null) {
+			images = new ArrayList<>();
+		}
+		if (!images.contains(image)) {
+			images.add(image);
+			if (image.getPet() != null) {
+				image.getPet().getImages().remove(image);
+			}
+		}
+		image.setPet(this);
 	}
 	
-	public void setImage(String image) {
-		this.image = image;
+	public void removeImage(Image image) {
+		image.setPet(null);
+		if (images != null) {
+			images.remove(image);
+		}
 	}
-
+	
 	public void addReservation(Reservation reservation) {
 		if (reservations == null) {
 			reservations = new ArrayList<>();
@@ -197,8 +210,6 @@ public class Pet {
 		this.petType = petType;
 	}
 	
-	
-
 	public boolean isActive() {
 		return active;
 	}
@@ -207,23 +218,25 @@ public class Pet {
 		this.active = active;
 	}
 
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (active ? 1231 : 1237);
-		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((image == null) ? 0 : image.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((petType == null) ? 0 : petType.hashCode());
-		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
-		result = prime * result + ((reviewsOfPet == null) ? 0 : reviewsOfPet.hashCode());
-		result = prime * result + ((specialNeeds == null) ? 0 : specialNeeds.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -234,54 +247,7 @@ public class Pet {
 		if (getClass() != obj.getClass())
 			return false;
 		Pet other = (Pet) obj;
-		if (active != other.active)
-			return false;
-		if (breed == null) {
-			if (other.breed != null)
-				return false;
-		} else if (!breed.equals(other.breed))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
 		if (id != other.id)
-			return false;
-		if (image == null) {
-			if (other.image != null)
-				return false;
-		} else if (!image.equals(other.image))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (petType == null) {
-			if (other.petType != null)
-				return false;
-		} else if (!petType.equals(other.petType))
-			return false;
-		if (reservations == null) {
-			if (other.reservations != null)
-				return false;
-		} else if (!reservations.equals(other.reservations))
-			return false;
-		if (reviewsOfPet == null) {
-			if (other.reviewsOfPet != null)
-				return false;
-		} else if (!reviewsOfPet.equals(other.reviewsOfPet))
-			return false;
-		if (specialNeeds == null) {
-			if (other.specialNeeds != null)
-				return false;
-		} else if (!specialNeeds.equals(other.specialNeeds))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
