@@ -2,6 +2,7 @@ package com.skilldistillery.petbnb.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,27 @@ public class UserController {
 
 	@Autowired
 	private PettrDAO pettrDAO;
-	
-	
+
 	@RequestMapping(path = "/")
 	public String home() {
 		return "home";
 	}
-	
+
 	@RequestMapping(path = "coming.do")
 	public String comingSoon() {
 		return "comingSoon";
 	}
-	
+
 	@RequestMapping(path = "goAccountPage.do")
-	public String goToAccountPage() {
-		return "userProfile";
+	public ModelAndView goToAccountPage(@RequestParam("userId") int userId, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User user = pettrDAO.refreshUser(userId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
+		mv.setViewName("userProfile");
+		return mv;
 	}
-	
+
 	@RequestMapping(path = "getUser.do", method = RequestMethod.GET)
 	public ModelAndView getUser(@RequestParam("userId") int userId) {
 		ModelAndView mv = new ModelAndView();
@@ -48,27 +53,27 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
 	public ModelAndView getAllPets() {
 		ModelAndView mv = new ModelAndView();
-		
+
 		List<Pet> pets = pettrDAO.findAllPets();
 		mv.addObject("pets", pets);
 		mv.setViewName("animalProfile");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "getPet.do", method = RequestMethod.GET)
 	public ModelAndView getPet(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Pet pet = pettrDAO.findPet(petId);
 		mv.addObject("pet", pet);
 		mv.setViewName("animalProfile");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "goToUpdatePet.do", params = "petId", method = RequestMethod.GET)
 	public ModelAndView goToUpdatePet(@Valid Pet pet, int petId) {
 		ModelAndView mv = new ModelAndView();
@@ -76,7 +81,7 @@ public class UserController {
 		mv.setViewName("updatePet");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "updatePet.do", params = "petId", method = RequestMethod.GET)
 	public ModelAndView updatePet(@Valid Pet pet, int petId) {
 		ModelAndView mv = new ModelAndView();
@@ -85,7 +90,7 @@ public class UserController {
 		mv.setViewName("animalProfile");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "goToAddPet.do")
 	public ModelAndView goToAdd() {
 		ModelAndView mv = new ModelAndView();
@@ -94,8 +99,8 @@ public class UserController {
 		mv.setViewName("addPet");
 		return mv;
 	}
-	
-	@RequestMapping(path = "addPet.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "addPet.do", method = RequestMethod.POST)
 	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId) {
 		ModelAndView mv = new ModelAndView();
 		Pet addPet = pettrDAO.addPet(pet, userId);
@@ -103,16 +108,15 @@ public class UserController {
 		mv.setViewName("animalProfile");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "removePet.do", method = RequestMethod.GET)
-	public ModelAndView removePet(@RequestParam("petId") int petId) {
+	public ModelAndView removePet(@RequestParam("petId") int petId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		boolean result = pettrDAO.removePetById(petId);
-		mv.setViewName("");
+		User user = pettrDAO.removePetById(petId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
+		mv.setViewName("userProfile");
 		return mv;
 	}
-	
-	
-	
-	
+
 }
