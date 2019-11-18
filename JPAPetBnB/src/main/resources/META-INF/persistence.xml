@@ -17,7 +17,7 @@
 	<class>com.skilldistillery.petbnb.entities.Reservation</class>
 	<class>com.skilldistillery.petbnb.entities.ReviewOfHost</class>
 	<class>com.skilldistillery.petbnb.entities.ReviewOfPet</class>
-	<class>com.skilldistillery.petbnb.entities.Service</class>
+	<class>com.skilldistillery.petbnb.entities.HostService</class>
 	<class>com.skilldistillery.petbnb.entities.User</class>
 	
 

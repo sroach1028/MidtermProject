@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -139,8 +140,8 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(id);
 		mv.addObject("host", host);
-		session.setAttribute("sessionHost", host);
 		mv.setViewName("becomeHost");
+		session.setAttribute("sessionHost", host);
 		return mv;
 	}
 	@RequestMapping(path="goToUpdateSettings.do", method = RequestMethod.GET)
@@ -153,11 +154,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="updateHost.do", method = RequestMethod.GET)
-	public ModelAndView updateHost(@Valid Host host, @RequestParam("hostId") int hostId, HttpSession session) {
+	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Host updatedHost = pettrDAO.updateHost(host, hostId);
+		Host host = pettrDAO.addServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
-		session.setAttribute("sessionHost", updatedHost);
+		session.setAttribute("sessionHost", host);
 		mv.setViewName("userProfile");
 		return mv;
 	}
