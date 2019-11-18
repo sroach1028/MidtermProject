@@ -145,11 +145,15 @@ public class PettrDAOImpl implements PettrDAO {
 	@Override
 	public Host addServicestoHostById(int[] selections, int hostId) {
 		Host host = em.find(Host.class, hostId);
+		for (HostService service : host.getServices()) {
+			service.setActive(false);
+		}
 		for (int selectionId : selections) {
 			for (HostService service : host.getServices()) {
 				if(service.getId()==selectionId) {
 					service.setActive(true);
 				}
+
 			}
 		}
 		em.flush();
