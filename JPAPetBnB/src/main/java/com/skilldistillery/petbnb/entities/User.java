@@ -46,6 +46,7 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Pet> pets;
 	
+	@Column(name = "image_url")
 	private String imageURL;
 
 //	C O N S T R U C T O R S
