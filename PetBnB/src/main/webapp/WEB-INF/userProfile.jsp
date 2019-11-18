@@ -116,7 +116,7 @@
 			</c:if>
 
 			<form action="goToUpdateSettings.do" method="GET">
-				<input type="hidden" name="hostId" value=${sessionUser.id } /> <input
+				<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
 					type="submit" class="btn btn-outline-light"
 					value="Update Host Settings" />
 			</form>
