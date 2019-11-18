@@ -1,11 +1,15 @@
 package com.skilldistillery.petbnb.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="host_image")
 public class HostImage {
 
 // F I E L D S	
