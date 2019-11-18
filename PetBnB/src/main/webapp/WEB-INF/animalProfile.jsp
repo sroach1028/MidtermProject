@@ -10,7 +10,7 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<link href="css/styles.css" rel="stylesheet" type="text/css">
+<link href="css/styles2.css" rel="stylesheet" type="text/css">
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 <title>Animal Profile</title>
@@ -64,10 +64,12 @@
 					data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<c:forEach items="${pet.petImages}" var="petImage">
-						<div class="carousel-item active">
-								<img class="d-block img-fluid" src=${petImage.url } alt="First slide">
+							<div class="carousel-item active">
+								<img class="d-block img-fluid" src="${petImage.url }"
+									alt="First slide">
 							</div>
 						</c:forEach>
+
 					</div>
 					<a class="carousel-control-prev" href="#carouselExampleControls"
 						role="button" data-slide="prev"> <span

@@ -192,12 +192,15 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPetImage(int petId, String url) {
-		Pet pet = em.find(Pet.class, petId);
-		PetImage image = new PetImage();
-		image.setUrl(url);
-		pet.addPetImage(image);
-		System.out.println(pet.getPetImages());
-		return pet;
+	  Pet pet = em.find(Pet.class, petId);
+	  PetImage image = new PetImage();
+	  image.setUrl(url);
+	  image.setPet(pet);
+	  em.persist(image);
+	  pet.addPetImage(image);
+	  em.persist(pet);
+	  em.flush();
+	  return pet;
 	}
 
 }
