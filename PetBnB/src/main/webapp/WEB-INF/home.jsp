@@ -38,7 +38,8 @@
 
 			<div class="mt-4">
 				<form action="searchHost.do">
-					<input type="text" name="city" />City<br> <select name="state">State
+					<input type="text" name="city" />City<br> <select
+						name="state">State
 						<option value="null" selected>--</option>
 						<option value="CO">CO</option>
 						<option value="WY">WY</option>
@@ -55,7 +56,35 @@
 				</a>
 			</div>
 		</div>
+
+		<div id="carouselExampleControls" class="carousel slide"
+			data-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item">
+					<img class="d-block img-fluid"
+						src="https://i.imgur.com/EmL8A5W.png" alt="First slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block img-fluid"
+						src="https://i.imgur.com/8mI6Wur.png" alt="Second slide">
+				</div>
+				<div class="carousel-item active">
+					<img class="d-block img-fluid"
+						src="https://i.imgur.com/J8EF4aE.png" alt="Third slide">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselExampleControls"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
 	</div>
+
 
 
 	<!-- Optional JavaScript -->

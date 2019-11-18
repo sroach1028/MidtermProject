@@ -3,15 +3,12 @@ package com.skilldistillery.petbnb.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -42,7 +39,7 @@ public class Host {
 	private List<HostService> services;
 	
 	@OneToMany(mappedBy = "host" )
-	private List<Image> images;
+	private List<HostImage> hostImages;
 
 
 //	C O N S T R U C T O R S
@@ -61,34 +58,41 @@ public class Host {
 		this.reviewsOfHost = reviewsOfHost;
 		this.services = hostServices;
 	}
+	
+	public Host(int id, User user, String description, List<Reservation> reservations, List<ReviewOfHost> reviewsOfHost,
+			List<HostService> services, List<HostImage> hostImages) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.description = description;
+		this.reservations = reservations;
+		this.reviewsOfHost = reviewsOfHost;
+		this.services = services;
+		this.hostImages = hostImages;
+	}
 
 	//	M E T H O D S
-	
-	public void addImage(Image image) {
-		if (images == null) {
-			images = new ArrayList<>();
+
+	public void addImage(HostImage hostImage) {
+		if (hostImages == null) {
+			hostImages = new ArrayList<>();
 		}
-		if (!images.contains(image)) {
-			images.add(image);
-			if (image.getHost() != null) {
-				image.getHost().getImages().remove(image);
+		if (!hostImages.contains(hostImage)) {
+			hostImages.add(hostImage);
+			if (hostImage.getHost() != null) {
+				hostImage.getHost().getHostImages().remove(hostImage);
 			}
 		}
-		image.setHost(this);
+		hostImage.setHost(this);
 	}
 	
-	public void removeImage(Image image) {
-		image.setHost(null);
-		if (images != null) {
-			images.remove(image);
+	public void removeImage(HostImage hostImage) {
+		hostImage.setHost(null);
+		if (hostImages != null) {
+			hostImages.remove(hostImage);
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Host [id=" + id + ", user=" + user + ", description=" + description;
-	}
-	
 	public void addReservation(Reservation reservation) {
 		if (reservations == null) {
 			reservations = new ArrayList<>();
@@ -203,13 +207,12 @@ public class Host {
 		this.reviewsOfHost = reviewsOfHost;
 	}
 
-
-	public List<Image> getImages() {
-		return images;
+	public List<HostImage> getHostImages() {
+		return hostImages;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setHostImages(List<HostImage> hostImages) {
+		this.hostImages = hostImages;
 	}
 
 	@Override
@@ -232,6 +235,11 @@ public class Host {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Host [id=" + id + ", user=" + user + ", description=" + description + "]";
 	}
 
 }

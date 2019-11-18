@@ -45,9 +45,7 @@ td{
 }
 
 .navbar {
-	font-size: 30px;
 	padding-bottom: 10px;
-	background-color: transparent;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -56,9 +54,6 @@ td{
 }
 
 .nav-button {
-	text-decoration: none;
-	color: #fff;
-	font-family: Fantasy;
 }
 
 .navbar li {

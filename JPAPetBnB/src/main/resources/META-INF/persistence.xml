@@ -11,8 +11,9 @@
 	<!-- Class Definitions -->
 	<class>com.skilldistillery.petbnb.entities.Address</class>
 	<class>com.skilldistillery.petbnb.entities.Host</class>
-	<class>com.skilldistillery.petbnb.entities.Image</class>
+	<class>com.skilldistillery.petbnb.entities.HostImage</class>
 	<class>com.skilldistillery.petbnb.entities.Pet</class>
+	<class>com.skilldistillery.petbnb.entities.PetImage</class>
 	<class>com.skilldistillery.petbnb.entities.PetType</class>
 	<class>com.skilldistillery.petbnb.entities.Reservation</class>
 	<class>com.skilldistillery.petbnb.entities.ReviewOfHost</class>

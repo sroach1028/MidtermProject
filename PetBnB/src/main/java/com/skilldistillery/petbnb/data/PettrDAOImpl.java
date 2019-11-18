@@ -59,7 +59,7 @@ public class PettrDAOImpl implements PettrDAO {
 		updatedPet.setBreed(pet.getBreed());
 		updatedPet.setSpecialNeeds(pet.getSpecialNeeds());
 		updatedPet.setDescription(pet.getDescription());
-		updatedPet.setImages(pet.getImages());
+		updatedPet.setPetImages(pet.getPetImages());
 
 		em.flush();
 
