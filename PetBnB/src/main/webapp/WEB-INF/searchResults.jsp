@@ -72,7 +72,7 @@
 					</c:forEach>
 					</ol>
 					</div>
-					<h2>Reviews (Average rating: ${host.averageRating })</h2>
+					<h2>Reviews</h2>
 					<button type="button" class="collapsible">Show All reviews</button>
 					<div class="content">
 					<ol class="list-group">

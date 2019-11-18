@@ -41,7 +41,6 @@ public class Host {
 	@OneToMany(mappedBy = "host" )
 	private List<HostImage> hostImages;
 	
-
 //	C O N S T R U C T O R S
 
 	public Host() {

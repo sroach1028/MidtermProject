@@ -16,7 +16,8 @@
 <title>Host Profile</title>
 </head>
 <body>
-	<img src="${host.user.image }" />
+	<p>${host.user.firstName} ${host.user.lastName}</p>
+	<img src="${host.user.imageURL }" />
 	
 	
 	
@@ -53,7 +54,7 @@
   <a class="right carousel-control" href="#myCarousel" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
-  </a> --> -->
+  </a> --> 
 <%-- </div>
 			<c:forEach items="${host.images}" var="image">
 				<ul>
