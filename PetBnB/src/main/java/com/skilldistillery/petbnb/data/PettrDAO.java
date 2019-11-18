@@ -45,4 +45,6 @@ public interface PettrDAO {
 	Reservation findReservationById (int rid);
 
 	Pet addPetImage(int petId, String url);
+
+	Reservation createReservation(int petId, int hostId, int serviceId);
 }
