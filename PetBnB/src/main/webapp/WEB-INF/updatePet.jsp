@@ -47,10 +47,6 @@
 			value="${oldPet.description}" />
 		<form:errors path="description" />
 
-		<form:label path="image"> ImageURL </form:label>
-		<form:input path="image" type="text" name="image" />
-		<form:errors path="image" />
-
 
 		<br>
 		<div class="container">

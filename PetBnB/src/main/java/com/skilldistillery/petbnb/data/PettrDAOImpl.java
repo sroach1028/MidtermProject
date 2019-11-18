@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.PetImage;
 import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -191,6 +192,16 @@ public class PettrDAOImpl implements PettrDAO {
 	public Reservation findReservationById(int id) {
 		return em.find(Reservation.class, id);
 //		return em.find(Host.class, hostId);
+	}
+
+	@Override
+	public Pet addPetImage(int petId, String url) {
+		Pet pet = em.find(Pet.class, petId);
+		PetImage image = new PetImage();
+		image.setUrl(url);
+		pet.addPetImage(image);
+		System.out.println(pet.getPetImages());
+		return pet;
 	}
 
 }
