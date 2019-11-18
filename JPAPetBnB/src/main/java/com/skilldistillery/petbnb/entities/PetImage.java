@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Image {
+public class PetImage {
 
 // F I E L D S
 	
@@ -19,43 +19,26 @@ public class Image {
 	private String url;
 	
 	@ManyToOne
-	@JoinColumn(name = "host_id")
-	private Host host;
-	
-	@ManyToOne
 	@JoinColumn(name = "pet_id")
 	private Pet pet;
-	
 
 // C O N S T R U C T O R S
-	
-	public Image() {
+
+	public PetImage() {
 		super();
 	}
 
-	public Image(int id, String url) {
-		super();
-		this.id = id;
-		this.url = url;
-	}
+	public PetImage(int id, String url, Pet pet) {
+	super();
+	this.id = id;
+	this.url = url;
+	this.pet = pet;
+}
 
-
-	public Image(int id, String url, Host host, Pet pet) {
-		super();
-		this.id = id;
-		this.url = url;
-		this.host = host;
-		this.pet = pet;
-	}
-
-// M E T H O D S
+	// M E T H O D S
 	
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUrl() {
@@ -64,14 +47,6 @@ public class Image {
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public Host getHost() {
-		return host;
-	}
-
-	public void setHost(Host host) {
-		this.host = host;
 	}
 
 	public Pet getPet() {
@@ -98,7 +73,7 @@ public class Image {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Image other = (Image) obj;
+		PetImage other = (PetImage) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -106,7 +81,7 @@ public class Image {
 
 	@Override
 	public String toString() {
-		return "Image [id=" + id + ", url=" + url + ", host=" + host + ", pet=" + pet + "]";
+		return "Image [id=" + id + ", url=" + url + ", pet=" + pet + "]";
 	}
 	
 }
