@@ -127,6 +127,15 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "addPetImage.do", method = RequestMethod.GET)
+	public ModelAndView addPetImage(@RequestParam("petId") int petId, @RequestParam("url") String url, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Pet pet = pettrDAO.addPetImage(petId, url);
+		mv.addObject("pet", pet);
+		mv.setViewName("animalProfile");
+		return mv;
+	}
+	
 	@RequestMapping(path = "searchHost.do")
 	public ModelAndView searchHost(@RequestParam("city") String city, @RequestParam("state") String state) {
 		ModelAndView mv = new ModelAndView();

@@ -43,4 +43,6 @@ public interface PettrDAO {
 	List<HostService> getAllServices();
 	
 	Reservation findReservationById (int rid);
+
+	Pet addPetImage(int petId, String url);
 }
