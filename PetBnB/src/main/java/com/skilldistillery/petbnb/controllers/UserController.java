@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
-import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
