@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
 
 @Transactional
@@ -184,6 +185,12 @@ public class PettrDAOImpl implements PettrDAO {
 		String query = "Select service from HostService service";
 		List<HostService> services = em.createQuery(query, HostService.class).getResultList();
 		return services;
+	}
+
+	@Override
+	public Reservation findReservationById(int id) {
+		return em.find(Reservation.class, id);
+//		return em.find(Host.class, hostId);
 	}
 
 }

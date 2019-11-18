@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
 
 @Controller
@@ -158,6 +159,15 @@ public class UserController {
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
 		mv.setViewName("userProfile");
+		return mv;
+	}
+	
+	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
+	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+		ModelAndView mv = new ModelAndView();
+		Reservation reservation = pettrDAO.findReservationById(rid);
+		mv.addObject("reservation", reservation);
+		mv.setViewName("viewReservation");
 		return mv;
 	}
 	

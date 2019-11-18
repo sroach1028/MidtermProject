@@ -5,6 +5,7 @@ import java.util.List;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
 
 public interface PettrDAO {
@@ -40,4 +41,6 @@ public interface PettrDAO {
 	double findPetAvgRatingById (int petId);
 
 	List<HostService> getAllServices();
+	
+	Reservation findReservationById (int rid);
 }
