@@ -161,5 +161,12 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(path="goToHostPage.do", method = RequestMethod.GET)
+	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("host", pettrDAO.getHostById(hostId));
+		mv.setViewName("hostPage");
+		return mv;
+	}
 
 }

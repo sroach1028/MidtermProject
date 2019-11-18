@@ -40,7 +40,7 @@ public class Host {
 	
 	@OneToMany(mappedBy = "host" )
 	private List<HostImage> hostImages;
-
+	
 
 //	C O N S T R U C T O R S
 
@@ -73,16 +73,6 @@ public class Host {
 
 	//	M E T H O D S
 
-	public int getAverageOfHostReviewRatings(List<ReviewOfHost> reviewsOfHost) {
-		int currentSum = 0;
-		int average = 0;
-		for (int i = 0; i < reviewsOfHost.size() ; i++) {
-			currentSum += reviewsOfHost.get(i).getRating();
-		}
-		average = currentSum / reviewsOfHost.size();
-		return average;
-	}
-	
 	public void addImage(HostImage hostImage) {
 		if (hostImages == null) {
 			hostImages = new ArrayList<>();

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.PetImage;
+import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -143,23 +145,18 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Host addServicestoHostById(int[] selections, int hostId) {
-		String query = "Select service from HostService service";
 		Host host = em.find(Host.class, hostId);
-		if(!host.getServices().isEmpty()) {
-			host.getServices().clear();
+//		List<HostService> addingServices = new ArrayList<>();
+
+		for (int i=0; i < host.getServices().size(); i++) {
+			host.removeService(host.getServices().get(i--));
 		}
-		List<HostService> allServices = em.createQuery(query, HostService.class).getResultList();
-		System.out.println(host.getServices());
-		for (HostService service : allServices) {
-			for (int selectionId : selections) {
-				if (service.getId() == selectionId) {
-					host.addService(service);
-				}
-			}
+		for (int i : selections) {
+//			addingServices.add(em.find(HostService.class, i));
+			host.addService(em.find(HostService.class, i));
 		}
-		for (HostService service : host.getServices()) {
-			service.setActive(true);
-		}
+//		host.setServices(addingServices);
+		em.persist(host);
 		em.flush();
 		return host;
 	}
@@ -204,4 +201,22 @@ public class PettrDAOImpl implements PettrDAO {
 		return host;
 	}
 	
+	public Reservation findReservationById(int id) {
+		return em.find(Reservation.class, id);
+//		return em.find(Host.class, hostId);
+	}
+
+	@Override
+	public Pet addPetImage(int petId, String url) {
+	  Pet pet = em.find(Pet.class, petId);
+	  PetImage image = new PetImage();
+	  image.setUrl(url);
+	  image.setPet(pet);
+	  em.persist(image);
+	  pet.addPetImage(image);
+	  em.persist(pet);
+	  em.flush();
+	  return pet;
+	}
+
 }

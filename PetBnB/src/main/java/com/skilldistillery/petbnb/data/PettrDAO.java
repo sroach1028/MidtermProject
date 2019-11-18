@@ -5,7 +5,11 @@ import java.util.List;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+<<<<<<< HEAD
 import com.skilldistillery.petbnb.entities.ReviewOfHost;
+=======
+import com.skilldistillery.petbnb.entities.Reservation;
+>>>>>>> 1aab8ddf22dde4516e490ee71186bc0dd5f3811b
 import com.skilldistillery.petbnb.entities.User;
 
 public interface PettrDAO {
@@ -46,4 +50,7 @@ public interface PettrDAO {
 	
 	public Host getHostById(int hostId) ;
 
+	Reservation findReservationById (int rid);
+
+	Pet addPetImage(int petId, String url);
 }

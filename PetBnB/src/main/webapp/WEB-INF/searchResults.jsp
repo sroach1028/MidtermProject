@@ -59,7 +59,7 @@
 				<ol class="list-group">
 				<c:forEach items = "${hosts}" var = "host">
 				<li class="list-group-item">
-					<h3><a href="getUser.do?userId=${host.user.id}">${host.user.firstName }</a> </h3>
+					<h3><a href="goToHostPage.do?hostId=${host.id}">${host.user.firstName } </a> </h3>
 					<h4> ${host.user.address.city }, ${host.user.address.state }</h4>
 					
 					<h2>Services</h2>
@@ -72,7 +72,7 @@
 					</c:forEach>
 					</ol>
 					</div>
-					<h2>Reviews</h2>
+					<h2>Reviews (Average rating: ${host.averageRating })</h2>
 					<button type="button" class="collapsible">Show All reviews</button>
 					<div class="content">
 					<ol class="list-group">
