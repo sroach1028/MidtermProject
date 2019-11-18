@@ -110,12 +110,13 @@
 					</div>
 			</c:if>
 
-
+<%-- 			<form action="goToUpdateSettings.do" method="GET">
+				<input type="hidden" name="id" value=${sessionUser.id } /> <input
 			<form action="goToUpdateSettings.do" method="GET">
 				<input type="hidden" name="hostId" value=${sessionUser.id } /> <input
 					type="submit" class="btn btn-outline-light"
 					value="Update Host Settings" />
-			</form>
+			</form> --%>
 
 		</c:if>
 </body>

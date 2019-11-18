@@ -3,6 +3,7 @@ package com.skilldistillery.petbnb.data;
 import java.util.List;
 
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -26,11 +27,13 @@ public interface PettrDAO {
 
 	Host becomeHost(int id);
 
-	Host updateHost(Host host, int hostId);
+//	Host updateHost(Host host, int hostId);
 
 	Host refreshHost(int userId);
 
 	Host addServicestoHostById(int[] selections, int hostId);
 
 	Host findHostById(int hostId);
+
+	List<HostService> getAllServices();
 }
