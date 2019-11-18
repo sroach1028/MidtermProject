@@ -219,4 +219,16 @@ public class PettrDAOImpl implements PettrDAO {
 	  return pet;
 	}
 
+	@Override
+	public Reservation createReservation(int petId, int hostId, int serviceId) {
+		Pet pet = em.find(Pet.class, petId);
+		Host host = em.find(Host.class, hostId);
+		Reservation reservation = new Reservation();
+		reservation.setPet(pet);
+		reservation.setHost(host);
+		em.persist(reservation);
+		em.flush();
+		return reservation;
+	}
+
 }

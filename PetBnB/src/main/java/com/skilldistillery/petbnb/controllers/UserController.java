@@ -1,4 +1,4 @@
-  
+
 package com.skilldistillery.petbnb.controllers;
 
 import java.util.List;
@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
 
 @Controller
@@ -41,9 +42,9 @@ public class UserController {
 		Host host = pettrDAO.refreshHost(userId);
 		session.removeAttribute("sessionUser");
 		session.setAttribute("sessionUser", user);
-		if(host != null) {
-		session.removeAttribute("sessionHost");
-		session.setAttribute("sessionHost", host);
+		if (host != null) {
+			session.removeAttribute("sessionHost");
+			session.setAttribute("sessionHost", host);
 		}
 		mv.setViewName("userProfile");
 		return mv;
@@ -125,7 +126,17 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
-	
+
+	@RequestMapping(path = "addPetImage.do", method = RequestMethod.GET)
+	public ModelAndView addPetImage(@RequestParam("petId") int petId, @RequestParam("url") String url,
+			HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Pet pet = pettrDAO.addPetImage(petId, url);
+		mv.addObject("pet", pet);
+		mv.setViewName("animalProfile");
+		return mv;
+	}
+
 	@RequestMapping(path = "searchHost.do")
 	public ModelAndView searchHost(@RequestParam("city") String city, @RequestParam("state") String state) {
 		ModelAndView mv = new ModelAndView();
@@ -134,8 +145,8 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
-	
-	@RequestMapping(path="becomeHost.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "becomeHost.do", method = RequestMethod.GET)
 	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(id);
@@ -144,15 +155,18 @@ public class UserController {
 		session.setAttribute("sessionHost", host);
 		return mv;
 	}
-	@RequestMapping(path="goToUpdateSettings.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "goToUpdateSettings.do", method = RequestMethod.GET)
 	public ModelAndView goToUpdateSettings(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("allServices", pettrDAO.getAllServices());
 		mv.setViewName("becomeHost");
 		return mv;
 	}
-	@RequestMapping(path="updateHost.do", method = RequestMethod.GET)
-	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
+
+	@RequestMapping(path = "updateHost.do", method = RequestMethod.GET)
+	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId,
+			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.addServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
@@ -169,4 +183,30 @@ public class UserController {
 		return mv;
 	}
 
+//	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
+//	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+//		ModelAndView mv = new ModelAndView();
+//		return mv;
+//	}
+
+	@RequestMapping(path = "goToReservation.do")
+	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+		ModelAndView mv = new ModelAndView();
+		Reservation reservation = new Reservation();
+		mv.addObject("reservation", reservation);
+		mv.addObject("hostId", hostId);
+		mv.addObject("serviceId", serviceId);
+		mv.setViewName("makeReservation");
+		return mv;
+	}
+	
+	@RequestMapping(path = "createReservation.do")
+	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+		ModelAndView mv = new ModelAndView();
+		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId);
+		mv.addObject("reservation", reservation);
+		mv.setViewName("viewReservation");
+		return mv;
+	}
+	
 }
