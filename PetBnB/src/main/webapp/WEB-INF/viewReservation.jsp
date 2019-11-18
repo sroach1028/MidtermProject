@@ -27,10 +27,8 @@
 	</div>
 		<ul>
 			<li><strong>ID: ${reservation.id } </strong></li>
-			<li>Open Date: ${reservation.openDate }</li>
-			<li>Close Date: ${reservation.closeDate }</li>
-			<li>Pet Id: ${reservation.pet}</li>
-			<li>Host Id: ${reservation.host}</li>
+			<li>Pet Id: ${reservation.pet.id}</li>
+			<li>Host Id: ${reservation.host.id}</li>
 		</ul>
 </body>
 </html>
