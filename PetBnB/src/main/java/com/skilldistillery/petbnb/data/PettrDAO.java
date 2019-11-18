@@ -34,6 +34,10 @@ public interface PettrDAO {
 	Host addServicestoHostById(int[] selections, int hostId);
 
 	Host findHostById(int hostId);
+	
+	double findHostAvgRatingById (int hostId);
+	
+	double findPetAvgRatingById (int petId);
 
 	List<HostService> getAllServices();
 }
