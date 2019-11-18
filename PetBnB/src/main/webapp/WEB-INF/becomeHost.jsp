@@ -26,10 +26,10 @@
 		</div>
 	</div>
 	<form action="updateHost.do" method="GET">
-		<c:forEach items="${sessionHost.services }" var="service">
+		<c:forEach items="${allServices }" var="service">
 			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 		</c:forEach>
-		<input type="hidden" name="hostId" value="${host.id}" /> <input
+		<input type="hidden" name="hostId" value="${sessionHost.id}" /> <input
 			type="submit" value="Update Settings">
 	</form>
 	<br>

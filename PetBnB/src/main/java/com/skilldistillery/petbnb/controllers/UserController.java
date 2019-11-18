@@ -139,7 +139,7 @@ public class UserController {
 	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(id);
-		mv.addObject("host", host);
+		mv.addObject("allServices", pettrDAO.getAllServices());
 		mv.setViewName("becomeHost");
 		session.setAttribute("sessionHost", host);
 		return mv;

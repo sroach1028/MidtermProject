@@ -117,47 +117,54 @@ public class PettrDAOImpl implements PettrDAO {
 		host.setUser(em.find(User.class, id));
 		em.persist(host);
 		em.flush();
-		System.out.println(host.getServices());
-//		host.addService(em.find(HostService.class, 8));
-		for (int i = 1; i <= 8; i++) {
-			host.addService(em.find(HostService.class, i));
-		}
-		em.flush();
+//		for (int i = 1; i <= 8; i++) {
+//			host.addService(em.find(HostService.class, i));
+//		}
+//		em.flush();
 		return host;
 	}
 
-	@Override
-	public Host updateHost(Host host, int hostId) {
-		System.out.println(host.getDescription());
-		Host updatedHost = em.find(Host.class, hostId);
-		System.out.println(updatedHost.getUser().getFirstName());
-//		for(HostService element : host.getServices()) {
-//			element.setActive(true);
-//		}
-		updatedHost.setServices(host.getServices());
-		System.out.println(host.getServices());
-		updatedHost.setDescription(host.getDescription());
-		System.out.println(updatedHost.getDescription());
-		em.flush();
-		return updatedHost;
-	}
+//	@Override
+//	public Host updateHost(Host host, int hostId) {
+////		System.out.println(host.getDescription());
+////		Host updatedHost = em.find(Host.class, hostId);
+////		System.out.println(updatedHost.getUser().getFirstName());
+//////		for(HostService element : host.getServices()) {
+//////			element.setActive(true);
+//////		}
+////		updatedHost.setServices(host.getServices());
+////		System.out.println(host.getServices());
+////		updatedHost.setDescription(host.getDescription());
+////		System.out.println(updatedHost.getDescription());
+////		em.flush();
+////		return updatedHost;
+//	}
 
 	@Override
 	public Host addServicestoHostById(int[] selections, int hostId) {
+		String query = "Select service from HostService service";
 		Host host = em.find(Host.class, hostId);
-		for (HostService service : host.getServices()) {
-			service.setActive(false);
-		}
-		for (int selectionId : selections) {
-			for (HostService service : host.getServices()) {
+		List<HostService> allServices = em.createQuery(query, HostService.class).getResultList();
+		System.out.println(host.getServices());
+		for (HostService service : allServices) {
+			for (int selectionId : selections) {
 				if (service.getId() == selectionId) {
-					service.setActive(true);
+					host.addService(service);
 				}
-
 			}
+		}
+		for (HostService service : host.getServices()) {
+			service.setActive(true);
 		}
 		em.flush();
 		return host;
+	}
+
+	@Override
+	public List<HostService> getAllServices() {
+		String query = "Select service from HostService service";
+		List<HostService> services = em.createQuery(query, HostService.class).getResultList();
+		return services;
 	}
 
 }
