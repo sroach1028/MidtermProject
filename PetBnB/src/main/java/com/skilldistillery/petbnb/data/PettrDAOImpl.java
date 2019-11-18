@@ -144,6 +144,9 @@ public class PettrDAOImpl implements PettrDAO {
 	public Host addServicestoHostById(int[] selections, int hostId) {
 		String query = "Select service from HostService service";
 		Host host = em.find(Host.class, hostId);
+		if(!host.getServices().isEmpty()) {
+			host.getServices().clear();
+		}
 		List<HostService> allServices = em.createQuery(query, HostService.class).getResultList();
 		System.out.println(host.getServices());
 		for (HostService service : allServices) {
@@ -160,6 +163,22 @@ public class PettrDAOImpl implements PettrDAO {
 		return host;
 	}
 
+	@Override
+	public double findHostAvgRatingById(int hostId) {
+//		String query = "SELECT AVG(f.rentalRate) FROM Film f WHERE f.id < 10";
+//		double average = em.createQuery(query, Double.class).getSingleResult();
+		Host host = em.find(Host.class, hostId);
+		double average = (host.getReviewsOfHost().get(hostId).getRating()/ host.getReviewsOfHost().size());
+		return average;
+	}
+
+	@Override
+	public double findPetAvgRatingById(int petId) {
+		Pet pet = em.find(Pet.class, petId);
+		double average = (pet.getReviewsOfPet().get(petId).getRating()/ pet.getReviewsOfPet().size());
+		return average;
+	}
+    
 	@Override
 	public List<HostService> getAllServices() {
 		String query = "Select service from HostService service";

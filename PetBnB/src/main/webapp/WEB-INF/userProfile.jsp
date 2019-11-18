@@ -51,8 +51,8 @@
 							</c:if>
 						</c:forEach>
 					</table>
-
 				</div>
+			</div>
 		</c:if>
 		<c:if test="${not empty sessionUser }">
 			<c:if test="${empty user}">
@@ -66,7 +66,9 @@
 					</div>
 					<div class="resultsSingle">
 						<table class="table">
-							<th>List of Pets</th>
+							<tr>
+								<th>List of Pets</th>
+							</tr>
 							<c:forEach items="${sessionUser.pets }" var="pet">
 								<c:if test="${pet.active == true}">
 									<tr>
@@ -76,12 +78,12 @@
 								</c:if>
 							</c:forEach>
 						</table>
-						<form action="goToAddPet.do" method="GET">
-							<input type="submit" class="btn btn-outline-light"
-								value="Add Pet" />
-						</form>
-
 					</div>
+					<form action="goToAddPet.do" method="GET">
+						<input type="submit" class="btn btn-outline-light" value="Add Pet" />
+					</form>
+
+				</div>
 			</c:if>
 			<c:if test="${empty sessionHost }">
 
@@ -96,7 +98,9 @@
 				<div class="resultsSingle" style="margin-top: 15px">
 					<div class="resultsSingle">
 						<table class="table">
-							<th>List of Services</th>
+							<tr>
+								<th>List of Services</th>
+							</tr>
 							<c:forEach items="${sessionHost.services }" var="service">
 								<c:if test="${service.active == true}">
 									<tr>
@@ -108,16 +112,14 @@
 						</table>
 						<p>${sessionHost.description }</p>
 					</div>
+				</div>
 			</c:if>
 
-<%-- 			<form action="goToUpdateSettings.do" method="GET">
-				<input type="hidden" name="id" value=${sessionUser.id } /> <input
 			<form action="goToUpdateSettings.do" method="GET">
-				<input type="hidden" name="hostId" value=${sessionUser.id } /> <input
+				<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
 					type="submit" class="btn btn-outline-light"
 					value="Update Host Settings" />
-			</form> --%>
-
+			</form>
 		</c:if>
 </body>
 </html>
