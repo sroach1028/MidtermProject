@@ -56,18 +56,18 @@
 		<c:if test="${not empty hosts }">
 			<div class="resultsSingle" style="margin-top: 15px">
 				<div class="col-sm">
-				<ol>
+				<ol class="list-group">
 				<c:forEach items = "${hosts}" var = "host">
-				<li>
+				<li class="list-group-item">
 					<h3><a href="getUser.do?userId=${host.user.id}">${host.user.firstName }</a> </h3>
 					<h4> ${host.user.address.city }, ${host.user.address.state }</h4>
 					
 					<h2>Services</h2>
 					<button type="button" class="collapsible">Show All Services</button>
 					<div class="content">
-					<ol>
+					<ol class="list-group">
 					<c:forEach items = "${host.services }" var = "service">
-					<li> ${service.name } --> ${service.rate }
+					<li class="list-group-item"> ${service.name } --> ${service.rate }
 					</li>
 					</c:forEach>
 					</ol>
@@ -75,9 +75,9 @@
 					<h2>Reviews</h2>
 					<button type="button" class="collapsible">Show All reviews</button>
 					<div class="content">
-					<ol>
+					<ol class="list-group">
 					<c:forEach items = "${host.reviewsOfHost }" var = "review">
-					<li> ${review.rating }/5
+					<li class="list-group-item"> ${review.rating }/5
 							${review.review}
 					</li>
 					</c:forEach>
