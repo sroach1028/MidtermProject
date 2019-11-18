@@ -47,14 +47,13 @@ public class Pet {
 	private boolean active;
 	
 	@OneToMany(mappedBy = "pet")
-	private List<Image> images;
+	private List<PetImage> petImages;
 	
 //	C O N S T R U C T O R S
 
 	public Pet() {
 		super();
 	}
-	
 
 	public Pet(int id, String name, String breed, String specialNeeds, String description, User user,
 			List<ReviewOfPet> reviewsOfPet, PetType petType, List<Reservation> reservations) {
@@ -70,25 +69,42 @@ public class Pet {
 		this.reservations = reservations;
 	}
 
+	public Pet(int id, String name, String breed, String specialNeeds, String description, User user,
+			List<ReviewOfPet> reviewsOfPet, PetType petType, List<Reservation> reservations, boolean active,
+			List<PetImage> petImages) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.breed = breed;
+		this.specialNeeds = specialNeeds;
+		this.description = description;
+		this.user = user;
+		this.reviewsOfPet = reviewsOfPet;
+		this.petType = petType;
+		this.reservations = reservations;
+		this.active = active;
+		this.petImages = petImages;
+	}
+
 //	M E T H O D S
 
-	public void addImage(Image image) {
-		if (images == null) {
-			images = new ArrayList<>();
+	public void addPetImage(PetImage petImage) {
+		if (petImages == null) {
+			petImages = new ArrayList<>();
 		}
-		if (!images.contains(image)) {
-			images.add(image);
-			if (image.getPet() != null) {
-				image.getPet().getImages().remove(image);
+		if (!petImages.contains(petImage)) {
+			petImages.add(petImage);
+			if (petImage.getPet() != null) {
+				petImage.getPet().getPetImages().remove(petImage);
 			}
 		}
-		image.setPet(this);
+		petImage.setPet(this);
 	}
 	
-	public void removeImage(Image image) {
-		image.setPet(null);
-		if (images != null) {
-			images.remove(image);
+	public void removeImage(PetImage petImage) {
+		petImage.setPet(null);
+		if (petImages != null) {
+			petImages.remove(petImage);
 		}
 	}
 	
@@ -218,16 +234,13 @@ public class Pet {
 		this.active = active;
 	}
 
-
-	public List<Image> getImages() {
-		return images;
+	public List<PetImage> getPetImages() {
+		return petImages;
 	}
 
-
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setPetImages(List<PetImage> petImages) {
+		this.petImages = petImages;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -236,7 +249,6 @@ public class Pet {
 		result = prime * result + id;
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -251,5 +263,4 @@ public class Pet {
 			return false;
 		return true;
 	}
-
 }
