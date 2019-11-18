@@ -44,7 +44,6 @@ public class LoginController {
 	public ModelAndView log(@Valid User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.removeAttribute("sessionUser");
-		session.removeAttribute("sessionHost");
 		mv.setViewName("home");
 		return mv;
 	}

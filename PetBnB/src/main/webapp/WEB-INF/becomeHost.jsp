@@ -25,25 +25,13 @@
 			<h1>Host Details</h1>
 		</div>
 	</div>
-	<form:form action="updateHost.do" method="GET" modelAttribute="host">
-		
-		<c:forEach items = "${host.services }" var = "service">
-				<form:label path="services">${service.name }: </form:label>
-		
-		<form:checkbox path="services" value = "services" /> <br>
+	<form action="updateHost.do" method="GET">
+		<c:forEach items="${sessionHost.services }" var="service">
+			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 		</c:forEach>
-		<form:errors path="services" />
-		<br>
-		<br>
-		<form:label path="description">Description: </form:label>
-		<form:input path="description" type="text" name="description"/>
-		<form:errors path="description" />
-
-		<div class="container">
-		<input type="hidden" name="hostId" value=${sessionHost.id } />
-			<input type="submit" id="updateHost" class="btn btn-outline-light"
-				value="Update Settings" />
-		</div>
-	</form:form>
+		<input type="hidden" name="hostId" value="${host.id}" /> <input
+			type="submit" value="Update Settings">
+	</form>
+	<br>
 </body>
 </html>

@@ -21,18 +21,22 @@
 </head>
 <body>
 	<form:form action="login.do" method="GET" modelAttribute="user">
-		<form:label path="username">Username:</form:label>
-		<form:input path="username" />
-		<form:errors path="username" />
-		<br />
-		<form:label path="password">Password:</form:label>
-		<form:input path="password" />
-		<form:errors path="password" />
-		<br />
+	<table>
+	<tr>
+		<td style="color:#000000"><form:label path="username">Username:</form:label></td>
+		<td><form:input path="username" />
+		<form:errors path="username" /></td>
+		</tr>
+		<tr>
+		<td style="color:#000000"><form:label path="password">Password:</form:label></td>
+		<td><form:input path="password" />
+		<form:errors path="password" /></td>
+		</tr>
 		<c:if test="${not empty error}">
 			<h3>${error }</h3>
 		</c:if>
-		<input type="submit" value="Login" />
+		<tr><td><input type="submit" value="Login" /></td></tr>
+		</table>
 	</form:form>
 </body>
 </html>

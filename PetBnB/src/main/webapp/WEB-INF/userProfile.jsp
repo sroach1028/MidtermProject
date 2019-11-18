@@ -84,8 +84,8 @@
 					</div>
 			</c:if>
 		</c:if>
-			<c:if test="${empty user}">
-		<c:if test="${not empty sessionHost }">
+		<c:if test="${empty user}">
+			<c:if test="${not empty sessionHost }">
 				<div class="resultsSingle" style="margin-top: 15px">
 					<div class="resultsSingle">
 						<table class="table">
@@ -96,24 +96,29 @@
 										<td>${service.name }</td>
 										<td>${service.rate }</td>
 									</tr>
-							</c:if>
+								</c:if>
 							</c:forEach>
 						</table>
-						<p> ${sessionHost.description } </p>
+						<p>${sessionHost.description }</p>
 					</div>
-								
 			</c:if>
-							<c:if test="${empty sessionHost }">
-					
-									<form action="becomeHost.do" method="GET">
-									<input type="hidden" name = "id" value = ${sessionUser.id } />
-							<input type="submit" class="btn btn-outline-light"
-								value="Become a Host" />
-						</form>
-						</c:if>
+
+
+			<form action="goToUpdateSettings.do" method="GET">
+				<input type="hidden" name="hostId" value=${sessionUser.id } /> <input
+					type="submit" class="btn btn-outline-light"
+					value="Update Host Settings" />
+			</form>
+
 		</c:if>
-		
-		
-		
+		<c:if test="${empty sessionHost }">
+
+			<form action="becomeHost.do" method="GET">
+				<input type="hidden" name="id" value=${sessionUser.id } /> <input
+					type="submit" class="btn btn-outline-light" value="Become a Host" />
+			</form>
+		</c:if>
+
+
 </body>
 </html>
