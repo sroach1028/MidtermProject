@@ -119,8 +119,7 @@ public User(int id, String firstName, String lastName, String username, String p
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", email=" + email + ", active=" + active + ", address=" + address
-				+ ", host=" + host + "]";
+				+ ", password=" + password + ", email=" + email;
 	}
 
 	public int getId() {

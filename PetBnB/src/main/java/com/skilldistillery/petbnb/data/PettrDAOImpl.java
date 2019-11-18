@@ -174,6 +174,7 @@ public class PettrDAOImpl implements PettrDAO {
 		Pet pet = em.find(Pet.class, petId);
 		double average = (pet.getReviewsOfPet().get(petId).getRating()/ pet.getReviewsOfPet().size());
 		return average;
+	}
     
     @Override
 	public List<HostService> getAllServices() {
