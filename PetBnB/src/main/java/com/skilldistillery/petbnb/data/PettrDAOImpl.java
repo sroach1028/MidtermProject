@@ -1,5 +1,7 @@
+  
 package com.skilldistillery.petbnb.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -116,32 +118,26 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(host);
 		em.flush();
 		System.out.println(host.getServices());
-//		for(int i = 1; i<=8; i++) {
-//			host.addService(em.find(HostService.class, i));
-//		}
+//		host.addService(em.find(HostService.class, 8));
+		for(int i = 1; i<=8; i++) {
+			host.addService(em.find(HostService.class, i));
+		}
 		em.flush();
 		return host;
-	}
-	
-	@Override
-	public Host findHostById(int hostId) {
-
-		System.out.println(hostId);
-		Host host = em.find(Host.class, hostId);
-
-		return host;
-
 	}
 
 	@Override
 	public Host updateHost(Host host, int hostId) {
-		
+		System.out.println(host.getDescription());
 		Host updatedHost = em.find(Host.class, hostId);
-
+		System.out.println(updatedHost.getUser().getFirstName());
+//		for(HostService element : host.getServices()) {
+//			element.setActive(true);
+//		}
 		updatedHost.setServices(host.getServices());
-
+		System.out.println(host.getServices());
 		updatedHost.setDescription(host.getDescription());
-
+		System.out.println(updatedHost.getDescription());
 		em.flush();
 		return updatedHost;
 	}

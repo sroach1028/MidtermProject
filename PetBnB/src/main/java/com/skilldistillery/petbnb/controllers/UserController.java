@@ -1,3 +1,4 @@
+  
 package com.skilldistillery.petbnb.controllers;
 
 import java.util.List;
@@ -144,15 +145,6 @@ public class UserController {
 		session.setAttribute("sessionHost", host);
 		return mv;
 	}
-	@RequestMapping(path="goToUpdateSettings.do", method = RequestMethod.GET)
-	public ModelAndView goToUpdateHost(@RequestParam("id") int id, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		Host host = pettrDAO.findHostById(id);
-		mv.addObject("host", host);
-		mv.setViewName("becomeHost");
-		return mv;
-	}
-	
 	@RequestMapping(path="updateHost.do", method = RequestMethod.GET)
 	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
