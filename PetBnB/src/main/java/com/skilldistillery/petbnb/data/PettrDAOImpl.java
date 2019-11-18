@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
+import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.User;
 
 @Transactional
@@ -186,4 +187,21 @@ public class PettrDAOImpl implements PettrDAO {
 		return services;
 	}
 
+	@Override
+	public int getAverageOfHostReviewRatings(List<ReviewOfHost> reviewsOfHost) {
+		int currentSum = 0;
+		int average = 0;
+		for (int i = 0; i < reviewsOfHost.size() ; i++) {
+			currentSum += reviewsOfHost.get(i).getRating();
+		}
+		average = currentSum / reviewsOfHost.size();
+		return average;
+	}
+	
+	@Override
+	public Host getHostById(int hostId) {
+		Host host = em.find(Host.class, hostId);
+		return host;
+	}
+	
 }
