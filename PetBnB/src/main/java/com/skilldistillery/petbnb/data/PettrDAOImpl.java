@@ -130,6 +130,9 @@ public class PettrDAOImpl implements PettrDAO {
 		System.out.println(host.getDescription());
 		Host updatedHost = em.find(Host.class, hostId);
 		System.out.println(updatedHost.getUser().getFirstName());
+//		for(HostService element : host.getServices()) {
+//			element.setActive(true);
+//		}
 		updatedHost.setServices(host.getServices());
 		System.out.println(host.getServices());
 		updatedHost.setDescription(host.getDescription());
