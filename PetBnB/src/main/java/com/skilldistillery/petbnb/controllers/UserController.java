@@ -46,7 +46,7 @@ public class UserController {
 			session.removeAttribute("sessionHost");
 			session.setAttribute("sessionHost", host);
 		}
-		mv.setViewName("userProfile");
+		mv.setViewName("account");
 		return mv;
 	}
 
