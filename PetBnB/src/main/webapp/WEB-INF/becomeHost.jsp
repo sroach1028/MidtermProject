@@ -28,6 +28,7 @@
 	<form action="updateHost.do" method="GET">
 		<c:forEach items= "${host.services }" var= "service">
 		<input type="checkbox" name="selections" value = "${service.id }" />${service.name }<br>
+
 		</c:forEach>
 		<input type= "hidden" name = "hostId" value= "${host.id}" />
     	<input type="submit" value="Submit">
