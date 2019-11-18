@@ -31,4 +31,6 @@ public interface PettrDAO {
 	Host refreshHost(int userId);
 
 	Host addServicestoHostById(int[] selections, int hostId);
+
+	Host findHostById(int hostId);
 }
