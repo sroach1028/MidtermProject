@@ -26,22 +26,12 @@
 		</div>
 	</div>
 	<form action="updateHost.do" method="GET">
-		<c:forEach items= "${host.services }" var= "service">
-		<input type="checkbox" name="selections" value = "${service.id }" />${service.name }<br>
+		<c:forEach items="${sessionHost.services }" var="service">
+			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 		</c:forEach>
-		<input type= "hidden" name = "hostId" value= "${host.id}" />
-    	<input type="submit" value="Submit">
-		</form>
-		<br>
-		<br>
-<%-- 		<form:label path="description">Description: </form:label>
-		<form:input path="description" type="text" name="description"/>
-		<form:errors path="description" /> --%>
-
-		<div class="container">
-		<input type="hidden" name="hostId" value=${sessionHost.id } />
-			<input type="submit" id="updateHost" class="btn btn-outline-light"
-				value="Update Settings" />
-		</div>
+		<input type="hidden" name="hostId" value="${host.id}" /> <input
+			type="submit" value="Update Settings">
+	</form>
+	<br>
 </body>
 </html>

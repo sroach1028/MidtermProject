@@ -1,6 +1,5 @@
 package com.skilldistillery.petbnb.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -23,12 +22,12 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public User findUserById(int userId) {
+		return em.find(User.class, userId);
+	}
 
-		System.out.println(userId);
-		User user = em.find(User.class, userId);
-
-		return user;
-
+	@Override
+	public Host findHostById(int hostId) {
+		return em.find(Host.class, hostId);
 	}
 
 	@Override
@@ -69,19 +68,19 @@ public class PettrDAOImpl implements PettrDAO {
 	@Override
 	public User refreshUser(int userId) {
 		return em.find(User.class, userId);
-		
+
 	}
-	
+
 	@Override
 	public Host refreshHost(int userId) {
 		String query = "Select host from Host host where host.user.id = :userId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("userId", userId).getResultList();
-		if(hosts.size() != 0) {
-		return hosts.get(0);
+		if (hosts.size() != 0) {
+			return hosts.get(0);
 		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
@@ -106,8 +105,9 @@ public class PettrDAOImpl implements PettrDAO {
 	@Override
 	public List<Host> searchHostByLocation(String city, String state) {
 		String query = "Select host from Host host where host.user.address.city = :city and host.user.address.state = :state";
-	List<Host> hosts = em.createQuery(query, Host.class).setParameter("city", city).setParameter("state", state).getResultList();
-	return hosts;
+		List<Host> hosts = em.createQuery(query, Host.class).setParameter("city", city).setParameter("state", state)
+				.getResultList();
+		return hosts;
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class PettrDAOImpl implements PettrDAO {
 		em.flush();
 		System.out.println(host.getServices());
 //		host.addService(em.find(HostService.class, 8));
-		for(int i = 1; i<=8; i++) {
+		for (int i = 1; i <= 8; i++) {
 			host.addService(em.find(HostService.class, i));
 		}
 		em.flush();
@@ -146,7 +146,7 @@ public class PettrDAOImpl implements PettrDAO {
 		Host host = em.find(Host.class, hostId);
 		for (int selectionId : selections) {
 			for (HostService service : host.getServices()) {
-				if(service.getId()==selectionId) {
+				if (service.getId() == selectionId) {
 					service.setActive(true);
 				}
 			}
