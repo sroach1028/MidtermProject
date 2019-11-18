@@ -139,16 +139,16 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(id);
 		mv.addObject("host", host);
-		session.setAttribute("sessionHost", host);
 		mv.setViewName("becomeHost");
+		session.setAttribute("sessionHost", host);
 		return mv;
 	}
 	@RequestMapping(path="updateHost.do", method = RequestMethod.GET)
-	public ModelAndView updateHost(@Valid Host host, @RequestParam("hostId") int hostId, HttpSession session) {
+	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Host updatedHost = pettrDAO.updateHost(host, hostId);
+		Host host = pettrDAO.addServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
-		session.setAttribute("sessionHost", updatedHost);
+		session.setAttribute("sessionHost", host);
 		mv.setViewName("userProfile");
 		return mv;
 	}
