@@ -11,17 +11,17 @@ To give hosts opportunity to take in pet owners pets and take care of them while
 1. User starts on landing page.
 2. User can search or register/login
 3.  If register/login
-a. User registers as a client user or service user
-b. User logs in
+-  User registers as a client user or service user
+-  User logs in
 4. After register/login
-a. Client user fills out information such as the pet they have
-b. Service user fills out information  such as availability, services and type of stay for pet.
-c User lands onto profile page and able to perform CRUD on profile
+- Client user fills out information such as the pet they have
+- Service user fills out information  such as availability, services and type of stay for pet.
+- User lands onto profile page and able to perform CRUD on profile
 5. Client user conducts search for services for their pet
 6. User picks a service they want to have done to their pet and confirmation screen appears confirming that the request has been finalized.
 ### Implementation
-- Wireframe [PetBnB Wireframe]("https://miro.com/app/board/o9J_kw3Z9CY=/ "PetBnB Wireframe")
-- Trello [PetBnB Trell Kanban]("https://trello.com/b/xJIVQhZV/midterm")
+[PetBnB Wireframe]("https://miro.com/app/board/o9J_kw3Z9CY=/ "PetBnB Wireframe")
+[PetBnB Trello Kanban]("https://trello.com/b/xJIVQhZV/midterm")
 ERDiagram
 More stuff
 ### Technologies used
