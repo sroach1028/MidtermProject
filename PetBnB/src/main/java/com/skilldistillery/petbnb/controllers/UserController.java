@@ -25,7 +25,7 @@ public class UserController {
 
 	@RequestMapping(path = "/")
 	public String home() {
-		return "home";
+		return "home2";
 	}
 
 	@RequestMapping(path = "coming.do")
