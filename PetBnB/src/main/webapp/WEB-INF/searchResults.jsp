@@ -14,7 +14,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles2.css">
 <title>Search Results</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 <style>
@@ -59,7 +59,7 @@
 				<ol>
 				<c:forEach items = "${hosts}" var = "host">
 				<li>
-					<h3>${host.user.firstName } </h3>
+					<h3><a href="getUser.do?userId=${host.user.id}">${host.user.firstName }</a> </h3>
 					<h4> ${host.user.address.city }, ${host.user.address.state }</h4>
 					
 					<h2>Services</h2>
