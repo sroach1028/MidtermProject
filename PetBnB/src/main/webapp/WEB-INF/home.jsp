@@ -28,6 +28,12 @@
 </head>
 <body>
 
+<form action="findReservationById.do" method="GET">
+		<label style="font-family: Courier; color: Green;">Reservation by ID:</label> 
+		<input type="number" name="rid" /> <input type="submit" value="Show Reservation" />
+</form>
+	
+	
 	<div
 		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 		<div class="container">
