@@ -3,6 +3,7 @@ package com.skilldistillery.petbnb.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Host {
 	@OneToMany(mappedBy = "host")
 	private List<ReviewOfHost> reviewsOfHost;
 
-	@ManyToMany(mappedBy="hosts")
+	@ManyToMany(mappedBy="hosts", cascade = {CascadeType.ALL})
 	private List<HostService> services;
 	
 	@OneToMany(mappedBy = "host" )
