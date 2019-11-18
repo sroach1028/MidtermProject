@@ -29,4 +29,6 @@ public interface PettrDAO {
 	Host updateHost(Host host, int hostId);
 
 	Host refreshHost(int userId);
+
+	Host findHostById(int hostId);
 }

@@ -30,7 +30,7 @@
 		<c:forEach items = "${host.services }" var = "service">
 				<form:label path="services">${service.name }: </form:label>
 		
-		<input type="checkbox" value = "${service}"/><br>
+		<form:checkbox path="services" value = "services" /> <br>
 		</c:forEach>
 		<form:errors path="services" />
 		<br>
