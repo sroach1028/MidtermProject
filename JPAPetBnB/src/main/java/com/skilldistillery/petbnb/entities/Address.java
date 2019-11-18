@@ -55,8 +55,14 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", phone=" + phone + "]";
+		StringBuilder sb = new StringBuilder("");
+		sb.append(street + ", ");
+		sb.append(city + ", ");
+		sb.append(state + " ");
+		sb.append(zip);
+		String address = sb.toString();
+		address.replaceAll(" ", "+");
+		return address;
 	}
 
 	public int getId() {
