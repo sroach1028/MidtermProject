@@ -45,6 +45,8 @@ public class User {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Pet> pets;
+	
+	private String imageURL;
 
 //	C O N S T R U C T O R S
 
@@ -75,6 +77,22 @@ public class User {
 		this.pets = pets;
 	}
 
+public User(int id, String firstName, String lastName, String username, String password, String email,
+			boolean active, Address address, Host host, List<Pet> pets, String imageURL) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.active = active;
+		this.address = address;
+		this.host = host;
+		this.pets = pets;
+		this.imageURL = imageURL;
+	}
+
 //	M E T H O D S
 
 	public void addPet(Pet pet) {
@@ -100,7 +118,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", email=" + email + "]";
+				+ ", password=" + password + ", email=" + email + ", active=" + active + ", address=" + address
+				+ ", host=" + host + "]";
 	}
 
 	public int getId() {
@@ -181,6 +200,14 @@ public class User {
 
 	public void setPets(List<Pet> pets) {
 		this.pets = pets;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	@Override
