@@ -1,7 +1,6 @@
   
 package com.skilldistillery.petbnb.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +14,7 @@ import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.PetImage;
 import com.skilldistillery.petbnb.entities.Reservation;
+import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.User;
 
 @Transactional
@@ -185,6 +185,22 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
+	public int getAverageOfHostReviewRatings(List<ReviewOfHost> reviewsOfHost) {
+		int currentSum = 0;
+		int average = 0;
+		for (int i = 0; i < reviewsOfHost.size() ; i++) {
+			currentSum += reviewsOfHost.get(i).getRating();
+		}
+		average = currentSum / reviewsOfHost.size();
+		return average;
+	}
+	
+	@Override
+	public Host getHostById(int hostId) {
+		Host host = em.find(Host.class, hostId);
+		return host;
+	}
+	
 	public Reservation findReservationById(int id) {
 		return em.find(Reservation.class, id);
 //		return em.find(Host.class, hostId);

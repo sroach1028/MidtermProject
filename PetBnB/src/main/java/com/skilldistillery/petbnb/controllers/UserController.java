@@ -174,15 +174,20 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
-
-	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
-	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+	
+	@RequestMapping(path="goToHostPage.do", method = RequestMethod.GET)
+	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Reservation reservation = pettrDAO.findReservationById(rid);
-		mv.addObject("reservation", reservation);
-		mv.setViewName("viewReservation");
+		mv.addObject("host", pettrDAO.getHostById(hostId));
+		mv.setViewName("hostPage");
 		return mv;
 	}
+
+//	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
+//	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+//		ModelAndView mv = new ModelAndView();
+//		return mv;
+//	}
 
 	@RequestMapping(path = "goToReservation.do")
 	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
@@ -204,6 +209,4 @@ public class UserController {
 		return mv;
 	}
 	
-	
-
 }
