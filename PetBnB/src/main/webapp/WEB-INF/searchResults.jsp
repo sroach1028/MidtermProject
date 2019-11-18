@@ -60,26 +60,28 @@
 						<c:forEach items="${hosts}" var="host">
 							<li class="list-group-item">
 								<h3>
-									<a href="getUser.do?userId=${host.user.id}">${host.user.firstName }</a>
+									<a href="goToHostPage.do?hostId=${host.id}">${host.user.firstName }
+									</a>
 								</h3>
-								<h4>${host.user.address.city }, ${host.user.address.state }</h4>
+								<h4>${host.user.address.city },${host.user.address.state }</h4>
 
 								<h2>Services</h2>
 								<button type="button" class="collapsible">Show All
 									Services</button>
 								<div class="content">
+
 									<ol class="list-group">
 										<c:forEach items="${host.services }" var="service">
 
-											<li class="list-group-item">${service.name } -->
+											<li class="list-group-item">${service.name }-->
 												${service.rate }</li>
 											<li>
 
 												<form action="goToReservation.do" method="GET">
 													<input type="hidden" name="hostId" value="${host.id }">
-													<input type="hidden" name="serviceId" value="${service.id }">
-													<input type="submit" class="btn btn-outline-light"
-														value="Make Reservation" />
+													<input type="hidden" name="serviceId"
+														value="${service.id }"> <input type="submit"
+														class="btn btn-outline-light" value="Make Reservation" />
 												</form>
 
 											</li>
@@ -101,30 +103,32 @@
 
 
 							</li>
+						</c:forEach>
 					</ol>
-					</c:forEach>
-					<c:if test="${empty hosts }">
-						<h3>No results found for that location</h3>
-					</c:if>
-
 				</div>
 			</div>
 		</c:if>
-		<script>
-			var coll = document.getElementsByClassName("collapsible");
-			var i;
 
-			for (i = 0; i < coll.length; i++) {
-				coll[i].addEventListener("click", function() {
-					this.classList.toggle("active");
-					var content = this.nextElementSibling;
-					if (content.style.display === "block") {
-						content.style.display = "none";
-					} else {
-						content.style.display = "block";
-					}
-				});
-			}
-		</script>
+		<c:if test="${empty hosts }">
+			<h3>No results found for that location</h3>
+		</c:if>
+
+	</div>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+					content.style.display = "none";
+				} else {
+					content.style.display = "block";
+				}
+			});
+		}
+	</script>
 </body>
 </html>
