@@ -1,7 +1,7 @@
 
 package com.skilldistillery.petbnb.controllers;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -210,8 +210,8 @@ public class UserController {
 
 	@RequestMapping(path = "createReservation.do")
 	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId,
-			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") Date openDate,
-			@RequestParam("closeDate") Date closeDate) {
+			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") LocalDate openDate,
+			@RequestParam("closeDate") LocalDate closeDate) {
 		ModelAndView mv = new ModelAndView();
 		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);
