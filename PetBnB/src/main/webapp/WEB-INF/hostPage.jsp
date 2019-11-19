@@ -27,7 +27,7 @@
 	<img src="${host.user.imageURL }" height="150" width="150"/>
 	<br>
 	<br>
-	<p>Review Average (out of ${listSize } reviews): 
+	<p>Review Average (out of ${listSize } reviews): </p>
 <c:if test="${reviewAverage == 1}">	
 			<span class="fa fa-star checked"></span>
 			<span class="fa fa-star"></span>
@@ -81,28 +81,28 @@
 	
 	
 	
-	<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
   Indicators
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol> -->
-<!-- 
+  </ol>
 
 
-  <!-- Wrapper for slides
+
+ Wrapper for slides
   <div class="carousel-inner">
     <div class="item active">
-      <img src="https://i.imgur.com/T9wrwwv.jpg">
+      <img src="${image1 }">
     </div>
 
     <div class="item">
-      <img src="https://i.imgur.com/kUH7IHd.jpg">
+      <img src="${image2 }">
     </div>
 
     <div class="item">
-      <img src="https://i.imgur.com/N6RmEvp.jpg">
+      <img src="${image3 }">
     </div>
   </div>
 
@@ -114,9 +114,9 @@
   <a class="right carousel-control" href="#myCarousel" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
-  </a> --> 
-<%-- </div>
-			<c:forEach items="${host.images}" var="image">
+  </a> 
+</div>
+			<%-- <c:forEach items="${host.images}" var="image">
 				<ul>
 					<li>Rating: ${reviews.rating }</li>
 					<li>Summary: ${reviews.review }</li>
@@ -128,9 +128,9 @@
 					<li>Rating: ${reviews.rating }</li>
 					<li>Summary: ${reviews.review }</li>
 				</ul>
-			</c:forEach>
+			</c:forEach> --%>
 
 			
-	</div> --%>
+	<!-- </di -->v>
 </body>
 </html>
