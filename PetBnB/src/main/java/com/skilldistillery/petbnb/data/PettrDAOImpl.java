@@ -91,20 +91,22 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPet(Pet addPet, int userId) {
-		addPet.setUser(em.find(User.class, userId));
+		User user = em.find(User.class, userId);
 		addPet.setActive(true);
+		addPet.setUser(user);
 		em.persist(addPet);
+		user.addPet(addPet);
 		em.flush();
-		return em.find(Pet.class, addPet.getId());
+		return addPet;
 	}
 
 	@Override
-	public User removePetById(int id) {
-		Pet petRemoved = em.find(Pet.class, id);
+	public User removePetById(int petId) {
+		Pet petRemoved = em.find(Pet.class, petId);
 		petRemoved.setActive(false);
 		em.flush();
-
-		return em.find(User.class, petRemoved.getUser().getId());
+		User user = petRemoved.getUser();
+		return user;
 
 	}
 
@@ -118,7 +120,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Host> searchHostByService(int serviceId) {
-		
+
 		String query = "SELECT h FROM Host h JOIN h.services hs WHERE hs.id = :serviceId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
 		return hosts;
