@@ -39,6 +39,20 @@
 		"Liberation Mono", "Courier New", monospace
 }
 
+.checked {
+  color: orange;
+}
+.carousel .item {
+  height: 300px;
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
+
 *, ::after, ::before {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box

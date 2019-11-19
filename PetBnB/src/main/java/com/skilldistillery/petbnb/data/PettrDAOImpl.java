@@ -2,7 +2,6 @@
 package com.skilldistillery.petbnb.data;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,6 +16,7 @@ import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.PetImage;
 import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.ReviewOfHost;
+import com.skilldistillery.petbnb.entities.ReviewOfPet;
 import com.skilldistillery.petbnb.entities.User;
 
 @Transactional
@@ -91,20 +91,22 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPet(Pet addPet, int userId) {
-		addPet.setUser(em.find(User.class, userId));
+		User user = em.find(User.class, userId);
 		addPet.setActive(true);
+		addPet.setUser(user);
 		em.persist(addPet);
+		user.addPet(addPet);
 		em.flush();
-		return em.find(Pet.class, addPet.getId());
+		return addPet;
 	}
 
 	@Override
-	public User removePetById(int id) {
-		Pet petRemoved = em.find(Pet.class, id);
+	public User removePetById(int petId) {
+		Pet petRemoved = em.find(Pet.class, petId);
 		petRemoved.setActive(false);
 		em.flush();
-
-		return em.find(User.class, petRemoved.getUser().getId());
+		User user = petRemoved.getUser();
+		return user;
 
 	}
 
@@ -118,7 +120,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Host> searchHostByService(int serviceId) {
-		
+
 		String query = "SELECT h FROM Host h JOIN h.services hs WHERE hs.id = :serviceId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
 		return hosts;
@@ -203,6 +205,18 @@ public class PettrDAOImpl implements PettrDAO {
 			currentSum += reviewsOfHost.get(i).getRating();
 		}
 		average = currentSum / reviewsOfHost.size();
+		return average;
+	}
+	
+	@Override
+	public Object getAverageOfPetReviewRatings(Pet pet) {
+		List<ReviewOfPet> reviewsOfPet = pet.getReviewsOfPet();
+		int currentSum = 0;
+		int average = 0;
+		for (int i = 0; i < reviewsOfPet.size(); i++) {
+			currentSum += reviewsOfPet.get(i).getRating();
+		}
+		average = currentSum / reviewsOfPet.size();
 		return average;
 	}
 

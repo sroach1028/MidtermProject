@@ -54,4 +54,6 @@ public interface PettrDAO {
 	Reservation createReservation(int petId, int hostId, int serviceId, LocalDate openDate, LocalDate closeDate);
 
 	Object getAverageOfHostReviewRatings(Host host);
+	
+	Object getAverageOfPetReviewRatings(Pet pet);
 }

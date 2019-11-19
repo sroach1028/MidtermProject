@@ -27,28 +27,18 @@
 		</c:if>
 		<c:if test="${not empty pet }">
 
-			<table class="table table-hover table-striped">
-				<tbody>
-
-					<tr class="table-primary">
-						<th scope="row">${pet.name }</th>
-					</tr>
-					<tr>
-						<th scope="row">${pet.petType.type }</th>
-					</tr>
-					<tr>
-						<th scope="row">${pet.breed }</th>
-					</tr>
-					<tr>
-						<th scope="row">${pet.description }</th>
-					</tr>
-					<tr>
-						<th scope="row">${pet.specialNeeds }</th>
-					</tr>
-
-				</tbody>
-			</table>
-			<c:if test="${empty pet.reviewsOfPet }">
+			<div class="jumbotron">
+				<h1 class="display-3">${pet.name}the${pet.petType.type }</h1>
+				<p class="lead">Description: ${pet.description }</p>
+				<hr class="my-4">
+				<p>Special Needs: ${pet.specialNeeds }</p>
+				<p class="lead">
+					<a class="btn btn-dark" href="goToUpdatePet.do?petId=${pet.id}"
+						role="button">Update Pet</a> <a class="btn btn-dark"
+						href="removePet.do?petId=${pet.id}" role="button">Remove Pet</a>
+				</p>
+			</div>
+			<c:if test="${not empty pet.reviewsOfPet }">
 				<h3>List of Reviews</h3>
 				<c:forEach items="${pet.reviewsOfPet}" var="reviews">
 					<ul class="list-group">
@@ -60,22 +50,34 @@
 
 			<c:if test="${not empty pet.petImages }">
 
-				<div id="carouselExampleControls" class="carousel slide"
-					data-ride="carousel">
-					<div class="carousel-inner" role="listbox">
-						<c:forEach items="${pet.petImages}" var="petImage">
-							<div class="carousel-item active">
-								<img class="d-block img-fluid" src="${petImage.url }"
-									alt="First slide">
-							</div>
+				<div id="carouselExampleFade" class="carousel slide carousel-fade"
+					data-ride="carousel"
+					style="width: 450px; height: 450px; margin: 0 auto">
+					<div class="carousel-inner">
+						<c:forEach var="petImage" items="${pet.petImages }"
+							varStatus="count">
+							<c:choose>
+								<c:when test="${count.index == 0 }">
+									<div class="carousel-item active">
+										<img src="${petImage.url }" class="d-block w-100" alt="...">
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="carousel-item">
+										<img src="${petImage.url }" class="d-block w-100" alt="...">
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 
+
+
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls"
+					<a class="carousel-control-prev" href="#carouselExampleFade"
 						role="button" data-slide="prev"> <span
 						class="carousel-control-prev-icon" aria-hidden="true"></span> <span
 						class="sr-only">Previous</span>
-					</a> <a class="carousel-control-next" href="#carouselExampleControls"
+					</a> <a class="carousel-control-next" href="#carouselExampleFade"
 						role="button" data-slide="next"> <span
 						class="carousel-control-next-icon" aria-hidden="true"></span> <span
 						class="sr-only">Next</span>
@@ -88,14 +90,7 @@
 					type="hidden" name="petId" value="${pet.id }"> <input
 					type="submit" class="btn btn-outline-light" value="Add Photo" />
 			</form>
-			<form action="goToUpdatePet.do" method="GET">
-				<input type="hidden" name="petId" value="${pet.id }"> <input
-					type="submit" class="btn btn-outline-light" value="Update Pet" />
-			</form>
-			<form action="removePet.do" method="GET">
-				<input type="hidden" name="petId" value="${pet.id }"> <input
-					type="submit" class="btn btn-outline-light" value="Delete Pet" />
-			</form>
+
 		</c:if>
 	</div>
 </body>

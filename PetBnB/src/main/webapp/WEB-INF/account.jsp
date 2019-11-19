@@ -49,6 +49,30 @@
 				</h1>
 			</div>
 
+			<c:if test="${not empty sessionUser.pets }">
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+						<ol class="list-group">
+							<c:forEach items="${sessionUser.pets}" var="pet">
+								<c:if test="${pet.active == true}">
+
+									<li class="list-group-item">
+										<h3>
+											<a href="toPetProfile.do?petId=${pet.id}">${pet.name }
+												the ${pet.petType }</a>
+										</h3>
+										<h2>
+											<a href="reservationHistory.do?petId=${pet.id}"> View
+												Past Reservations</a>
+										</h2>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ol>
+					</div>
+				</div>
+			</c:if>
+		</div>
 
 
 			<c:if test="${not empty sessionUser.pets }">
