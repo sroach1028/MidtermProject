@@ -78,6 +78,13 @@
 					type="submit" class="btn btn-outline-light" value="Become a Host" />
 			</form>
 		</c:if>
+		<c:if test="${empty sessionHost}">
+
+			<form action="becomeHost.do" method="GET">
+				<input type="hidden" name="id" value=${sessionUser.id } /> <input
+					type="submit" class="btn btn-outline-light" value="View Profile" />
+			</form>
+		</c:if>
 		<script>
 			var coll = document.getElementsByClassName("collapsible");
 			var i;
