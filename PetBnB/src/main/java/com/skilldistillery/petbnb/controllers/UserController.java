@@ -210,7 +210,9 @@ public class UserController {
 //		mv.addObject("image2", image2);
 //		mv.addObject("image3", image3);
 		mv.addObject("listSize", listSize);
-		mv.addObject("reviewAverage", pettrDAO.getAverageOfHostReviewRatings(host));
+		if (!host.getReviewsOfHost().isEmpty()) {
+			mv.addObject("reviewAverage", pettrDAO.getAverageOfHostReviewRatings(host));
+		}
 		mv.addObject("host", host);
 		mv.setViewName("hostPage");
 		return mv;
