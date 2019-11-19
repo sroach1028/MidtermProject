@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,10 @@ public class ReviewOfPet {
 	private int rating;
 	
 	private String review;
+	
+	@OneToOne
+	@JoinColumn(name="reservation_id")
+	private Reservation reservation;
 	
 	@ManyToOne
 	@JoinTable(name="reservation",
@@ -81,6 +86,14 @@ public class ReviewOfPet {
 
 	public void setReview(String review) {
 		this.review = review;
+	}
+
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 
 	@Override

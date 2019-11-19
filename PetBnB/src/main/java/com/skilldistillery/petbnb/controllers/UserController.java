@@ -72,6 +72,13 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
+	@RequestMapping(path = "toPetProfile.do", method = RequestMethod.GET)
+	public ModelAndView toPetProfile(@RequestParam("petId") int petId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("pet", pettrDAO.findPet(petId));
+		mv.setViewName("animalProfile");
+		return mv;
+	}
 
 	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
 	public ModelAndView getAllPets() {
@@ -245,5 +252,14 @@ public class UserController {
 		mv.setViewName("viewReservation");
 		return mv;
 	}
+	
+	@RequestMapping(path="reservationHistory.do")
+	public ModelAndView toReservationHistory(@RequestParam("petId") int petId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("pet", pettrDAO.findPet(petId));
+		mv.setViewName("reservationHistory");
+		return mv;
+	}
+
 
 }

@@ -34,6 +34,12 @@ public class Reservation {
 
 	@Column(name = "close_date")
 	private LocalDate closeDate;
+	
+	@OneToOne(mappedBy="reservation")
+	private ReviewOfPet petReview;
+	
+	@OneToOne(mappedBy="reservation")
+	private ReviewOfHost hostReview;
 
 //	C O N S T R U C T O R S
 
@@ -96,6 +102,22 @@ public class Reservation {
 
 	public void setCloseDate(LocalDate closeDate) {
 		this.closeDate = closeDate;
+	}
+
+	public ReviewOfPet getPetReview() {
+		return petReview;
+	}
+
+	public void setPetReview(ReviewOfPet petReview) {
+		this.petReview = petReview;
+	}
+
+	public ReviewOfHost getHostReview() {
+		return hostReview;
+	}
+
+	public void setHostReview(ReviewOfHost hostReview) {
+		this.hostReview = hostReview;
 	}
 
 	@Override
