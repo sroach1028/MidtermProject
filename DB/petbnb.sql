@@ -364,7 +364,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (1, 'Fenced yard', 3, 1);
+INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (1, 'Personal motto: \"I like big mutts and I cannot lie!\"  I have a big fenced yard and two dogs for your pet to play with. Available throughout this winter and spring. I love to go hiking, and will happily bring along your pets with me on a hike if you like :)', 3, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (2, 'Open fields', 5, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (3, 'A place for a pet', 7, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (4, 'Fenced', 9, 1);

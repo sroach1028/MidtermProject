@@ -11,13 +11,70 @@
 	crossorigin="anonymous">
 
 <link href="css/styles.css" rel="stylesheet" type="text/css">
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 <title>Host Profile</title>
 </head>
 <body>
-	<p>${host.user.firstName} ${host.user.lastName}</p>
-	<img src="${host.user.imageURL }" />
+	<p>${host.user.firstName} ${host.user.lastName} </p>
+	<img src="${host.user.imageURL }" height="150" width="150"/>
+	<br>
+	<br>
+	<p>Review Average (out of ${listSize } reviews): 
+<c:if test="${reviewAverage == 1}">	
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+	</c:if>
+	
+<c:if test="${reviewAverage == 2}">	
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+	</c:if>
+	
+<c:if test="${reviewAverage == 3}">	
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+	</c:if>
+	
+<c:if test="${reviewAverage == 4}">	
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+	</c:if>
+	
+<c:if test="${reviewAverage == 5}">	
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+	</c:if>
+	<br>
+	<br>
+	<p> ${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip } </p>
+	<p>  ${host.description} </p>
+	
+	
+	
+	
 	
 	
 	
