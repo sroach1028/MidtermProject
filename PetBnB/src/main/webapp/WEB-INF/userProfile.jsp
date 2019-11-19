@@ -38,6 +38,9 @@
 					<h2>${user.username}</h2>
 					<h2>${user.email }</h2>
 				</div>
+				<br>
+				<iframe src="http://maps.google.com/maps?q=${user.address}&z=15&output=embed" width="600" height="400"
+				frameborder="0" style="border:0"></iframe>
 
 				<div class="resultsSingle">
 					<table class="table">
@@ -64,6 +67,10 @@
 						<h2>${sessionUser.username}</h2>
 						<h2>${sessionUser.email }</h2>
 					</div>
+					
+					<iframe src="http://maps.google.com/maps?q=${sessionUser.address}&z=15&output=embed" width="600" height="400"
+				frameborder="0" style="border:0"></iframe>
+				
 					<div class="resultsSingle">
 						<table class="table">
 							<tr>
