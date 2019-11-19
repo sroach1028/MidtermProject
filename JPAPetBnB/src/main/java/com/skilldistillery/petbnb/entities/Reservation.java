@@ -1,5 +1,8 @@
 package com.skilldistillery.petbnb.entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -81,6 +84,12 @@ public class Reservation {
 	}
 
 	public Date getOpenDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.openDate = sdf.parse(sdf.format(this.openDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		return openDate;
 	}
 
