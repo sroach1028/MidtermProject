@@ -264,9 +264,13 @@ public class PettrDAOImpl implements PettrDAO {
 	
 	@Override
 	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId, int hostId) {
-		
+		Pet p = em.find(Pet.class, petId);
+		System.out.println(p.getUser().getHost());
 		review.setPet(em.find(Pet.class, petId));
-		review.setReservation(em.find(Reservation.class, reservationId));
+		Reservation r = em.find(Reservation.class, reservationId);
+		System.out.println(r.getHost());
+		r.setHost(em.find(Host.class, hostId));
+		review.setReservation(r);
 		em.persist(review);
 		em.find(Pet.class, petId).addReviewOfPet(review);
 		em.flush();
