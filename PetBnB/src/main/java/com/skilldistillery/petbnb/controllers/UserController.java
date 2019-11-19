@@ -178,7 +178,11 @@ public class UserController {
 	@RequestMapping(path="goToHostPage.do", method = RequestMethod.GET)
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("host", pettrDAO.getHostById(hostId));
+		Host host = pettrDAO.getHostById(hostId);
+		int listSize = host.getReviewsOfHost().size();
+		mv.addObject("listSize", listSize);
+		mv.addObject("reviewAverage", pettrDAO.getAverageOfHostReviewRatings(host));
+		mv.addObject("host", host);
 		mv.setViewName("hostPage");
 		return mv;
 	}

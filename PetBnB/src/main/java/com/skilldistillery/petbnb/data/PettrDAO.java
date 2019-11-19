@@ -6,7 +6,6 @@ import com.skilldistillery.petbnb.entities.Host;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
-import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.User;
 
 public interface PettrDAO {
@@ -43,8 +42,6 @@ public interface PettrDAO {
 
 	List<HostService> getAllServices();
 
-	int getAverageOfHostReviewRatings(List<ReviewOfHost> reviewsOfHost);
-	
 	public Host getHostById(int hostId) ;
 
 	Reservation findReservationById (int rid);
@@ -52,4 +49,6 @@ public interface PettrDAO {
 	Pet addPetImage(int petId, String url);
 
 	Reservation createReservation(int petId, int hostId, int serviceId);
+
+	Object getAverageOfHostReviewRatings(Host host);
 }

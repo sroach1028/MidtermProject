@@ -185,7 +185,8 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
-	public int getAverageOfHostReviewRatings(List<ReviewOfHost> reviewsOfHost) {
+	public Object getAverageOfHostReviewRatings(Host host) {
+		List<ReviewOfHost> reviewsOfHost = host.getReviewsOfHost();
 		int currentSum = 0;
 		int average = 0;
 		for (int i = 0; i < reviewsOfHost.size() ; i++) {
