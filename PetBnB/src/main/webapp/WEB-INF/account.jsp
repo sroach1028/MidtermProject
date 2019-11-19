@@ -45,9 +45,11 @@
 						<c:forEach items="${sessionUser.pets}" var="pet">
 							<li class="list-group-item">
 								<h3>
-									<a href="getUser.do?petId=${pet.id}">${pet.name } the ${pet.petType }</a>
+									<a href="toPetProfile.do?petId=${pet.id}">${pet.name } the ${pet.petType }</a>
 								</h3>
-								<h2>Reservations</h2>
+								<h2>
+								<a href="reservationHistory.do?petId=${pet.id}"> View Past Reservations</a> 
+								</h2>
 								<c:forEach items="${pet.reservations }" var="reservation">
 								<h3><a href="showReservation.do?resId=${reservation.id}">${reservation.openDate } - ${reservation.closeDate}</a>
 								</h3>
