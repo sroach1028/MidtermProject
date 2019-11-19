@@ -229,11 +229,13 @@ public class PettrDAOImpl implements PettrDAO {
 		Reservation reservation = new Reservation();
 		reservation.setPet(pet);
 		reservation.setHost(host);
+		
 		reservation.setOpenDate(openDate);
 		reservation.setCloseDate(closeDate);
 		em.persist(reservation);
 		em.flush();
 		return reservation;
 	}
+
 
 }
