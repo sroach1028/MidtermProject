@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class User {
 
@@ -43,7 +46,8 @@ public class User {
 	@OneToOne(mappedBy = "user")
 	private Host host;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Pet> pets;
 	
 	@Column(name = "image_url")

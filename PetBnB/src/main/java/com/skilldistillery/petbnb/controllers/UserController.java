@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.User;
@@ -62,6 +63,12 @@ public class UserController {
 		User user = pettrDAO.findUserById(userId);
 
 		mv.addObject("user", user);
+		mv.setViewName("userProfile");
+		return mv;
+	}
+	@RequestMapping(path = "toUserProfile.do", method = RequestMethod.GET)
+	public ModelAndView toUserProfile(@RequestParam("id") int userId) {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("userProfile");
 		return mv;
 	}
@@ -185,6 +192,13 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.getHostById(hostId);
 		int listSize = host.getReviewsOfHost().size();
+		List<HostImage> hostImages = host.getHostImages();
+		String image1 = hostImages.get(0).getUrl();
+		String image2 = hostImages.get(1).getUrl();
+		String image3 = hostImages.get(2).getUrl();
+		mv.addObject("image1", image1);
+		mv.addObject("image2", image2);
+		mv.addObject("image3", image3);
 		mv.addObject("listSize", listSize);
 		mv.addObject("reviewAverage", pettrDAO.getAverageOfHostReviewRatings(host));
 		mv.addObject("host", host);
