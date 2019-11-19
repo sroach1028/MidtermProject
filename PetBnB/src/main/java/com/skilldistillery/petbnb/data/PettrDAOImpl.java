@@ -2,7 +2,6 @@
 package com.skilldistillery.petbnb.data;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,6 +16,7 @@ import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.PetImage;
 import com.skilldistillery.petbnb.entities.Reservation;
 import com.skilldistillery.petbnb.entities.ReviewOfHost;
+import com.skilldistillery.petbnb.entities.ReviewOfPet;
 import com.skilldistillery.petbnb.entities.User;
 
 @Transactional
@@ -205,6 +205,18 @@ public class PettrDAOImpl implements PettrDAO {
 			currentSum += reviewsOfHost.get(i).getRating();
 		}
 		average = currentSum / reviewsOfHost.size();
+		return average;
+	}
+	
+	@Override
+	public Object getAverageOfPetReviewRatings(Pet pet) {
+		List<ReviewOfPet> reviewsOfPet = pet.getReviewsOfPet();
+		int currentSum = 0;
+		int average = 0;
+		for (int i = 0; i < reviewsOfPet.size(); i++) {
+			currentSum += reviewsOfPet.get(i).getRating();
+		}
+		average = currentSum / reviewsOfPet.size();
 		return average;
 	}
 
