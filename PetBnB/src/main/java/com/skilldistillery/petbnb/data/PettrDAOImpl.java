@@ -1,4 +1,4 @@
-  
+
 package com.skilldistillery.petbnb.data;
 
 import java.time.LocalDate;
@@ -117,6 +117,13 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
+	public List<Host> searchHostByService(int serviceId) {
+		String query = "SELECT h FROM Host f JOIN host_service hs ON h.id = hs.host_id WHERE hs.service_id = :serviceId";
+		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
+		return hosts;
+	}
+
+	@Override
 	public Host becomeHost(int id) {
 		Host host = new Host();
 		host.setUser(em.find(User.class, id));
@@ -150,7 +157,7 @@ public class PettrDAOImpl implements PettrDAO {
 		Host host = em.find(Host.class, hostId);
 //		List<HostService> addingServices = new ArrayList<>();
 
-		for (int i=0; i < host.getServices().size(); i++) {
+		for (int i = 0; i < host.getServices().size(); i++) {
 			host.removeService(host.getServices().get(i--));
 		}
 		for (int i : selections) {
@@ -168,17 +175,17 @@ public class PettrDAOImpl implements PettrDAO {
 //		String query = "SELECT AVG(f.rentalRate) FROM Film f WHERE f.id < 10";
 //		double average = em.createQuery(query, Double.class).getSingleResult();
 		Host host = em.find(Host.class, hostId);
-		double average = (host.getReviewsOfHost().get(hostId).getRating()/ host.getReviewsOfHost().size());
+		double average = (host.getReviewsOfHost().get(hostId).getRating() / host.getReviewsOfHost().size());
 		return average;
 	}
 
 	@Override
 	public double findPetAvgRatingById(int petId) {
 		Pet pet = em.find(Pet.class, petId);
-		double average = (pet.getReviewsOfPet().get(petId).getRating()/ pet.getReviewsOfPet().size());
+		double average = (pet.getReviewsOfPet().get(petId).getRating() / pet.getReviewsOfPet().size());
 		return average;
 	}
-    
+
 	@Override
 	public List<HostService> getAllServices() {
 		String query = "Select service from HostService service";
@@ -191,19 +198,19 @@ public class PettrDAOImpl implements PettrDAO {
 		List<ReviewOfHost> reviewsOfHost = host.getReviewsOfHost();
 		int currentSum = 0;
 		int average = 0;
-		for (int i = 0; i < reviewsOfHost.size() ; i++) {
+		for (int i = 0; i < reviewsOfHost.size(); i++) {
 			currentSum += reviewsOfHost.get(i).getRating();
 		}
 		average = currentSum / reviewsOfHost.size();
 		return average;
 	}
-	
+
 	@Override
 	public Host getHostById(int hostId) {
 		Host host = em.find(Host.class, hostId);
 		return host;
 	}
-	
+
 	public Reservation findReservationById(int id) {
 		return em.find(Reservation.class, id);
 //		return em.find(Host.class, hostId);
@@ -211,31 +218,31 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPetImage(int petId, String url) {
-	  Pet pet = em.find(Pet.class, petId);
-	  PetImage image = new PetImage();
-	  image.setUrl(url);
-	  image.setPet(pet);
-	  em.persist(image);
-	  pet.addPetImage(image);
-	  em.persist(pet);
-	  em.flush();
-	  return pet;
+		Pet pet = em.find(Pet.class, petId);
+		PetImage image = new PetImage();
+		image.setUrl(url);
+		image.setPet(pet);
+		em.persist(image);
+		pet.addPetImage(image);
+		em.persist(pet);
+		em.flush();
+		return pet;
 	}
 
 	@Override
-	public Reservation createReservation(int petId, int hostId, int serviceId, LocalDate openDate, LocalDate closeDate) {
+	public Reservation createReservation(int petId, int hostId, int serviceId, LocalDate openDate,
+			LocalDate closeDate) {
 		Pet pet = em.find(Pet.class, petId);
 		Host host = em.find(Host.class, hostId);
 		Reservation reservation = new Reservation();
 		reservation.setPet(pet);
 		reservation.setHost(host);
-		
+
 		reservation.setOpenDate(openDate);
 		reservation.setCloseDate(closeDate);
 		em.persist(reservation);
 		em.flush();
 		return reservation;
 	}
-
 
 }

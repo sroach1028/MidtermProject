@@ -149,6 +149,7 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
+	
 
 	@RequestMapping(path = "becomeHost.do", method = RequestMethod.GET)
 	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
