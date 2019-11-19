@@ -1,5 +1,6 @@
 package com.skilldistillery.petbnb.data;
 
+import java.util.Date;
 import java.util.List;
 
 import com.skilldistillery.petbnb.entities.Host;
@@ -51,5 +52,5 @@ public interface PettrDAO {
 
 	Pet addPetImage(int petId, String url);
 
-	Reservation createReservation(int petId, int hostId, int serviceId);
+	Reservation createReservation(int petId, int hostId, int serviceId, Date openDate, Date closeDate);
 }

@@ -1,6 +1,7 @@
 
 package com.skilldistillery.petbnb.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -174,8 +175,8 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
-	
-	@RequestMapping(path="goToHostPage.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "goToHostPage.do", method = RequestMethod.GET)
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("host", pettrDAO.getHostById(hostId));
@@ -183,14 +184,17 @@ public class UserController {
 		return mv;
 	}
 
-//	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
-//	public ModelAndView getReservation(@RequestParam("rid") int rid) {
-//		ModelAndView mv = new ModelAndView();
-//		return mv;
-//	}
+	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
+	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("reservation", pettrDAO.findReservationById(rid));
+		mv.setViewName("viewReservation");
+		return mv;
+	}
 
 	@RequestMapping(path = "goToReservation.do")
-	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId,
+			@RequestParam("serviceId") int serviceId) {
 		ModelAndView mv = new ModelAndView();
 		Reservation reservation = new Reservation();
 		mv.addObject("reservation", reservation);
@@ -199,14 +203,16 @@ public class UserController {
 		mv.setViewName("makeReservation");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "createReservation.do")
-	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId,
+			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") Date openDate,
+			@RequestParam("closeDate") Date closeDate) {
 		ModelAndView mv = new ModelAndView();
-		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId);
+		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);
 		mv.setViewName("viewReservation");
 		return mv;
 	}
-	
+
 }

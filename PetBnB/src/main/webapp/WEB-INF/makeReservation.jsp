@@ -21,12 +21,20 @@
 <body>
 	<div class="resultsSingle">
 		<table class="table">
-			<th>Select for pet the service</th>
 			<c:forEach items="${sessionUser.pets }" var="pet">
 				<c:if test="${pet.active == true}">
+					<form action="createReservation.do">
+						<th>Select for pet the service</th>
 					<tr>
-						<td><a href="createReservation.do?petId=${pet.id}&hostId=${hostId}&serviceId=${serviceId}" class="btTxt submit">${pet.name }</a></td>
+						<td>Open Date: <input type="date" name="openDate" /></td>
+						<td>Close Date: <input type="date" name="closeDate" /></td>
 					</tr>
+					<input type="hidden" name="petId" value=${pet.id } />
+					<input type="hidden" name="hostId" value=${hostId } />
+					<input type="hidden" name="serviceId" value=${serviceId } />
+					<input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
+						value="Reserve for ${pet.name }" />
+					</form>
 				</c:if>
 			</c:forEach>
 		</table>
