@@ -26,8 +26,8 @@
 					<form action="createReservation.do">
 						<th>Select for pet the service</th>
 					<tr>
-						<td>Open Date: <input type="text" name="openDate" /></td>
-						<td>Close Date: <input type="text" name="closeDate" /></td>
+						<td>Open Date: <input type="date" name="openDate" /></td>
+						<td>Close Date: <input type="date" name="closeDate" /></td>
 					</tr>
 					<input type="hidden" name="petId" value=${pet.id } />
 					<input type="hidden" name="hostId" value=${hostId } />

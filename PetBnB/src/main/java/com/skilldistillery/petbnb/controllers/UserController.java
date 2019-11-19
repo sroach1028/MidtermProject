@@ -8,7 +8,10 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,6 +63,12 @@ public class UserController {
 		User user = pettrDAO.findUserById(userId);
 
 		mv.addObject("user", user);
+		mv.setViewName("userProfile");
+		return mv;
+	}
+	@RequestMapping(path = "toUserProfile.do", method = RequestMethod.GET)
+	public ModelAndView toUserProfile(@RequestParam("id") int userId) {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("userProfile");
 		return mv;
 	}
@@ -147,6 +156,16 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
+	
+	@RequestMapping(path = "searchService.do")
+	public ModelAndView searchHost(@RequestParam("serviceId") int serviceId) {
+		ModelAndView mv = new ModelAndView();
+		List<Host> hosts = pettrDAO.searchHostByService(serviceId);
+		mv.addObject("hosts", hosts);
+		mv.setViewName("searchResults");
+		return mv;
+	}
+	
 
 	@RequestMapping(path = "becomeHost.do", method = RequestMethod.GET)
 	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
@@ -219,8 +238,8 @@ public class UserController {
 
 	@RequestMapping(path = "createReservation.do")
 	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId,
-			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") LocalDate openDate,
-			@RequestParam("closeDate") LocalDate closeDate) {
+			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") @DateTimeFormat(iso = ISO.DATE) LocalDate openDate,
+			@RequestParam("closeDate") @DateTimeFormat(iso = ISO.DATE)  LocalDate closeDate) {
 		ModelAndView mv = new ModelAndView();
 		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);

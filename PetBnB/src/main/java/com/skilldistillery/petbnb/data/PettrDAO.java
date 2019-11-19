@@ -27,6 +27,8 @@ public interface PettrDAO {
 	
 	List<Host> searchHostByLocation (String city, String state);
 
+	List<Host> searchHostByService (int serviceId);
+	
 	Host becomeHost(int id);
 
 //	Host updateHost(Host host, int hostId);
