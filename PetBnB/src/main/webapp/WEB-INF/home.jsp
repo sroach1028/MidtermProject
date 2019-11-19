@@ -28,12 +28,13 @@
 </head>
 <body>
 
-<form action="findReservationById.do" method="GET">
-		<label style="font-family: Courier; color: Green;">Reservation by ID:</label> 
-		<input type="number" name="rid" /> <input type="submit" value="Show Reservation" />
-</form>
-	
-	
+	<form action="findReservationById.do" method="GET">
+		<label style="font-family: Courier; color: Green;">Reservation
+			by ID:</label> <input type="number" name="rid" /> <input type="submit"
+			value="Show Reservation" />
+	</form>
+
+
 	<div
 		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 		<div class="container">
@@ -44,15 +45,14 @@
 
 			<div class="mt-4">
 				<form action="searchHost.do">
-					<input type="text" name="city" />City<br> <select
-						name="state">State
-						<option value="null" selected>--</option>
+					<input type="text" name="city" placeholder="City" /> 
+					<select class="custom-select" name="state" style="width: 150px;">
+						<option selected="">State</option>
 						<option value="CO">CO</option>
 						<option value="WY">WY</option>
 						<option value="NM">NM</option>
 						<option value="KS">KS</option>
-					</select><br> <input type="submit"
-						class="btn btn-danger btn-lg m-2 btn-wide"
+					</select> <input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
 						value="Search by location" />
 				</form>
 
