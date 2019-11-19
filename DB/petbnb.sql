@@ -565,3 +565,15 @@ INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (8, 10);
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `host_image`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `PetBnB`;
+INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (1, 'https://i.imgur.com/WsP47SO.png', 1);
+INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (2, 'https://i.imgur.com/VQuV3rI.png', 1);
+INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (3, 'https://i.imgur.com/8e4A2FO.png', 1);
+
+COMMIT;
+

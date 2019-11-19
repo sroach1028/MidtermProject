@@ -17,17 +17,27 @@
 .checked {
   color: orange;
 }
+.carousel .item {
+  height: 300px;
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
 </style>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 <title>Host Profile</title>
 </head>
 <body>
-	<p>${host.user.firstName} ${host.user.lastName} </p>
-	<img src="${host.user.imageURL }" height="150" width="150"/>
-	<br>
-	<br>
-	<p>Review Average (out of ${listSize } reviews): </p>
+
+<div class="container">
+  <h1>${host.user.firstName} ${host.user.lastName}</h1>
+  <p>${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</p> 
+ <h4>Review Average (out of ${listSize } reviews): </h4> 
 <c:if test="${reviewAverage == 1}">	
 			<span class="fa fa-star checked"></span>
 			<span class="fa fa-star"></span>
@@ -68,9 +78,51 @@
 			<span class="fa fa-star checked"></span>
 	</c:if>
 	<br>
-	<br>
-	<p> ${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip } </p>
-	<p>  ${host.description} </p>
+	<br>     
+  <p>${host.description} </p>      
+  
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="${host.user.imageURL }" height="245" width="245"/>
+    </div>
+    <div class="col-sm-6">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="width: 450px; height:450px; margin: 0 auto">
+  <div class="carousel-inner">
+  <c:forEach var= "hostImage" items= "${host.hostImages }" varStatus="count">
+    <c:choose>
+    <c:when test="${count.index == 0 }">
+    <div class="carousel-item active">
+      <img src="${hostImage.url }" class="d-block w-100" alt="...">
+    </div>
+    </c:when>
+    <c:otherwise>
+    <div class="carousel-item">
+      <img src="${hostImage.url }" class="d-block w-100" alt="...">
+    </div>
+    </c:otherwise>
+    </c:choose>
+    </c:forEach>
+    
+    <!-- <div class="carousel-item">
+      <img src="https://i.imgur.com/WsP47SO.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.imgur.com/8e4A2FO.png" class="d-block w-100" alt="...">
+    </div> -->
+  
+  
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>    </div>
+  </div>
+</div>
+
 	
 	<iframe src="http://maps.google.com/maps?q=${host.user.address.zip}&z=15&output=embed" width="600" height="400"
 				frameborder="0" style="border:0"></iframe>
@@ -78,59 +130,8 @@
 	
 	
 	
-	
-	
-	
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  Indicators
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-
-
-
- Wrapper for slides
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="${image1 }">
-    </div>
-
-    <div class="item">
-      <img src="${image2 }">
-    </div>
-
-    <div class="item">
-      <img src="${image3 }">
-    </div>
-  </div>
-
-  Left and right controls
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a> 
-</div>
-			<%-- <c:forEach items="${host.images}" var="image">
-				<ul>
-					<li>Rating: ${reviews.rating }</li>
-					<li>Summary: ${reviews.review }</li>
-				</ul>
-			</c:forEach>
-			<h3>List of Reviews</h3>
-			<c:forEach items="${host.reviewsOfHost}" var="reviews">
-				<ul>
-					<li>Rating: ${reviews.rating }</li>
-					<li>Summary: ${reviews.review }</li>
-				</ul>
-			</c:forEach> --%>
-
-			
-	<!-- </di -->v>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
