@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +29,10 @@ public class ReviewOfHost {
 	joinColumns=@JoinColumn(name = "id"),
 	inverseJoinColumns = @JoinColumn(name="host_id"))
 	private Host host;
+	
+	@OneToOne
+	@JoinColumn(name="reservation_id")
+	private Reservation reservation;
 
 
 //	C O N S T R U C T O R S
@@ -81,6 +86,14 @@ public class ReviewOfHost {
 
 	public void setHost(Host host) {
 		this.host = host;
+	}
+
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 
 	@Override

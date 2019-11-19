@@ -35,41 +35,32 @@
 					<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
 				</h1>
 			</div>
-			
-			
 
-		<c:if test="${not empty sessionUser.pets }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<ol class="list-group">
-						<c:forEach items="${sessionUser.pets}" var="pet">
-							<li class="list-group-item">
-								<h3>
-									<a href="getUser.do?petId=${pet.id}">${pet.name } the ${pet.petType }</a>
-								</h3>
-								<h2>Reservations</h2>
-								<c:forEach items="${pet.reservations }" var="reservation">
-								<h3><a href="showReservation.do?resId=${reservation.id}">${reservation.openDate } - ${reservation.closeDate}</a>
-								</h3>
-								</c:forEach>
-								<h2>Reviews</h2>
-								<button type="button" class="collapsible">Show All
-									Reviews</button>
-								<div class="content">
-									<ol class="list-group">
-										<c:forEach items="${pet.reviewsOfPet }" var="review">
 
-											<li class="list-group-item">${review.rating }/5 -->
-												${review.review }</li>
-										</c:forEach>
-									</ol>
-								</div>
-							</li>
-					</ol>
-					</c:forEach>
+
+			<c:if test="${not empty sessionUser.pets }">
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+						<ol class="list-group">
+							<c:forEach items="${sessionUser.pets}" var="pet">
+								<c:if test="${pet.active == true}">
+
+									<li class="list-group-item">
+										<h3>
+											<a href="toPetProfile.do?petId=${pet.id}">${pet.name }
+												the ${pet.petType }</a>
+										</h3>
+										<h2>
+											<a href="reservationHistory.do?petId=${pet.id}"> View
+												Past Reservations</a>
+										</h2>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ol>
+					</div>
 				</div>
-			</div>
-		</c:if>
+			</c:if>
 		</div>
 		<c:if test="${empty sessionHost}">
 

@@ -76,13 +76,14 @@
 											<li class="list-group-item">${service.name }-->
 												${service.rate }</li>
 											<li>
-
+												<c:if test="${not empty sessionUser.pets }">
 												<form action="goToReservation.do" method="GET">
 													<input type="hidden" name="hostId" value="${host.id }">
 													<input type="hidden" name="serviceId"
 														value="${service.id }"> <input type="submit"
 														class="btn btn-outline-light" value="Make Reservation" />
 												</form>
+												</c:if>
 
 											</li>
 										</c:forEach>

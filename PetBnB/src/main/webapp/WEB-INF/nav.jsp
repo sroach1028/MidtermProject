@@ -36,11 +36,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a href="/" class="pl-md-0 p-3 text-light">Home</a> <a
-						href="https://github.com/JesseTrew/MidtermProject/"
-						class="btn btn-primary" target="_blank"> <span class="fab fa-github mr-2"></span>
-						Git
-					</a>
+					<!-- <a href="https://github.com/JesseTrew/MidtermProject/"
+						class="btn btn-primary" target="_blank"> <span
+						class="fab fa-github mr-2"></span> Git
+					</a> --> <a href="/" class="pl-md-0 p-3 text-light">Home</a>
 					<c:if test="${empty sessionUser }">
 						<a href="goLogin.do" class="p-3 text-decoration-none text-light">Login</a>
 						<a href="goRegister.do"
