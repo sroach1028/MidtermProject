@@ -34,7 +34,7 @@ public class PetType {
 	
 	@Override
 	public String toString() {
-		return "PetType [id=" + id + ", type=" + type + "]";
+		return type;
 	}
 
 	public int getId() {

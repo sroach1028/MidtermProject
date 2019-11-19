@@ -35,38 +35,50 @@
 					<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
 				</h1>
 			</div>
+			
+			
 
-			<div class="resultsSingle">
-				<table class="table">
-					<th>List of Pets</th>
-					<c:forEach items="${sessionUser.pets }" var="pet">
-						<c:if test="${pet.active == true}">
-							<tr>
-								<td><a href="getPet.do?petId=${pet.id}"
-									class="btTxt submit">${pet.name }</a></td>
-							</tr>
-											<button type="button" class="collapsible">Show All reviews</button>
-				<div class="content">
+		<c:if test="${not empty sessionUser.pets }">
+			<div class="resultsSingle" style="margin-top: 15px">
+				<div class="col-sm">
 					<ol class="list-group">
-						<c:forEach items="${pet.reviewsOfPet }" var="review">
-							<li class="list-group-item">${review.rating }/5
-								${review.review}</li>
-						</c:forEach>
+						<c:forEach items="${sessionUser.pets}" var="pet">
+							<li class="list-group-item">
+								<h3>
+									<a href="getUser.do?petId=${pet.id}">${pet.name } the ${pet.petType }</a>
+								</h3>
+								<h2>Reservations</h2>
+								<c:forEach items="${pet.reservations }" var="reservation">
+								<h3><a href="showReservation.do?resId=${reservation.id}">${reservation.openDate } - ${reservation.closeDate}</a>
+								</h3>
+								</c:forEach>
+								<h2>Reviews</h2>
+								<button type="button" class="collapsible">Show All
+									Reviews</button>
+								<div class="content">
+									<ol class="list-group">
+										<c:forEach items="${pet.reviewsOfPet }" var="review">
+
+											<li class="list-group-item">${review.rating }/5 -->
+												${review.review }</li>
+										</c:forEach>
+									</ol>
+								</div>
+							</li>
 					</ol>
-				</div>
-						</c:if>
 					</c:forEach>
-				</table>
+				</div>
 			</div>
+		</c:if>
 		</div>
-		<c:if test="${empty sessionHost }">
+		<c:if test="${empty sessionHost}">
 
 			<form action="becomeHost.do" method="GET">
 				<input type="hidden" name="id" value=${sessionUser.id } /> <input
 					type="submit" class="btn btn-outline-light" value="Become a Host" />
 			</form>
 		</c:if>
-				<script>
+		<script>
 			var coll = document.getElementsByClassName("collapsible");
 			var i;
 
