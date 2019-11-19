@@ -91,22 +91,20 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPet(Pet addPet, int userId) {
-		User user = em.find(User.class, userId);
+		addPet.setUser(em.find(User.class, userId));
 		addPet.setActive(true);
-		addPet.setUser(user);
 		em.persist(addPet);
-		user.addPet(addPet);
 		em.flush();
-		return addPet;
+		return em.find(Pet.class, addPet.getId());
 	}
 
 	@Override
-	public User removePetById(int petId) {
-		Pet petRemoved = em.find(Pet.class, petId);
+	public User removePetById(int id) {
+		Pet petRemoved = em.find(Pet.class, id);
 		petRemoved.setActive(false);
 		em.flush();
-		User user = petRemoved.getUser();
-		return user;
+
+		return em.find(User.class, petRemoved.getUser().getId());
 
 	}
 
@@ -120,7 +118,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Host> searchHostByService(int serviceId) {
-
+		
 		String query = "SELECT h FROM Host h JOIN h.services hs WHERE hs.id = :serviceId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
 		return hosts;
@@ -207,18 +205,6 @@ public class PettrDAOImpl implements PettrDAO {
 		average = currentSum / reviewsOfHost.size();
 		return average;
 	}
-	
-	@Override
-	public Object getAverageOfPetReviewRatings(Pet pet) {
-		List<ReviewOfPet> reviewsOfPet = pet.getReviewsOfPet();
-		int currentSum = 0;
-		int average = 0;
-		for (int i = 0; i < reviewsOfPet.size(); i++) {
-			currentSum += reviewsOfPet.get(i).getRating();
-		}
-		average = currentSum / reviewsOfPet.size();
-		return average;
-	}
 
 	@Override
 	public Host getHostById(int hostId) {
@@ -257,6 +243,40 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(reservation);
 		em.flush();
 		return reservation;
+	}
+	
+	@Override
+	public ReviewOfHost writeHostReview(int hostId, int reservationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId) {
+		
+		review.setPet(em.find(Pet.class, petId));
+		review.setReservation(em.find(Reservation.class, reservationId));
+		em.persist(review);
+		em.find(Pet.class, petId).addReviewOfPet(review);
+		em.flush();
+		return review;
+	}
+	
+	@Override
+	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId, int hostId) {
+		
+		review.setPet(em.find(Pet.class, petId));
+		review.setReservation(em.find(Reservation.class, reservationId));
+		em.persist(review);
+		em.find(Pet.class, petId).addReviewOfPet(review);
+		em.flush();
+		return review;
+	}
+
+	@Override
+	public Object getAverageOfPetReviewRatings(Pet pet) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
