@@ -49,11 +49,7 @@ public interface PettrDAO {
 
 	Pet addPetImage(int petId, String url);
 
-<<<<<<< HEAD
 	Reservation createReservation(int petId, int hostId, int serviceId, Date openDate, Date closeDate);
-=======
-	Reservation createReservation(int petId, int hostId, int serviceId);
 
 	Object getAverageOfHostReviewRatings(Host host);
->>>>>>> 78338d3babceb578e21b5c8f63aa2e00155ef3de
 }
