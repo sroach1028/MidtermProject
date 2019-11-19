@@ -1,6 +1,7 @@
   
 package com.skilldistillery.petbnb.data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -222,7 +223,7 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
-	public Reservation createReservation(int petId, int hostId, int serviceId, Date openDate, Date closeDate) {
+	public Reservation createReservation(int petId, int hostId, int serviceId, LocalDate openDate, LocalDate closeDate) {
 		Pet pet = em.find(Pet.class, petId);
 		Host host = em.find(Host.class, hostId);
 		Reservation reservation = new Reservation();

@@ -1,8 +1,6 @@
 package com.skilldistillery.petbnb.entities;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -32,10 +30,10 @@ public class Reservation {
 	private Pet pet;
 
 	@Column(name = "open_date")
-	private Date openDate;
+	private LocalDate openDate;
 
 	@Column(name = "close_date")
-	private Date closeDate;
+	private LocalDate closeDate;
 
 //	C O N S T R U C T O R S
 
@@ -43,7 +41,7 @@ public class Reservation {
 		super();
 	}
 	
-	public Reservation(int id, Host host, Pet pet, Date openDate, Date closeDate) {
+	public Reservation(int id, Host host, Pet pet, LocalDate openDate, LocalDate closeDate) {
 		super();
 		this.id = id;
 		this.host = host;
@@ -83,25 +81,19 @@ public class Reservation {
 		this.pet = pet;
 	}
 
-	public Date getOpenDate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			this.openDate = sdf.parse(sdf.format(this.openDate));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	public LocalDate getOpenDate() {
 		return openDate;
 	}
 
-	public void setOpenDate(Date openDate) {
+	public void setOpenDate(LocalDate openDate) {
 		this.openDate = openDate;
 	}
 
-	public Date getCloseDate() {
+	public LocalDate getCloseDate() {
 		return closeDate;
 	}
 
-	public void setCloseDate(Date closeDate) {
+	public void setCloseDate(LocalDate closeDate) {
 		this.closeDate = closeDate;
 	}
 

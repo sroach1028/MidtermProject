@@ -1,6 +1,6 @@
 package com.skilldistillery.petbnb.data;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.skilldistillery.petbnb.entities.Host;
@@ -49,7 +49,7 @@ public interface PettrDAO {
 
 	Pet addPetImage(int petId, String url);
 
-	Reservation createReservation(int petId, int hostId, int serviceId, Date openDate, Date closeDate);
+	Reservation createReservation(int petId, int hostId, int serviceId, LocalDate openDate, LocalDate closeDate);
 
 	Object getAverageOfHostReviewRatings(Host host);
 }
