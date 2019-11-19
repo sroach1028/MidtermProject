@@ -207,14 +207,15 @@ public class UserController {
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.getHostById(hostId);
+		System.out.println(host.getHostImages());
 		int listSize = host.getReviewsOfHost().size();
 		List<HostImage> hostImages = host.getHostImages();
-		String image1 = hostImages.get(0).getUrl();
-		String image2 = hostImages.get(1).getUrl();
-		String image3 = hostImages.get(2).getUrl();
-		mv.addObject("image1", image1);
-		mv.addObject("image2", image2);
-		mv.addObject("image3", image3);
+//		String image1 = hostImages.get(0).getUrl();
+//		String image2 = hostImages.get(1).getUrl();
+//		String image3 = hostImages.get(2).getUrl();
+//		mv.addObject("image1", image1);
+//		mv.addObject("image2", image2);
+//		mv.addObject("image3", image3);
 		mv.addObject("listSize", listSize);
 		mv.addObject("reviewAverage", pettrDAO.getAverageOfHostReviewRatings(host));
 		mv.addObject("host", host);

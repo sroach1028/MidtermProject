@@ -214,7 +214,6 @@ public class PettrDAOImpl implements PettrDAO {
 
 	public Reservation findReservationById(int id) {
 		return em.find(Reservation.class, id);
-//		return em.find(Host.class, hostId);
 	}
 
 	@Override

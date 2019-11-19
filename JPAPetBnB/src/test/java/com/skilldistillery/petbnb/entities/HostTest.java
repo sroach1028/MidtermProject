@@ -103,4 +103,12 @@ class HostTest {
 		host.removeService(newService);
 		assertEquals(5, host.getServices().size());
 	}
+	
+	@Test
+	@DisplayName("Host relationship with HostImage")
+	void test8() {
+		assertNotNull(host.getHostImages());
+		assertTrue(host.getHostImages().size() > 0);
+		
+	}
 }

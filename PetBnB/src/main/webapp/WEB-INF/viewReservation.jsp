@@ -33,7 +33,7 @@
 			<li>Close Date: ${reservation.closeDate}</li>
 		</ul>
 		
-		<iframe src="http://maps.google.com/maps?q=${reservation.host2..user.address}&z=15&output=embed" width="600" height="400"
+		<iframe src="http://maps.google.com/maps?q=${reservation.host.user.address}&z=15&output=embed" width="600" height="400"
 				frameborder="0" style="border:0"></iframe>
 </body>
 </html>
