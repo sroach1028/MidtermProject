@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.PetImage;
@@ -171,6 +172,23 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(host);
 		em.flush();
 		return host;
+	}
+	
+	@Override
+	public void addDescriptiontoHostById(String description, int hostId) {
+		Host host = em.find(Host.class, hostId);
+		host.setDescription(description);
+		em.persist(host);
+		em.flush();
+	}
+	
+	@Override
+	public void addImagetoHostById(String imageURL, int hostId) {
+		Host host = em.find(Host.class, hostId);
+		HostImage hostImage = new HostImage(imageURL, host);
+		host.addImage(hostImage);
+		em.persist(host);
+		em.flush();
 	}
 
 	@Override

@@ -56,4 +56,8 @@ public interface PettrDAO {
 	Object getAverageOfHostReviewRatings(Host host);
 	
 	Object getAverageOfPetReviewRatings(Pet pet);
+
+	void addDescriptiontoHostById(String description, int hostId);
+
+	void addImagetoHostById(String imageURL, int hostId);
 }

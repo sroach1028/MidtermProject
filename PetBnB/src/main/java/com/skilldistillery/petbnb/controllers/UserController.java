@@ -198,13 +198,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "updateHost.do", method = RequestMethod.GET)
-	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId,
+	public ModelAndView updateHost(@RequestParam("imageURL") String imageURL, @RequestParam("selections") int[] selections, @RequestParam("description") String description,@RequestParam("hostId") int hostId,
 			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.addServicestoHostById(selections, hostId);
+		pettrDAO.addDescriptiontoHostById(description, hostId);
+		pettrDAO.addImagetoHostById(imageURL, hostId);
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
-		mv.setViewName("userProfile");
+		mv.setViewName("hostPage");
 		return mv;
 	}
 

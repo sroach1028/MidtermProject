@@ -159,8 +159,8 @@
 				</div>
 				
 				<div>
-				<c:if test=${not empty sessionHost }>
-				<c:if test=${host.id = sessionHost.id}>
+				<c:if test="${not empty sessionHost }">
+				<c:if test="${host.id == sessionHost.id}">
 				
 				</c:if>
 				</c:if>
