@@ -1,13 +1,17 @@
 
 package com.skilldistillery.petbnb.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -180,8 +184,8 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
-	
-	@RequestMapping(path="goToHostPage.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "goToHostPage.do", method = RequestMethod.GET)
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.getHostById(hostId);
@@ -193,14 +197,17 @@ public class UserController {
 		return mv;
 	}
 
-//	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
-//	public ModelAndView getReservation(@RequestParam("rid") int rid) {
-//		ModelAndView mv = new ModelAndView();
-//		return mv;
-//	}
+	@RequestMapping(path = "findReservationById.do", method = RequestMethod.GET)
+	public ModelAndView getReservation(@RequestParam("rid") int rid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("reservation", pettrDAO.findReservationById(rid));
+		mv.setViewName("viewReservation");
+		return mv;
+	}
 
 	@RequestMapping(path = "goToReservation.do")
-	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+	public ModelAndView goToAddReservation(@RequestParam("hostId") int hostId,
+			@RequestParam("serviceId") int serviceId) {
 		ModelAndView mv = new ModelAndView();
 		Reservation reservation = new Reservation();
 		mv.addObject("reservation", reservation);
@@ -209,14 +216,16 @@ public class UserController {
 		mv.setViewName("makeReservation");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "createReservation.do")
-	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId, @RequestParam("serviceId") int serviceId) {
+	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId,
+			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") @DateTimeFormat(iso = ISO.DATE) LocalDate openDate,
+			@RequestParam("closeDate") @DateTimeFormat(iso = ISO.DATE)  LocalDate closeDate) {
 		ModelAndView mv = new ModelAndView();
-		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId);
+		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);
 		mv.setViewName("viewReservation");
 		return mv;
 	}
-	
+
 }
