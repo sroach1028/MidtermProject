@@ -50,22 +50,6 @@
 								<h2>
 								<a href="reservationHistory.do?petId=${pet.id}"> View Past Reservations</a> 
 								</h2>
-								<c:forEach items="${pet.reservations }" var="reservation">
-								<h3><a href="showReservation.do?resId=${reservation.id}">${reservation.openDate } - ${reservation.closeDate}</a>
-								</h3>
-								</c:forEach>
-								<h2>Reviews</h2>
-								<button type="button" class="collapsible">Show All
-									Reviews</button>
-								<div class="content">
-									<ol class="list-group">
-										<c:forEach items="${pet.reviewsOfPet }" var="review">
-
-											<li class="list-group-item">${review.rating }/5 -->
-												${review.review }</li>
-										</c:forEach>
-									</ol>
-								</div>
 							</li>
 					</ol>
 					</c:forEach>
