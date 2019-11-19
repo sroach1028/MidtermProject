@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Host {
 
@@ -36,6 +39,7 @@ public class Host {
 	private List<ReviewOfHost> reviewsOfHost;
 
 	@ManyToMany(mappedBy="hosts")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<HostService> services;
 	
 	@OneToMany(mappedBy = "host" )

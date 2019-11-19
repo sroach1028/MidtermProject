@@ -65,6 +65,12 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
+	@RequestMapping(path = "toUserProfile.do", method = RequestMethod.GET)
+	public ModelAndView toUserProfile(@RequestParam("id") int userId) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("userProfile");
+		return mv;
+	}
 
 	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
 	public ModelAndView getAllPets() {
