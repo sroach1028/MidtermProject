@@ -118,7 +118,8 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Host> searchHostByService(int serviceId) {
-		String query = "SELECT h FROM Host f JOIN host_service hs ON h.id = hs.host_id WHERE hs.service_id = :serviceId";
+		
+		String query = "SELECT h FROM Host h JOIN h.services hs WHERE hs.id = :serviceId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
 		return hosts;
 	}
