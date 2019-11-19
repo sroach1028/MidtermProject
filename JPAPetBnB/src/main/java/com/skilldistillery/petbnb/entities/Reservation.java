@@ -82,6 +82,7 @@ public class Reservation {
 	}
 
 	public LocalDate getOpenDate() {
+		
 		return openDate;
 	}
 
