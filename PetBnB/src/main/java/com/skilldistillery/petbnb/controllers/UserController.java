@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
-import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
+import com.skilldistillery.petbnb.entities.ReviewOfHost;
+import com.skilldistillery.petbnb.entities.ReviewOfPet;
 import com.skilldistillery.petbnb.entities.User;
 
 @Controller
@@ -66,12 +66,14 @@ public class UserController {
 		mv.setViewName("userProfile");
 		return mv;
 	}
+
 	@RequestMapping(path = "toUserProfile.do", method = RequestMethod.GET)
 	public ModelAndView toUserProfile(@RequestParam("id") int userId) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("userProfile");
 		return mv;
 	}
+
 	@RequestMapping(path = "toPetProfile.do", method = RequestMethod.GET)
 	public ModelAndView toPetProfile(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
@@ -168,7 +170,7 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "searchService.do")
 	public ModelAndView searchHost(@RequestParam("serviceId") int serviceId) {
 		ModelAndView mv = new ModelAndView();
@@ -177,7 +179,6 @@ public class UserController {
 		mv.setViewName("searchResults");
 		return mv;
 	}
-	
 
 	@RequestMapping(path = "becomeHost.do", method = RequestMethod.GET)
 	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
@@ -244,16 +245,17 @@ public class UserController {
 
 	@RequestMapping(path = "createReservation.do")
 	public ModelAndView createReservation(@RequestParam("petId") int petId, @RequestParam("hostId") int hostId,
-			@RequestParam("serviceId") int serviceId, @RequestParam("openDate") @DateTimeFormat(iso = ISO.DATE) LocalDate openDate,
-			@RequestParam("closeDate") @DateTimeFormat(iso = ISO.DATE)  LocalDate closeDate) {
+			@RequestParam("serviceId") int serviceId,
+			@RequestParam("openDate") @DateTimeFormat(iso = ISO.DATE) LocalDate openDate,
+			@RequestParam("closeDate") @DateTimeFormat(iso = ISO.DATE) LocalDate closeDate) {
 		ModelAndView mv = new ModelAndView();
 		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);
 		mv.setViewName("viewReservation");
 		return mv;
 	}
-	
-	@RequestMapping(path="reservationHistory.do")
+
+	@RequestMapping(path = "reservationHistory.do")
 	public ModelAndView toReservationHistory(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("pet", pettrDAO.findPet(petId));
@@ -268,5 +270,37 @@ public class UserController {
 		mv.setViewName("hostResHistory");
 		return mv;
 	}
+	@RequestMapping(path = "goToCreatePetReview.do")
+	public ModelAndView goToCreatePetReview(@RequestParam("petId") int petId,
+			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
+		ModelAndView mv = new ModelAndView();
+		ReviewOfPet review = new ReviewOfPet();
+		mv.addObject("petId", petId);
+		mv.addObject("hostId", hostId);
+		mv.addObject("reservationId", reservationId);
+		mv.addObject("review", review);
+		mv.setViewName("writePetReview");
+		return mv;
+	}
+
+	@RequestMapping(path = "createPetReview.do")
+	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("petId") int petId,
+			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
+		ModelAndView mv = new ModelAndView();
+		ReviewOfPet petReview = pettrDAO.writePetReview(review, petId, reservationId, hostId);
+		mv.addObject("petReview", petReview);
+		mv.setViewName("account");
+		return mv;
+	}
+
+//	@RequestMapping(path = "createReviewHost.do")
+//	public ModelAndView createHostReview(@RequestParam("petId") int petId,
+//			@RequestParam("reservationId") int reservationId) {
+//		ModelAndView mv = new ModelAndView();
+//		ReviewOfHost hostReview = pettrDAO.writeHostReview(petId, reservationId);
+//		mv.addObject("hostReview", hostReview);
+//		mv.setViewName("writeReview");
+//		return mv;
+//	}
 
 }
