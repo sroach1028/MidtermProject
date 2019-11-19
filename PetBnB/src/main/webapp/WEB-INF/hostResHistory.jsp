@@ -16,37 +16,38 @@
 <title>Reservation History</title>
 </head>
 <body>
+
 	<div>
-		<c:if test="${not empty pet.reservations }">
-			<c:forEach items="${pet.reservations }" var="reservation">
+		<c:if test="${not empty host }">
+			<c:forEach items="${host.reservations }" var="reservation">
 				<ol>
 					<li><h3>${reservation.openDate }-
 							${reservation.closeDate}</h3>
-						<br> <c:if test="${reservation.petReview.rating == 1}">
+						<br> <c:if test="${reservation.hostReview.rating == 1}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						</c:if> <c:if test="${reservation.petReview.rating == 2}">
+						</c:if> <c:if test="${reservation.hostReview.rating == 2}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						</c:if> <c:if test="${reservation.petReview.rating == 3}">
+						</c:if> <c:if test="${reservation.hostReview.rating == 3}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						</c:if> <c:if test="${reservation.petReview.rating == 4}">
+						</c:if> <c:if test="${reservation.hostReview.rating == 4}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star"></span>
-						</c:if> <c:if test="${reservation.petReview.rating == 5}">
+						</c:if> <c:if test="${reservation.hostReview.rating == 5}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
@@ -56,8 +57,9 @@
 				</ol>
 			</c:forEach>
 		</c:if>
-
-
 	</div>
+	<c:if test="${empty host.reservations }">
+	<h3>You have no past reservations. Try marketing.</h3>
+	</c:if>
 </body>
 </html>

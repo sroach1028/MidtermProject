@@ -263,6 +263,13 @@ public class UserController {
 		return mv;
 	}
 
+	@RequestMapping(path="hostReservationHistory.do")
+	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("host", pettrDAO.findHostById(hostId));
+		mv.setViewName("hostResHistory");
+		return mv;
+	}
 	@RequestMapping(path = "goToCreatePetReview.do")
 	public ModelAndView goToCreatePetReview(@RequestParam("petId") int petId,
 			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
