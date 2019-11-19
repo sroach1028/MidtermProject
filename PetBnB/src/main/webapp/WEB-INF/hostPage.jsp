@@ -72,7 +72,7 @@
 	<p> ${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip } </p>
 	<p>  ${host.description} </p>
 	
-	<iframe src="http://maps.google.com/maps?q=${host.user.address}&z=15&output=embed" width="600" height="400"
+	<iframe src="http://maps.google.com/maps?q=${host.user.address.zip}&z=15&output=embed" width="600" height="400"
 				frameborder="0" style="border:0"></iframe>
 	
 	
