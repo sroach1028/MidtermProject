@@ -105,7 +105,6 @@
 				
 				<form action="searchService.do">
 					<select class="custom-select" name="serviceId" style="width: 150px;">
-						<option selected="">Service</option>
 						<option value="1">Grooming</option>
 						<option value="2">Custom Meal Making</option>
 						<option value="3">Walking</option>
