@@ -53,6 +53,14 @@
     min-height: 300px;
 }
 
+button:focus {
+    outline: 0;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
 *, ::after, ::before {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box
