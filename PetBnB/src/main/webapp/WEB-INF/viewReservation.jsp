@@ -20,26 +20,22 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
-	<div class="container">
-		<div id="banner" class="jumbotron text-center">
-			<h1>Reservation Details</h1>
+	<div class="jumbotron">
+		<h1 class="display-3 text-center">Boop!</h1>
+		<p class="lead text-center">Your reservation with
+			${reservation.host.user.firstName} ${reservation.host.user.lastName }
+			has been confirmed for ${reservation.openDate}</p>
+		<hr class="my-4 text-center">
+		<p class="lead text-center">Confirmation #000${reservation.id}</p>
+		<p class="lead text-center">
+			<a class="btn btn-danger" href="/" role="button">Return to Home
+				Page </a>
+		</p>
+		<div class="text-center">
+			<iframe
+				src="http://maps.google.com/maps?q=${reservation.host.user.address}&z=15&output=embed"
+				width="600" height="400" frameborder="0" style="border: 0"></iframe>
 		</div>
 	</div>
-	
-	<a class="btn btn-dark" href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"
-						role="button">Write a pet Review</a>
-	<a class="btn btn-dark" href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"
-						role="button">Write a host Review</a>
-	
-		<ul>
-			<li><strong>ID: ${reservation.id } </strong></li>
-			<li>Pet Name: ${reservation.pet.name}</li>
-			<li>Host Name: ${reservation.host.user.firstName} ${reservation.host.user.lastName }</li>
-			<li>Open Date: ${reservation.openDate}</li>
-			<li>Close Date: ${reservation.closeDate}</li>
-		</ul>
-		
-		<iframe src="http://maps.google.com/maps?q=${reservation.host.user.address}&z=15&output=embed" width="600" height="400"
-				frameborder="0" style="border:0"></iframe>
 </body>
 </html>
