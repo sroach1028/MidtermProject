@@ -39,7 +39,7 @@
 					<img src="${user.imageURL }">
 				</div>
 				<br>
-				<p>${user.address.city }, ${user.address.zip }</p>
+				<p>${user.address.city },${user.address.zip }</p>
 
 				<div class="resultsSingle">
 					<table class="table">
@@ -56,20 +56,31 @@
 				</div>
 			</div>
 		</c:if>
-			<c:if test="${sessionUser.id == user.id}">
-					<form action="goToAddPet.do" method="GET">
-						<input type="submit" class="btn btn-outline-light" value="Add Pet" />
-					</form>
+		<c:if test="${sessionUser.id == user.id}">
+			<form action="goToAddPet.do" method="GET">
+				<input type="submit" class="btn btn-dark" value="Add Pet" />
+			</form>
 
-			</c:if>
-				</div>
-			
-			<c:if test="${sessionUser.id == user.id}">
-
-				<form action="goAccountPage.do" method="GET">
-					<input type="hidden" name="id" value=${sessionUser.id } /> <input
-						type="submit" class="btn btn-dark" value="Account Details" />
+			<form action="goAccountPage.do" method="GET">
+				<input type="hidden" name="id" value=${sessionUser.id } /> <input
+					type="submit" class="btn btn-dark" value="Account Details" />
+			</form>
+		
+			<c:if test="${not empty sessionHost}">
+				<form action="goToHostPage.do" method="GET">
+					<input type="hidden" name="hostId" value=${sessionHost.id } /> 
+					<input type="submit" class="btn btn-dark" value="Host Details" />
 				</form>
 			</c:if>
+
+		</c:if>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 </body>
 </html>

@@ -31,8 +31,8 @@
 		
 		<br>
 
-		<textarea id="about" name="description" rows="5" cols="33" default="${oldHost.description }"
-			placeholder="${oldHost.description}" value="${oldHost.description}"></textarea>
+		<textarea id="about" name="description" rows="5" cols="33""
+			value="${oldHost.description}"></textarea>
 		
 		<br>
 		
@@ -41,7 +41,7 @@
 		</c:forEach>
 	
   		<input type="hidden" name="hostId" value="${sessionHost.id}" />
-  		<input type="submit" value="Submit">
+  		<input type="submit" class="btn btn-dark" value="Submit">
   		</form>
 	<%-- 
 	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
