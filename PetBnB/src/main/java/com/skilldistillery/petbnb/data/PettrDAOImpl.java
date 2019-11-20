@@ -205,6 +205,19 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 	
 	@Override
+	public Host addHostImage(int hostId, String url) {
+		Host host = em.find(Host.class,  hostId);
+		HostImage image = new HostImage();
+		image.setUrl(url);
+		image.setHost(host);
+		em.persist(image);
+		host.addImage(image);
+		em.persist(host);
+		em.flush();
+		return host;
+	}
+	
+	@Override
 	public Host updateDescriptiontoHostById(String description, int hostId) {
 		Host host = em.find(Host.class, hostId);
 		host.setDescription(description);
