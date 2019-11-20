@@ -25,7 +25,7 @@
 			<h1>Add Pet</h1>
 		</div>
 	</div>
-	<form:form action="addPet.do" method="POST" modelAttribute="pet">
+	<form:form action="addPet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
 		<form:input path="name" type="text" required="required" />
 		<form:errors path="name" />
