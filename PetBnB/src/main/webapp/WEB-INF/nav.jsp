@@ -38,10 +38,6 @@
 				<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 				<c:if test="${empty sessionUser }">
 				
-				
-					<li class="nav-item order-2 order-md-1"><a href="#"
-						class="nav-link" title="settings"><i
-							class="fa fa-cog fa-fw fa-lg"></i></a></li>
 					<li class="dropdown order-1">
 						<button type="button" id="dropdownMenu1" data-toggle="dropdown"
 							class="btn btn-outline-secondary dropdown-toggle">
@@ -76,7 +72,12 @@
 					<li class="nav-item"><a
 						href="toUserProfile.do?id=${sessionUser.id }" class="nav-link">My
 							Profile</a></li>
-					<li class="nav-item"><a href="logout.do" class="nav-link">Logout</a></li>
+					<li class="nav-item"><a href="goAccountPage.do?id=${sessionUser.id}"
+						class="nav-link" title="settings"><i
+							class="fa fa-cog fa-fw fa-lg"></i></a></li>
+					<li class="nav-item"><a href="logout.do" class="btn btn-outline-secondary toggle">
+							Logout <span class="caret"></span>
+						</a></li>
 				</c:if>
 			</ul>
 		</div>
