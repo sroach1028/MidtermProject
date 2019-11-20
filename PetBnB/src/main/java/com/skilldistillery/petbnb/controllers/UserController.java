@@ -234,6 +234,18 @@ public class UserController {
 		return mv;
 	}
 
+	
+	@RequestMapping(path = "addHostImage.do", method = RequestMethod.GET)
+	public ModelAndView addHostImage(@RequestParam("hostId") int hostId, @RequestParam("url") String url,
+			HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Host host = pettrDAO.addHostImage(hostId, url);
+		mv.addObject("host", host);
+		mv.setViewName("hostPage");
+		return mv;
+	}
+	
+	
 //	@RequestMapping(path = "removeHostImage.do", params = "hostId", method = RequestMethod.GET)
 //	public ModelAndView removeHostImage(@RequestParam("imageId") int imageId, @RequestParam("hostId") int hostId) {
 //		ModelAndView mv = new ModelAndView();
