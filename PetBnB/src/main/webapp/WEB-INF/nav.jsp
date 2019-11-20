@@ -28,7 +28,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 	role="navigation">
 	<div class="container">
-		<a class="navbar-brand display-4" href="#">Boop
+		<a class="navbar-brand display-4" href="/">Boop
 			${sessionUser.firstName }!</a>
 		<button class="navbar-toggler border-0" type="button"
 			data-toggle="collapse" data-target="#exCollapsingNavbar">
