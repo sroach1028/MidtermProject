@@ -106,7 +106,6 @@
 					<h1>Home Description</h1>
 					<h4>${host.description }</h4>
 				</div>
-			</div>
 
 		<div class="col px-md">
 			<div class="p-3 border bg-light">
@@ -160,14 +159,10 @@
 				</div>
 
 			</div>
-
-		<div class="col px-md">
-			<div class="p-3 border bg-dark">
-
-<<<<<<< HEAD
-						</div>
-					</div>
 				</div>
+				</div>
+				</div>
+				
 				
 				<div>
 			<c:if test="${not empty sessionHost }">
@@ -190,7 +185,6 @@
 					src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 					integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 					crossorigin="anonymous"></script>
-=======
 				<iframe
 					src="http://maps.google.com/maps?q=${host.user.address.zip}&z=15&output=embed"
 					width="600" frameborder="0" height="400" style="border: 0"></iframe>
@@ -220,6 +214,5 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
->>>>>>> b9129521a6d65e5905992228694d58c87082e9b3
 </body>
 </html>

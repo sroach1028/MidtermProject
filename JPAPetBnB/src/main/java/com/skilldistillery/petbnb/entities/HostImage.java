@@ -30,9 +30,8 @@ public class HostImage {
 		super();
 	}
 
-	public HostImage(int id, String url, Host host) {
+	public HostImage(String url, Host host) {
 	super();
-	this.id = id;
 	this.url = url;
 	this.host = host;
 	}

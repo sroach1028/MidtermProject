@@ -18,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
-import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.ReviewOfPet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -180,8 +180,8 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "becomeHost.do", method = RequestMethod.GET)
-	public ModelAndView becomeHost(@RequestParam("id") int id, HttpSession session) {
+	@RequestMapping(path = "goToCreateHost.do", method = RequestMethod.GET)
+	public ModelAndView goToCreateHost(@RequestParam("id") int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(id);
 		mv.addObject("allServices", pettrDAO.getAllServices());
@@ -189,26 +189,52 @@ public class UserController {
 		session.setAttribute("sessionHost", host);
 		return mv;
 	}
-
-	@RequestMapping(path = "goToUpdateSettings.do", method = RequestMethod.GET)
-	public ModelAndView goToUpdateSettings(@RequestParam("hostId") int hostId, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("allServices", pettrDAO.getAllServices());
-		mv.setViewName("becomeHost");
-		return mv;
-	}
-
-	@RequestMapping(path = "updateHost.do", method = RequestMethod.GET)
-	public ModelAndView updateHost(@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId,
+	
+	@RequestMapping(path = "createHost.do", method = RequestMethod.GET)
+	public ModelAndView createHost(@RequestParam("imageURL") String imageURL, @RequestParam("selections") int[] selections, @RequestParam("description") String description, @RequestParam("hostId") int hostId,
 			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		pettrDAO.addDescriptiontoHostById(description, hostId);
+		pettrDAO.addImagetoHostById(imageURL, hostId);
 		Host host = pettrDAO.addServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
-		mv.setViewName("userProfile");
+		mv.addObject("host", host);
+		mv.setViewName("hostPage");
+		return mv;
+	}
+	
+	@RequestMapping(path = "goToUpdateHost.do", params = "hostId", method = RequestMethod.GET)
+	public ModelAndView goToUpdateHost(@Valid Host host, int hostId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("allServices", pettrDAO.getAllServices());
+		mv.addObject("oldHost", pettrDAO.getHostById(hostId));
+		mv.setViewName("updateHost");
+		return mv;
+	}
+	
+	@RequestMapping(path = "updateHost.do", params = "hostId", method = RequestMethod.GET)
+	public ModelAndView updateHost(@Valid Host host, int hostId) {
+		ModelAndView mv = new ModelAndView();
+		Host updatedHost = pettrDAO.updateHost(host, hostId);
+		mv.addObject("host", updatedHost);
+		mv.setViewName("hostPage");
 		return mv;
 	}
 
+//	@RequestMapping(path = "removeHostImage.do", params = "hostId", method = RequestMethod.GET)
+//	public ModelAndView removeHostImage(@RequestParam("imageId") int imageId, @RequestParam("hostId") int hostId) {
+//		ModelAndView mv = new ModelAndView();
+//		HostImage hostImage = pettrDAO.getHostImageById(imageId);
+//		
+//		Host updatedHost = pettrDAO.updateHost(host, hostId);
+//		updatedHost.removeImage(hostImage);
+//
+//		mv.addObject("host", updatedHost);
+//		mv.setViewName("hostPage");
+//		return mv;
+//	}
+	
 	@RequestMapping(path = "goToHostPage.do", method = RequestMethod.GET)
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();

@@ -16,21 +16,38 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 
-<title>Become Host</title>
+<title>Become a Host</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Host Details</h1>
+			<h1>Become a Host</h1>
 		</div>
 	</div>
-	<form action="updateHost.do" method="GET">
+
+	<form action="createHost.do" method="GET">
+
+		<label for="about">About you: </label>
+		
+		<br>
+
+		<textarea id="about" name="description" rows="5" cols="33" placeholder="Enter text here..."></textarea>
+		
+		<br>
+		
 		<c:forEach items="${allServices }" var="service">
 			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 		</c:forEach>
-		<input type="hidden" name="hostId" value="${sessionHost.id}" /> <input
-			type="submit" value="Update Settings">
+
+		
+		<br>
+		<br>
+		 Add an image:<br>
+  		<input type="text" name="imageURL" placeholder="Enter image URL"><br>
+  		
+  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
+  		<input type="submit" value="Submit">
 	</form>
 	<br>
 </body>

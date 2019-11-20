@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
@@ -61,11 +62,17 @@ public interface PettrDAO {
 
 	Object getAverageOfPetReviewRatings(Pet pet);
 
+	void addDescriptiontoHostById(String description, int hostId);
+
+	void addImagetoHostById(String imageURL, int hostId);
 	ReviewOfHost writeHostReview(int hostId, int reservationId);
 
 	ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId);
 
 	ReviewOfPet writePetReview(@Valid ReviewOfPet review, int petId, int reservationId, int hostId);
 
+	Host updateHost(@Valid Host host, int hostId);
+
+	HostImage getHostImageById(int hostImageId);
 	ReviewOfPet writePetReview(@Valid ReviewOfPet review);
 }

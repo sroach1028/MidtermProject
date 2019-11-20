@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.petbnb.entities.Host;
+import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.HostService;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.PetImage;
@@ -37,6 +38,11 @@ public class PettrDAOImpl implements PettrDAO {
 		return em.find(Host.class, hostId);
 	}
 
+	@Override
+	public HostImage getHostImageById(int hostImageId) {
+		return em.find(HostImage.class, hostImageId);
+	}
+	
 	@Override
 	public List<Pet> findAllPets() {
 
@@ -131,12 +137,22 @@ public class PettrDAOImpl implements PettrDAO {
 		host.setUser(em.find(User.class, id));
 		em.persist(host);
 		em.flush();
-//		for (int i = 1; i <= 8; i++) {
-//			host.addService(em.find(HostService.class, i));
-//		}
-//		em.flush();
 		return host;
 	}
+	
+	public Host updateHost(Host host, int hostId) {
+		Host updatedHost = em.find(Host.class, hostId);
+		
+		updatedHost.setDescription(host.getDescription());
+		updatedHost.setServices(host.getServices());
+		updatedHost.setHostImages(host.getHostImages());
+
+		em.flush();
+
+		return updatedHost;
+	}
+	
+	
 
 //	@Override
 //	public Host updateHost(Host host, int hostId) {
@@ -170,6 +186,23 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(host);
 		em.flush();
 		return host;
+	}
+	
+	@Override
+	public void addDescriptiontoHostById(String description, int hostId) {
+		Host host = em.find(Host.class, hostId);
+		host.setDescription(description);
+		em.persist(host);
+		em.flush();
+	}
+	
+	@Override
+	public void addImagetoHostById(String imageURL, int hostId) {
+		Host host = em.find(Host.class, hostId);
+		HostImage hostImage = new HostImage(imageURL, host);
+		host.addImage(hostImage);
+		em.persist(host);
+		em.flush();
 	}
 
 	@Override
