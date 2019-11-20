@@ -2,9 +2,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.centerBlock {
+  display: table;
+  margin: auto;
+  
+}
+h3{
+text-align: right;
+}  
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,28 +28,37 @@
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 </head>
-<body>
-
+<body class ="text-dark bg-white">
+<%--       <%
+         Date dNow = new Date( );
+         SimpleDateFormat ft = 
+         new SimpleDateFormat ("E M/dd/yyy");
+         out.print( "<h3 align=\"center\">" + ft.format(dNow) + "</h3>");
+      %> --%>
 
 	<div class="container">
 		<br> <br>
 		<div class="row mx-md-n5">
 			<div class="col-md-6 px-md">
-				<h2>
-					<strong> ${pet.name}'s Reservation History </strong>
-				</h2>
+				<div class="centerBlock">
+					<h2><strong><u> ${pet.name}'s Reservation History </u></strong></h2>
+				</div>
 			</div>
 		</div>
 		<br>
 
 		<ul>
 			<c:forEach items="${pet.reservations }" var="reservation">
-				<li><c:if test="${not empty reservation.petReview.review }">
+				<c:if test="${not empty reservation.petReview.review }">
+						<li>
 						<div class="row mx-md-n5">
 							<div class="col-md-9">
-								<div class="lead border bg-light">
+								<div class="p-5 lead border border-warning bg-light rounded-pill">
+									
 									<c:if test="${not empty reservation.petReview.review }">
-										<h3>${reservation.openDate }-${reservation.closeDate}</h3>
+									<div class="centerBlock">
+										<h3>${reservation.openDate } thru ${reservation.closeDate}</h3>
+									</div>
 
 										<h5>Reviewed by Host ${reservation.host.user.firstName }
 											${reservation.host.user.lastName }</h5>
@@ -81,16 +102,24 @@
 								</div>
 							</div>
 						</div>
-					</c:if></li>
+						</li><br>
+						</c:if>
 			</c:forEach>
+			
+							
+					<h2><strong><u> Pending Reservations </u></strong></h2>
+				<br>
+			
 			<c:forEach items="${pet.reservations }" var="reservation">
 				<c:if test="${empty reservation.petReview.review }">
 					<li>
 						<div class="row mx-md-n5">
 							<div class="col-md-9">
-								<div class="lead border bg-light">
+								<div class="p-5 lead border border-warning bg-light rounded-pill">
+																	<div class="centerBlock">
+								
 									<h3>${reservation.openDate }-${reservation.closeDate}</h3>
-
+										</div>
 									<h5>
 										<a
 											href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
