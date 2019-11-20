@@ -18,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
-import com.skilldistillery.petbnb.entities.HostImage;
 import com.skilldistillery.petbnb.entities.Pet;
 import com.skilldistillery.petbnb.entities.Reservation;
+import com.skilldistillery.petbnb.entities.ReviewOfHost;
 import com.skilldistillery.petbnb.entities.ReviewOfPet;
 import com.skilldistillery.petbnb.entities.User;
 
@@ -316,27 +316,35 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createPetReview.do")
-//	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("petId") int petId,
-//			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
 	public ModelAndView createPetReview(@Valid ReviewOfPet review) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("UserController.createPetReview(): " + review);
-//		ReviewOfPet petReview = pettrDAO.writePetReview(review, petId, reservationId, hostId);
-//		ReviewOfPet petReview = pettrDAO.writePetReview(review, review.getPet().getId(), review.getReservation().getId(), review.getReservation().getHost().getId());
 		ReviewOfPet petReview = pettrDAO.writePetReview(review);
 		mv.addObject("petReview", petReview);
 		mv.setViewName("account");
 		return mv;
 	}
-
-//	@RequestMapping(path = "createReviewHost.do")
-//	public ModelAndView createHostReview(@RequestParam("petId") int petId,
-//			@RequestParam("reservationId") int reservationId) {
-//		ModelAndView mv = new ModelAndView();
-//		ReviewOfHost hostReview = pettrDAO.writeHostReview(petId, reservationId);
-//		mv.addObject("hostReview", hostReview);
-//		mv.setViewName("writeReview");
-//		return mv;
-//	}
+	
+	@RequestMapping(path = "goToCreateHostReview.do")
+	public ModelAndView goToCreateHostReview(@RequestParam("petId") int petId,
+			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
+		ModelAndView mv = new ModelAndView();
+		ReviewOfPet review = new ReviewOfPet();
+		mv.addObject("petId", petId);
+		mv.addObject("hostId", hostId);
+		mv.addObject("reservationId", reservationId);
+		mv.addObject("hostReview", review);
+		mv.setViewName("writeHostReview");
+		return mv;
+	}
+		
+	@RequestMapping(path = "createHostReview.do")
+	public ModelAndView createHostReview(@Valid ReviewOfHost review) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("UserController.createHostReview(): " + review);
+		ReviewOfHost hostReview = pettrDAO.writeHostReview(review);
+		mv.addObject("hostReview", hostReview);
+		mv.setViewName("account");
+		return mv;
+	}
 
 }
