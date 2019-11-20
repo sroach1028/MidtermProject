@@ -281,6 +281,7 @@ public class UserController {
 			@RequestParam("openDate") @DateTimeFormat(iso = ISO.DATE) LocalDate openDate,
 			@RequestParam("closeDate") @DateTimeFormat(iso = ISO.DATE) LocalDate closeDate) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println(petId);
 		Reservation reservation = pettrDAO.createReservation(petId, hostId, serviceId, openDate, closeDate);
 		mv.addObject("reservation", reservation);
 		mv.setViewName("viewReservation");
