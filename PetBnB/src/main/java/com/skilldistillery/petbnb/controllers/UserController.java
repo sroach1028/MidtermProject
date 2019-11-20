@@ -278,16 +278,20 @@ public class UserController {
 		mv.addObject("petId", petId);
 		mv.addObject("hostId", hostId);
 		mv.addObject("reservationId", reservationId);
-		mv.addObject("review", review);
+		mv.addObject("petReview", review);
 		mv.setViewName("writePetReview");
 		return mv;
 	}
 
 	@RequestMapping(path = "createPetReview.do")
-	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("petId") int petId,
-			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
+//	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("petId") int petId,
+//			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
+	public ModelAndView createPetReview(@Valid ReviewOfPet review) {
 		ModelAndView mv = new ModelAndView();
-		ReviewOfPet petReview = pettrDAO.writePetReview(review, petId, reservationId, hostId);
+		System.out.println("UserController.createPetReview(): " + review);
+//		ReviewOfPet petReview = pettrDAO.writePetReview(review, petId, reservationId, hostId);
+//		ReviewOfPet petReview = pettrDAO.writePetReview(review, review.getPet().getId(), review.getReservation().getId(), review.getReservation().getHost().getId());
+		ReviewOfPet petReview = pettrDAO.writePetReview(review);
 		mv.addObject("petReview", petReview);
 		mv.setViewName("account");
 		return mv;

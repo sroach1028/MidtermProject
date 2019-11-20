@@ -53,7 +53,8 @@ public class ReviewOfPet {
 
 	@Override
 	public String toString() {
-		return "ReviewOfPet [id=" + id + ", rating=" + rating + "]";
+		return "ReviewOfPet [id=" + id + ", rating=" + rating + ", review=" + review + ", reservation=" + reservation
+				+ ", pet=" + pet + "]";
 	}
 
 	public int getId() {

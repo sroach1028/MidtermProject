@@ -25,7 +25,7 @@
 			<h1>Write a review</h1>
 		</div>
 	</div>
-	<form:form action="createPetReview.do" method="GET" modelAttribute="review">
+	<form:form action="createPetReview.do" method="GET" modelAttribute="petReview">
 		<form:label path="review">Review: </form:label>
 		<form:input path="review" type="text" required="required" />
 		<form:errors path="review" />
@@ -44,9 +44,9 @@
 
 		<br>
 		<div class="container">
-			<input type="hidden" name="petId" value="${petId }">
-			<input type="hidden" name="hostId" value="${hostId }">
-			<input type="hidden" name="reservationId" value="${reservationId }">
+			<%-- <form:input type="hidden" path="pet.id" value="${petId }"/> --%>
+			<%-- <form:input type="hidden" path="reservation.host.id" value="${hostId }"/> --%>
+			<form:input type="hidden" path="reservation.id" value="${reservationId }"/>
 			<input type="submit" class="btn btn-outline-light"
 				value="Submit Review" />
 		</div>
