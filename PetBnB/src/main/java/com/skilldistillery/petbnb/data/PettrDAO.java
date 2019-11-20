@@ -74,4 +74,5 @@ public interface PettrDAO {
 	Host updateHost(@Valid Host host, int hostId);
 
 	HostImage getHostImageById(int hostImageId);
+	ReviewOfPet writePetReview(@Valid ReviewOfPet review);
 }

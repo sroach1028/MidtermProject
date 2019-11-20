@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
@@ -297,15 +298,28 @@ public class PettrDAOImpl implements PettrDAO {
 	
 	@Override
 	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId, int hostId) {
-		Pet p = em.find(Pet.class, petId);
-		System.out.println(p.getUser().getHost());
-		review.setPet(em.find(Pet.class, petId));
+		
+		System.out.println("============== Review review: " + review);
+		System.out.println("============== Review review Reservation: " + review.getReservation());
+		System.out.println("============== Review review Pet: " + review.getPet());
+		System.out.println("============== Review review Reservation Host: " + review.getReservation().getHost());
+//		Pet p = em.find(Pet.class, petId);
+//		review.setPet(p);
+//		System.out.println("============== Pet p: " + p);
+//		System.out.println(p.getUser().getHost());
+//		System.out.println("============== Pet p host: " + p.getUser().getHost());
+//		review.setPet(em.find(Pet.class, petId));
 		Reservation r = em.find(Reservation.class, reservationId);
-		System.out.println(r.getHost());
-		r.setHost(em.find(Host.class, hostId));
+//		System.out.println("============== Reservation r: " + r);
+//		System.out.println("============== Reservation r host: " + r.getHost());
+//		System.out.println(r.getHost());
+//		r.setHost(em.find(Host.class, hostId));
+		System.out.println("============== Review review2: " + review);
 		review.setReservation(r);
+		System.out.println("============== Review review3: " + review);
 		em.persist(review);
-		em.find(Pet.class, petId).addReviewOfPet(review);
+//		em.find(Pet.class, petId).addReviewOfPet(review);
+//		p.addReviewOfPet(review);
 		em.flush();
 		return review;
 	}
@@ -314,6 +328,27 @@ public class PettrDAOImpl implements PettrDAO {
 	public Object getAverageOfPetReviewRatings(Pet pet) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ReviewOfPet writePetReview(@Valid ReviewOfPet review) {
+//		System.out.println("============== Review review: " + review);
+//		System.out.println("============== Review review Reservation: " + review.getReservation());
+//		System.out.println("============== Review review Pet: " + review.getPet());
+//		System.out.println("============== Review review Reservation Host: " + review.getReservation().getHost());
+		Reservation r = em.find(Reservation.class, review.getReservation().getId());
+//		System.out.println("============== Reservation r: " + r);
+//		System.out.println("============== Reservation r host: " + r.getHost());
+//		System.out.println(r.getHost());
+//		r.setHost(em.find(Host.class, hostId));
+//		System.out.println("============== Review review2: " + review);
+		review.setReservation(r);
+//		System.out.println("============== Review review3: " + review);
+		em.persist(review);
+//		em.find(Pet.class, petId).addReviewOfPet(review);
+//		p.addReviewOfPet(review);
+		em.flush();
+		return review;
 	}
 
 }
