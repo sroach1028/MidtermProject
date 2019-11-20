@@ -22,10 +22,10 @@
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Write a review of Pet</h1>
+			<h1>Write review for Host</h1>
 		</div>
 	</div>
-	<form:form action="createPetReview.do" method="GET" modelAttribute="petReview">
+	<form:form action="createHostReview.do" method="GET" modelAttribute="hostReview">
 		<form:label path="review">Review: </form:label>
 		<form:input path="review" type="text" required="required" />
 		<form:errors path="review" />

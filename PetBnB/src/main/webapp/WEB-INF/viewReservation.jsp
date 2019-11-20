@@ -27,12 +27,14 @@
 	</div>
 	
 	<a class="btn btn-dark" href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"
-						role="button">Write a Review</a>
+						role="button">Write a pet Review</a>
+	<a class="btn btn-dark" href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"
+						role="button">Write a host Review</a>
 	
 		<ul>
 			<li><strong>ID: ${reservation.id } </strong></li>
-			<li>Pet Id: ${reservation.pet.id}</li>
-			<li>Host Id: ${reservation.host.id}</li>
+			<li>Pet Name: ${reservation.pet.name}</li>
+			<li>Host Name: ${reservation.host.user.firstName} ${reservation.host.user.lastName }</li>
 			<li>Open Date: ${reservation.openDate}</li>
 			<li>Close Date: ${reservation.closeDate}</li>
 		</ul>
