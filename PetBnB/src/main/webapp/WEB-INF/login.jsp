@@ -18,29 +18,80 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 <%@include file="/WEB-INF/nav.jsp"%>
+<style>
+.ex1 {
+  padding-left: 10%;
+}
+
+.button {
+height: 70px;
+width: 120px;
+}
+</style>
 </head>
-<body>
+<body style = "background-color: #cce6f0">
+	
+	<br>
+	
 	<form:form action="login.do" method="GET" modelAttribute="user">
-	<div class="form-group">
-	<table>
-	<tr>
-		<td><form:label path="username"></form:label></td>
-		<td><form:input path="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-      placeholder="Enter username"/>
-		<form:errors path="username" /></td>
-		</tr>
-		<tr>
-		<td><form:label path="password"></form:label></td>
-		<td><form:input path="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password"/>
-		<form:errors path="password" /></td>
-		</tr>
-		<c:if test="${not empty error}">
-			<h3>${error }</h3>
-		</c:if>
-		<tr><td><input type="submit" class="btn btn-primary" value="Login" /></td></tr>
-		</table>
-	</div>
-	</form:form>
+	
+	
+			<div class="row mx-md-n5">
+					<div class="col-md-1 px-md">
+					</div>
+					
+					<div class="col-md-2 px-md">
+						<form:label path="username"></form:label>
+						<form:input size="40" path="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username"/>
+						<form:errors path="username" />
+					</div>
+					
+					<div class="col-md-9 px-md">
+					</div>
+			</div>
+			
+			<br>
+			
+			<div class="row mx-md-n5">
+					<div class="col-md-1 px-md">
+					</div>
+					
+					<div class="col-md-2 px-md">
+					
+						<form:label path="password"></form:label>
+						<form:input size="40" path="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password"/>
+						<form:errors path="password" />
+					</div>
+					
+					<div class="col-md-9 px-md">
+					</div>
+			</div>
+			
+			<div>
+					<c:if test="${not empty error}">
+						<h3>${error }</h3>
+					</c:if>
+			</div>
+			
+			<br>
+			<br>
+			
+			
+				<div class="row mx-md-n5">
+					<div class="col-md-1 px-md">
+					</div>
+					
+					<div class="col-md-2 px-md">
+					
+						<input type="submit" style="font-size : 30px" class="button btn btn-primary" value="Login" />
+
+					</div>
+					
+					<div class="col-md-9 px-md">
+					</div>
+			</div>
+			
+		</form:form>
 </body>
 </html>
 

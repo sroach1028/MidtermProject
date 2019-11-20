@@ -16,38 +16,71 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <title>User Profile</title>
-<%@include file="/WEB-INF/nav.jsp"%>
+<%@include file="nav.jsp"%>
+<style>
+	.centerBlock {
+	  display: table;
+	  margin: auto;
+	}
+
+</style>
 </head>
 
-<body>
-
+<body style = "background-color: #cce6f0">
+	<br>
 	<div class="container">
 
-		<div class="resultsSingle" style="margin-top: 15px">
-			<h1>
-				<strong>User Profile</strong>
-			</h1>
+<div class="row mx-md-n5">
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">			
+						<p>
+							<strong><font size="12" face ="Verdana" >User Profile</font></strong>
+						</p>
+					</div>
+				</div>		
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
 		</div>
 
-		<c:if test="${not empty user }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<h1>
-						<strong>${user.firstName} ${user.lastName }</strong>
-					</h1>
-					<h2>${user.email }</h2>
-					<img src="${user.imageURL }">
-				</div>
-				<br>
-				<p>${user.address.city },${user.address.zip }</p>
+		<br>
 
+		<div class="row mx-md-n5">
+			<div class="col-md-4 px-md">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">
+						<img src="${user.imageURL }" height="245" width="245" />
+					</div>
+				</div>
+			</div>
+				
+			<div class="col-sm-8">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">
+				
+							<p><strong><font size="7" face ="Geneva" >${user.firstName} ${user.lastName }</font></strong></p>
+							
+							<p><font size="7" face ="Geneva" >${user.address.city }, ${user.address.state }, ${user.address.zip }</font></p>
+							
+							<p><font size="6" face ="Geneva" >${user.email }</font></p>
+							
+					</div>
+				</div>	
+			</div>
+				<br>
+			</div>
+			<br>
 				<div class="resultsSingle">
 					<table class="table">
 						<th>List of Pets</th>
 						<c:forEach items="${user.pets }" var="pet">
 							<c:if test="${pet.active == true}">
 								<tr>
-									<td><a href="getPet.do?petId=${pet.id}"
+									<td><a href="getPet.do?petId=${pet.id }"
 										class="btTxt submit">${pet.name }</a></td>
 								</tr>
 							</c:if>
@@ -55,7 +88,7 @@
 					</table>
 				</div>
 			</div>
-		</c:if>
+		
 		<c:if test="${sessionUser.id == user.id}">
 			<form action="goToAddPet.do" method="GET">
 				<input type="submit" class="btn btn-dark" value="Add Pet" />
@@ -74,7 +107,6 @@
 			</c:if>
 
 		</c:if>
-	</div>
 
 	<br>
 	<br>
