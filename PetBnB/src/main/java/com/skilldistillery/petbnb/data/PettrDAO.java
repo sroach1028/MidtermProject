@@ -66,4 +66,6 @@ public interface PettrDAO {
 	ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId);
 
 	ReviewOfPet writePetReview(@Valid ReviewOfPet review, int petId, int reservationId, int hostId);
+
+	ReviewOfPet writePetReview(@Valid ReviewOfPet review);
 }
