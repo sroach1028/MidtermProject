@@ -41,7 +41,7 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "goAccountPage.do")
-	public ModelAndView goToAccountPage(@RequestParam("userId") int userId, HttpSession session) {
+	public ModelAndView goToAccountPage(@RequestParam("id") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = pettrDAO.refreshUser(userId);
 		Host host = pettrDAO.refreshHost(userId);
@@ -70,6 +70,7 @@ public class UserController {
 	@RequestMapping(path = "toUserProfile.do", method = RequestMethod.GET)
 	public ModelAndView toUserProfile(@RequestParam("id") int userId) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", pettrDAO.findUserById(userId));
 		mv.setViewName("userProfile");
 		return mv;
 	}
@@ -205,8 +206,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "goToUpdateHost.do", params = "hostId", method = RequestMethod.GET)
-	public ModelAndView goToUpdateHost(@Valid Host host, int hostId) {
+	public ModelAndView goToUpdateHost(@RequestParam("hostId") int hostId) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("host", new Host());
 		mv.addObject("allServices", pettrDAO.getAllServices());
 		mv.addObject("oldHost", pettrDAO.getHostById(hostId));
 		mv.setViewName("updateHost");
@@ -214,10 +216,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "updateHost.do", params = "hostId", method = RequestMethod.GET)
-	public ModelAndView updateHost(@Valid Host host, int hostId) {
+	public ModelAndView updateHost(@RequestParam("description") String description, @RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId,
+			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Host updatedHost = pettrDAO.updateHost(host, hostId);
-		mv.addObject("host", updatedHost);
+		pettrDAO.updateDescriptiontoHostById(description, hostId);
+		Host host = pettrDAO.updateServicestoHostById(selections, hostId);
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", host);
+		mv.addObject("host", host);
 		mv.setViewName("hostPage");
 		return mv;
 	}

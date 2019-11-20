@@ -25,7 +25,7 @@
 
 		<div class="resultsSingle" style="margin-top: 15px">
 			<h1>
-				<strong>${nothing }</strong>
+				<strong>User Profile</strong>
 			</h1>
 		</div>
 
@@ -35,12 +35,11 @@
 					<h1>
 						<strong>${user.firstName} ${user.lastName }</strong>
 					</h1>
-					<h2>${user.username}</h2>
 					<h2>${user.email }</h2>
+					<img src="${user.imageURL }">
 				</div>
 				<br>
-				<iframe src="http://maps.google.com/maps?q=${user.address}&z=15&output=embed" width="600" height="400"
-				frameborder="0" style="border:0"></iframe>
+				<p>${user.address.city }, ${user.address.zip }</p>
 
 				<div class="resultsSingle">
 					<table class="table">
@@ -57,76 +56,20 @@
 				</div>
 			</div>
 		</c:if>
-		<c:if test="${not empty sessionUser }">
-			<c:if test="${empty user}">
-				<div class="resultsSingle" style="margin-top: 15px">
-					<div class="col-sm">
-						<h1>
-							<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
-						</h1>
-						<h2>${sessionUser.username}</h2>
-						<h2>${sessionUser.email }</h2>
-					</div>
-					
-					<iframe src="http://maps.google.com/maps?q=${sessionUser.address}&z=15&output=embed" width="600" height="400"
-				frameborder="0" style="border:0"></iframe>
-				
-					<div class="resultsSingle">
-						<table class="table">
-							<tr>
-								<th>List of Pets</th>
-							</tr>
-							<c:forEach items="${sessionUser.pets }" var="pet">
-								<c:if test="${pet.active == true}">
-									<tr>
-										<td><a href="getPet.do?petId=${pet.id}"
-											class="btTxt submit">${pet.name }</a></td>
-									</tr>
-								</c:if>
-							</c:forEach>
-						</table>
-					</div>
+			<c:if test="${sessionUser.id == user.id}">
 					<form action="goToAddPet.do" method="GET">
 						<input type="submit" class="btn btn-outline-light" value="Add Pet" />
 					</form>
 
-				</div>
 			</c:if>
-			<c:if test="${empty sessionHost }">
+				</div>
+			
+			<c:if test="${sessionUser.id == user.id}">
 
-				<form action="becomeHost.do" method="GET">
+				<form action="goAccountPage.do" method="GET">
 					<input type="hidden" name="id" value=${sessionUser.id } /> <input
-						type="submit" class="btn btn-outline-light" value="Become a Host" />
+						type="submit" class="btn btn-dark" value="Account Details" />
 				</form>
 			</c:if>
-		</c:if>
-		<c:if test="${empty user}">
-			<c:if test="${not empty sessionHost }">
-				<div class="resultsSingle" style="margin-top: 15px">
-					<div class="resultsSingle">
-						<table class="table">
-							<tr>
-								<th>List of Services</th>
-							</tr>
-							<c:forEach items="${sessionHost.services }" var="service">
-								<c:if test="${service.active == true}">
-									<tr>
-										<td>${service.name }</td>
-										<td>${service.rate }</td>
-									</tr>
-								</c:if>
-							</c:forEach>
-						</table>
-						<p>${sessionHost.description }</p>
-					</div>
-				</div>
-			</c:if>
-
-			<form action="goToUpdateSettings.do" method="GET">
-				<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
-					type="submit" class="btn btn-outline-light"
-					value="Update Host Settings" />
-			</form>
-		</c:if>
 </body>
 </html>

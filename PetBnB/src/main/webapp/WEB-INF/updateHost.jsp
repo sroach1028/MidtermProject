@@ -16,16 +16,16 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 
-<title>Become a Host</title>
+<title>Update Host</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Pet Update</h1>
+			<h1>Update Host Details</h1>
 		</div>
 	</div>
-		<form action="updateHost.do" method="GET" modelAttribute="host">
+		<form action="updateHost.do" method="GET">
 		
 		<label for="about">About you: </label>
 		
@@ -39,21 +39,11 @@
 		<c:forEach items="${allServices }" var="service">
 			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 		</c:forEach>
-		
-		<br>
-		 Add an image:<br>
-  		<input type="text" name="imageURL" placeholder="Enter image URL"><br>
-  		
-  		<br> Remove image: <br>
-  		
-  		<c:forEach items="${oldHost.hostImages }" var="hostImage">
-  		<img src="${hostImage.url }" height="130" width="130"> 
-  		<form action="removeHostImage.do" method="GET">
-			<input type="hidden" name="id" value=${sessionHost.id } /> 
-			<input type="submit" class="btn btn-dark" value="Remove Photo" />
-		</form>
-  		</c:forEach>
 	
+  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
+  		<input type="submit" value="Submit">
+  		</form>
+	<%-- 
 	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
 		<form:input path="name" required="required" default="${oldPet.name }"
@@ -81,9 +71,9 @@
 		<div class="container">
 			<input type="hidden" name="petId" value="${oldPet.id }"> <input
 				type="submit" id="updatePet" class="btn btn-outline-light"
-				value="Update Pet" />
-		</div>
-	</form:form>
+				value="Update Pet" /> --%>
+		<%-- </div>
+	</form:form> --%>
 	<br>
 </body>
 </html>
