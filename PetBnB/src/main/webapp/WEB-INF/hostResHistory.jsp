@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.centerBlock {
+  display: table;
+  margin: auto;
+  
+}
+h2{
+text-align: right;
+}  
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -28,17 +38,17 @@
 		<br>
 
 		<table>
-		<thead> Reservations</thead>
+		<thead><h3>Reservations</h3></thead>
 		<tbody></tbody>
-			<tr>
 				<c:forEach items="${host.reservations }" var="reservation">
+			<tr>
 					<div class="col-md-9">
-						<div class="lead border bg-light">
+						<div class="lead border border-warning bg-light rounded">
 							<c:if test="${not empty reservation.hostReview.review }">
-								<h3>${reservation.openDate } to ${reservation.closeDate}</h3>
+								<h2>${reservation.openDate } to ${reservation.closeDate}</h2>
 
-								<h5>Reviewed by ${ reservation.pet.user.firstName} and
-									${reservation.pet.name } the ${reservation.pet.petType.type}</h5>
+	<span><h5>Reviewed by ${ reservation.pet.user.firstName} and
+	${reservation.pet.name } the ${reservation.pet.petType.type}</h5><img src="${reservation.pet.user.imageURL }" width="100" height="100"/></span>
 								<c:if test="${reservation.hostReview.rating == 1}">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star"></span>
@@ -74,13 +84,15 @@
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star checked"></span>
 								</c:if>
+							<div class="centerBlock">
 								<p>"${reservation.hostReview.review}"</p>
-							</c:if>
 						</div>
+						</div>
+							</c:if>
 						<br>
 					</div>
+			</tr><br>
 				</c:forEach>
-			</tr>
 		</table>
 		<table>
 			<div class="col-md-3">
