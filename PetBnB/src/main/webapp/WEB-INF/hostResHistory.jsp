@@ -13,17 +13,20 @@
 <link href="css/styles2.css" rel="stylesheet" type="text/css">
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
-<title>Reservation History</title>
+<title> Reservation History </title>
 </head>
 <body>
 
 	<div>
 		<c:if test="${not empty host }">
-			<c:forEach items="${host.reservations }" var="reservation">
+				<h2><strong> ${host.user.firstName}'s Past Hostings </strong></h2><br>
 				<ol>
+			<c:forEach items="${host.reservations }" var="reservation">
 					<li><h3>${reservation.openDate }-
 							${reservation.closeDate}</h3>
-						<br> <c:if test="${reservation.hostReview.rating == 1}">
+							
+				<h5>Reviewed by ${ reservation.pet.user.firstName} and ${reservation.pet.name } the ${reservation.pet.petType.type} </h5>
+						 <c:if test="${reservation.hostReview.rating == 1}">
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
@@ -53,9 +56,11 @@
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
-						</c:if></li>
-				</ol>
+						</c:if>
+						</li>
+						<p> "${reservation.hostReview.review}"</p>
 			</c:forEach>
+				</ol>
 		</c:if>
 	</div>
 	<c:if test="${empty host.reservations }">
