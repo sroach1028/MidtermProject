@@ -30,6 +30,16 @@
 	<br>
 	<div class="container">
 
+<div class="row mx-sm-n5">
+<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
+</div>
+
 <div class="row mx-md-n5">
 			
 			<div class="col-sm-4 px-sm">
@@ -38,7 +48,7 @@
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">			
 						<p>
-							<strong><font size="12" face ="Verdana" >User Profile</font></strong>
+							<strong><font size="10" face ="Verdana" >User Profile</font></strong>
 						</p>
 					</div>
 				</div>		
@@ -62,11 +72,11 @@
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">
 				
-							<p><strong><font size="7" face ="Geneva" >${user.firstName} ${user.lastName }</font></strong></p>
+							<p><strong><font size="5" face ="Geneva" >${user.firstName} ${user.lastName }</font></strong></p>
 							
-							<p><font size="7" face ="Geneva" >${user.address.city }, ${user.address.state }, ${user.address.zip }</font></p>
+							<p><font size="4" face ="Geneva" >${user.address.city }, ${user.address.state }, ${user.address.zip }</font></p>
 							
-							<p><font size="6" face ="Geneva" >${user.email }</font></p>
+							<p><font size="3" face ="times new roman" ><u>${user.email }</u></font></p>
 							
 					</div>
 				</div>	
