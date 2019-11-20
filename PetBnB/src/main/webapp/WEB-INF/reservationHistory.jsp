@@ -11,17 +11,30 @@
 	crossorigin="anonymous">
 
 <link href="css/styles2.css" rel="stylesheet" type="text/css">
+<title> Reservation History </title>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
-<title> Reservation History </title>
 </head>
 <body>
-	<div>
-		<c:if test="${not empty pet.reservations }">
+
+
+	<div class = "container">
+			<br>
+			<br>
+			<div class = "row mx-md-n5">
+			<div class="col-md-6 px-md">
 		<h2><strong> ${pet.name}'s Reservation History </strong></h2>
-				<ol>
+			</div>
+			</div>
+			<br>
+			
+			<ul>
 			<c:forEach items="${pet.reservations }" var="reservation">
-					<li><h3>${reservation.openDate }-
+			<div class="row mx-md-n5">
+			<div class="col-md-9">
+			<li>
+				<div class="lead border bg-light">
+				<h3>${reservation.openDate }-
 							${reservation.closeDate}</h3>
 							
 					<h5> Reviewed by Host ${reservation.host.user.firstName } ${reservation.host.user.lastName }</h5>
@@ -55,13 +68,15 @@
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
-						</c:if></li>
-				<p>"${reservation.petReview.review }"</p>
-			</c:forEach>
-				</ol>
-		</c:if>
-
-
-	</div>
+						</c:if>
+						<p> "${reservation.petReview.review}"</p>
+				</div>
+				</li>
+				<br>
+			</div>
+			</div>
+				</c:forEach>
+			</ul>
+		</div>
 </body>
 </html>
