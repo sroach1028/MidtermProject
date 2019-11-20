@@ -173,16 +173,13 @@ public class PettrDAOImpl implements PettrDAO {
 	@Override
 	public Host addServicestoHostById(int[] selections, int hostId) {
 		Host host = em.find(Host.class, hostId);
-//		List<HostService> addingServices = new ArrayList<>();
 
 		for (int i = 0; i < host.getServices().size(); i++) {
 			host.removeService(host.getServices().get(i--));
 		}
 		for (int i : selections) {
-//			addingServices.add(em.find(HostService.class, i));
 			host.addService(em.find(HostService.class, i));
 		}
-//		host.setServices(addingServices);
 		em.persist(host);
 		em.flush();
 		return host;
@@ -200,6 +197,8 @@ public class PettrDAOImpl implements PettrDAO {
 	public void addImagetoHostById(String imageURL, int hostId) {
 		Host host = em.find(Host.class, hostId);
 		HostImage hostImage = new HostImage(imageURL, host);
+		em.persist(hostImage);
+		em.flush();
 		host.addImage(hostImage);
 		em.persist(host);
 		em.flush();
