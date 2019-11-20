@@ -27,12 +27,12 @@
 <%@include file="nav.jsp"%>
 </head>
 <body>
-
-	<form action="findReservationById.do" method="GET">
+	<form:form action="findReservationById.do" method="GET">
 		<label style="font-family: Courier; color: Green;">Reservation
-			by ID:</label> <input type="number" name="rid" /> <input type="submit"
+			by ID:</label> <input type="number" required="required" name="rid" /> <input type="submit"
 			value="Show Reservation" />
-	</form>
+			<form:errors path="firstName" />
+	</form:form>
 
 
 	<div
@@ -105,7 +105,6 @@
 				
 				<form action="searchService.do">
 					<select class="custom-select" name="serviceId" style="width: 150px;">
-						<option selected="">Service</option>
 						<option value="1">Grooming</option>
 						<option value="2">Custom Meal Making</option>
 						<option value="3">Walking</option>
