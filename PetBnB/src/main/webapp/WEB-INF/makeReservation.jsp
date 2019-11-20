@@ -22,19 +22,25 @@
 	<div class="resultsSingle">
 		<form action="createReservation.do">
 			<table class="table">
-				<th>Select for pet the service</th>
 				<tr>
-					<td>Open Date: <input type="date" name="openDate" /></td>
-					<td>Close Date: <input type="date" name="closeDate" /></td>
+					<th>Select dates for service</th>
+					<td>Start Date: <input type="date" name="openDate" /></td>
+					<td>End Date: <input type="date" name="closeDate" /></td>
 				</tr>
-				<c:forEach items="${sessionUser.pets }" var="pet">
-						<input type="hidden" name="petId" value=${pet.id } />
-						<input type="hidden" name="hostId" value=${hostId } />
-						<input type="hidden" name="serviceId" value=${serviceId } />
-						<input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
-							value="Reserve for ${pet.name }" />
-				</c:forEach>
 			</table>
+			<select class="custom-select" name="petId" style="width: 150px;">
+						<option selected="">Select a Pet</option>
+			<c:forEach items="${sessionUser.pets }" var="pet">
+						<option value=${pet.id }>${pet.name}</option>
+			</c:forEach>
+			</select>
+
+			<br>
+			<br> <input type="hidden" name="hostId" value=${hostId } /> <input
+				type="hidden" name="serviceId" value=${serviceId } /> <input
+				type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
+				value="Complete Reservation" />
+
 		</form>
 	</div>
 </body>

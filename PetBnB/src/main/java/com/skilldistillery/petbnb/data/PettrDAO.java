@@ -65,15 +65,13 @@ public interface PettrDAO {
 	void addDescriptiontoHostById(String description, int hostId);
 
 	void addImagetoHostById(String imageURL, int hostId);
-	ReviewOfHost writeHostReview(int hostId, int reservationId);
-
-	ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId);
-
-	ReviewOfPet writePetReview(@Valid ReviewOfPet review, int petId, int reservationId, int hostId);
 
 	Host updateHost(@Valid Host host, int hostId);
 
 	HostImage getHostImageById(int hostImageId);
+
+	ReviewOfHost writeHostReview(@Valid ReviewOfHost review);
+	
 	ReviewOfPet writePetReview(@Valid ReviewOfPet review);
 
 	Host updateDescriptiontoHostById(String description, int hostId);
