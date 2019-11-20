@@ -46,8 +46,8 @@
 							class="p-3 text-decoration-none text-light">Register</a>
 					</c:if>
 					<c:if test="${not empty sessionUser }">
-						<a href="goAccountPage.do?userId=${sessionUser.id }"
-							class="p-3 text-decoration-none text-light">My Account</a>
+						<a href="toUserProfile.do?id=${sessionUser.id }"
+							class="p-3 text-decoration-none text-light">My Profile</a>
 						<a href="logout.do" class="p-3 text-decoration-none text-light">Logout</a>
 					</c:if>
 				</div>

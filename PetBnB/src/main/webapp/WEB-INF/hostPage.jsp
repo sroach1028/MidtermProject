@@ -178,8 +178,28 @@
 		</c:if>
 	</div>
 
+	<c:if test="${sessionHost.id == host.id }">
+	<form action="goToUpdateHost.do" method="GET">
+			<input type="hidden" name="hostId" value=${sessionHost.id } />
+			<input type="submit" class="btn btn-dark" value="Update Host Details" />
+	</form>
 
 
+
+<%-- 
+<c:forEach items="${oldHost.hostImages }" var="hostImage">
+  		<img src="${hostImage.url }" height="130" width="130"> 
+
+  		</c:forEach> --%>
+  		<%-- <br> Remove image: <br>
+
+  		<form action="removeHostImage.do" method="GET">
+			<input type="hidden" name="id" value=${sessionHost.id } /> 
+			<input type="submit" class="btn btn-dark" value="Remove Photo" />
+		</form>
+ --%>
+
+</c:if>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

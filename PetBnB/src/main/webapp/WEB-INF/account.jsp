@@ -20,6 +20,9 @@
 </head>
 
 <body>
+
+	<h1>Account Details Page</h1>
+	
 	<c:if test="${! empty sessionUser}">
 
 		<form action="toUserProfile.do" method="GET">
@@ -35,18 +38,12 @@
 			</c:if>
 	</c:if>
 	
-	<c:if test="${empty sessionHost}">
-
-		<form action="becomeHost.do" method="GET">
-			<input type="hidden" name="id" value=${sessionUser.id } /> <input
-				type="submit" class="btn btn-outline-light" value="Become a Host" />
-		</form>
-	</c:if>
+	
 	<c:if test="${!empty sessionHost}">
 
 		<form action="goToHostPage.do" method="GET">
 			<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
-				type="submit" class="btn btn-outline-light" value="Host Info" />
+				type="submit" class="btn btn-dark" value="Host Details" />
 		</form>
 	</c:if>
 	<div class="container">

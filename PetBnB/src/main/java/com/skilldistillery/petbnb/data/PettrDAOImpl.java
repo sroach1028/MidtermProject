@@ -203,7 +203,29 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(host);
 		em.flush();
 	}
+	
+	@Override
+	public Host updateDescriptiontoHostById(String description, int hostId) {
+		Host host = em.find(Host.class, hostId);
+		host.setDescription(description);
+		em.flush();
+		return host;
+	}
+	
+	@Override
+	public Host updateServicestoHostById(int[] selections, int hostId) {
+		Host host = em.find(Host.class, hostId);
 
+		for (int i = 0; i < host.getServices().size(); i++) {
+			host.removeService(host.getServices().get(i--));
+		}
+		for (int i : selections) {
+			host.addService(em.find(HostService.class, i));
+		}
+		em.flush();
+	return host;
+	}
+	
 	@Override
 	public double findHostAvgRatingById(int hostId) {
 //		String query = "SELECT AVG(f.rentalRate) FROM Film f WHERE f.id < 10";

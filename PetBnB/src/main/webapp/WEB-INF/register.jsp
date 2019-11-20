@@ -125,13 +125,20 @@
 						class="form-control" type="text" placeholder="Phone Number"
 						id="example-text-input" /> <form:errors path="address.phone" /></td>
 			</tr>
+			
+			<tr>
+				<td style="color: #000000"><form:label path="imageURL"></form:label></td>
+				<td><form:input path="imageURL" required="required"
+						class="form-control" type="text" placeholder="Image URL"
+						id="example-text-input" /> <form:errors path="imageURL" /></td>
+			</tr>
 			<c:if test="${not empty error}">
 				<h3>${error }</h3>
 			</c:if>
 			<tr>
 				<td>
 					<div class="input-group-append">
-						<input class="btn btn-primary" type="submit" value="Register!"/>
+						<input class="btn btn-primary" type="submit" value="Register"/>
 					</div>
 				</td>
 			</tr>
