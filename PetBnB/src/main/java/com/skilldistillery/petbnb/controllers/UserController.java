@@ -134,11 +134,16 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addPet.do", method = RequestMethod.POST)
-	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId) {
+	@RequestMapping(path = "addPet.do", method = RequestMethod.GET)
+	public ModelAndView newPet(@Valid Pet pet, @RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Pet addPet = pettrDAO.addPet(pet, userId);
 		mv.addObject("pet", addPet);
+		User user = pettrDAO.findUserById(userId);
+		session.removeAttribute("sessionUser");
+		user.getPets().add(addPet);
+		session.setAttribute("sessionUser", user);
+
 		mv.setViewName("animalProfile");
 		return mv;
 	}
@@ -190,10 +195,11 @@ public class UserController {
 		session.setAttribute("sessionHost", host);
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "createHost.do", method = RequestMethod.GET)
-	public ModelAndView createHost(@RequestParam("imageURL") String imageURL, @RequestParam("selections") int[] selections, @RequestParam("description") String description, @RequestParam("hostId") int hostId,
-			HttpSession session) {
+	public ModelAndView createHost(@RequestParam("imageURL") String imageURL,
+			@RequestParam("selections") int[] selections, @RequestParam("description") String description,
+			@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		pettrDAO.addDescriptiontoHostById(description, hostId);
 		pettrDAO.addImagetoHostById(imageURL, hostId);
@@ -204,7 +210,7 @@ public class UserController {
 		mv.setViewName("hostPage");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "goToUpdateHost.do", params = "hostId", method = RequestMethod.GET)
 	public ModelAndView goToUpdateHost(@RequestParam("hostId") int hostId) {
 		ModelAndView mv = new ModelAndView();
@@ -214,10 +220,10 @@ public class UserController {
 		mv.setViewName("updateHost");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "updateHost.do", params = "hostId", method = RequestMethod.GET)
-	public ModelAndView updateHost(@RequestParam("description") String description, @RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId,
-			HttpSession session) {
+	public ModelAndView updateHost(@RequestParam("description") String description,
+			@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		pettrDAO.updateDescriptiontoHostById(description, hostId);
 		Host host = pettrDAO.updateServicestoHostById(selections, hostId);
@@ -252,7 +258,7 @@ public class UserController {
 //		mv.setViewName("hostPage");
 //		return mv;
 //	}
-	
+
 	@RequestMapping(path = "goToHostPage.do", method = RequestMethod.GET)
 	public ModelAndView goToHostPage(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -308,13 +314,14 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path="hostReservationHistory.do")
+	@RequestMapping(path = "hostReservationHistory.do")
 	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("host", pettrDAO.findHostById(hostId));
 		mv.setViewName("hostResHistory");
 		return mv;
 	}
+
 	@RequestMapping(path = "goToCreatePetReview.do")
 	public ModelAndView goToCreatePetReview(@RequestParam("petId") int petId,
 			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
@@ -336,7 +343,7 @@ public class UserController {
 		mv.setViewName("account");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "goToCreateHostReview.do")
 	public ModelAndView goToCreateHostReview(@RequestParam("petId") int petId,
 			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
@@ -349,7 +356,7 @@ public class UserController {
 		mv.setViewName("writeHostReview");
 		return mv;
 	}
-		
+
 	@RequestMapping(path = "createHostReview.do")
 	public ModelAndView createHostReview(@Valid ReviewOfHost review) {
 		ModelAndView mv = new ModelAndView();

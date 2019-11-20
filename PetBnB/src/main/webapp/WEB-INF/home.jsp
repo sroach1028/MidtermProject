@@ -29,9 +29,10 @@
 <body>
 	<form:form action="findReservationById.do" method="GET">
 		<label style="font-family: Courier; color: Green;">Reservation
-			by ID:</label> <input type="number" required="required" name="rid" /> <input type="submit"
-			value="Show Reservation" />
-			<form:errors path="firstName" />
+			by ID:</label>
+		<input type="number" required="required" name="rid" />
+		<input type="submit" value="Show Reservation" />
+		<form:errors path="firstName" />
 	</form:form>
 
 
@@ -45,8 +46,8 @@
 
 			<div class="mt-4">
 				<form action="searchHost.do">
-					<input type="text" name="city" placeholder="City" /> 
-					<select class="custom-select" name="state" style="width: 150px;">
+					<input type="text" name="city" placeholder="City" /> <select
+						class="custom-select" name="state" style="width: 150px;">
 						<option selected="">State</option>
 						<option value="AL">AL</option>
 						<option value="AK">AK</option>
@@ -102,9 +103,10 @@
 					</select> <input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
 						value="Search by location" />
 				</form>
-				
+
 				<form action="searchService.do">
-					<select class="custom-select" name="serviceId" style="width: 150px;">
+					<select class="custom-select" name="serviceId"
+						style="width: 150px;">
 						<option value="1">Grooming</option>
 						<option value="2">Custom Meal Making</option>
 						<option value="3">Walking</option>
@@ -150,6 +152,22 @@
 
 
 	<!-- Optional JavaScript -->
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+					content.style.display = "none";
+				} else {
+					content.style.display = "block";
+				}
+			});
+		}
+	</script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -163,6 +181,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+
 
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.petbnb.data.LoginDAO;
@@ -40,6 +41,24 @@ public class LoginController {
 		}
 		mv.setViewName("login");
 		mv.addObject("error", "No matching users found for that username and password combination. Try again");
+		return mv;
+	}
+	
+	@RequestMapping(path="loginFromNav.do", method= RequestMethod.GET)
+	public ModelAndView navLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User u = logdao.verifyLogin(username, password);
+		if (u != null) {
+			Host host = u.getHost();
+			session.setAttribute("sessionUser", u);
+			session.setAttribute("sessionHost", host);
+			u = null;
+			mv.addObject("user", u);
+			mv.setViewName("home");
+			return mv;
+		}
+		mv.setViewName("home");
+		mv.addObject("errorLogin", "Try again");
 		return mv;
 	}
 	@RequestMapping(path="logout.do", method= RequestMethod.GET)

@@ -15,6 +15,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
+	rel="stylesheet">
 
 <title>Add a Pet</title>
 <%@include file="/WEB-INF/nav.jsp"%>
@@ -25,7 +28,7 @@
 			<h1>Add a Pet</h1>
 		</div>
 	</div>
-	<form:form action="addPet.do" method="POST" modelAttribute="pet">
+	<form:form action="addPet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
 		<form:input path="name" type="text" required="required" />
 		<form:errors path="name" />
