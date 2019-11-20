@@ -29,19 +29,12 @@ text-align: right;
 <meta charset="utf-8">
 </head>
 <body class ="text-dark bg-white">
-<%--       <%
-         Date dNow = new Date( );
-         SimpleDateFormat ft = 
-         new SimpleDateFormat ("E M/dd/yyy");
-         out.print( "<h3 align=\"center\">" + ft.format(dNow) + "</h3>");
-      %> --%>
-
 	<div class="container">
 		<br> <br>
 		<div class="row mx-md-n5">
 			<div class="col-md-6 px-md">
 				<div class="centerBlock">
-					<h2><strong><u> ${pet.name}'s Reservation History </u></strong></h2>
+					<br><h4><strong> ${pet.name}'s Reservation History </strong></h4>
 				</div>
 			</div>
 		</div>
@@ -59,9 +52,10 @@ text-align: right;
 									<div class="centerBlock">
 										<h3>${reservation.openDate } thru ${reservation.closeDate}</h3>
 									</div>
-
-										<h5>Reviewed by Host ${reservation.host.user.firstName }
-											${reservation.host.user.lastName }</h5>
+										<span><h5>Reviewed by Host ${reservation.host.user.firstName }
+											${reservation.host.user.lastName }</h5> 
+											<img src="${reservation.host.user.imageURL }" height="100" width="100"/>
+											</span>
 										<c:if test="${reservation.petReview.rating == 1}">
 											<span class="fa fa-star checked"></span>
 											<span class="fa fa-star"></span>
@@ -97,7 +91,9 @@ text-align: right;
 											<span class="fa fa-star checked"></span>
 											<span class="fa fa-star checked"></span>
 										</c:if>
+										<div class="centerBlock">
 										<p>"${reservation.petReview.review}"</p>
+										</div>
 									</c:if>
 								</div>
 							</div>
@@ -107,7 +103,7 @@ text-align: right;
 			</c:forEach>
 			
 							
-					<h2><strong><u> Pending Reservations </u></strong></h2>
+					<h4><strong> Pending Reservations </strong></h4>
 				<br>
 			
 			<c:forEach items="${pet.reservations }" var="reservation">
