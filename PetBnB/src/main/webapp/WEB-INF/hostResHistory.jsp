@@ -11,18 +11,29 @@
 	crossorigin="anonymous">
 
 <link href="css/styles2.css" rel="stylesheet" type="text/css">
+<title> Reservation History </title>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
-<title> Reservation History </title>
 </head>
 <body>
 
-	<div>
-		<c:if test="${not empty host }">
-				<h2><strong> ${host.user.firstName}'s Past Hostings </strong></h2><br>
-				<ol>
+	<div class = "container">
+			<br>
+			<br>
+			<div class = "row mx-md-n5">
+			<div class="col-md-6 px-md">
+				<h3><strong>Reservation History</strong></h3>
+			</div>
+			</div>
+			<br>
+			
+			<ul>
 			<c:forEach items="${host.reservations }" var="reservation">
-					<li><h3>${reservation.openDate }-
+			<div class="row mx-md-n5">
+			<div class="col-md-9">
+			<li>
+				<div class="lead border bg-light">
+				<h3>${reservation.openDate }-
 							${reservation.closeDate}</h3>
 							
 				<h5>Reviewed by ${ reservation.pet.user.firstName} and ${reservation.pet.name } the ${reservation.pet.petType.type} </h5>
@@ -57,12 +68,16 @@
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 						</c:if>
-						</li>
 						<p> "${reservation.hostReview.review}"</p>
-			</c:forEach>
-				</ol>
-		</c:if>
-	</div>
+				</div>
+				</li>
+				<br>
+			</div>
+			</div>
+				</c:forEach>
+			</ul>
+		</div>
+
 	<c:if test="${empty host.reservations }">
 	<h3>You have no past reservations. Try marketing.</h3>
 	</c:if>
