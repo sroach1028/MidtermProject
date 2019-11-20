@@ -27,30 +27,53 @@
 				<input type="date" id="dp1" class="span2 datepicker"
 					placeholder="Drop off date..." name="aDate"> <br>
 			</div>
-			
+
 			<div class="well span12 main">
 				<input type="date" id="dp1" class="span2 datepicker"
 					placeholder="Pick up date..." name="bDate"> <br>
-			</div> 
+			</div>
 
-			<table class="table">
-				<tr>
-					<th>Select dates for service</th>
-					<td>Start Date: <input class="span2 datepicker" type="date" name="openDate" /></td>
-					<td>End Date: <input class="span2 datepicker" type="date" name="closeDate" /></td>
-				</tr>
-			</table> 
-			
-			<select class="custom-select" name="petId" style="width: 150px;">
-				<option selected="">Select a Pet</option>
-				<c:forEach items="${sessionUser.pets }" var="pet">
-					<option value=${pet.id }>${pet.name}</option>
-				</c:forEach>
-			</select> <br> <br> <input type="hidden" name="hostId"
-				value=${hostId } /> <input type="hidden" name="serviceId"
-				value=${serviceId } /> <input type="submit"
-				class="btn btn-danger btn-lg m-2 btn-wide"
-				value="Complete Reservation" />
+			<div class="container" style="width: 100%; height: 100%;">
+				<div class="row styling">
+					<div class='col-sm-offset-6 col-sm-6' align="left">
+						<div class="form-group">
+							<div class='input-group date' id="dp1">
+								<h1 class="display-4 text-center">Select Date for drop off</h1>
+								<input type='date' name="openDate" class="form-control input-lg" />
+								<span class="input-group-addon"><span
+									class="glyphicon glyphicon-calendar"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class='col-sm-offset-6 col-sm-6' align="right">
+						<div class="form-group">
+							<div class='input-group date' id="dp1">
+								<h1 class="display-4 text-center"">Select Date for pick up</h1>
+								<input type='date' name="closeDate"
+									class="form-control input-lg" /> <span
+									class="input-group-addon"><span
+									class="glyphicon glyphicon-calendar"></span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+
+			</div>
+			<div style="width: 100%; height: 100%;" align="center">
+				<select class="custom-select" align="center" name="petId"
+					style="width: 150px;">
+					<option selected="">Select a Pet</option>
+					<c:forEach items="${sessionUser.pets }" var="pet">
+						<option value=${pet.id }>${pet.name}</option>
+					</c:forEach>
+				</select> <br> <br> <input type="hidden" name="hostId"
+					value=${hostId } /> <input type="hidden" name="serviceId"
+					value=${serviceId } /> <input align="center" type="submit"
+					class="btn btn-danger btn-lg m-2 btn-wide"
+					value="Complete Reservation" />
+			</div>
 
 		</form>
 	</div>
