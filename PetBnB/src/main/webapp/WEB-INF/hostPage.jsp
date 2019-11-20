@@ -35,17 +35,17 @@
 <title>Host Profile</title>
 </head>
 <body>
-
+<br>
 	<div class="container">
 
 		<div class="row mx-md-n5">
-			<div class="col px-md"">
+			<div class="col px-md">
 				<div class="p-3 border bg-light">
 					<img src="${host.user.imageURL }" height="245" width="245" />
 
 				</div>
 			</div>
-			<div class="col-md-6"">
+			<div class="col-md-6">
 				<div class="p-3 border bg-light">
 					<h1>${host.user.firstName}${host.user.lastName}</h1>
 					<p>${host.user.address.city },${host.user.address.state },
@@ -96,13 +96,18 @@
 			</div>
 		</div>
 		<br> <br>
+		
 		<div class="container">
 			<div class="row mx-md-n5">
-				<div class="col px-md"">
+				<div class="col px-md">
 					<div class="p-3 border bg-light">
 						<br>
 						<h4>${host.description }</h4>
 					</div>
+				</div>
+				<div class="col-8 px-md">
+					<div class="p-3 border bg-light">
+				a;lskdjas;ldkfjals;kdfj
 				</div>
 			</div>
 
@@ -157,6 +162,9 @@
 						</div>
 					</div>
 				</div>
+				</div>
+				</div>
+				
 				
 				<div>
 				<c:if test="${not empty sessionHost }">

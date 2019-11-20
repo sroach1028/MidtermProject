@@ -25,6 +25,10 @@
 			<h1>Reservation Details</h1>
 		</div>
 	</div>
+	
+	<a class="btn btn-dark" href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"
+						role="button">Write a Review</a>
+	
 		<ul>
 			<li><strong>ID: ${reservation.id } </strong></li>
 			<li>Pet Id: ${reservation.pet.id}</li>

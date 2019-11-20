@@ -22,11 +22,11 @@
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Host Details</h1>
+			<h1>Become a Host</h1>
 		</div>
 	</div>
 
-	<form action="updateHost.do" method="GET">
+	<form action="createHost.do" method="GET">
 
 		<label for="about">About you: </label>
 		
@@ -46,8 +46,8 @@
 		 Add an image:<br>
   		<input type="text" name="imageURL" placeholder="Enter image URL"><br>
   		
-  		<input type="hidden" name="hostId" value="${sessionHost.id}" /> <input
-			type="submit" value="Update Settings">
+  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
+  		<input type="submit" value="Submit">
 	</form>
 	<br>
 </body>

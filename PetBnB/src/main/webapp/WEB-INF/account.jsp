@@ -20,7 +20,21 @@
 </head>
 
 <body>
+	<c:if test="${! empty sessionUser}">
 
+		<form action="toUserProfile.do" method="GET">
+			<input type="hidden" name="id" value=${sessionUser.id } /> <input
+				type="submit" class="btn btn-outline-light" value="View Profile" />
+		</form>
+			<c:if test="${empty sessionHost}">
+	
+				<form action="goToCreateHost.do" method="GET">
+					<input type="hidden" name="id" value=${sessionUser.id } /> 
+					<input type="submit" class="btn btn-dark" value="Become a Host" />
+				</form>
+			</c:if>
+	</c:if>
+	
 	<div class="container">
 
 		<div class="resultsSingle" style="margin-top: 15px">
@@ -35,8 +49,6 @@
 					<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
 				</h1>
 			</div>
-
-
 
 			<c:if test="${not empty sessionUser.pets }">
 				<div class="resultsSingle" style="margin-top: 15px">
@@ -62,20 +74,41 @@
 				</div>
 			</c:if>
 		</div>
-		<c:if test="${empty sessionHost}">
 
-			<form action="becomeHost.do" method="GET">
-				<input type="hidden" name="id" value=${sessionUser.id } /> <input
-					type="submit" class="btn btn-outline-light" value="Become a Host" />
-			</form>
-		</c:if>
-		<c:if test="${! empty sessionUser}">
 
-			<form action="toUserProfile.do" method="GET">
-				<input type="hidden" name="id" value=${sessionUser.id } /> <input
-					type="submit" class="btn btn-outline-light" value="View Profile" />
-			</form>
-		</c:if>
+			<c:if test="${not empty sessionUser.pets }">
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+						<ol class="list-group">
+							<c:forEach items="${sessionUser.pets}" var="pet">
+								<li class="list-group-item">
+									<h3>
+										<a href="toPetProfile.do?petId=${pet.id}">${pet.name } the
+											${pet.petType }</a>
+									</h3>
+									<h2>
+										<a href="reservationHistory.do?petId=${pet.id}"> View Past
+											Reservations</a>
+									</h2>
+								</li>
+						</ol>
+						</c:forEach>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${not empty sessionHost }">
+				<div class="resultsSingle" style="margin-top: 15px">
+					<div class="col-sm">
+					<h2><strong>Host Information</strong></h2>
+						<h3>
+							<a href="hostReservationHistory.do?hostId=${sessionHost.id}">
+							View Past Reservations
+							</a>
+						</h3>
+					</div>
+				</div>
+			</c:if>
+		</div>
 		<script>
 			var coll = document.getElementsByClassName("collapsible");
 			var i;

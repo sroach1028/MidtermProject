@@ -38,6 +38,11 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 
 	@Override
+	public HostImage getHostImageById(int hostImageId) {
+		return em.find(HostImage.class, hostImageId);
+	}
+	
+	@Override
 	public List<Pet> findAllPets() {
 
 		String queryString = "SELECT p FROM Pet p ORDER BY p.name";
@@ -92,22 +97,20 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public Pet addPet(Pet addPet, int userId) {
-		User user = em.find(User.class, userId);
+		addPet.setUser(em.find(User.class, userId));
 		addPet.setActive(true);
-		addPet.setUser(user);
 		em.persist(addPet);
-		user.addPet(addPet);
 		em.flush();
-		return addPet;
+		return em.find(Pet.class, addPet.getId());
 	}
 
 	@Override
-	public User removePetById(int petId) {
-		Pet petRemoved = em.find(Pet.class, petId);
+	public User removePetById(int id) {
+		Pet petRemoved = em.find(Pet.class, id);
 		petRemoved.setActive(false);
 		em.flush();
-		User user = petRemoved.getUser();
-		return user;
+
+		return em.find(User.class, petRemoved.getUser().getId());
 
 	}
 
@@ -121,7 +124,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public List<Host> searchHostByService(int serviceId) {
-
+		
 		String query = "SELECT h FROM Host h JOIN h.services hs WHERE hs.id = :serviceId";
 		List<Host> hosts = em.createQuery(query, Host.class).setParameter("serviceId", serviceId).getResultList();
 		return hosts;
@@ -133,12 +136,22 @@ public class PettrDAOImpl implements PettrDAO {
 		host.setUser(em.find(User.class, id));
 		em.persist(host);
 		em.flush();
-//		for (int i = 1; i <= 8; i++) {
-//			host.addService(em.find(HostService.class, i));
-//		}
-//		em.flush();
 		return host;
 	}
+	
+	public Host updateHost(Host host, int hostId) {
+		Host updatedHost = em.find(Host.class, hostId);
+		
+		updatedHost.setDescription(host.getDescription());
+		updatedHost.setServices(host.getServices());
+		updatedHost.setHostImages(host.getHostImages());
+
+		em.flush();
+
+		return updatedHost;
+	}
+	
+	
 
 //	@Override
 //	public Host updateHost(Host host, int hostId) {
@@ -225,18 +238,6 @@ public class PettrDAOImpl implements PettrDAO {
 		average = currentSum / reviewsOfHost.size();
 		return average;
 	}
-	
-	@Override
-	public Object getAverageOfPetReviewRatings(Pet pet) {
-		List<ReviewOfPet> reviewsOfPet = pet.getReviewsOfPet();
-		int currentSum = 0;
-		int average = 0;
-		for (int i = 0; i < reviewsOfPet.size(); i++) {
-			currentSum += reviewsOfPet.get(i).getRating();
-		}
-		average = currentSum / reviewsOfPet.size();
-		return average;
-	}
 
 	@Override
 	public Host getHostById(int hostId) {
@@ -275,6 +276,44 @@ public class PettrDAOImpl implements PettrDAO {
 		em.persist(reservation);
 		em.flush();
 		return reservation;
+	}
+	
+	@Override
+	public ReviewOfHost writeHostReview(int hostId, int reservationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId) {
+		
+		review.setPet(em.find(Pet.class, petId));
+		review.setReservation(em.find(Reservation.class, reservationId));
+		em.persist(review);
+		em.find(Pet.class, petId).addReviewOfPet(review);
+		em.flush();
+		return review;
+	}
+	
+	@Override
+	public ReviewOfPet writePetReview(ReviewOfPet review, int petId, int reservationId, int hostId) {
+		Pet p = em.find(Pet.class, petId);
+		System.out.println(p.getUser().getHost());
+		review.setPet(em.find(Pet.class, petId));
+		Reservation r = em.find(Reservation.class, reservationId);
+		System.out.println(r.getHost());
+		r.setHost(em.find(Host.class, hostId));
+		review.setReservation(r);
+		em.persist(review);
+		em.find(Pet.class, petId).addReviewOfPet(review);
+		em.flush();
+		return review;
+	}
+
+	@Override
+	public Object getAverageOfPetReviewRatings(Pet pet) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -25,26 +25,28 @@
 			<h1>Write a review</h1>
 		</div>
 	</div>
-	<form:form action="createReview.do" method="GET" modelAttribute="review">
+	<form:form action="createPetReview.do" method="GET" modelAttribute="review">
 		<form:label path="review">Review: </form:label>
 		<form:input path="review" type="text" required="required" />
 		<form:errors path="review" />
 		<br>
 		<form:label path="rating">Rating:</form:label>
 		<form:select path="rating" class="rating-input" required="required">
-			<option value= 0 data-value="0" class="glyphicon glyphicon-star"></option>
-			<option value= 1 data-value="1" class="glyphicon glyphicon-star"></option>
-			<option value= 2 data-value="2" class="glyphicon glyphicon-star"></option>
-			<option value= 3 data-value="3" class="glyphicon glyphicon-star"></option>
-			<option value= 4 data-value="4" class="glyphicon glyphicon-star"></option>
-			<option value= 5 data-value="5" class="glyphicon glyphicon-star"></option>
+			<option value= 0 data-value="0" class="glyphicon glyphicon-star">0</option>
+			<option value= 1 data-value="1" class="glyphicon glyphicon-star">1</option>
+			<option value= 2 data-value="2" class="glyphicon glyphicon-star">2</option>
+			<option value= 3 data-value="3" class="glyphicon glyphicon-star">3</option>
+			<option value= 4 data-value="4" class="glyphicon glyphicon-star">4</option>
+			<option value= 5 data-value="5" class="glyphicon glyphicon-star">5</option>
 		</form:select>
 		<form:errors path="rating" />
 
 
 		<br>
 		<div class="container">
-			<input type="hidden" name="petId" value="${pet.id }">
+			<input type="hidden" name="petId" value="${petId }">
+			<input type="hidden" name="hostId" value="${hostId }">
+			<input type="hidden" name="reservationId" value="${reservationId }">
 			<input type="submit" class="btn btn-outline-light"
 				value="Submit Review" />
 		</div>
