@@ -25,24 +25,36 @@
 			<h1>Update Host Details</h1>
 		</div>
 	</div>
-		<form action="updateHost.do" method="GET">
 		
-		<label for="about">About you: </label>
+  		<div class="container">
+		<div class="row mx-md-n5">
+			
+			<div class="col-md-3 px-md">
+			</div>	
+			
+			<div class="col-md-4 px-md">
+				<form action="updateHost.do" method="GET">
+				<label for="about">About you: </label>
+				
+				<br>
 		
-		<br>
-
-		<textarea id="about" name="description" rows="5" cols="33""
-			value="${oldHost.description}"></textarea>
-		
-		<br>
-		
-		<c:forEach items="${allServices }" var="service">
-			<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
-		</c:forEach>
-	
-  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
-  		<input type="submit" class="btn btn-dark" value="Submit">
-  		</form>
+				<textarea id="about" name="description" rows="5" cols="33""
+					value="${oldHost.description}"></textarea>
+				
+				<br>
+				
+				<c:forEach items="${allServices }" var="service">
+					<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
+				</c:forEach>
+			
+		  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
+		  		<input type="submit" class="btn btn-dark" value="Submit">
+		  		</form>			
+					
+			</div>
+		</div>
+	</div>
+  		
 	<%-- 
 	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
 		<form:label path="name">Name: </form:label>
