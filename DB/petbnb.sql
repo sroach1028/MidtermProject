@@ -520,14 +520,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (1, 'Grooming', 12.00, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (2, 'Custom Meal Making', 6.00, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (3, 'Walking', 5.00, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (4, 'Petting', 1.99, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (5, 'Overnight Stays', 59.99, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (6, 'Nail Trim', 10.00, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (7, 'Day Sitting', 29.99, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (8, 'Hourly', 10.00, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (1, 'Day Sitting', 19.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (2, 'Overnight Stay', 45.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (3, 'Grooming', 16.50, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (4, 'Walking', 12.75, 0);
 
 COMMIT;
 
@@ -552,16 +548,6 @@ INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (3, 7);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 10);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 9);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 8);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 10);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 4);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 1);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 2);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 5);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 6);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (7, 7);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (7, 8);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (8, 9);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (8, 10);
 
 COMMIT;
 

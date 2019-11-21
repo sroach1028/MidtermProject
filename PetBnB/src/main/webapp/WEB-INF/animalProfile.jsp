@@ -104,6 +104,9 @@
 					class="carousel-control-next-icon" aria-hidden="true"></span> <span
 					class="sr-only">Next</span>
 				</a>
+				
+			</c:if>
+				
 
 <%-- <div class="container">
 		<div class="row mx-md-n5">
@@ -143,14 +146,15 @@
 			</div>
 		</div> --%>
 
-			</div>
 			
-			<form action="addPetImage.do" method="GET">
-				<input type="text" name="url" placeholder="image url" /> <input
-					type="hidden" name="petId" value="${pet.id }"> <input
-					type="submit" class="btn btn-outline-light" value="Add Photo" />
-			</form>
-		</c:if>
+			<c:if test="${sessionUser.id == user.id}">
+		
+				<form action="addPetImage.do" method="GET">
+					<input type="text" name="url" placeholder="image url" /> <input
+						type="hidden" name="petId" value="${pet.id }"> <input
+						type="submit" class="btn btn-dark" value="Add Photo" />
+				</form>
+			</c:if>
 		</c:if>
 </body>
 </html>
