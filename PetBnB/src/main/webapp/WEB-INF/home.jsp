@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@include file="nav.jsp"%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -22,7 +23,12 @@
 	rel="stylesheet">
 
 <title>Home Page</title>
-<%@include file="nav.jsp"%>
+<style>
+.responsive {
+  width: 100%;
+  height: auto;
+}
+</style>
 </head>
 <body>
 	<form:form action="findReservationById.do" method="GET">
@@ -37,10 +43,11 @@
 	<div
 		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 		<div class="container">
-
-			<h1 class="display-2 text-light text-uppercase">Boop</h1>
-			<span class="lead lead-lg">Where you can find accomodations
-				and services for your pet!</span>
+			<img src="https://i.imgur.com/j2DdPcK.png"height="750" class="responsive"/>
+			
+			<br>
+ 			
+ 			<p><font face="verdana" size="6">Pet sitters for the discerning pet owner, and pet owners for discerning sitters.</font></p>
 
 			<div class="mt-4">
 				<form action="searchHost.do">
@@ -118,35 +125,7 @@
 				</form>
 			</div>
 		</div>
-
-		<div id="carouselExampleControls" class="carousel slide"
-			data-ride="carousel">
-			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item">
-					<img class="d-block img-fluid"
-						src="https://i.imgur.com/EmL8A5W.png" alt="First slide">
-				</div>
-				<div class="carousel-item">
-					<img class="d-block img-fluid"
-						src="https://i.imgur.com/8mI6Wur.png" alt="Second slide">
-				</div>
-				<div class="carousel-item active">
-					<img class="d-block img-fluid"
-						src="https://i.imgur.com/J8EF4aE.png" alt="Third slide">
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleControls"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleControls"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
-		</div>
 	</div>
-
 
 <%@include file="/WEB-INF/footer.jsp"%>
 
