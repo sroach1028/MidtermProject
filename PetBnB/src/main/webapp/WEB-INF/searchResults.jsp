@@ -37,107 +37,120 @@
 	outline: none;
 	font-size: 15px;
 }
+
 .active, .collapsible:hover {
 	background-color: #555;
 }
+
 .content {
 	padding: 0 18px;
 	display: none;
 	overflow: hidden;
 	background-color: #f1f1f1;
 }
-li{
-    list-style-type: none;
+
+li {
+	list-style-type: none;
 }
+
 img {
-  border-radius: 80%;
+	border-radius: 80%;
 }
-body{
-opacity: 1;
-  background-repeat: no-repeat;
-  background-size: 100% 25%;
-  background-position: 100% 15%;
-  
+
+body {
+	opacity: 1;
+	background-repeat: no-repeat;
+	background-size: 100% 25%;
+	background-position: 100% 15%;
 }
 </style>
 </head>
 
-<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+<body
+	style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 	<div class="container text-dark">
-	<div class="col-md-1">
-				</div>		
-	
-	<div class="resultsSingle" style="margin-top: 15px">
+		<div class="col-md-1"></div>
+
+		<div class="resultsSingle" style="margin-top: 15px">
 			<h1>
 				<strong>${nothing }</strong>
 			</h1>
-	</div>
+		</div>
 
 		<c:if test="${not empty hosts }">
 			<br>
- 	<div class="resultsSingle" style="margin-top: 50px">
- 			<h4><strong> Available Hosts </strong></h4>
-	</div>
-				<ol class="list-group">
-						<c:forEach items="${hosts}" var="host">
- 	<div class="row mx-sm-n4">
-		<div class="col-md-6">
-			<div class="p-5 lead border border-dark bg-light rounded">
-					<br><li>
- 		<div class="row mx-sm-n4">
-			<div class="col-md-6">
-								<h3>
-									<span><a href="goToHostPage.do?hostId=${host.id}">
-									<img src="${host.user.imageURL }" height="100" width="100"/> ${host.user.firstName }
-									</a></span>
-								</h3>
-								<h4>${host.user.address.city },${host.user.address.state }</h4>
+			<div class="resultsSingle" style="margin-top: 50px">
+				<h4>
+					<strong> Available Hosts </strong>
+				</h4>
 			</div>
-			<div class="col-md-4">
-								<h2>Services</h2>
-								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Services</a>
-					<div class="content">
-								<table>
-									<tr class="list-group">
-										<c:forEach items="${host.services }" var="service">
-											<td class="list-group-item">${service.name }
-												${service.rate }</td>
-											
-												<c:if test="${not empty sessionUser.pets }">
-												<form action="goToReservation.do" method="GET">
-													<td><input type="hidden" name="hostId" value="${host.id }">
-													<input type="hidden" name="serviceId" value="${service.id }"> 
-														<input type="submit" class="btn btn-outline-light" value="Make Reservation" /></td>
-												</form>
-												</c:if>
-										</c:forEach>
-									</tr>
-									</table>
+			<ol class="list-group">
+				<c:forEach items="${hosts}" var="host">
+					<div class="row mx-sm-n4">
+						<div class="col-md-6">
+							<div class="p-5 lead border border-dark bg-light rounded">
+								<br>
+								<li>
+									<div class="row mx-sm-n4">
+										<div class="col-md-6">
+											<h3>
+												<span><a href="goToHostPage.do?hostId=${host.id}">
+														<img src="${host.user.imageURL }" height="100" width="100" />
+														${host.user.firstName }
+												</a></span>
+											</h3>
+											<h4>${host.user.address.city },${host.user.address.state }</h4>
+										</div>
+										<div class="col-md-4">
+											<h2>Services</h2>
+											<a href="#!"
+												class="collapsible btn btn-secondary bg-dark text-light">Services</a>
+											<div class="content">
+												<table>
+													<tr class="list-group">
+														<c:forEach items="${host.services }" var="service">
+															<td class="list-group-item">${service.name }
+																${service.rate }</td>
+
+															<c:if test="${not empty sessionUser.pets }">
+																<form action="goToReservation.do" method="GET">
+																	<td><input type="hidden" name="hostId"
+																		value="${host.id }"> <input type="hidden"
+																		name="serviceId" value="${service.id }"> <input
+																		type="submit" class="btn btn-outline-light"
+																		value="Make Reservation" /></td>
+																</form>
+															</c:if>
+														</c:forEach>
+													</tr>
+												</table>
+											</div>
+											<h2>Reviews</h2>
+											<a href="#!"
+												class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
+
+											<div class="content">
+												<ol class="list-group">
+													<c:forEach items="${host.reviewsOfHost }" var="review">
+														<li class="list-group-item">${review.rating }/5
+															${review.review}</li>
+													</c:forEach>
+												</ol>
+											</div>
+										</div>
+								</li>
+							</div>
+						</div>
 					</div>
-								<h2>Reviews</h2>
-								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
+					<br>
+				</c:forEach>
+	</div>
+	</ol>
+	</c:if>
 
-								<div class="content">
-									<ol class="list-group">
-										<c:forEach items="${host.reviewsOfHost }" var="review">
-											<li class="list-group-item">${review.rating }/5
-												${review.review}</li>
-										</c:forEach>
-									</ol>
-								</div>
-			</div>
-							</li>
-			</div>
-			</div>
-			</div><br>
-						</c:forEach>
-		</div>
-					</ol>
-		</c:if>
-
-		<c:if test="${empty hosts }">
-			<h3>No results found for that location</h3>
-		</c:if>
+	<c:if test="${empty hosts }">
+		<h3>No results found for that location</h3>
+	</c:if>
 
 	</div>
 	<script>
@@ -156,7 +169,7 @@ opacity: 1;
 			});
 		}
 	</script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
 	<script
