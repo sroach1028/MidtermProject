@@ -144,7 +144,7 @@
 						<c:forEach items="${user.pets }" var="pet">
 							<c:if test="${pet.active == true}">
 								<div>
-									<a href="getPet.do?petId=${pet.id }" >${pet.name }</a>
+									<a class="aPet" href="getPet.do?petId=${pet.id }" >${pet.name }</a>
 								</div>
 							</c:if>
 						</c:forEach>
