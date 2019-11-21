@@ -16,71 +16,128 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <title>User Profile</title>
-<%@include file="/WEB-INF/nav.jsp"%>
+<%@include file="nav.jsp"%>
+<style>
+	.centerBlock {
+	  display: table;
+	  margin: auto;
+	}
+
+</style>
 </head>
 
-<body>
-
+<body style = "background-color: #cce6f0">
+	<br>
 	<div class="container">
 
-		<div class="resultsSingle" style="margin-top: 15px">
-			<h1>
-				<strong>User Profile</strong>
-			</h1>
+<div class="row mx-sm-n5">
+<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
+</div>
+
+<div class="row mx-md-n5">
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">			
+						<p>
+							<strong><font size="10" face ="Verdana" >User Profile</font></strong>
+						</p>
+					</div>
+				</div>		
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
 		</div>
 
-		<c:if test="${not empty user }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<h1>
-						<strong>${user.firstName} ${user.lastName }</strong>
-					</h1>
-					<h2>${user.email }</h2>
-					<img src="${user.imageURL }">
-				</div>
-				<br>
-				<p>${user.address.city },${user.address.zip }</p>
+		<br>
 
-				<div class="resultsSingle">
-					<table class="table">
-						<th>List of Pets</th>
-						<c:forEach items="${user.pets }" var="pet">
-							<c:if test="${pet.active == true}">
-								<tr>
-									<td><a href="getPet.do?petId=${pet.id}"
-										class="btTxt submit">${pet.name }</a></td>
-								</tr>
-							</c:if>
-						</c:forEach>
-					</table>
+		<div class="row mx-md-n5">
+			<div class="col-md-4 px-md">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">
+						<img src="${user.imageURL }" height="245" width="245" />
+					</div>
 				</div>
 			</div>
-		</c:if>
-		<c:if test="${sessionUser.id == user.id}">
-			<form action="goToAddPet.do" method="GET">
-				<input type="submit" class="btn btn-dark" value="Add Pet" />
-			</form>
-
-			<form action="goAccountPage.do" method="GET">
-				<input type="hidden" name="id" value=${sessionUser.id } /> <input
-					type="submit" class="btn btn-dark" value="Account Details" />
-			</form>
-		
-			<c:if test="${not empty sessionHost}">
-				<form action="goToHostPage.do" method="GET">
-					<input type="hidden" name="hostId" value=${sessionHost.id } /> 
-					<input type="submit" class="btn btn-dark" value="Host Details" />
-				</form>
-			</c:if>
-
-		</c:if>
-	</div>
-
+				
+			<div class="col-md-4">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">
+				
+							<p><strong><font size="6" face ="Geneva" >${user.firstName} ${user.lastName }</font></strong></p>
+							
+							<p><font size="5" face ="Geneva" >${user.address.city }, ${user.address.state }, ${user.address.zip }</font></p>
+							
+							<p><font size="5" face ="times new roman" ><u>${user.email }</u></font></p>
+							
+					</div>
+				</div>	
+			</div>
+			<div class="col-md-4">
+				<div class="centerBlock">			
+						
+					<c:if test="${sessionUser.id == user.id}">
+						
+						<form action="goToAddPet.do" method="GET">
+						<input type="submit" class="btn btn-dark" value="Add Pet" />
+						</form>
+						
+						<br>
+			
+						<form action="goAccountPage.do" method="GET">
+						<input type="hidden" name="id" value=${sessionUser.id } /> <input
+						type="submit" class="btn btn-dark" value="Account Details" />
+						</form>
+						<br>
+						
+						<c:if test="${not empty sessionHost}">
+							<form action="goToHostPage.do" method="GET">
+								<input type="hidden" name="hostId" value=${sessionHost.id } /> 
+								<input type="submit" class="btn btn-dark" value="Host Details" />
+							</form>
+						</c:if>
+						
+					</c:if>
+				</div>
+			</div>
+				<br>
+			</div>
+			<br>
+				<div class="resultsSingle">
+					<p><strong><font size="6" face ="Geneva" >Pets List</font></strong></p>
+						<c:forEach items="${user.pets }" var="pet">
+							<c:if test="${pet.active == true}">
+								<div>
+									<a href="getPet.do?petId=${pet.id }"
+											class="btTxt submit">${pet.name }</a>
+									</div>
+							</c:if>
+						</c:forEach>
+				</div>
+			</div>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 
 </body>
+
 </html>

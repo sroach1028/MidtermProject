@@ -29,25 +29,46 @@
 	left: 0;
 	min-height: 300px;
 }
+
+.centerBlock {
+  display: table;
+  margin: auto;
+}
+
 </style>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 <title>Host Profile</title>
 </head>
-<body style = "background-color: ivory">
+<body style = "background-color: #cce6f0">
 	<br>
 	<br>
 	<div class="container">
-
+		<div class="row mx-sm-n5">
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+			
+						<div class="col-sm-4 px-sm">
+						<p></p>
+						</div>
+			
+						<div class="col-sm-4 px-sm">
+						</div>
+		
+		</div>
+		
 		<div class="row mx-md-n5">
 			<div class="col-md-4 px-md">
 				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">
 					<img src="${host.user.imageURL }" height="245" width="245" />
-
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="p-3 lead border border-dark bg-light">
+					<div class="centerBlock">
 					<h2>${host.user.firstName} ${host.user.lastName}</h2>
 					<p>${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</p>
 					<c:if test="${empty host.reviewsOfHost }">
@@ -98,6 +119,7 @@
 						<br>
 
 					</c:if>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -123,7 +145,7 @@
 					<c:if test="${not empty host.services }">
 						<h2>Services</h2>
 						<c:forEach items="${host.services }" var="service">
-							<h4>${service.name }:   $${service.rate }</h4>
+							<h4>${service.name }:   $${service.rate } / session</h4>
 						</c:forEach>
 					</c:if>
 				</div>
@@ -186,29 +208,41 @@
 						</div>
 				</div>
 			</div>
-		
 <br>
-<br>
-
 
 	<div>
+	
 		<c:if test="${not empty sessionHost }">
 			<c:if test="${host.id == sessionHost.id}">
 
-
-		<form action="goToUpdateHost.do" method="GET">
-			<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
-				type="submit" class="btn btn-dark" value="Update Host Details" />
-	</form>
-
-<br>
-		<form action="addHostImage.do" method="GET">
-			<input type="text" name="url" placeholder="image url" /> 
-			<input type="hidden" name="hostId" value="${host.id }"> 
-			<input type="submit" class="btn btn-dark" value="Add Photo" />
-		</form>
+				<div class="container">
+					<div class="row mx-md-n5">
+						
+						<div class="col-md-3 px-md">
+						</div>
+						<div class="col-md-3 px-md">
+							<form action="goToUpdateHost.do" method="GET">
+								<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
+									type="submit" class="btn btn-dark" value="Update Host Details" />
+							</form>
+						</div>
+				
+						<br>
+				
+						<div class="col-md-3 px-md">
 		
-		
+							<form action="addHostImage.do" method="GET">
+								<input type="text" name="url" placeholder="image url" /> 
+								<input type="hidden" name="hostId" value="${host.id }"> 
+								<input type="submit" class="btn btn-dark" value="Add Photo" />
+							</form>
+						
+						</div>
+						
+						<div class="col-md-3 px-md">
+						</div>
+				</div>
+				</div>
 			</c:if>
 		</c:if>
 	</div>
