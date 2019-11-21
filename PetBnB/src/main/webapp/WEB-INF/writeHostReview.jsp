@@ -32,7 +32,6 @@
 		<br>
 		<form:label path="rating">Rating:</form:label>
 		<form:select path="rating" class="rating-input" required="required">
-			<option value= 0 data-value="0" class="glyphicon glyphicon-star">0</option>
 			<option value= 1 data-value="1" class="glyphicon glyphicon-star">1</option>
 			<option value= 2 data-value="2" class="glyphicon glyphicon-star">2</option>
 			<option value= 3 data-value="3" class="glyphicon glyphicon-star">3</option>
