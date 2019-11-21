@@ -60,7 +60,13 @@ class PetTest {
 	@Test
 	@DisplayName("Pet relationship with PetType")
 	void test3() {
-		assertEquals("Dog", em.find(Pet.class, 1).getPetType().getType());
+		assertEquals("Cat", em.find(Pet.class, 1).getPetType().getType());
+	}
+	
+	@Test
+	@DisplayName("Pet relationship with Reservation")
+	void test4() {
+		assertEquals("Rhonda", em.find(Pet.class, 1).getReservations().get(0).getHost().getUser().getFirstName());
 	}
 	
 	@Test
@@ -68,17 +74,11 @@ class PetTest {
 	void test5() {
 		assertEquals("Jonny", em.find(Pet.class, 1).getUser().getFirstName());
 	}
-	
-	@Test
-	@DisplayName("Pet relationship with Reservation")
-	void test4() {
-		assertEquals("Brad", em.find(Pet.class, 1).getReservations().get(0).getHost().getUser().getFirstName());
-	}
 
 	@Test
 	@DisplayName("Pet relationship with Reservation2")
 	void test6() {
-		assertEquals(1, em.find(Pet.class, 1).getReservations().get(0).getId());
+		assertEquals(12, em.find(Pet.class, 1).getReservations().get(0).getId());
 	}
 
 	@Test
@@ -91,20 +91,20 @@ class PetTest {
 	@Test
 	@DisplayName ("Testing pet add reservation")
 	void test8() {
-		assertEquals(2, pet.getReservations().size());
-		pet.addReservation(newReservation);
 		assertEquals(3, pet.getReservations().size());
+		pet.addReservation(newReservation);
+		assertEquals(4, pet.getReservations().size());
 		pet.removeReservation(newReservation);
-		assertEquals(2, pet.getReservations().size());
+		assertEquals(3, pet.getReservations().size());
 	}
 	
 	@Test
 	@DisplayName ("Testing pet add review")
 	void test9() {
-		assertEquals(1, pet.getReviewsOfPet().size());
-		pet.addReviewOfPet(newReviewOfPet);
 		assertEquals(2, pet.getReviewsOfPet().size());
+		pet.addReviewOfPet(newReviewOfPet);
+		assertEquals(3, pet.getReviewsOfPet().size());
 		pet.removeReviewOfPet(newReviewOfPet);
-		assertEquals(1, pet.getReviewsOfPet().size());
+		assertEquals(2, pet.getReviewsOfPet().size());
 	}
 }

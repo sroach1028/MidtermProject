@@ -56,10 +56,10 @@ class UserTest {
 	@Test
 	@DisplayName ("Testing User add Pet")
 	void testUserAddPet() {
-	assertEquals(1, user.getPets().size());
-	user.addPet(newPet);
 	assertEquals(2, user.getPets().size());
+	user.addPet(newPet);
+	assertEquals(3, user.getPets().size());
 	user.removePet(newPet);
-	assertEquals(1, user.getPets().size());
+	assertEquals(2, user.getPets().size());
 	}
 }
