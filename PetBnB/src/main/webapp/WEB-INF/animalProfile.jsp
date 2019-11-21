@@ -135,9 +135,9 @@
 							
 							<div class="col-md px-sm">
 								<form action="addPetImage.do" method="GET">
-									<input type="text" name="url" placeholder="image url" /> 
+									<input type="text" name="url" placeholder="Image url" /> 
 									<input type="hidden" name="petId" value="${pet.id }" /> 
-									<input type="submit" class="btn btn-dark" value="Add Photo" />
+									<input type="submit" class="btn btn-dark" value="Add Pet Photo" />
 								</form>
 							</div>
 							
@@ -183,7 +183,15 @@
 				</div>
 			</div>
 			
-			
+			<!-- Footer -->
+<footer class=“page-footer bg-dark text-light font-small blue”>
+  <!-- Copyright -->
+  <div class=“footer-copyright text-center py-3">© 2019 Copyright:
+    <a href=“https://github.com/JesseTrew/MidtermProject”> Vehement Kitten<br>SkillDistillery.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 			
 			
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
