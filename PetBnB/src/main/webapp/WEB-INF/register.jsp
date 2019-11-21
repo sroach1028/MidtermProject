@@ -71,7 +71,7 @@
 						<form:label path="address.state"></form:label>
 						<td><select class="custom-select" name="address.state"
 							style="width: 150px;">
-								<option selected="">AL</option>
+								<option value="AL">AL</option>
 								<option value="AK">AK</option>
 								<option value="AZ">AZ</option>
 								<option value="AR">AR</option>
