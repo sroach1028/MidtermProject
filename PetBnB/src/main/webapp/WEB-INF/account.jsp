@@ -88,7 +88,7 @@
 						</c:if>
 						<c:if test="${empty sessionHost}">
 							<tr>
-								<th class="lead text-center"><a
+								<th class="lead text-center "><a
 									href="goToCreateHost.do?id=${sessionUser.id}">Become a Host
 										!</a></th>
 							</tr>
