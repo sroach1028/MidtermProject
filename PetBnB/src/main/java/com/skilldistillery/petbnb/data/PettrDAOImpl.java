@@ -193,9 +193,9 @@ public class PettrDAOImpl implements PettrDAO {
 	public Host addServicestoHostById(int[] selections, int hostId) {
 		Host host = em.find(Host.class, hostId);
 
-		for (int i = 0; i < host.getServices().size(); i++) {
-			host.removeService(host.getServices().get(i--));
-		}
+//		for (int i = 0; i < host.getServices().size(); i++) {
+//			host.removeService(host.getServices().get(i--));
+//		}
 		for (int i : selections) {
 			host.addService(em.find(HostService.class, i));
 		}
