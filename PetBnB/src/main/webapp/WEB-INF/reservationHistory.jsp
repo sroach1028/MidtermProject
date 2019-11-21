@@ -117,7 +117,7 @@ p{
 				<br>
 			
 			<c:forEach items="${pet.reservations }" var="reservation">
-				<c:if test="${empty reservation.petReview.review }">
+				<c:if test="${empty reservation.hostReview.review }">
 					<li>
 						<div class="row mx-md-n5">
 							<div class="col-md-9">
