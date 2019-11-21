@@ -121,8 +121,8 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "goToUpdatePet.do", params = "petId", method = RequestMethod.GET)
-	public ModelAndView goToUpdatePet(@Valid Pet pet, int petId) {
+	@RequestMapping(path = "goToUpdatePet.do", method = RequestMethod.GET)
+	public ModelAndView goToUpdatePet(@RequestParam("petId") int petId) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("oldPet", pettrDAO.findPet(petId));
 		mv.setViewName("updatePet");
