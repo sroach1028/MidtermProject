@@ -164,6 +164,7 @@ public class PettrDAOImpl implements PettrDAO {
 		user.getAddress().setState(updatedUser.getAddress().getState());
 		user.getAddress().setZip(updatedUser.getAddress().getZip());
 		user.getAddress().setPhone(updatedUser.getAddress().getPhone());
+		user.setImageURL(updatedUser.getImageURL());
 		
 		
 		em.flush();
