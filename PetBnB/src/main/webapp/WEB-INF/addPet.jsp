@@ -22,44 +22,75 @@
 <title>Add a Pet</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
-<body>
+<body style = "background-color: #cce6f0">
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
 			<h1>Add a Pet</h1>
 		</div>
 	</div>
-	<form:form action="addPet.do" method="GET" modelAttribute="pet">
-		<form:label path="name">Name: </form:label>
-		<form:input path="name" type="text" required="required" />
-		<form:errors path="name" />
-		<br>
-		<form:label path="petType.id">Pet Type:</form:label>
-		<form:select path="petType.id" required="required">
-			<option value= 1>Dog</option>
-			<option value= 2>Cat</option>
-			<option value= 3>Bird</option>
-			<option value= 4>Fish</option>
-		</form:select>
-		<form:errors path="petType.id" />
-		<br />
-		<form:label path="breed">Breed: </form:label>
-		<form:input path="breed" type="text" />
-		<form:errors path="breed" />
-		<br>
-		<form:label path="description">Description:</form:label>
-		<form:input path="description" type="text" required="required" />
-		<form:errors path="description" />
-		<br>
-		<form:label path="specialNeeds">Special Needs: </form:label>
-		<form:input path="specialNeeds" type="text" />
-		<form:errors path="specialNeeds" />
-
-		<br>
-		<div class="container">
-			<input type="hidden" name="userId" value="${sessionUser.id }">
-			<input type="submit" id="addPet" class="btn btn-dark"
-				value="Add Pet" />
+	
+	<div class="container">
+	<div class="row mx-sm-n5">
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+			
+						<div class="col-sm-4 px-sm">
+						<p></p>
+						</div>
+			
+						<div class="col-sm-4 px-sm">
+						</div>
+		
 		</div>
-	</form:form>
+		<div class="row mx-sm-n5">
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+			
+						<div class="col-sm-4 px-sm">
+						
+						<form:form action="addPet.do" method="GET" modelAttribute="pet">
+			<form:label path="name">Name: </form:label>
+			<form:input path="name" type="text" required="required" />
+			<form:errors path="name" />
+			<br>
+			<form:label path="petType.id">Pet Type:</form:label>
+			<form:select path="petType.id" required="required">
+				<option value= 1>Dog</option>
+				<option value= 2>Cat</option>
+				<option value= 3>Bird</option>
+				<option value= 4>Fish</option>
+			</form:select>
+			<form:errors path="petType.id" />
+			<br />
+			<form:label path="breed">Breed: </form:label>
+			<form:input path="breed" type="text" />
+			<form:errors path="breed" />
+			<br>
+			<form:label path="description">Description:</form:label>
+			<form:input path="description" type="text" required="required" />
+			<form:errors path="description" />
+			<br>
+			<form:label path="specialNeeds">Special Needs: </form:label>
+			<form:input path="specialNeeds" type="text" />
+			<form:errors path="specialNeeds" />
+
+			<br>
+			<div class="container">
+				<input type="hidden" name="userId" value="${sessionUser.id }">
+				<input type="submit" id="addPet" class="btn btn-dark" value="Add Pet" />
+			</div>
+			
+		</form:form>
+						
+						</div>
+			
+						<div class="col-sm-4 px-sm">
+						</div>
+		
+		</div>
+		
+	</div>
 </body>
 </html>
