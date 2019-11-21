@@ -23,7 +23,10 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
 	rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
@@ -33,12 +36,12 @@
 			${sessionUser.firstName }!</a>
 		<button class="navbar-toggler border-0" type="button"
 			data-toggle="collapse" data-target="#exCollapsingNavbar">
-			&#9776; </button>
+			&#9776;</button>
 		<div class="collapse navbar-collapse" id="exCollapsingNavbar">
 			<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 				<li class="nav-item"><a href="home.do" class="nav-link">Home</a></li>
 				<c:if test="${empty sessionUser }">
-				
+
 					<li class="dropdown order-1">
 						<button type="button" id="dropdownMenu1" data-toggle="dropdown"
 							class="btn btn-outline-secondary dropdown-toggle">
@@ -65,24 +68,31 @@
 							</li>
 						</ul>
 					</li>
-					
-					
+
+
 					<li class="nav-item"><a href="goRegister.do" class="nav-link">Register</a></li>
 				</c:if>
 				<c:if test="${not empty sessionUser }">
 					<c:if test="${not empty sessionHost }">
 						<li class="nav-item"><a
-						href="hostReservationHistory.do?hostId=${sessionHost.id }" class="nav-link">My
-							Reservations</a></li></c:if>
+							href="hostReservationHistory.do?hostId=${sessionHost.id }"
+							class="nav-link">My Reservations</a></li>
+					</c:if>
+					<c:if test="${empty sessionHost }">
+						<li class="nav-item"><a
+							href="hostReservationHistory.do?hostId=${sessionHost.id }"
+							class="nav-link">Become a Host</a></li>
+					</c:if>
 					<li class="nav-item"><a
 						href="toUserProfile.do?id=${sessionUser.id }" class="nav-link">My
 							Profile</a></li>
-					<li class="nav-item"><a href="goAccountPage.do?id=${sessionUser.id}"
-						class="nav-link" title="settings"><i
-							class="fa fa-cog fa-fw fa-lg"></i></a></li>
-					<li class="nav-item"><a href="logout.do" class="btn btn-outline-secondary toggle">
-							Logout <span class="caret"></span>
-						</a></li>
+					<li class="nav-item"><a
+						href="goAccountPage.do?id=${sessionUser.id}" class="nav-link"
+						title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+					<li class="nav-item"><a href="logout.do"
+						class="btn btn-outline-secondary toggle"> Logout <span
+							class="caret"></span>
+					</a></li>
 				</c:if>
 			</ul>
 		</div>
