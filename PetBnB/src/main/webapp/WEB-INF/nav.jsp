@@ -57,7 +57,7 @@
 											type="password" required="required">
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary btn-block">Login</button>
+										<button type="submit" class="btn btn-secondary btn-block">Login</button>
 										<p class="text-danger">${errorLogin }</p>
 									</div>
 								</form>

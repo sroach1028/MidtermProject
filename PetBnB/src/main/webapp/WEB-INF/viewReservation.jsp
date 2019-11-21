@@ -20,6 +20,50 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <body>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+        <cms:pages masterpage='calendar.php' limit='1'>
+      <div class="modal-header">
+          <h4><cms:show k_page_title /></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">          
+          <strong>Event:</strong> <cms:show k_page_title />          
+              <br>
+        <strong>Description:</strong> <cms:show desc />
+          <br>
+        <strong>Location:</strong> <cms:show location />
+          <br>
+        <strong>Start Date:</strong> <cms:date start_date format='l F jS Y' />
+          <br>
+        <cms:if start_time!='Unspecified' >
+            <strong>From:</strong> <cms:show start_time />
+            <br>
+        </cms:if>
+        <cms:if "<cms:not_empty end_date />" >
+            <strong>End Date:</strong> <cms:date end_date format='l F jS Y' />
+            <br>
+        </cms:if>
+        <cms:if end_time!='Unspecified' >
+            <strong>End Time:</strong> <cms:show end_time />
+            <br>
+        </cms:if>
+              </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+            </cms:pages>
+    </div>
+  </div>
+</div>
+
+
+
 	<div class="jumbotron">
 		<h1 class="display-3 text-center">Boop!</h1>
 		<p class="lead text-center">Your reservation with

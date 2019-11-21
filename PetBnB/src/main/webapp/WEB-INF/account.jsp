@@ -20,101 +20,84 @@
 </head>
 
 <body>
-
-	<h1>Account Details Page</h1>
-	
-	<c:if test="${! empty sessionUser}">
-
-		<form action="toUserProfile.do" method="GET">
-			<input type="hidden" name="id" value=${sessionUser.id } /> <input
-				type="submit" class="btn btn-outline-light" value="View Profile" />
-		</form>
-			<c:if test="${empty sessionHost}">
-	
-				<form action="goToCreateHost.do" method="GET">
-					<input type="hidden" name="id" value=${sessionUser.id } /> 
-					<input type="submit" class="btn btn-dark" value="Become a Host" />
-				</form>
-			</c:if>
-	</c:if>
-	
-	
-	<c:if test="${!empty sessionHost}">
-
-		<form action="goToHostPage.do" method="GET">
-			<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
-				type="submit" class="btn btn-dark" value="Host Details" />
-		</form>
-	</c:if>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
-
-		<div class="resultsSingle" style="margin-top: 15px">
-			<h1>
-				<strong>${nothing }</strong>
-			</h1>
-		</div>
-
-		<div class="resultsSingle" style="margin-top: 15px">
-			<div class="col-sm">
-				<h1>
-					<strong>${sessionUser.firstName} ${sessionUser.lastName }</strong>
-				</h1>
+		<div class="row">
+			<div class="col-3 col-centered img-responsive">
+			<img src="${sessionUser.imageURL }" height="300" width="300"/>
 			</div>
+			<div class="col-1 col-centered">
+			</div>
+			<div class="col-8 col-right">
+				<div class="jumbotron col-7 col-centered text-center">
+					<h1 class="display-4">Account Details !</h1>
+				</div>
 
-			<c:if test="${not empty sessionUser.pets }">
-				<div class="resultsSingle" style="margin-top: 15px">
-					<div class="col-sm">
-						<ol class="list-group">
-							<c:forEach items="${sessionUser.pets}" var="pet">
-								<c:if test="${pet.active == true}">
+			</div>
+		</div>
+		<br><br><br>
+		<div class="container">
+			<div class="row row-centered">
 
-									<li class="list-group-item">
-										<h3>
-											<a href="toPetProfile.do?petId=${pet.id}">${pet.name }
-												the ${pet.petType }</a>
-										</h3>
-										<h2>
-											<a href="reservationHistory.do?petId=${pet.id}"> View
-												Past Reservations</a>
-										</h2>
-									</li>
+				<table class=" col-9 col-centered table table-hover table-secondary">
+					<thead>
+						<tr>
+							<th class="display-4 text-center">View Reviews of your Pets</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${not empty sessionUser.pets }">
+							<c:forEach items="${sessionUser.pets }" var="pet">
+								<tr>
+									<th class="lead text-center bg-secondary">Reviews for <a
+										href="reservationHistory.do?petId=${pet.id}">${pet.name }</a></th>
+								</tr>
+							</c:forEach>
+						</c:if>
+					</tbody>
+				</table>
+			</div>
+			<div class="row row-centered">
+
+				<table class="col-9 col-centered table table-hover table-secondary">
+					<thead>
+						<tr>
+							<th class="display-4 text-center">View Reviews as a Host</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${not empty sessionHost.reviewsOfHost }">
+							<c:forEach items="${sessionHost.reviewsOfHost }" var="review">
+								<c:if test="${not empty review.review }">
+									<tr>
+										<th class="lead text-center bg-secondary">Review from <a
+											href="hostReservationHistory.do?hostId=${sessionHost.id}#${review.id}">${review.reservation.pet.user.firstName }</a></th>
+									</tr>
 								</c:if>
 							</c:forEach>
-						</ol>
-					</div>
-				</div>
-			</c:if>
+						</c:if>
+						<c:if test="${not empty sessionHost }">
+							<tr>
+								<th class="lead text-center bg-secondary"><a
+									href="goToHostPage.do?hostId=${sessionHost.id}">View Your
+										Host Page !</a></th>
+							</tr>
+						</c:if>
+						<c:if test="${empty sessionHost}">
+							<tr>
+								<th class="lead text-center "><a
+									href="goToCreateHost.do?id=${sessionUser.id}">Become a Host
+										!</a></th>
+							</tr>
+						</c:if>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
-		<c:if test="${not empty sessionHost }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<h2>
-						<strong>Host Information</strong>
-					</h2>
-					<h3>
-						<a href="hostReservationHistory.do?hostId=${sessionHost.id}">
-							View Past Reservations </a>
-					</h3>
-				</div>
-			</div>
-		</c:if>
 	</div>
-	<script>
-		var coll = document.getElementsByClassName("collapsible");
-		var i;
-
-		for (i = 0; i < coll.length; i++) {
-			coll[i].addEventListener("click", function() {
-				this.classList.toggle("active");
-				var content = this.nextElementSibling;
-				if (content.style.display === "block") {
-					content.style.display = "none";
-				} else {
-					content.style.display = "block";
-				}
-			});
-		}
-	</script>
 </body>
 </html>

@@ -52,11 +52,20 @@ li{
 img {
   border-radius: 80%;
 }
+body{
+opacity: 1;
+  background-repeat: no-repeat;
+  background-size: 100% 25%;
+  background-position: 100% 15%;
+  
+}
 </style>
 </head>
 
-<body>
-
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+		<div>
+			
+		</div>
 	<div class="container text-dark">
 
 		<div class="resultsSingle" style="margin-top: 15px">
@@ -69,11 +78,13 @@ img {
 			<br>
  			<div class="resultsSingle" style="margin-top: 50px">
  			<h4><strong> Available Hosts </strong></h4>
+			</div>
+			<div class="col-md-1">
 			</div>		
 				<ol class="list-group">
 						<c:forEach items="${hosts}" var="host">
  				<div class="row mx-sm-n4" style= "height: 50%" "width: 100%">
-				<div class="col-md-8">
+				<div class="col-md-6">
 				<div class="p-5 lead border border-dark bg-light rounded">
 							<br><li>
 								<h3>
@@ -87,25 +98,22 @@ img {
 								<h2>Services</h2>
 								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Services</a>
 								<div class="content">
-
-									<ol class="list-group">
+								<table>
+									<tr class="list-group">
 										<c:forEach items="${host.services }" var="service">
-
-											<li class="list-group-item">${service.name } &nbsp;&nbsp;
-												$${service.rate }</li>
-											<li>
+											<td class="list-group-item">${service.name }
+												${service.rate }</td>
+											
 												<c:if test="${not empty sessionUser.pets }">
 												<form action="goToReservation.do" method="GET">
-													<input type="hidden" name="hostId" value="${host.id }">
-													<input type="hidden" name="serviceId"
-														value="${service.id }"> <input type="submit"
-														class="btn btn-outline-light" value="Make Reservation" />
+													<td><input type="hidden" name="hostId" value="${host.id }">
+													<input type="hidden" name="serviceId" value="${service.id }"> 
+														<input type="submit" class="btn btn-outline-light" value="Make Reservation" /></td>
 												</form>
 												</c:if>
-
-											</li>
 										</c:forEach>
-									</ol>
+									</tr>
+									</table>
 								</div>
 								<h2>Reviews</h2>
 								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
