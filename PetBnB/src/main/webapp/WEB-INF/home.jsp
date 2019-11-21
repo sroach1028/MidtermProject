@@ -35,7 +35,7 @@
 
 
 	<div
-		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-warning mb-0 radius-0">
+		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 		<div class="container">
 
 			<h1 class="display-2 text-light text-uppercase">Boop</h1>

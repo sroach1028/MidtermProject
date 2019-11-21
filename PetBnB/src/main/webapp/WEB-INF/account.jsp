@@ -74,7 +74,7 @@
 								<c:if test="${not empty review.review }">
 									<tr>
 										<th class="lead text-center bg-secondary">Review from <a
-											href="hostReservationHistory.do?hostId=${sessionHost.id}#${review.id}">${reservation.pet.user.firstName }</a></th>
+											href="hostReservationHistory.do?hostId=${sessionHost.id}#${review.id}">${review.reservation.pet.user.firstName }</a></th>
 									</tr>
 								</c:if>
 							</c:forEach>
