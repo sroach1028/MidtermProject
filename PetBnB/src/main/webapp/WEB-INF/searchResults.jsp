@@ -76,25 +76,23 @@
 								<button type="button" class="collapsible">Show All
 									Services</button>
 								<div class="content">
-
-									<ol class="list-group">
+								<table>
+									<tr class="list-group">
 										<c:forEach items="${host.services }" var="service">
 
-											<li class="list-group-item">${service.name }-->
-												${service.rate }</li>
-											<li>
+											<td class="list-group-item">${service.name }-->
+												${service.rate }</td>
+											
 												<c:if test="${not empty sessionUser.pets }">
 												<form action="goToReservation.do" method="GET">
-													<input type="hidden" name="hostId" value="${host.id }">
-													<input type="hidden" name="serviceId"
-														value="${service.id }"> <input type="submit"
-														class="btn btn-outline-light" value="Make Reservation" />
+													<td><input type="hidden" name="hostId" value="${host.id }">
+													<input type="hidden" name="serviceId" value="${service.id }"> 
+														<input type="submit" class="btn btn-outline-light" value="Make Reservation" /></td>
 												</form>
 												</c:if>
-
-											</li>
 										</c:forEach>
-									</ol>
+									</tr>
+									</table>
 								</div>
 								<h2>Reviews</h2>
 								<button type="button" class="collapsible">Show All
