@@ -11,13 +11,14 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
-
 <link rel="stylesheet" href="css/styles2.css">
-
-
 <link
 	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
 	rel="stylesheet">
@@ -36,23 +37,27 @@
 	outline: none;
 	font-size: 15px;
 }
-
 .active, .collapsible:hover {
 	background-color: #555;
 }
-
 .content {
 	padding: 0 18px;
 	display: none;
 	overflow: hidden;
 	background-color: #f1f1f1;
 }
+li{
+    list-style-type: none;
+}
+img {
+  border-radius: 80%;
+}
 </style>
 </head>
 
 <body>
 
-	<div class="container">
+	<div class="container text-dark">
 
 		<div class="resultsSingle" style="margin-top: 15px">
 			<h1>
@@ -61,27 +66,33 @@
 		</div>
 
 		<c:if test="${not empty hosts }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<ol class="list-group">
+			<br>
+ 			<div class="resultsSingle" style="margin-top: 50px">
+ 			<h4><strong> Available Hosts </strong></h4>
+			</div>		
+				<ol class="list-group">
 						<c:forEach items="${hosts}" var="host">
-							<li class="list-group-item">
+ 				<div class="row mx-sm-n4" style= "height: 50%" "width: 100%">
+				<div class="col-md-8">
+				<div class="p-5 lead border border-dark bg-light rounded">
+							<br><li>
 								<h3>
-									<a href="goToHostPage.do?hostId=${host.id}">${host.user.firstName }
-									</a>
+									<span><a href="goToHostPage.do?hostId=${host.id}">
+									<img src="${host.user.imageURL }" height="100" width="100"/> ${host.user.firstName }
+									</a></span>
 								</h3>
 								<h4>${host.user.address.city },${host.user.address.state }</h4>
 
+				<div class="col-md-12">
 								<h2>Services</h2>
-								<button type="button" class="collapsible">Show All
-									Services</button>
+								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Services</a>
 								<div class="content">
 
 									<ol class="list-group">
 										<c:forEach items="${host.services }" var="service">
 
-											<li class="list-group-item">${service.name }-->
-												${service.rate }</li>
+											<li class="list-group-item">${service.name } &nbsp;&nbsp;
+												$${service.rate }</li>
 											<li>
 												<c:if test="${not empty sessionUser.pets }">
 												<form action="goToReservation.do" method="GET">
@@ -97,8 +108,8 @@
 									</ol>
 								</div>
 								<h2>Reviews</h2>
-								<button type="button" class="collapsible">Show All
-									reviews</button>
+								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
+
 								<div class="content">
 									<ol class="list-group">
 										<c:forEach items="${host.reviewsOfHost }" var="review">
@@ -111,10 +122,11 @@
 
 
 							</li>
-						</c:forEach>
-					</ol>
+					</div>
 				</div>
 			</div>
+						</c:forEach>
+					</ol>
 		</c:if>
 
 		<c:if test="${empty hosts }">
