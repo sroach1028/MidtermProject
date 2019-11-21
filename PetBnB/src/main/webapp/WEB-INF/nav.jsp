@@ -80,7 +80,7 @@
 					</c:if>
 					<c:if test="${empty sessionHost }">
 						<li class="nav-item"><a
-							href="hostReservationHistory.do?hostId=${sessionHost.id }"
+							href="goToCreateHost.do?id=${sessionUser.id }"
 							class="nav-link">Become a Host</a></li>
 					</c:if>
 					<li class="nav-item"><a
