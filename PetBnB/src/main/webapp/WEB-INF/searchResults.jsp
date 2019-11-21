@@ -60,8 +60,8 @@ img {
 body {
 	opacity: 1;
 	background-repeat: no-repeat;
-	background-size: 100% 25%;
-	background-position: 100% 15%;
+	background-size: 100% 40%;
+	background-position: 100% 23%;
 }
 </style>
 </head>
@@ -101,10 +101,9 @@ body {
 											</h3>
 											<h4>${host.user.address.city },${host.user.address.state }</h4>
 										</div>
-										<div class="col-md-4">
-											<h2>Services</h2>
+										<div class="col-md-6">
 											<a href="#!"
-												class="collapsible btn btn-secondary bg-dark text-light">Services</a>
+												class="collapsible btn btn-secondary bg-dark text-light">Reserve a Service</a>
 											<div class="content">
 												<table>
 													<tr class="list-group">
@@ -125,10 +124,8 @@ body {
 													</tr>
 												</table>
 											</div>
-											<h2>Reviews</h2>
 											<a href="#!"
 												class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
-
 											<div class="content">
 												<ol class="list-group">
 													<c:forEach items="${host.reviewsOfHost }" var="review">
@@ -153,6 +150,17 @@ body {
 	</c:if>
 
 	</div>
+<!-- Footer -->
+<footer class="page-footer bg-dark text-light font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://github.com/JesseTrew/MidtermProject"> Vehement Kitten<br>SkillDistillery.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
 		var i;
