@@ -68,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `host` (
   `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_host_client1_idx` (`user_id` ASC),
-  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   CONSTRAINT `fk_host_client1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
@@ -335,26 +334,26 @@ USE `PetBnB`;
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (1, 'Jonny', 'Client', 1, 'jclient', 'jclient', 1, 'jclient@email.com', 'https://i.imgur.com/HeKw7Gx.jpg');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (2, 'Freddy', 'Kitchens', 2, 'fkitchens', 'fkitchens', 1, 'fkitchens@email.com', 'https://i.imgur.com/oUKcLGX.jpg');
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (3, 'Francis', 'Emanon', 3, 'fnoname', 'fnoname', 1, 'fnoname@email.com', 'https://i.imgur.com/eoi0Dw5.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (4, 'Brenda', 'Forsberg', 4, 'bforsberg', 'bforsberg', 1, 'bforsberg@email.com', 'https://i.imgur.com/Gv9OUqO.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (5, 'Nick', 'Fury', 5, 'nfury', 'nfury', 1, 'nfury@email.com', 'https://i.imgur.com/QDZnXtB.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (6, 'Sally', 'Field', 6, 'sfield', 'sfield', 1, 'sfield@email.com', 'https://i.imgur.com/horrLr8.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (7, 'Brea', 'Larson', 7, 'blarson', 'blarson', 1, 'blarson@email.com', 'https://i.imgur.com/JflqB9f.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (8, 'Samantha', 'Honeycutt', 8, 'shoneycutt', 'shoneycutt', 1, 'shoneycutt@email.com', 'https://i.imgur.com/7c06Wy5.jpg\n');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (9, 'Scarlet', 'Baritz', 9, 'sbaritz', 'sbaritz', 1, 'sbaritz@email.com', 'https://i.imgur.com/La2rKRx.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (10, 'Lindsey', 'Groma', 10, 'lgroma', 'lgroma', 1, 'lgorma@email.com', 'https://i.imgur.com/5MC5dsA.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (11, 'Tammy', 'Mason', 11, 'tmason', 'tmason', 1, 'tmason@email.com', 'https://i.imgur.com/vdcUWqm.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (12, 'Debbie', 'Parson', 12, 'dparson', 'dparson', 1, 'dparson@email.com', 'https://i.imgur.com/qg2P8RE.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (13, 'Sherry', 'Rambo', 13, 'srambo', 'srambo', 1, 'srambo@email.com', 'https://i.imgur.com/PMryaqB.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (14, 'Nicole', 'Clark', 14, 'nclark', 'nclark', 1, 'nclark@email.com', 'https://i.imgur.com/OvLzYiA.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (15, 'Paige', 'Widower', 15, 'pwidower', 'pwidower', 1, 'pwidower@email.com', 'https://i.imgur.com/Zpp4bx1.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (16, 'Jared', 'Fudd', 16, 'jfudd', 'jfudd', 1, 'jfudd2email.com', 'https://i.imgur.com/25mTRGq.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (17, 'Steve', 'Rubble', 17, 'srubble', 'srubble', 1, 'srubble@email.com', 'https://i.imgur.com/golkTAE.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (18, 'Amelia', 'Perry', 18, 'aperry', 'aperry', 1, 'aperry@email.com', 'https://i.imgur.com/Jc8ZoH0.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (19, 'Rhonda', 'Jagger', 19, 'rjagger', 'rjagger', 1, 'rjagger@email.com', 'https://i.imgur.com/wvllnRC.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (20, 'Sharice', 'Thomas', 20, 'sthomas', 'sthomas', 1, 'sthomas@email.com', 'https://i.imgur.com/5zI4ZhW.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (21, 'Carmen', 'Jones', 21, 'cjones', 'cjones', 1, 'cjones@email.com', 'https://i.imgur.com/VAGLJYf.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (22, 'Jameela', 'Butts', 22, 'jbutts', 'jbutts', 1, 'jbutts@buttsmail.com', 'https://i.imgur.com/JRQbVpd.jpg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (23, 'Tatiana', 'Fakerton', 23, 'tfaker', 'tfaker', 1, 'tfaker@fakemail.com', 'https://i.imgur.com/6VXJGs0.jpg');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (4, 'Brad', 'Forsberg', 4, 'bforsberg', 'bforsberg', 1, 'bforsberg@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (5, 'Nick', 'Fury', 5, 'nfury', 'nfury', 1, 'nfury@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (6, 'Sally', 'Field', 6, 'sfield', 'sfield', 1, 'sfield@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (7, 'Brea', 'Larson', 7, 'blarson', 'blarson', 1, 'blarson@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (8, 'Samantha', 'Honeycutt', 8, 'shoneycutt', 'shoneycutt', 1, 'shoneycutt@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (9, 'Scarlet', 'Baritz', 9, 'sbaritz', 'sbaritz', 1, 'sbaritz@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (10, 'Lindsey', 'Groma', 10, 'lgroma', 'lgroma', 1, 'lgorma@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (11, 'Tammy', 'Mason', 11, 'tmason', 'tmason', 1, 'tmason@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (12, 'Debbie', 'Parson', 12, 'dparson', 'dparson', 1, 'dparson@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (13, 'Sherry', 'Rambo', 13, 'srambo', 'srambo', 1, 'srambo@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (14, 'Nicole', 'Clark', 14, 'nclark', 'nclark', 1, 'nclark@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (15, 'Paige', 'Widower', 15, 'pwidower', 'pwidower', 1, 'pwidower@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (16, 'Jared', 'Fudd', 16, 'jfudd', 'jfudd', 1, 'jfudd2email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (17, 'Steve', 'Rubble', 17, 'srubble', 'srubble', 1, 'srubble@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (18, 'Amelia', 'Perry', 18, 'aperry', 'aperry', 1, 'aperry@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (19, 'Rhonda', 'Jagger', 19, 'rjagger', 'rjagger', 1, 'rjagger@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (20, 'Sharice', 'Thomas', 20, 'sthomas', 'sthomas', 1, 'sthomas@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (21, 'Carmen', 'Jones', 21, 'cjones', 'cjones', 1, 'cjones@email.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (22, 'Jonathon', 'Butts', 22, 'jbutts', 'jbutts', 1, 'jbutts@buttsmail.com', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `address_id`, `username`, `password`, `active`, `email`, `image_url`) VALUES (23, 'Tatiana', 'Fakerton', 23, 'tfaker', 'tfaker', 1, 'tfaker', NULL);
 
 COMMIT;
 
@@ -364,7 +363,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (1, 'Personal motto: \"I like big mutts and I cannot lie!\"  I have a one-acre, fenced yard and two dogs for your pet to play with. Available throughout this winter and spring. I love to go hiking, and will happily bring along your pets with me on a hike if you like :)', 3, 1);
+INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (1, 'Fenced yard', 3, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (2, 'Open fields', 5, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (3, 'A place for a pet', 7, 1);
 INSERT INTO `host` (`id`, `description`, `user_id`, `active`) VALUES (4, 'Fenced', 9, 1);
@@ -520,10 +519,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `PetBnB`;
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (1, 'Day Sitting', 19.99, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (2, 'Overnight Stay', 45.99, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (3, 'Grooming', 16.50, 0);
-INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (4, 'Walking', 12.75, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (1, 'Grooming', 12.50, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (3, 'Walking', 7.75, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (5, 'Overnight Stays', 59.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (6, 'Nail Trim', 9.99, 0);
+INSERT INTO `service` (`id`, `name`, `rate`, `active`) VALUES (7, 'Day Sitting', 29.99, 0);
 
 COMMIT;
 
@@ -537,29 +537,18 @@ INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (1, 1);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (1, 2);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (1, 5);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (1, 7);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (2, 2);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (2, 3);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (2, 4);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (2, 6);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (3, 8);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (3, 9);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (3, 10);
 INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (3, 7);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 10);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 9);
-INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (4, 8);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `host_image`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `PetBnB`;
-INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (1, 'https://i.imgur.com/WsP47SO.png', 1);
-INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (2, 'https://i.imgur.com/VQuV3rI.png', 1);
-INSERT INTO `host_image` (`id`, `url`, `host_id`) VALUES (3, 'https://i.imgur.com/8e4A2FO.png', 1);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 10);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 4);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (5, 1);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 2);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 5);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (6, 6);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (7, 7);
+INSERT INTO `host_service` (`service_id`, `host_id`) VALUES (7, 8);
 
 COMMIT;
 
