@@ -70,6 +70,7 @@
 					<tr>
 						<td>
 							<div align="center" class="input-group-append">
+								<input type="hidden" name="userId" value="${sessionUser.id }">
 								<input class="btn btn-secondary" type="submit"
 									value="Register Pet to Account !" />
 							</div>
