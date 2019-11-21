@@ -250,7 +250,7 @@
 			<br>
 			<br>
 			<br>
-		<%-- 
+		<%-- *******   FOR REMOVING PHOTOS -- STRETCH GOAL  ******
 <c:forEach items="${oldHost.hostImages }" var="hostImage">
   		<img src="${hostImage.url }" height="130" width="130"> 
 

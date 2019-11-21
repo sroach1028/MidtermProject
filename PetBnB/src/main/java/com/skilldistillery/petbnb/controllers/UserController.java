@@ -83,15 +83,15 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
-	public ModelAndView getAllPets() {
-		ModelAndView mv = new ModelAndView();
-
-		List<Pet> pets = pettrDAO.findAllPets();
-		mv.addObject("pets", pets);
-		mv.setViewName("animalProfile");
-		return mv;
-	}
+//	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
+//	public ModelAndView getAllPets() {
+//		ModelAndView mv = new ModelAndView();
+//
+//		List<Pet> pets = pettrDAO.findAllPets();
+//		mv.addObject("pets", pets);
+//		mv.setViewName("animalProfile");
+//		return mv;
+//	}
 
 	@RequestMapping(path = "getPet.do", method = RequestMethod.GET)
 	public ModelAndView getPet(@RequestParam("petId") int petId) {

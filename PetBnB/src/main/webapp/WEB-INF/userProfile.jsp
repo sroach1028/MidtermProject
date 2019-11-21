@@ -30,18 +30,18 @@
 	<br>
 	<div class="container">
 
-<div class="row mx-sm-n5">
-<div class="col-sm-4 px-sm">
-			</div>
-			<div class="col-sm-4 px-sm">
-			<p></p>
-			</div>
-			<div class="col-sm-4 px-sm">
-			</div>
-</div>
-
-<div class="row mx-md-n5">
-			
+		<div class="row mx-sm-n5">
+		<div class="col-sm-4 px-sm">
+					</div>
+					<div class="col-sm-4 px-sm">
+					<p></p>
+					</div>
+					<div class="col-sm-4 px-sm">
+					</div>
+		</div>
+		
+		<div class="row mx-md-n5">
+					
 			<div class="col-sm-4 px-sm">
 			</div>
 			<div class="col-sm-4 px-sm">

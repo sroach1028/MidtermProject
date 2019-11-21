@@ -11,54 +11,145 @@
 	crossorigin="anonymous">
 
 <link href="css/styles2.css" rel="stylesheet" type="text/css">
+<title>Animal Profile</title>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
-<title>Animal Profile</title>
+<style>
+.checked {
+	color: orange;
+}
+
+.carousel .item {
+	height: 300px;
+}
+
+.item img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 300px;
+}
+
+.centerBlock {
+  display: table;
+  margin: auto;
+  </style>
 </head>
-<body>
+<body style = "background-color: #cce6f0">
+<br>
+	<div class="container">
 
-	<c:if test="${not empty pets }">
-		<c:forEach items="${pets }" var="pet">
-			<ul>
-				<li>Pet Type: ${pet.petType.type}</li>
-				<li><a href="getPet.do?petId=${pet.id}" class="btTxt submit"><strong>${pet.name }</strong></a></li>
-			</ul>
-		</c:forEach>
-	</c:if>
-
-	<c:if test="${not empty pet }">
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+		
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+		
+	</div>
 		<div class="container">
 			<div class="row mx-md-n5">
-				<div class="col-lg-3 px-md"></div>
-				<div class="col-lg-6 px-md">
-					<div class="p-5 border bg-light">
-						<h3>
-							<font face="Lucida Bright">${pet.name }</font>
-						</h3>
-
-						<h5>
-							<strong>Pet type: </strong>${pet.petType.type }</h5>
-
-
-						<p class="lead">
-							<font face="verdana">${pet.description }</font>
-						</p>
-						<br>
-						<hr class="my-4">
-						<p>Special Needs: ${pet.specialNeeds }</p>
-					</div>
-					<div class="col-lg-3 px-md"></div>
+				
+				<div class="col-lg-3 px-md">
 				</div>
-			</div>
+				
+					<div class="col-lg-6 px-md">
+						<div class="p-3 border border-dark bg-light">
+							<div class="centerBlock">			
+								<p>
+									<strong><font size="10" face ="Verdana" >Pet Profile</font></strong>
+								</p>
+							</div>
+						</div>	
+					</div>
+				
+				<div class="col-lg-3 px-md"></div>
+					<div class="row mx-lg-n5">
+						<div class="col-md-5 px-md">
+								<div class="centerBlock">
+								
+									<c:if test="${not empty pet.petImages }">
+	
+								<div class="container">
+									<div class="row mx-md-n5">
+										<div class="col px-md">
+											<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="width: 450px; height: 450px; margin: 0 auto">
+												<div class="carousel-inner">
+													<c:forEach var="petImage" items="${pet.petImages }"
+														varStatus="count">
+														<c:choose>
+															<c:when test="${count.index == 0 }">
+																<div class="carousel-item active">
+																	<img src="${petImage.url }" class="d-block w-100" alt="...">
+																</div>
+															</c:when>
+															<c:otherwise>
+																<div class="carousel-item">
+																	<img src="${petImage.url }" class="d-block w-100" alt="...">
+																</div>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+							
+												</div>
+												<a class="carousel-control-prev" href="#carouselExampleFade"
+													role="button" data-slide="prev"> <span
+													class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+													class="sr-only">Previous</span>
+												</a> <a class="carousel-control-next" href="#carouselExampleFade"
+													role="button" data-slide="next"> <span
+													class="carousel-control-next-icon" aria-hidden="true"></span> <span
+													class="sr-only">Next</span>
+												</a>
+											</div>
+											</div>		
+										</div>
+									</div>
+								</c:if>
+							</div>
+						</div>
+					</div>
 
+							<div class="col-lg-7 px-md">
+								<div class="p-3 border border-dark bg-light">
+									<div class="centerBlock">
+										<p><font size="5" face ="Verdana" ><strong>Pet type: </strong>${pet.petType.type }</font></p>
+				
+										<p class="lead"> <font size ="5" face="verdana">${pet.description }</font></p>
+										<br>
+										<p><font size="4" face ="Verdana" ><strong>Special Needs:  </strong>${pet.specialNeeds }</font></p>
+									</div>
+								</div>
+							</div>		
+				</div>
+		</div>	
+		
+			<c:if test="${sessionUser.id == pet.user.id }">
 			<br>
 			<p class="lead">
 				<a class="btn btn-dark" href="goToUpdatePet.do?petId=${pet.id}"
 					role="button">Update Pet</a> <a class="btn btn-dark"
 					href="removePet.do?petId=${pet.id}" role="button">Remove Pet</a>
 			</p>
+			</c:if>
 		</div>
 
+		<c:if test="${empty pet.reviewsOfPet }">
+			<p><font size ="5" face="verdana" style="text-align:center;">No reviews yet for this pet.</font>
+		</c:if>
 
 		<c:if test="${not empty pet.reviewsOfPet }">
 			<h3>List of Reviews</h3>
@@ -71,83 +162,7 @@
 		</c:if>
 
 
-
-		<c:if test="${not empty pet.petImages }">
-
-			<div id="carouselExampleFade" class="carousel slide carousel-fade"
-				data-ride="carousel"
-				style="width: 450px; height: 450px; margin: 0 auto">
-				<div class="carousel-inner">
-					<c:forEach var="petImage" items="${pet.petImages }"
-						varStatus="count">
-						<c:choose>
-							<c:when test="${count.index == 0 }">
-								<div class="carousel-item active">
-									<img src="${petImage.url }" class="d-block w-100" alt="...">
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="carousel-item">
-									<img src="${petImage.url }" class="d-block w-100" alt="...">
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleFade"
-					role="button" data-slide="prev"> <span
-					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-					class="sr-only">Previous</span>
-				</a> <a class="carousel-control-next" href="#carouselExampleFade"
-					role="button" data-slide="next"> <span
-					class="carousel-control-next-icon" aria-hidden="true"></span> <span
-					class="sr-only">Next</span>
-				</a>
-				
-			</c:if>
-				
-
-<%-- <div class="container">
-		<div class="row mx-md-n5">
-			<div class="col px-md">
-				<div id="carouselExampleFade" class="carousel slide carousel-fade"
-					data-ride="carousel"
-					style="width: 450px; height: 450px; margin: 0 auto">
-					<div class="carousel-inner">
-						<c:forEach var="hostImage" items="${host.hostImages }"
-							varStatus="count">
-							<c:choose>
-								<c:when test="${count.index == 0 }">
-									<div class="carousel-item active">
-										<img src="${hostImage.url }" class="d-block w-100" alt="...">
-									</div>
-								</c:when>
-								<c:otherwise>
-									<div class="carousel-item">
-										<img src="${hostImage.url }" class="d-block w-100" alt="...">
-									</div>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleFade"
-						role="button" data-slide="prev"> <span
-						class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-						class="sr-only">Previous</span>
-					</a> <a class="carousel-control-next" href="#carouselExampleFade"
-						role="button" data-slide="next"> <span
-						class="carousel-control-next-icon" aria-hidden="true"></span> <span
-						class="sr-only">Next</span>
-					</a>
-				</div>
-
-			</div>
-		</div> --%>
-
-			
-			<c:if test="${sessionUser.id == user.id}">
+			<c:if test="${sessionUser.id == pet.user.id}">
 		
 				<form action="addPetImage.do" method="GET">
 					<input type="text" name="url" placeholder="image url" /> <input
@@ -155,6 +170,17 @@
 						type="submit" class="btn btn-dark" value="Add Photo" />
 				</form>
 			</c:if>
-		</c:if>
+			
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 </body>
 </html>
