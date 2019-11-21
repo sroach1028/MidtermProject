@@ -196,17 +196,6 @@ public class UserController {
 	public ModelAndView searchHost(@RequestParam("serviceId") int serviceId) {
 		ModelAndView mv = new ModelAndView();
 		List<Host> hosts = pettrDAO.searchHostByService(serviceId);
-<<<<<<< HEAD
-=======
-		List<Integer> averages = new ArrayList<>();
-		int total = 0;
-		for (Host host : hosts) {
-			for (ReviewOfHost review : host.getReviewsOfHost()) {
-				total += review.getRating();
-			}
-			averages.add(total / host.getReviewsOfHost().size());
-		}
->>>>>>> 978c132a287e064e7ddb1dd709419fe4167b6d76
 		mv.addObject("hosts", hosts);
 		mv.setViewName("searchResults");
 		return mv;
