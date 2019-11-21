@@ -100,18 +100,16 @@ body {
 											</h3>
 											<h4>${host.user.address.city },${host.user.address.state }</h4>
 										</div>
-										<div class="col-md-6 ">
-												<table class="table table-light">
+										<div class="col-md-6">
+												<table class="table table-sm table-light table-borderless rounded">
 												<thead>
-												<tr>
-												</tr>
 												</thead>
 												<tbody>
 													<c:forEach items="${host.services }" var="service">
-													<tr>
+													<tr class="table-info">
 														<th scope="row"></th>
-															<td>${service.name }</td>
-															<td>${service.rate }</td>
+															<td class="text-dark">${service.name }</td>
+															<td class="text-dark">${service.rate }</td>
 															<c:if test="${not empty sessionUser.pets }">
 															<td>
 																<form action="goToReservation.do" method="GET">
@@ -127,7 +125,7 @@ body {
 													</c:forEach>
 												</tbody>
 												</table>
-											</div>
+												</div>
 										</div>
 							</div>
 						</div>
