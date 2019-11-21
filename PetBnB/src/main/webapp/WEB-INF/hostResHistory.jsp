@@ -8,7 +8,12 @@
 .centerBlock {
   display: table;
   margin: auto;
-  
+}
+img {
+  border-radius: 80%;
+}
+div{
+border: 20px;
 }
 h2{
 text-align: right;
@@ -27,7 +32,7 @@ text-align: right;
 </head>
 <body>
 
-	<div class="container">
+	<div class="container text-dark">
 		<div class="row mx-md-n5">
 			<div class="col-md-6 px-md">
 				<h1>
@@ -43,12 +48,12 @@ text-align: right;
 				<c:forEach items="${host.reservations }" var="reservation">
 			<tr>
 					<div class="col-md-9">
-						<div class="lead border border-warning bg-light rounded">
+						<div class="lead border border-dark bg-light rounded">
 							<c:if test="${not empty reservation.hostReview.review }">
 								<h2>${reservation.openDate } to ${reservation.closeDate}</h2>
 
-	<span><h5>Reviewed by ${ reservation.pet.user.firstName} and
-	${reservation.pet.name } the ${reservation.pet.petType.type}</h5><img src="${reservation.pet.user.imageURL }" width="100" height="100"/></span>
+	<span><h5> &nbsp;&nbsp;&nbsp; Reviewed by ${ reservation.pet.user.firstName} and
+	${reservation.pet.name } the ${reservation.pet.petType.type}</h5> &nbsp;&nbsp;&nbsp; <img src="${reservation.pet.user.imageURL }" width="100" height="100"/></span>
 								<c:if test="${reservation.hostReview.rating == 1}">
 									<span class="fa fa-star checked"></span>
 									<span class="fa fa-star"></span>
