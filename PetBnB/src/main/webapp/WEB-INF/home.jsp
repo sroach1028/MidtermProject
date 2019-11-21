@@ -106,13 +106,13 @@
 					<select class="custom-select" name="serviceId"
 						style="width: 150px;">
 						<option value="1">Grooming</option>
-						<option value="2">Custom Meal Making</option>
+						<!-- <option value="2">Custom Meal Making</option> -->
 						<option value="3">Walking</option>
-						<option value="4">Petting</option>
+						<!--<option value="4">Petting</option> -->
 						<option value="5">Overnight Stays</option>
 						<option value="6">Nail Trim</option>
 						<option value="7">Day Sitting</option>
-						<option value="8">Hourly</option>
+						<!-- <option value="8">Hourly</option> -->
 					</select> <input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
 						value="Search by service" />
 				</form>
