@@ -11,10 +11,18 @@
 .centerBlock {
   display: table;
   margin: auto;
-  
+}
+li{
+    list-style-type: none;
+}
+img {
+  border-radius: 80%;
 }
 h3{
 text-align: right;
+}
+p{
+  text-indent: 100px;
 }  
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,8 +36,8 @@ text-align: right;
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 </head>
-<body class ="text-dark bg-white">
-	<div class="container">
+<body class ="bg-white">
+	<div class="container text-dark ">
 		<br> <br>
 		<div class="row mx-md-n5">
 			<div class="col-md-6 px-md">
@@ -46,15 +54,15 @@ text-align: right;
 						<li>
 						<div class="row mx-md-n5">
 							<div class="col-md-9">
-								<div class="p-5 lead border border-warning bg-light rounded-pill">
+								<div class="p-5 lead border border-dark bg-light rounded-pill">
 									
 									<c:if test="${not empty reservation.petReview.review }">
-									<div class="centerBlock">
-										<h3>${reservation.openDate } thru ${reservation.closeDate}</h3>
-									</div>
-										<span><h5>Reviewed by Host ${reservation.host.user.firstName }
+<!-- 									<div class="centerBlock">
+ -->										<h3>${reservation.openDate } thru ${reservation.closeDate}</h3>
+<!-- 									</div>
+ -->										<span><h5> &nbsp;&nbsp; Reviewed by Host ${reservation.host.user.firstName }
 											${reservation.host.user.lastName }</h5> 
-											<img src="${reservation.host.user.imageURL }" height="100" width="100"/>
+											 &nbsp;&nbsp;<img src="${reservation.host.user.imageURL }" height="100" width="100"/>
 											</span>
 										<c:if test="${reservation.petReview.rating == 1}">
 											<span class="fa fa-star checked"></span>
@@ -91,10 +99,10 @@ text-align: right;
 											<span class="fa fa-star checked"></span>
 											<span class="fa fa-star checked"></span>
 										</c:if>
-										<div class="centerBlock">
-										<p>"${reservation.petReview.review}"</p>
-										</div>
-									</c:if>
+<!-- 										<div class="centerBlock">
+ -->										<p>"${reservation.petReview.review}"</p>
+<!-- 										</div>
+ -->									</c:if>
 								</div>
 							</div>
 						</div>
