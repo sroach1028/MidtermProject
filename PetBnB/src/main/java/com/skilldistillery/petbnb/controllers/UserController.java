@@ -243,6 +243,25 @@ public class UserController {
 		mv.setViewName("hostPage");
 		return mv;
 	}
+	
+	@RequestMapping(path = "toEditUserProfile.do", method = RequestMethod.GET)
+	public ModelAndView toEditUserProfile(@RequestParam("id") int userId, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", new User());
+		mv.addObject("oldUser", pettrDAO.findUserById(userId));
+		mv.setViewName("editUserProfile");
+		return mv;
+	}
+	
+	@RequestMapping(path = "editUserProfile.do", method = RequestMethod.GET)
+	public ModelAndView editUserProfile(@Valid User updatedUser, @RequestParam("id") int userId, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User user = pettrDAO.editUserProfileById(updatedUser, userId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
+		mv.setViewName("userProfile");
+		return mv;
+	}
 
 	
 	@RequestMapping(path = "addHostImage.do", method = RequestMethod.GET)
