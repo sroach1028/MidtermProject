@@ -111,6 +111,14 @@
 						</form>
 						<br>
 						
+						<br>
+			
+						<form action="editUserProfile.do" method="GET">
+						<input type="hidden" name="id" value=${sessionUser.id } /> <input
+						type="submit" class="btn btn-dark" value="Edit User Profile" />
+						</form>
+						<br>
+						
 						<c:if test="${not empty sessionHost}">
 							<form action="goToHostPage.do" method="GET">
 								<input type="hidden" name="hostId" value=${sessionHost.id } /> 
