@@ -17,7 +17,7 @@
 		<div class="col-2 col-left"></div>
 
 		<div class="jumbotron col-8 col-center">
-			<form:form action="register.do" method="GET" modelAttribute="user">
+			<form:form action="editUserProfile.do" method="GET" modelAttribute="oldUser">
 				<table class="col-8 col-centered table table-hover table-secondary">
 					<tr>
 						<th class="lead">Edit Profile</th>
@@ -154,7 +154,8 @@
 					<tr>
 						<td>
 							<div align="center" class="input-group-append">
-								<input class="btn btn-secondary" type="submit" value="Register" />
+							<input type="hidden" name="id" value="${oldUser.id }" />
+								<input class="btn btn-secondary" type="submit" value="Update" />
 							</div>
 						</td>
 					</tr>
