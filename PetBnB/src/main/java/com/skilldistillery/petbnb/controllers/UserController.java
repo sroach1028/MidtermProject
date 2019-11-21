@@ -162,11 +162,12 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "removePet.do", method = RequestMethod.GET)
-	public ModelAndView removePet(@RequestParam("petId") int petId, HttpSession session) {
+	public ModelAndView removePet(@RequestParam("petId") int petId, @RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = pettrDAO.removePetById(petId);
 		session.removeAttribute("sessionUser");
 		session.setAttribute("sessionUser", user);
+		mv.addObject("user", user);
 		mv.setViewName("userProfile");
 		return mv;
 	}
