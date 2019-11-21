@@ -135,7 +135,7 @@
 						<form:label path="imageURL"></form:label>
 						<td><form:input path="imageURL" required="required"
 								class="form-control" type="text"
-								placeholder="Profile Image (URL)" value=""
+								placeholder="Profile Image (URL)" value="${oldUser.imageURL }"
 								id="example-text-input" /> <form:errors path="imageURL" /></td>
 					</tr>
 					<c:if test="${not empty error}">
