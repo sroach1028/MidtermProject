@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-8 col-right">
 				<div class="jumbotron col-7 col-centered text-center">
-					<h1 class="display-4">Account Details !</h1>
+					<h1>Account Details !</h1>
 				</div>
 
 			</div>
@@ -71,7 +71,7 @@
 				<table class=" col-9 col-centered table table-hover table-secondary">
 					<thead>
 						<tr>
-							<th class="display-4 text-center">View Reviews of your Pets</th>
+							<th><h2>View Reviews of your Pets</h2></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,7 +91,7 @@
 				<table class="col-9 col-centered table table-hover table-secondary">
 					<thead>
 						<tr>
-							<th class="display-4 text-center">View Reviews as a Host</th>
+							<th><h2>View Reviews as a Host</h2></th>
 						</tr>
 					</thead>
 					<tbody>
