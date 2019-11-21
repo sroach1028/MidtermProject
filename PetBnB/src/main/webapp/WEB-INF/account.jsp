@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-8 col-right">
 				<div class="jumbotron col-7 col-centered text-center">
-					<h1>Account Details !</h1>
+					<h1>Account Details</h1>
 				</div>
 
 			</div>

@@ -20,7 +20,7 @@
 			<form:form action="register.do" method="GET" modelAttribute="user">
 				<table class="col-8 col-centered table table-hover table-secondary">
 				<tr>
-					<th><h2>Create an Account !</h2></th>
+					<th><h2>Create an Account</h2></th>
 					</tr>
 					<tr>
 
