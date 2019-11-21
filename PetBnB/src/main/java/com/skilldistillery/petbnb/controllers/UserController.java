@@ -33,7 +33,7 @@ public class UserController {
 	@Autowired
 	private PettrDAO pettrDAO;
 
-	@RequestMapping(path = "/")
+	@RequestMapping(path = {"/", "home.do"})
 	public String home() {
 		return "home";
 	}
