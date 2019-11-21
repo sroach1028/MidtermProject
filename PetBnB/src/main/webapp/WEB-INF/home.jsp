@@ -148,7 +148,17 @@
 	</div>
 
 
+<!-- Footer -->
+<footer class="page-footer bg-dark text-light font-small blue">
 
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://github.com/JesseTrew/MidtermProject"> Vehement Kitten<br>SkillDistillery.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 	<!-- Optional JavaScript -->
 	<script>
 		var coll = document.getElementsByClassName("collapsible");

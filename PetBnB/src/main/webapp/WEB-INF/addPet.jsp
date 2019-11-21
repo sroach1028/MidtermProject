@@ -30,7 +30,7 @@
 			<form:form action="addPet.do" method="GET" modelAttribute="pet">
 				<table class="col-9 col-centered table table-hover table-secondary">
 					<tr>
-						<th class="display-4">Add Your Pet !</th>
+						<th><h2>Add Your Pet</h2></th>
 					</tr>
 					<tr>
 						<form:label path="name"></form:label>

@@ -152,6 +152,25 @@ public class PettrDAOImpl implements PettrDAO {
 		return updatedHost;
 	}
 	
+	@Override
+	public User editUserProfileById(User updatedUser, int userId) {
+		User user = em.find(User.class, userId);
+		
+		user.setFirstName(updatedUser.getFirstName());
+		user.setLastName(updatedUser.getLastName());
+		user.setEmail(updatedUser.getEmail());
+		user.getAddress().setStreet(updatedUser.getAddress().getStreet());
+		user.getAddress().setCity(updatedUser.getAddress().getCity());
+		user.getAddress().setState(updatedUser.getAddress().getState());
+		user.getAddress().setZip(updatedUser.getAddress().getZip());
+		user.getAddress().setPhone(updatedUser.getAddress().getPhone());
+		
+		
+		em.flush();
+		
+		return user;
+	}
+	
 	
 
 //	@Override

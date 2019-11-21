@@ -79,4 +79,6 @@ public interface PettrDAO {
 	Host updateServicestoHostById(int[] selections, int hostId);
 
 	Host addHostImage(int hostId, String url);
+
+	User editUserProfileById(User user, int userId);
 }
