@@ -113,7 +113,7 @@
 						
 						<br>
 			
-						<form action="editUserProfile.do" method="GET">
+						<form action="toEditUserProfile.do" method="GET">
 						<input type="hidden" name="id" value=${sessionUser.id } /> <input
 						type="submit" class="btn btn-dark" value="Edit User Profile" />
 						</form>
