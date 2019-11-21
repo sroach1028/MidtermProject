@@ -70,6 +70,10 @@
 					<li class="nav-item"><a href="goRegister.do" class="nav-link">Register</a></li>
 				</c:if>
 				<c:if test="${not empty sessionUser }">
+					<c:if test="${not empty sessionHost }">
+						<li class="nav-item"><a
+						href="hostReservationHistory.do?hostId=${sessionHost.id }" class="nav-link">My
+							Reservations</a></li></c:if>
 					<li class="nav-item"><a
 						href="toUserProfile.do?id=${sessionUser.id }" class="nav-link">My
 							Profile</a></li>
