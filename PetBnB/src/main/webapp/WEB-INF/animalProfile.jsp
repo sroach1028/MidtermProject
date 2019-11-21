@@ -144,7 +144,7 @@
 							<div class="col-md px-sm">
 										
 										<a class="btn btn-dark" href="goToUpdatePet.do?petId=${pet.id}" role="button">Update Pet</a> 
-										<a class="btn btn-dark" href="removePet.do?petId=${pet.id}" role="button">Remove Pet</a>
+										<a class="btn btn-dark" href="removePet.do?petId=${pet.id}&userId=${sessionUser.id}" role="button">Remove Pet</a>
 									
 							</div>
 							
