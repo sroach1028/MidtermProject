@@ -25,7 +25,7 @@
 	rel="stylesheet">
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top"
 	role="navigation">
 	<div class="container">
 		<a class="navbar-brand display-4" href="/">Boop
@@ -57,7 +57,7 @@
 											type="password" required="required">
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary btn-block">Login</button>
+										<button type="submit" class="btn btn-secondary btn-block">Login</button>
 										<p class="text-danger">${errorLogin }</p>
 									</div>
 								</form>
