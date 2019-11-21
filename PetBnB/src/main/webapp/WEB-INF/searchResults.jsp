@@ -63,41 +63,40 @@ opacity: 1;
 </head>
 
 <body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
-		<div>
-			
-		</div>
 	<div class="container text-dark">
-
-		<div class="resultsSingle" style="margin-top: 15px">
+	<div class="col-md-1">
+				</div>		
+	
+	<div class="resultsSingle" style="margin-top: 15px">
 			<h1>
 				<strong>${nothing }</strong>
 			</h1>
-		</div>
+	</div>
 
 		<c:if test="${not empty hosts }">
 			<br>
- 			<div class="resultsSingle" style="margin-top: 50px">
+ 	<div class="resultsSingle" style="margin-top: 50px">
  			<h4><strong> Available Hosts </strong></h4>
-			</div>
-			<div class="col-md-1">
-			</div>		
+	</div>
 				<ol class="list-group">
 						<c:forEach items="${hosts}" var="host">
- 				<div class="row mx-sm-n4" style= "height: 50%" "width: 100%">
-				<div class="col-md-6">
-				<div class="p-5 lead border border-dark bg-light rounded">
-							<br><li>
+ 	<div class="row mx-sm-n4">
+		<div class="col-md-6">
+			<div class="p-5 lead border border-dark bg-light rounded">
+					<br><li>
+ 		<div class="row mx-sm-n4">
+			<div class="col-md-6">
 								<h3>
 									<span><a href="goToHostPage.do?hostId=${host.id}">
 									<img src="${host.user.imageURL }" height="100" width="100"/> ${host.user.firstName }
 									</a></span>
 								</h3>
 								<h4>${host.user.address.city },${host.user.address.state }</h4>
-
-				<div class="col-md-12">
+			</div>
+			<div class="col-md-4">
 								<h2>Services</h2>
 								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Services</a>
-								<div class="content">
+					<div class="content">
 								<table>
 									<tr class="list-group">
 										<c:forEach items="${host.services }" var="service">
@@ -114,7 +113,7 @@ opacity: 1;
 										</c:forEach>
 									</tr>
 									</table>
-								</div>
+					</div>
 								<h2>Reviews</h2>
 								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
 
@@ -126,14 +125,13 @@ opacity: 1;
 										</c:forEach>
 									</ol>
 								</div>
-
-
-
-							</li>
-					</div>
-				</div>
 			</div>
+							</li>
+			</div>
+			</div>
+			</div><br>
 						</c:forEach>
+		</div>
 					</ol>
 		</c:if>
 
