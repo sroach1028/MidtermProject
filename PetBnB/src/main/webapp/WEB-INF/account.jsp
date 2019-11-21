@@ -17,13 +17,39 @@
 <link rel="stylesheet" href="css/style.css">
 <title>My Account</title>
 <%@include file="/WEB-INF/nav.jsp"%>
-</head>
 
-<body>
+<body style = "background-color: #cce6f0">
+
+	<h1>Account Details Page</h1>
+	
+	<c:if test="${! empty sessionUser}">
+
+		<form action="toUserProfile.do" method="GET">
+			<input type="hidden" name="id" value=${sessionUser.id } /> <input
+				type="submit" class="btn btn-dark" value="View Profile" />
+		</form>
+			<c:if test="${empty sessionHost}">
+	
+				<form action="goToCreateHost.do" method="GET">
+					<input type="hidden" name="id" value=${sessionUser.id } /> 
+					<input type="submit" class="btn btn-dark" value="Become a Host" />
+				</form>
+			</c:if>
+	</c:if>
+	
+	
+	<c:if test="${!empty sessionHost}">
+
+		<form action="goToHostPage.do" method="GET">
+			<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
+				type="submit" class="btn btn-dark" value="Host Details" />
+		</form>
+	</c:if>
 	<br>
 	<br>
 	<br>
 	<br>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-3 col-centered img-responsive">

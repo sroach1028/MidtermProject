@@ -14,52 +14,65 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
 <title>User Profile</title>
 <%@include file="nav.jsp"%>
+<link rel="stylesheet" href="css/styles.css">
 <style>
 	.centerBlock {
 	  display: table;
 	  margin: auto;
 	}
 
+	
 </style>
 </head>
 
 <body style = "background-color: #cce6f0">
 	<br>
 	<div class="container">
-
-<div class="row mx-sm-n5">
-<div class="col-sm-4 px-sm">
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
 			</div>
+			<br>
 			<div class="col-sm-4 px-sm">
 			<p></p>
 			</div>
+			<br>
 			<div class="col-sm-4 px-sm">
 			</div>
-</div>
-
-<div class="row mx-md-n5">
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row mx-md-n5">
 			
-			<div class="col-sm-4 px-sm">
+			<div class="col-md-4 px-sm">
 			</div>
-			<div class="col-sm-4 px-sm">
+			<br>
+			<div class="col-md-4 px-sm">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="10" face ="Verdana" >User Profile</font></strong>
 						</p>
+						<br>
 					</div>
 				</div>		
 			</div>
-			<div class="col-sm-4 px-sm">
+	
+				<div class="col-md-4 px-sm">
 			</div>
 		</div>
-
+	</div>
+	
 		<br>
-
+		<br>
+	<div class="container">
 		<div class="row mx-md-n5">
+					<div class="col-md-2 px-md">
+		</div>
+		
 			<div class="col-md-4 px-md">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">
@@ -68,7 +81,7 @@
 				</div>
 			</div>
 				
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">
 				
@@ -81,7 +94,7 @@
 					</div>
 				</div>	
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-2">
 				<div class="centerBlock">			
 						
 					<c:if test="${sessionUser.id == user.id}">
@@ -108,21 +121,28 @@
 					</c:if>
 				</div>
 			</div>
-				<br>
-			</div>
+			
+		</div>
+	</div>
+			
 			<br>
-				<div class="resultsSingle">
-					<p><strong><font size="6" face ="Geneva" >Pets List</font></strong></p>
+	<div class="container">
+		<div class="row mx-md-n5">
+			<div class="col-md-2 px-md">
+			</div>	
+						<div class="col-md-4 px-md">
+							
+					<p><strong><font size="18" face ="Geneva" >Pets List</font></strong></p>
 						<c:forEach items="${user.pets }" var="pet">
 							<c:if test="${pet.active == true}">
 								<div>
-									<a href="getPet.do?petId=${pet.id }"
-											class="btTxt submit">${pet.name }</a>
-									</div>
+									<a href="getPet.do?petId=${pet.id }" >${pet.name }</a>
+								</div>
 							</c:if>
 						</c:forEach>
-				</div>
-			</div>
+		</div>
+	</div>
+	
 	<br>
 	<br>
 	

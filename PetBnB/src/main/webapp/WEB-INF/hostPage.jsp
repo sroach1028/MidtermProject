@@ -36,28 +36,48 @@
 }
 
 </style>
+<title>Host Profile</title>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
-<title>Host Profile</title>
 </head>
 <body style = "background-color: #cce6f0">
-	<br>
-	<br>
-	<div class="container">
+		<div class="container">
 		<div class="row mx-sm-n5">
-			
 			<div class="col-sm-4 px-sm">
 			</div>
 			
-						<div class="col-sm-4 px-sm">
-						<p></p>
-						</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
 			
-						<div class="col-sm-4 px-sm">
-						</div>
-		
+			<div class="col-sm-4 px-sm">
+			</div>
 		</div>
-		
+	</div>
+	<br>
+	
+	<div class="container">
+		<div class="row mx-md-n5">
+			
+			<div class="col-md-4 px-sm">
+			</div>
+			
+			<div class="col-md-4 px-sm">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">			
+						<p>
+							<strong><font size="10" face ="Verdana" >Host Profile</font></strong>
+						</p>
+					</div>
+				</div>		
+			</div>
+	
+				<div class="col-md-4 px-sm">
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
 		<div class="row mx-md-n5">
 			<div class="col-md-4 px-md">
 				<div class="p-3 border border-dark bg-light">
@@ -69,8 +89,8 @@
 			<div class="col-md-6">
 				<div class="p-3 lead border border-dark bg-light">
 					<div class="centerBlock">
-					<h2>${host.user.firstName} ${host.user.lastName}</h2>
-					<p>${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</p>
+					<h2><font face="verdana" size="6">${host.user.firstName} ${host.user.lastName}</font></h2>
+					<p><font face="verdana" size="4">${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</font></p>
 					<c:if test="${empty host.reviewsOfHost }">
 						<p>No reviews yet</p>
 					</c:if>
@@ -155,18 +175,13 @@
 
 	<br>
 	<br>
-
-
 		<div class="container">
 			<div class="row mx-md-n5">
 				<div class="p-3 col-md px-md">
 					<c:if test="${not empty host.hostImages }">
-						<div id="carouselExampleFade" class="carousel slide carousel-fade"
-							data-ride="carousel"
-							style="width: 450px; height: 450px; margin: 0 auto">
+						<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="width: 450px; height: 450px; margin: 0 auto">
 							<div class="carousel-inner">
-								<c:forEach var="hostImage" items="${host.hostImages }"
-									varStatus="count">
+								<c:forEach var="hostImage" items="${host.hostImages }" varStatus="count">
 									<c:choose>
 										<c:when test="${count.index == 0 }">
 											<div class="carousel-item active">
@@ -182,15 +197,15 @@
 								</c:forEach>
 	
 							</div>
-							<a class="carousel-control-prev" href="#carouselExampleFade"
-								role="button" data-slide="prev"> <span
-								class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-								class="sr-only">Previous</span>
-							</a> <a class="carousel-control-next" href="#carouselExampleFade"
-								role="button" data-slide="next"> <span
-								class="carousel-control-next-icon" aria-hidden="true"></span> <span
-								class="sr-only">Next</span>
-							</a>
+								<a class="carousel-control-prev" href="#carouselExampleFade"
+									role="button" data-slide="prev"> <span
+									class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+									class="sr-only">Previous</span>
+								</a> <a class="carousel-control-next" href="#carouselExampleFade"
+									role="button" data-slide="next"> <span
+									class="carousel-control-next-icon" aria-hidden="true"></span> <span
+									class="sr-only">Next</span>
+								</a>
 						</div>
 					</c:if>
 					
@@ -214,20 +229,12 @@
 	
 		<c:if test="${not empty sessionHost }">
 			<c:if test="${host.id == sessionHost.id}">
-
 				<div class="container">
 					<div class="row mx-md-n5">
 						
-						<div class="col-md-3 px-md">
-						</div>
-						<div class="col-md-3 px-md">
-							<form action="goToUpdateHost.do" method="GET">
-								<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
-									type="submit" class="btn btn-dark" value="Update Host Details" />
-							</form>
-						</div>
+						
 				
-						<br>
+						
 				
 						<div class="col-md-3 px-md">
 		
@@ -240,7 +247,17 @@
 						</div>
 						
 						<div class="col-md-3 px-md">
+							<form action="goToUpdateHost.do" method="GET">
+								<input type="hidden" name="hostId" value=${sessionHost.id } /> <input
+									type="submit" class="btn btn-dark" value="Update Host Details" />
+							</form>
 						</div>
+						<div class="col-md-3 px-md">
+						</div>
+						<br>
+						<div class="col-md-3 px-md">
+						</div>
+						
 				</div>
 				</div>
 			</c:if>
@@ -250,7 +267,7 @@
 			<br>
 			<br>
 			<br>
-		<%-- 
+		<%-- *******   FOR REMOVING PHOTOS -- STRETCH GOAL  ******
 <c:forEach items="${oldHost.hostImages }" var="hostImage">
   		<img src="${hostImage.url }" height="130" width="130"> 
 
