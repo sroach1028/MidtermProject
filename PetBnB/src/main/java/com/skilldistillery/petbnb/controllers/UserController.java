@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.petbnb.data.PettrDAO;
 import com.skilldistillery.petbnb.entities.Host;
@@ -82,6 +84,16 @@ public class UserController {
 		mv.addObject("pet", pettrDAO.findPet(petId));
 		mv.setViewName("animalProfile");
 		return mv;
+	}
+
+	@RequestMapping(path = "toPetProfileRedir.do", method = RequestMethod.GET)
+	public String toPetProfileRedir() {
+		return "animalProfile";
+	}
+	
+	@RequestMapping(path = "toHostPageRedir.do", method = RequestMethod.GET)
+	public String toHostPageRedir() {
+		return "hostPage";
 	}
 
 //	@RequestMapping(path = "getAllPets.do", method = RequestMethod.GET)
@@ -160,13 +172,14 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "addPetImage.do", method = RequestMethod.GET)
-	public ModelAndView addPetImage(@RequestParam("petId") int petId, @RequestParam("url") String url,
-			HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	public String addPetImage(@RequestParam("petId") int petId,
+			@RequestParam("url") String url, HttpSession session) {
+//		ModelAndView mv = new ModelAndView();
 		Pet pet = pettrDAO.addPetImage(petId, url);
-		mv.addObject("pet", pet);
-		mv.setViewName("animalProfile");
-		return mv;
+		session.setAttribute("pet", pet);
+//		mv.addObject("pet", pet);
+//		mv.setViewName("animalProfile");
+		return "redirect:/toPetProfileRedir.do";
 	}
 
 	@RequestMapping(path = "searchHost.do")
@@ -188,7 +201,7 @@ public class UserController {
 			for (ReviewOfHost review : host.getReviewsOfHost()) {
 				total += review.getRating();
 			}
-			averages.add(total/host.getReviewsOfHost().size());
+			averages.add(total / host.getReviewsOfHost().size());
 		}
 		mv.addObject("hosts", hosts);
 		mv.addObject("averages", averages);
@@ -244,18 +257,28 @@ public class UserController {
 		return mv;
 	}
 
-	
 	@RequestMapping(path = "addHostImage.do", method = RequestMethod.GET)
-	public ModelAndView addHostImage(@RequestParam("hostId") int hostId, @RequestParam("url") String url,
+	public String addHostImage(@RequestParam("hostId") int hostId, @RequestParam("url") String url,
 			HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+//		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.addHostImage(hostId, url);
-		mv.addObject("host", host);
-		mv.setViewName("hostPage");
-		return mv;
+		session.setAttribute("host", host);
+//		mv.addObject("host", host);
+//		mv.setViewName("hostPage");
+		return "redirect:/toHostPageRedir.do";
 	}
 	
-	
+//	@RequestMapping(path = "addPetImage.do", method = RequestMethod.GET)
+//	public String addPetImage(@RequestParam("petId") int petId,
+//			@RequestParam("url") String url, HttpSession session) {
+////		ModelAndView mv = new ModelAndView();
+//		Pet pet = pettrDAO.addPetImage(petId, url);
+//		session.setAttribute("pet", pet);
+////		mv.addObject("pet", pet);
+////		mv.setViewName("animalProfile");
+//		return "redirect:/toPetProfileRedir.do";
+//	}
+
 //	@RequestMapping(path = "removeHostImage.do", params = "hostId", method = RequestMethod.GET)
 //	public ModelAndView removeHostImage(@RequestParam("imageId") int imageId, @RequestParam("hostId") int hostId) {
 //		ModelAndView mv = new ModelAndView();
