@@ -72,7 +72,7 @@
 		<hr class="my-4 text-center">
 		<p class="lead text-center">Confirmation #000${reservation.id}</p>
 		<p class="lead text-center">
-			<a class="btn btn-danger" href="/" role="button">Return to Home
+			<a class="btn btn-danger" href="home.do" role="button">Return to Home
 				Page </a>
 		</p>
 		<div class="text-center">
