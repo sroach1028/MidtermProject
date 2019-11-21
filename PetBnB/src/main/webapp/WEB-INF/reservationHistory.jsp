@@ -140,5 +140,7 @@ p{
 			</c:forEach>
 		</ul>
 	</div>
+	<%@include file="/WEB-INF/footer.jsp"%>
+	
 </body>
 </html>

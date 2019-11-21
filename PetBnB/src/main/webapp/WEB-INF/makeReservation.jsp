@@ -77,6 +77,8 @@
 
 		</form>
 	</div>
+	<%@include file="/WEB-INF/footer.jsp"%>
+	
 </body>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="_js/bootstrap-datepicker.js"></script>

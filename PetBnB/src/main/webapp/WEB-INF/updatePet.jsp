@@ -55,5 +55,7 @@
 				value="Update Pet" />
 		</div>
 	</form:form>
+	<%@include file="/WEB-INF/footer.jsp"%>
+	
 </body>
 </html>

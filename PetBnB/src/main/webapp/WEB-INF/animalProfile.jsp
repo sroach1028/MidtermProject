@@ -182,18 +182,7 @@
 					</div>
 				</div>
 			</div>
-			
-			<!-- Footer -->
-<footer class=“page-footer bg-dark text-light font-small blue”>
-  <!-- Copyright -->
-  <div class=“footer-copyright text-center py-3">© 2019 Copyright:
-    <a href=“https://github.com/JesseTrew/MidtermProject”> Vehement Kitten<br>SkillDistillery.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
-			
-			
+<%@include file="/WEB-INF/footer.jsp"%>
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
