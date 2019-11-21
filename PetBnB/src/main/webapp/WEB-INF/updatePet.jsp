@@ -25,7 +25,7 @@
 			<h1>Pet Update</h1>
 		</div>
 	</div>
-	<form:form action="updatePet.do" method="GET" modelAttribute="pet">
+	<form:form action="updatePet.do" method="GET" modelAttribute="oldPet">
 		<form:label path="name">Name: </form:label>
 		<form:input path="name" required="required" default="${oldPet.name }"
 			placeholder="${oldPet.name}" value="${oldPet.name}" />

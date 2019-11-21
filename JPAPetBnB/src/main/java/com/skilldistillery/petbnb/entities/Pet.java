@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Pet {
 
@@ -34,6 +37,7 @@ public class Pet {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "pet")
 	private List<ReviewOfPet> reviewsOfPet;
 	

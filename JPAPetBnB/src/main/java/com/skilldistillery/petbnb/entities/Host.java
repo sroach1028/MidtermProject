@@ -35,6 +35,7 @@ public class Host {
 	@OneToMany(mappedBy = "host")
 	private List<Reservation> reservations;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "host")
 	private List<ReviewOfHost> reviewsOfHost;
 	
