@@ -51,7 +51,8 @@ class HostTest {
 	@DisplayName("test host entity mapping")
 	void test1() {
 		String string = host.getDescription();
-		assertEquals("Fenced yard", string);
+		assertEquals("Personal motto: \"I like big mutts and I cannot lie!\"  I have a one-acre, fenced yard and two dogs for your pet to play with."
+				+ " Available throughout this winter and spring. I love to go hiking, and will happily bring along your pets with me on a hike if you like :)", string);
 	}
 	
 	@Test
@@ -71,37 +72,37 @@ class HostTest {
 	void test4() {
 		assertNotNull(host);
 		assertTrue(host.getReviewsOfHost().size() > 0);
-		assertEquals(1, host.getReviewsOfHost().get(0).getRating());
+		assertEquals(5, host.getReviewsOfHost().get(0).getRating());
 	}
 	
 	@Test
 	@DisplayName ("Testing Host add reservation")
 	void test5() {
-		assertEquals(2, host.getReservations().size());
+		assertEquals(4, host.getReservations().size());
 		host.addReservation(newReservation);
-		assertEquals(3, host.getReservations().size());
+		assertEquals(5, host.getReservations().size());
 		host.removeReservation(newReservation);
-		assertEquals(2, host.getReservations().size());
+		assertEquals(4, host.getReservations().size());
 	}
 	
 	@Test
 	@DisplayName ("Testing Host add review of host")
 	void test6() {
-		assertEquals(1, host.getReviewsOfHost().size());
-		host.addReviewOfHost(newReviewOfHost);
 		assertEquals(2, host.getReviewsOfHost().size());
+		host.addReviewOfHost(newReviewOfHost);
+		assertEquals(3, host.getReviewsOfHost().size());
 		host.removeReviewOfHost(newReviewOfHost);
-		assertEquals(1, host.getReviewsOfHost().size());
+		assertEquals(2, host.getReviewsOfHost().size());
 	}
 	
 	@Test
 	@DisplayName ("Testing Host add service")
 	void test7() {
-		assertEquals(5, host.getServices().size());
+		assertEquals(2, host.getServices().size());
 		host.addService(newService);
-		assertEquals(6, host.getServices().size());
+		assertEquals(3, host.getServices().size());
 		host.removeService(newService);
-		assertEquals(5, host.getServices().size());
+		assertEquals(2, host.getServices().size());
 	}
 	
 	@Test

@@ -54,7 +54,7 @@ class PetTypeTest {
 	@Test
 	@DisplayName("PetType relationship with Pet")
 	void test3() {
-		assertEquals("Dog", em.find(Pet.class, 1).getPetType().getType());
+		assertEquals("Cat", em.find(Pet.class, 1).getPetType().getType());
 	}
 
 }
