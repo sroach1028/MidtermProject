@@ -17,9 +17,7 @@
 <link rel="stylesheet" href="css/style.css">
 <title>My Account</title>
 <%@include file="/WEB-INF/nav.jsp"%>
-</head>
 
-<<<<<<< HEAD
 <body style = "background-color: #cce6f0">
 
 	<h1>Account Details Page</h1>
@@ -47,13 +45,11 @@
 				type="submit" class="btn btn-dark" value="Host Details" />
 		</form>
 	</c:if>
-=======
-<body>
 	<br>
 	<br>
 	<br>
 	<br>
->>>>>>> 36cee56a8e18434b2bfe36ece683825bb5df5c90
+
 	<div class="container">
 		<div class="row">
 			<div class="col-3 col-centered img-responsive">
