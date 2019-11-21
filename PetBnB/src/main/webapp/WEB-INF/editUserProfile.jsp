@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Register</title>
+<title>Edit Profile</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 <br>
@@ -17,60 +17,52 @@
 		<div class="col-2 col-left"></div>
 
 		<div class="jumbotron col-8 col-center">
-			<form:form action="register.do" method="GET" modelAttribute="user">
+			<form:form action="editUserProfile.do" method="GET" modelAttribute="oldUser">
 				<table class="col-8 col-centered table table-hover table-secondary">
-				<tr>
-					<th><h2>Create an Account</h2></th>
+					<tr>
+						<th class="lead">Edit Profile</th>
 					</tr>
 					<tr>
 
 						<form:label path="firstName"></form:label>
 						<td><form:input class="form-control" type="text"
-								placeholder="First Name" id="example-text-input"
-								path="firstName" required="required" /> <form:errors
-								path="firstName" /></td>
+								placeholder="First Name" value="${oldUser.firstName }"
+								id="example-text-input" path="firstName" required="required" />
+							<form:errors path="firstName" /></td>
 					</tr>
 					<tr>
 						<form:label path="lastName"></form:label>
 						<td><form:input path="lastName" class="form-control"
-								type="text" placeholder="Last Name" id="example-text-input"
-								required="required" /> <form:errors path="lastName" /></td>
-					</tr>
-					<tr>
-						<form:label path="username"></form:label>
-						<td><form:input path="username" class="form-control"
-								type="text" placeholder="username" id="example-text-input"
-								required="required" /> <form:errors path="username" /></td>
-					</tr>
-					<tr>
-						<form:label path="password"></form:label>
-						<td><form:input path="password" class="form-control"
-								type="password" placeholder="password" id="example-text-input"
-								required="required" /> <form:errors path="password"
-								required="required" /></td>
+								type="text" placeholder="Last Name" value="${oldUser.lastName }"
+								id="example-text-input" required="required" /> <form:errors
+								path="lastName" /></td>
 					</tr>
 					<tr>
 						<form:label path="email"></form:label>
 						<td><form:input path="email" class="form-control" type="text"
-								placeholder="email" id="example-text-input" required="required" />
-							<form:errors path="email" /></td>
+								placeholder="email" value="${oldUser.email }"
+								id="example-text-input" required="required" /> <form:errors
+								path="email" /></td>
 					</tr>
 					<tr>
 						<form:label path="address.street"></form:label>
 						<td><form:input path="address.street" required="required"
 								class="form-control" type="text" placeholder="Street"
-								id="example-text-input" /> <form:errors path="address.street" /></td>
+								value="${oldUser.address.street }" id="example-text-input" /> <form:errors
+								path="address.street" /></td>
 					</tr>
 					<tr>
 						<form:label path="address.city"></form:label>
 						<td><form:input path="address.city" required="required"
 								class="form-control" type="text" placeholder="City"
-								id="example-text-input" /> <form:errors path="address.city" /></td>
+								value="${oldUser.address.city }" id="example-text-input" /> <form:errors
+								path="address.city" /></td>
 					</tr>
 					<tr>
 						<form:label path="address.state"></form:label>
 						<td><select class="custom-select" name="address.state"
 							style="width: 150px;">
+								<option value="${oldUser.address.state }">${oldUser.address.state}</option>
 								<option value="AL">AL</option>
 								<option value="AK">AK</option>
 								<option value="AZ">AZ</option>
@@ -128,28 +120,42 @@
 						<form:label path="address.zip"></form:label>
 						<td><form:input path="address.zip" required="required"
 								class="form-control" type="text" placeholder="Zip Code"
-								id="example-text-input" /> <form:errors path="address.zip" /></td>
+								value="${oldUser.address.zip }" id="example-text-input" /> <form:errors
+								path="address.zip" /></td>
 					</tr>
 					<tr>
 						<form:label path="address.phone"></form:label>
 						<td><form:input path="address.phone" required="required"
 								class="form-control" type="text" placeholder="Phone Number"
-								id="example-text-input" /> <form:errors path="address.phone" /></td>
+								value="${oldUser.address.phone }" id="example-text-input" /> <form:errors
+								path="address.phone" /></td>
 					</tr>
 
 					<tr>
 						<form:label path="imageURL"></form:label>
 						<td><form:input path="imageURL" required="required"
-								class="form-control" type="text" placeholder="Image URL"
+								class="form-control" type="text"
+								placeholder="Profile Image (URL)" value=""
 								id="example-text-input" /> <form:errors path="imageURL" /></td>
 					</tr>
 					<c:if test="${not empty error}">
 						<h3>${error }</h3>
 					</c:if>
+					<form:label path="username"></form:label>
+					<form:input path="username" class="form-control" type="hidden"
+						placeholder="Username" value="${oldUser.username }"
+						id="example-text-input" required="required" />
+					<form:errors path="username" required="required" />
+					<form:label path="password"></form:label>
+					<form:input path="password" class="form-control" type="hidden"
+						placeholder="password" value="${oldUser.password }"
+						id="example-text-input" required="required" />
+					<form:errors path="password" required="required" />
 					<tr>
 						<td>
 							<div align="center" class="input-group-append">
-								<input class="btn btn-secondary" type="submit" value="Register" />
+							<input type="hidden" name="id" value="${oldUser.id }" />
+								<input class="btn btn-secondary" type="submit" value="Update" />
 							</div>
 						</td>
 					</tr>
