@@ -81,5 +81,7 @@
 				width="600" height="400" frameborder="0" style="border: 0"></iframe>
 		</div>
 	</div>
+	<%@include file="/WEB-INF/footer.jsp"%>
+	
 </body>
 </html>

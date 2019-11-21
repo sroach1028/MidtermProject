@@ -50,16 +50,7 @@
   		<input type="submit" value="Submit">
 	</form>
 	<br>
-	<!-- Footer -->
-<footer class="page-footer bg-dark text-light font-small blue">
+<%@include file="/WEB-INF/footer.jsp"%>
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://github.com/JesseTrew/MidtermProject"> Vehement Kitten<br>SkillDistillery.com</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
 </body>
 </html>

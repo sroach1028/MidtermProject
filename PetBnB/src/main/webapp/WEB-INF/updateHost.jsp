@@ -75,5 +75,7 @@
 		<%-- </div>
 	</form:form> --%>
 	<br>
+	<%@include file="/WEB-INF/footer.jsp"%>
+	
 </body>
 </html>

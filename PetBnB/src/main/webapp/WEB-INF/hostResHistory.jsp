@@ -123,5 +123,7 @@ text-align: right;
 		<c:if test="${empty host.reservations }">
 			<h3>You have no past reservations. Try marketing.</h3>
 		</c:if>
+		<%@include file="/WEB-INF/footer.jsp"%>
+		
 </body>
 </html>

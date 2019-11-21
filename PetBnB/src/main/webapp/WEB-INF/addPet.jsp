@@ -81,6 +81,7 @@
 		</div>
 		<div class="col-2 col-right"></div>
 	</div>
+<%@include file="/WEB-INF/footer.jsp"%>
 
 </body>
 </html>
