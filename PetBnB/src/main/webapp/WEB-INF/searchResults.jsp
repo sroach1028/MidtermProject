@@ -61,8 +61,8 @@ img {
 body {
 	opacity: 1;
 	background-repeat: no-repeat;
-	background-size: 100% 40%;
-	background-position: 100% 15%;
+	background-size: contain;
+	background-position: 100% 32%;
 }
 </style>
 </head>
@@ -77,7 +77,7 @@ body {
 				<strong>${nothing }</strong>
 			</h1>
 		</div>
-
+		
 		<c:if test="${not empty hosts }">
 			<br>
 			<div class="resultsSingle" style="margin-top: 50px">
@@ -85,15 +85,13 @@ body {
 					<strong> Available Hosts </strong>
 				</h4>
 			</div>
-			<ol class="list-group">
 				<c:forEach items="${hosts}" var="host">
 					<div class="row mx-sm-n4">
-						<div class="col-md-6">
+						<div class="col-md-11">
 							<div class="p-5 lead border border-dark bg-light rounded">
 								<br>
-								<li>
 									<div class="row mx-sm-n4">
-										<div class="col-md-6">
+										<div class="col-md-5">
 											<h3>
 												<span><a href="goToHostPage.do?hostId=${host.id}">
 														<img src="${host.user.imageURL }" height="100" width="100" />
@@ -102,56 +100,46 @@ body {
 											</h3>
 											<h4>${host.user.address.city },${host.user.address.state }</h4>
 										</div>
-										<div class="col-md-6">
-											<a href="#!"
-												class="collapsible btn btn-secondary bg-dark text-light">Reserve a Service</a>
-											<div class="content">
-												<table>
-													<tr class="list-group">
-														<c:forEach items="${host.services }" var="service">
-															<td class="list-group-item">${service.name }
-																${service.rate }</td>
-
+										<div class="col-md-6 ">
+												<table class="table table-light">
+												<thead>
+												<tr>
+												</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${host.services }" var="service">
+													<tr>
+														<th scope="row"></th>
+															<td>${service.name }</td>
+															<td>${service.rate }</td>
 															<c:if test="${not empty sessionUser.pets }">
+															<td>
 																<form action="goToReservation.do" method="GET">
-																	<td><input type="hidden" name="hostId"
-																		value="${host.id }"> <input type="hidden"
-																		name="serviceId" value="${service.id }"> <input
-																		type="submit" class="btn btn-outline-light"
-																		value="Make Reservation" /></td>
+																	<input type="hidden" name="hostId"
+																		value="${host.id }"/> <input type="hidden"
+																		name="serviceId" value="${service.id }"/> <input
+																		type="submit" class="btn btn-dark btn-outline-light "
+																		value="Reserve" />
 																</form>
+															</td>
 															</c:if>
-														</c:forEach>
 													</tr>
+													</c:forEach>
+												</tbody>
 												</table>
 											</div>
-											<a href="#!"
-												class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
-											<div class="content">
-												<ol class="list-group">
-													<c:forEach items="${host.reviewsOfHost }" var="review">
-														<li class="list-group-item">${review.rating }/5
-															${review.review}</li>
-													</c:forEach>
-												</ol>
-											</div>
 										</div>
-								</li>
 							</div>
 						</div>
 					</div>
 					<br>
 				</c:forEach>
-	</div>
-	</ol>
-	</c:if>
 
 	<c:if test="${empty hosts }">
 		<h3>No results found for that location</h3>
 	</c:if>
-
+</c:if>
 	</div>
-<%@include file="/WEB-INF/footer.jsp"%>
 
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
@@ -181,4 +169,5 @@ body {
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 </body>
+<%@include file="/WEB-INF/footer.jsp"%>
 </html>
