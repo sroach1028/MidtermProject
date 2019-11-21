@@ -32,10 +32,12 @@ p{
 	crossorigin="anonymous">
 
 <link href="css/styles2.css" rel="stylesheet" type="text/css">
+
 <title>Reservation History</title>
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 </head>
+
 <body class ="bg-white">
 	<div class="container text-dark ">
 		<br> <br>

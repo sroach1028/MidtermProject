@@ -11,13 +11,14 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	crossorigin="anonymous">
-
 <link rel="stylesheet" href="css/styles2.css">
-
-
 <link
 	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
 	rel="stylesheet">
@@ -36,51 +37,70 @@
 	outline: none;
 	font-size: 15px;
 }
-
 .active, .collapsible:hover {
 	background-color: #555;
 }
-
 .content {
 	padding: 0 18px;
 	display: none;
 	overflow: hidden;
 	background-color: #f1f1f1;
 }
+li{
+    list-style-type: none;
+}
+img {
+  border-radius: 80%;
+}
+body{
+opacity: 1;
+  background-repeat: no-repeat;
+  background-size: 100% 25%;
+  background-position: 100% 15%;
+  
+}
 </style>
 </head>
 
-<body>
-
-	<div class="container">
-
-		<div class="resultsSingle" style="margin-top: 15px">
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+	<div class="container text-dark">
+	<div class="col-md-1">
+				</div>		
+	
+	<div class="resultsSingle" style="margin-top: 15px">
 			<h1>
 				<strong>${nothing }</strong>
 			</h1>
-		</div>
+	</div>
 
 		<c:if test="${not empty hosts }">
-			<div class="resultsSingle" style="margin-top: 15px">
-				<div class="col-sm">
-					<ol class="list-group">
+			<br>
+ 	<div class="resultsSingle" style="margin-top: 50px">
+ 			<h4><strong> Available Hosts </strong></h4>
+	</div>
+				<ol class="list-group">
 						<c:forEach items="${hosts}" var="host">
-							<li class="list-group-item">
+ 	<div class="row mx-sm-n4">
+		<div class="col-md-6">
+			<div class="p-5 lead border border-dark bg-light rounded">
+					<br><li>
+ 		<div class="row mx-sm-n4">
+			<div class="col-md-6">
 								<h3>
-									<a href="goToHostPage.do?hostId=${host.id}">${host.user.firstName }
-									</a>
+									<span><a href="goToHostPage.do?hostId=${host.id}">
+									<img src="${host.user.imageURL }" height="100" width="100"/> ${host.user.firstName }
+									</a></span>
 								</h3>
 								<h4>${host.user.address.city },${host.user.address.state }</h4>
-
+			</div>
+			<div class="col-md-4">
 								<h2>Services</h2>
-								<button type="button" class="collapsible">Show All
-									Services</button>
-								<div class="content">
+								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Services</a>
+					<div class="content">
 								<table>
 									<tr class="list-group">
 										<c:forEach items="${host.services }" var="service">
-
-											<td class="list-group-item">${service.name }-->
+											<td class="list-group-item">${service.name }
 												${service.rate }</td>
 											
 												<c:if test="${not empty sessionUser.pets }">
@@ -93,10 +113,10 @@
 										</c:forEach>
 									</tr>
 									</table>
-								</div>
+					</div>
 								<h2>Reviews</h2>
-								<button type="button" class="collapsible">Show All
-									reviews</button>
+								<a href="#!" class="collapsible btn btn-secondary bg-dark text-light">Reviews</a>
+
 								<div class="content">
 									<ol class="list-group">
 										<c:forEach items="${host.reviewsOfHost }" var="review">
@@ -105,14 +125,14 @@
 										</c:forEach>
 									</ol>
 								</div>
-
-
-
-							</li>
-						</c:forEach>
-					</ol>
-				</div>
 			</div>
+							</li>
+			</div>
+			</div>
+			</div><br>
+						</c:forEach>
+		</div>
+					</ol>
 		</c:if>
 
 		<c:if test="${empty hosts }">

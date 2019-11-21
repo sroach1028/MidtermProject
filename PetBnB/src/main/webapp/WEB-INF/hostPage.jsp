@@ -89,8 +89,8 @@
 			<div class="col-md-6">
 				<div class="p-3 lead border border-dark bg-light">
 					<div class="centerBlock">
-					<h2>${host.user.firstName} ${host.user.lastName}</h2>
-					<p>${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</p>
+					<h2><font face="verdana" size="6">${host.user.firstName} ${host.user.lastName}</font></h2>
+					<p><font face="verdana" size="4">${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</font></p>
 					<c:if test="${empty host.reviewsOfHost }">
 						<p>No reviews yet</p>
 					</c:if>
