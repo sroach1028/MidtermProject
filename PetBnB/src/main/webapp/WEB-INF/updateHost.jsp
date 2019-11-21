@@ -19,7 +19,7 @@
 <title>Update Host</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
-<body>
+<body style = "background-color: #cce6f0">
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
 			<h1>Update Host Details</h1>

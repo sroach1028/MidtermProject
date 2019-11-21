@@ -19,7 +19,7 @@
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
 
-<body>
+<body style = "background-color: #cce6f0">
 
 	<h1>Account Details Page</h1>
 	
@@ -27,7 +27,7 @@
 
 		<form action="toUserProfile.do" method="GET">
 			<input type="hidden" name="id" value=${sessionUser.id } /> <input
-				type="submit" class="btn btn-outline-light" value="View Profile" />
+				type="submit" class="btn btn-dark" value="View Profile" />
 		</form>
 			<c:if test="${empty sessionHost}">
 	

@@ -29,34 +29,43 @@
 <body style = "background-color: #cce6f0">
 	<br>
 	<div class="container">
-
 		<div class="row mx-sm-n5">
-		<div class="col-sm-4 px-sm">
-					</div>
-					<div class="col-sm-4 px-sm">
-					<p></p>
-					</div>
-					<div class="col-sm-4 px-sm">
-					</div>
-		</div>
-		
-		<div class="row mx-md-n5">
-					
 			<div class="col-sm-4 px-sm">
 			</div>
+			<br>
 			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<br>
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row mx-md-n5">
+			
+			<div class="col-md-4 px-sm">
+			</div>
+			<br>
+			<div class="col-md-4 px-sm">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="10" face ="Verdana" >User Profile</font></strong>
 						</p>
+						<br>
 					</div>
 				</div>		
 			</div>
-			<div class="col-sm-4 px-sm">
+	
+				<div class="col-md-4 px-sm">
 			</div>
 		</div>
-
+	</div>
+	
+		<br>
 		<br>
 
 		<div class="row mx-md-n5">
@@ -121,7 +130,6 @@
 									</div>
 							</c:if>
 						</c:forEach>
-				</div>
 			</div>
 	<br>
 	<br>
