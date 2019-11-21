@@ -46,6 +46,8 @@ text-align: right;
 		<thead><h3>Reservations</h3></thead>
 		<tbody></tbody>
 				<c:forEach items="${host.reservations }" var="reservation">
+				<a name="${reservation.id }" ></a>
+				<br><br>
 			<tr>
 					<div class="col-md-9">
 						<div class="lead border border-dark bg-light rounded">

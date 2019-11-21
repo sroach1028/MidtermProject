@@ -60,10 +60,10 @@ class ServiceTest {
 	@Test
 	@DisplayName ("Testing service add host")
 	void test3() {
-		assertEquals(2, hostService.getHosts().size());
+		assertEquals(4, hostService.getHosts().size());
 		hostService.addHost(newHost);
-		assertEquals(3, hostService.getHosts().size());
+		assertEquals(5, hostService.getHosts().size());
 		hostService.removeHost(newHost);
-		assertEquals(2, hostService.getHosts().size());
+		assertEquals(4, hostService.getHosts().size());
 	}
 }
