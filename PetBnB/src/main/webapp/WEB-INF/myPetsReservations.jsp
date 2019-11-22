@@ -126,6 +126,7 @@ span {
 												<span class="fa fa-star checked"></span>
 												<span class="fa fa-star checked"></span>
 											</c:if>
+											<h5>"${reservation.petReview.review }"</h5>
 										</c:if>
 										<c:if test="${empty reservation.petReview.review}">
 										<c:if test="${empty reservation.hostReview.review }">

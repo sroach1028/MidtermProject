@@ -107,6 +107,7 @@ body {
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 									</c:if>
+									<h5>"${reservation.petReview.review }"</h5>
 								</c:if>
 						<c:if test="${empty reservation.petReview.review }">
 							<h3>${reservation.pet.name} has an appointment with ${reservation.host.user.firstName}
