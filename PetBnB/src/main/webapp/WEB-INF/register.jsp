@@ -41,7 +41,7 @@
 			</div>
 			
 			<div class="col-md-6 px-sm">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="9" face ="Verdana" >Create an Account</font></strong>
