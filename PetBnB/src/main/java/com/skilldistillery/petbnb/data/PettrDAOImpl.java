@@ -246,7 +246,7 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 	
 	@Override
-	public Host updateServicestoHostById(int[] selections, int hostId) {
+	public Host updateServicestoHostById(Integer[] selections, int hostId) {
 		Host host = em.find(Host.class, hostId);
 
 		for (int i = 0; i < host.getServices().size(); i++) {
