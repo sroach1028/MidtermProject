@@ -30,7 +30,7 @@
 }
 </style>
 </head>
-<body>
+<body  class="bg-dark">
 	<form:form action="findReservationById.do" method="GET">
 		<label style="font-family: Courier; color: Green;">Reservation
 			by ID:</label>
@@ -42,20 +42,6 @@
 
 	<div
 		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
-	
-	<!-- 	<div class="container">
-				<div class="row mx-sm-n5">
-					<div class="col-sm-4 px-sm">
-					</div>
-					
-					<div class="col-sm-4 px-sm">
-					<p></p>
-					</div>
-					
-					<div class="col-sm-4 px-sm">
-					</div>
-				</div>
-		</div> -->
 		
 		<div class="container">
 			<img src="https://i.imgur.com/j2DdPcK.png"height="750" class="responsive"/>
@@ -135,13 +121,27 @@
 						<option value="6">Nail Trim</option>
 						<option value="7">Day Sitting</option>
 						<!-- <option value="8">Hourly</option> -->
-					</select> <input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
+					</select> 
+					<input type="submit" class="btn btn-danger btn-lg m-2 btn-wide"
 						value="Search by service" />
 				</form>
 			</div>
 		</div>
 	</div>
-
+<div class="container">
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
+			</div>
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+    <br>
 <%@include file="/WEB-INF/footer.jsp"%>
 
 	<!-- Optional JavaScript -->

@@ -5,11 +5,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type="text/css">
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+</style>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <title>Footer</title>
 
 <link rel="stylesheet"
@@ -26,6 +33,7 @@
 
 </head>
 <!-- Footer -->
+<div class="footer">
 <footer class="page-footer bg-dark text-light font-small blue">
 
   <!-- Copyright -->
@@ -36,4 +44,5 @@
 
 </footer>
 <!-- Footer -->
+</div>
 </html>
