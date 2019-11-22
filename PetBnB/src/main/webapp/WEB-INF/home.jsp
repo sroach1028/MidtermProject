@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>BOOP!</title>
 <%@include file="nav.jsp"%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -22,7 +23,6 @@
 	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
 	rel="stylesheet">
 
-<title>Home Page</title>
 <style>
 .responsive {
   width: 100%;

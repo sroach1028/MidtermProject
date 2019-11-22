@@ -5,23 +5,73 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.centerBlock {
+  display: table;
+  margin: auto;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Register</title>
 <%@include file="/WEB-INF/nav.jsp"%>
+<style type="text/css">
+body {
+	opacity: 1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 100% 32%;
+} 
+</style>
 </head>
 <br>
 <br>
 <br>
-<body>
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+<body style = "background-color: #cce6f0">
+	<div class="container">
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
+			</div>
+			
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+	</div>
+	<br>
+	
+	<div class="container">
+		<div class="row mx-md-n5">
+			
+			<div class="col-md-3 px-sm">
+			</div>
+			
+			<div class="col-md-6 px-sm">
+				<div class="p-3 border border-dark bg-light rounded">
+					<div class="centerBlock">			
+						<p>
+							<strong><font size="9" face ="Verdana" >Create an Account</font></strong>
+						</p>
+					</div>
+				</div>		
+			</div>
+	
+				<div class="col-md-3 px-sm">
+			</div>
+		</div>
+	</div>
+	
 	<div class="row">
-		<div class="col-2 col-left"></div>
+	
+		<div class="col-md">
 
-		<div class="jumbotron col-8 col-center">
+			<div class="centerBlock">			
+		
 			<form:form action="register.do" method="GET" modelAttribute="user">
-				<table class="col-8 col-centered table table-hover table-secondary">
-				<tr>
-					<th><h2>Create an Account</h2></th>
-					</tr>
+				<table class="col-centered table">
 					<tr>
 
 						<form:label path="firstName"></form:label>
@@ -156,8 +206,13 @@
 				</table>
 			</form:form>
 		</div>
-		<div class="col-2 col-right"></div>
 	</div>
+</div>
+	
+	
+	
+	
+	
 	<%@include file="/WEB-INF/footer.jsp"%>
 	
 </body>

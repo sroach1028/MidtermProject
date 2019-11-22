@@ -45,6 +45,7 @@ public class Pet {
 	@JoinColumn(name = "type_id")
 	private PetType petType;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "pet")
 	private List<Reservation> reservations;
 	

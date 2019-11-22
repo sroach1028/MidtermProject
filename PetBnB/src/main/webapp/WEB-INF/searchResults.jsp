@@ -101,7 +101,7 @@ body {
 											<h4>${host.user.address.city },${host.user.address.state }</h4>
 										</div>
 										<div class="col-md-6">
-												<table class="table table-sm table-light table-borderless rounded">
+												<table class="table table-sm table-light table-borderless">
 												<thead>
 												</thead>
 												<tbody>

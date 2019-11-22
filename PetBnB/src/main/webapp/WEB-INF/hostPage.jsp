@@ -41,33 +41,35 @@
 <meta charset="utf-8">
 </head>
 <body style = "background-color: #cce6f0">
-		<div class="container">
+		<br>
+	<div class="container">
 		<div class="row mx-sm-n5">
 			<div class="col-sm-4 px-sm">
 			</div>
-			
+			<br>
 			<div class="col-sm-4 px-sm">
 			<p></p>
 			</div>
-			
+			<br>
 			<div class="col-sm-4 px-sm">
 			</div>
 		</div>
 	</div>
 	<br>
-	
+	<br>
 	<div class="container">
 		<div class="row mx-md-n5">
 			
 			<div class="col-md-4 px-sm">
 			</div>
-			
+			<br>
 			<div class="col-md-4 px-sm">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="10" face ="Verdana" >Host Profile</font></strong>
 						</p>
+						<br>
 					</div>
 				</div>		
 			</div>
@@ -77,17 +79,19 @@
 		</div>
 	</div>
 	
+		<br>
+		<br>
 	<div class="container">
 		<div class="row mx-md-n5">
 			<div class="col-md-4 px-md">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">
 					<img src="${host.user.imageURL }" height="245" width="245" />
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="p-3 lead border border-dark bg-light">
+				<div class="p-3 lead border border-dark bg-light rounded">
 					<div class="centerBlock">
 					<h2><font face="verdana" size="6">${host.user.firstName} ${host.user.lastName}</font></h2>
 					<p><font face="verdana" size="4">${host.user.address.city }, ${host.user.address.state }, ${host.user.address.zip }</font></p>
@@ -149,7 +153,7 @@
 	<div class="container">
 		<div class="row mx-md-n5">
 			<div class="col-md px-md">
-				<div class="p-3 lead border border-dark bg-light">
+				<div class="p-3 lead border border-dark bg-light rounded">
 					
 					<h2>
 						<font face="verdana">About: </font>
@@ -161,7 +165,7 @@
 			</div>
 
 			<div class="col-md px-md">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<c:if test="${not empty host.services }">
 						<h2>Services</h2>
 						<c:forEach items="${host.services }" var="service">
