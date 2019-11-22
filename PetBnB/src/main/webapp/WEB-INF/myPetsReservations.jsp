@@ -35,6 +35,11 @@ body {
 	background-size: contain;
 	background-position: 100% 32%;
 }
+
+span {
+  background-color: #dcc1f0;
+}
+
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
@@ -72,7 +77,7 @@ body {
 						<c:forEach items="${sessionUser.pets}" var="pet">
 					<div class="centerBlock">
 							<h4>
-								<strong> ${pet.name}'s Reservation History </strong>
+								<span><strong> ${pet.name}'s Reservation History </strong></span>
 							</h4>
 					</div>
 					<c:forEach items="${pet.reservations }" var="reservation">
