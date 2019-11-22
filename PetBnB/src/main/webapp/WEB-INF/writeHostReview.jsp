@@ -22,7 +22,7 @@
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Write review for Host</h1>
+			<h1>Write review for ${host.user.firstName} ${host.user.lastName} </h1>
 		</div>
 	</div>
 	<form:form action="createHostReview.do" method="GET" modelAttribute="hostReview">
