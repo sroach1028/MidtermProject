@@ -86,7 +86,7 @@
 			<div class="col-md-4 px-md">
 				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">
-					<img src="${host.user.imageURL }" height="245" width="245" />
+					<img src="${host.user.imageURL }" height="245" width="245" class="contain" />
 					</div>
 				</div>
 			</div>
@@ -227,7 +227,6 @@
 						</div>
 				</div>
 			</div>
-<br>
 
 	<div>
 	
@@ -235,10 +234,6 @@
 			<c:if test="${host.id == sessionHost.id}">
 				<div class="container">
 					<div class="row mx-md-n5">
-						
-						
-				
-						
 				
 						<div class="col-md-3 px-md">
 		
