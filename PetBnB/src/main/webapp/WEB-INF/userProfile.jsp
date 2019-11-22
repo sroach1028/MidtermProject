@@ -21,6 +21,7 @@
 	  display: table;
 	  margin: auto;
 	}
+	.contain {object-fit: contain;}
 
 	
 </style>
@@ -54,7 +55,7 @@
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">			
 						<p>
-							<strong><font size="10" face ="Verdana" >User Profile</font></strong>
+							<strong><font size="8" face ="Verdana" >User Profile</font></strong>
 						</p>
 						<br>
 					</div>
@@ -76,7 +77,7 @@
 			<div class="col-md-4 px-md">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">
-						<img src="${user.imageURL }" height="245" width="245" />
+						<img src="${user.imageURL }" class="contain" height="260" width="260" />
 					</div>
 				</div>
 			</div>
@@ -140,7 +141,7 @@
 			</div>	
 						<div class="col-md-4 px-md">
 							
-					<p><strong><font size="18" face ="Geneva" >Pets List</font></strong></p>
+					<p><strong><font size="9" face ="Geneva" >Pets List</font></strong></p>
 						<c:forEach items="${user.pets }" var="pet">
 							<c:if test="${pet.active == true}">
 								<div>
