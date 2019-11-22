@@ -17,54 +17,50 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <style>
 .centerBlock {
-  display: table;
-  margin: auto;
+	display: table;
+	margin: auto;
 }
-
 </style>
 <title>Become a Host</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
-<body style = "background-color: #cce6f0">
-	
-	
-		<div class="container">
+<body style="background-color: #cce6f0">
+
+
+	<div class="container">
 		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm"></div>
+
 			<div class="col-sm-4 px-sm">
+				<p></p>
 			</div>
-			
-			<div class="col-sm-4 px-sm">
-			<p></p>
-			</div>
-			
-			<div class="col-sm-4 px-sm">
-			</div>
+
+			<div class="col-sm-4 px-sm"></div>
 		</div>
 	</div>
 	<br>
 	<br>
 	<div class="container">
 		<div class="row mx-md-n5">
-			
-			<div class="col-md-3 px-sm">
-			</div>
-			
+
+			<div class="col-md-3 px-sm"></div>
+
 			<div class="col-md-6 px-sm">
 				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">			
 						<p>
-							<strong><font size="9" face ="Verdana" >Become a Host</font></strong>
+							<strong><font size="9" face="Verdana">Become a
+									Host</font></strong>
 						</p>
 					</div>
-				</div>		
+				</div>
 			</div>
-	
-				<div class="col-md-3 px-sm">
-			</div>
+
+			<div class="col-md-3 px-sm"></div>
 		</div>
 	</div>
-<br>
-<br>
+	<br>
+	<br>
 	<div class="container">
 	
 	<div class="row">
@@ -101,10 +97,8 @@
 	
 		</div>
 	</div>
-</div>
-</div>
 	<br>
-<%@include file="/WEB-INF/footer.jsp"%>
+	<%@include file="/WEB-INF/footer.jsp"%>
 
 </body>
 </html>

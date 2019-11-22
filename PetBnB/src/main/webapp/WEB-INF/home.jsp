@@ -41,7 +41,7 @@
 
 
 	<div
-		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
+		class="jumbotron jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 		
 		<div class="container">
 			<img src="https://i.imgur.com/j2DdPcK.png"height="750" class="responsive"/>
