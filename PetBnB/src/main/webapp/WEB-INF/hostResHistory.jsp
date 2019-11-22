@@ -17,6 +17,12 @@ border: 20px;
 }
 h2{
 text-align: right;
+}
+body {
+	opacity: 1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 100% 32%;
 }  
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +36,7 @@ text-align: right;
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 </head>
-<body>
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 
 	<div class="container text-dark">
 		<div class="row mx-md-n5">
