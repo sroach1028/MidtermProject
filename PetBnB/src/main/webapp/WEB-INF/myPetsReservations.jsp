@@ -58,6 +58,15 @@ body {
 			<div class="col-md-12 px-md">
 				<div class="centerBlock">
 					<br>
+					<c:if test="${empty sessionUser.pets }" >
+					<div class="row mx-md-n5">
+								<div class="col-md-12">
+									<div class="p-5 lead border border-dark bg-light rounded-pill">
+									<span><h5>&nbsp;&nbsp; You have no pets under your account.</h5> &nbsp;&nbsp; </span>
+													</div>
+													</div>
+													</div>
+					</c:if>
 						<c:forEach items="${sessionUser.pets}" var="pet">
 					<div class="centerBlock">
 							<h4>
