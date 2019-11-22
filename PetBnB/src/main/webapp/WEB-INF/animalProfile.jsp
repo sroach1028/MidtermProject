@@ -119,6 +119,7 @@
 			<div class="centerBlock">
 				<p><font size="6" face ="optima" ><strong>Name: </strong>${pet.name }</font></p>
 				<p><font size="5" face ="Verdana" ><strong>Pet type: </strong>${pet.petType.type }</font></p>
+				<p><font size="5" face ="Verdana" ><strong>Pet breed: </strong>${pet.breed }</font></p>
 
 				<p class="lead"> <font size ="5" face="verdana">${pet.description }</font></p>
 				<br>
