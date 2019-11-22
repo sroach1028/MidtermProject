@@ -63,9 +63,11 @@ body {
 								<div class="col-md-12">
 									<div class="p-5 lead border border-dark bg-light rounded-pill">
 									<span><h5>&nbsp;&nbsp; You have no pets under your account.</h5> &nbsp;&nbsp; </span>
+									
 													</div>
 													</div>
 													</div>
+													<br><br><br><br><br><br><br><br><br><br>
 					</c:if>
 						<c:forEach items="${sessionUser.pets}" var="pet">
 					<div class="centerBlock">
@@ -157,9 +159,12 @@ body {
 			<br>
 
 		</ul>
+	
+		<br>
 	</div>
 
-
-</body>
+<div>
 <%@include file="/WEB-INF/footer.jsp"%>
+</div>
+</body>
 </html>
