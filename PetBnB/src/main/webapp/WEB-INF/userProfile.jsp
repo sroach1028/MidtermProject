@@ -52,7 +52,7 @@
 			</div>
 			<br>
 			<div class="col-md-4 px-sm">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="8" face ="Verdana" >User Profile</font></strong>
@@ -75,7 +75,7 @@
 		</div>
 		
 			<div class="col-md-4 px-md">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">
 						<img src="${user.imageURL }" class="contain" height="260" width="260" />
 					</div>
@@ -83,7 +83,7 @@
 			</div>
 				
 			<div class="col-md-3">
-				<div class="p-3 border border-dark bg-light">
+				<div class="p-3 border border-dark bg-light rounded">
 					<div class="centerBlock">
 				
 							<p><strong><font size="6" face ="Geneva" >${user.firstName} ${user.lastName }</font></strong></p>
