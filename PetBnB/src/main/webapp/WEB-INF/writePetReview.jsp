@@ -22,7 +22,7 @@
 <body>
 	<div class="container">
 		<div id="banner" class="jumbotron text-center">
-			<h1>Write a review of Pet</h1>
+			<h1>Write a review for ${pet.name }</h1>
 		</div>
 	</div>
 	<form:form action="createPetReview.do" method="GET" modelAttribute="petReview">

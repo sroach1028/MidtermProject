@@ -405,6 +405,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		ReviewOfPet review = new ReviewOfPet();
 		mv.addObject("petId", petId);
+		mv.addObject("pet", pettrDAO.findPet(petId));
 		mv.addObject("hostId", hostId);
 		mv.addObject("reservationId", reservationId);
 		mv.addObject("petReview", review);
@@ -432,6 +433,7 @@ public class UserController {
 		ReviewOfHost review = new ReviewOfHost();
 		mv.addObject("petId", petId);
 		mv.addObject("hostId", hostId);
+		mv.addObject("host", pettrDAO.findHostById(hostId));
 		mv.addObject("reservationId", reservationId);
 		mv.addObject("hostReview", review);
 		mv.setViewName("writeHostReview");
