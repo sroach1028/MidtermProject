@@ -77,6 +77,9 @@
 						<li class="nav-item"><a
 							href="hostReservationHistory.do?hostId=${sessionHost.id }"
 							class="nav-link">My Reservations</a></li>
+						<li class="nav-item"><a
+							href="goToHostPage.do?hostId=${sessionHost.id}"
+							class="nav-link">My Host Page</a></li>
 					</c:if>
 					<c:if test="${empty sessionHost }">
 						<li class="nav-item"><a
