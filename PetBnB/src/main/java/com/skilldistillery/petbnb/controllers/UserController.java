@@ -85,6 +85,13 @@ public class UserController {
 		mv.setViewName("animalProfile");
 		return mv;
 	}
+	
+	@RequestMapping(path = "toPetReservations.do", method = RequestMethod.GET)
+	public ModelAndView toPetReservations() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("myPetsReservations");
+		return mv;
+	}
 
 	@RequestMapping(path = "toPetProfileRedir.do", method = RequestMethod.GET)
 	public String toPetProfileRedir() {
