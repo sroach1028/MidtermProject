@@ -140,7 +140,8 @@
 		</div>
 	</div>
 	<br>
-	
+	<br>
+    <br>
 <%@include file="/WEB-INF/footer.jsp"%>
 
 	<!-- Optional JavaScript -->
