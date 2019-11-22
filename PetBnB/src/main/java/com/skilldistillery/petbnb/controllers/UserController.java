@@ -421,7 +421,7 @@ public class UserController {
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
 		mv.addObject("petReview", petReview);
-		mv.setViewName("home");
+		mv.setViewName("reviewOfPetConfirm");
 		return mv;
 	}
 
@@ -448,7 +448,7 @@ public class UserController {
 		session.removeAttribute("sessionUser");
 		session.setAttribute("sessionUser", u);
 		mv.addObject("hostReview", hostReview);
-		mv.setViewName("home");
+		mv.setViewName("reviewOfHostConfirm");
 		return mv;
 	}
 
