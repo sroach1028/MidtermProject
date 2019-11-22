@@ -42,6 +42,21 @@
 
 	<div
 		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
+	
+	<!-- 	<div class="container">
+				<div class="row mx-sm-n5">
+					<div class="col-sm-4 px-sm">
+					</div>
+					
+					<div class="col-sm-4 px-sm">
+					<p></p>
+					</div>
+					
+					<div class="col-sm-4 px-sm">
+					</div>
+				</div>
+		</div> -->
+		
 		<div class="container">
 			<img src="https://i.imgur.com/j2DdPcK.png"height="750" class="responsive"/>
 			

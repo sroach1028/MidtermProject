@@ -39,7 +39,7 @@
 						<div class="form-group">
 							<div class='input-group date' id="dp1">
 								<h1 class="display-4 text-center">Select Date for drop off</h1>
-								<input type='date' name="openDate" class="form-control input-lg" />
+								<input type='date' name="openDate" class="form-control input-lg" required="required"/>
 								<span class="input-group-addon"><span
 									class="glyphicon glyphicon-calendar"></span></span>
 							</div>
@@ -51,7 +51,7 @@
 							<div class='input-group date' id="dp1">
 								<h1 class="display-4 text-center"">Select Date for pick up</h1>
 								<input type='date' name="closeDate"
-									class="form-control input-lg" /> <span
+									class="form-control input-lg" required="required"/> <span
 									class="input-group-addon"><span
 									class="glyphicon glyphicon-calendar"></span></span>
 							</div>
@@ -62,9 +62,10 @@
 
 			</div>
 			<div style="width: 100%; height: 100%;" align="center">
+					<strong class="display-5 text-center">Reservation for</strong>
+					<br>
 				<select class="custom-select" align="center" name="petId"
 					style="width: 150px;">
-					<option selected="">Select a Pet</option>
 					<c:forEach items="${sessionUser.pets }" var="pet">
 						<option value=${pet.id }>${pet.name}</option>
 					</c:forEach>
