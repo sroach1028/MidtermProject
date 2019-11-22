@@ -25,12 +25,12 @@
 
 <style>
 .responsive {
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 </style>
 </head>
-<body>
+<body class="bg-dark">
 	<form:form action="findReservationById.do" method="GET">
 		<label style="font-family: Courier; color: Green;">Reservation
 			by ID:</label>
@@ -41,7 +41,7 @@
 
 
 	<div
-		class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
+		class="jumbotron jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 
 	<!-- 	<div class="container">
 				<div class="row mx-sm-n5">
@@ -142,6 +142,7 @@
 		</div>
 	</div>
 
+	<%@include file="/WEB-INF/footer.jsp"%>
 
 	<!-- Optional JavaScript -->
 	<script>
@@ -173,6 +174,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+
 
 
 </body>
