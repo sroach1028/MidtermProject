@@ -61,13 +61,58 @@ body {
 					<br>
 		<div class="centerBlock">
 		<h5>
-			<strong>You gave ${hostReview.reservation.host.user.firstName} ${hostReview.rating} out of 5!</strong>
+			<strong>You rated ${hostReview.reservation.host.user.firstName}</strong> 	
+			<c:if test="${hostReview.rating == 1}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${hostReview.rating == 2}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${hostReview.rating == 3}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${hostReview.rating == 4}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${hostReview.rating == 5}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+											</c:if>
 		</h5>
 		</div>
 		
 
 	</div>
 	</div>
+						<div class="row mx-md-n5">
+							<div class="col-md-12 px-md">
+								<br>
+								<div class="centerBlock">
+									<h5> "${hostReview.review }"
+									</h5>
+								</div>
+							</div>
+						</div>
+		
 	</div>
 <%@include file="/WEB-INF/footer.jsp"%>
 
