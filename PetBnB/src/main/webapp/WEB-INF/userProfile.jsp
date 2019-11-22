@@ -21,8 +21,6 @@
 	  display: table;
 	  margin: auto;
 	}
-
-	
 </style>
 <%@include file="nav.jsp"%>
 </head>
@@ -150,10 +148,9 @@
 						</c:forEach>
 		</div>
 	</div>
-	
+	</div>
 	<br>
 	<br>
-<%@include file="/WEB-INF/footer.jsp"%>
 
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -169,5 +166,6 @@
 		crossorigin="anonymous"></script>
 
 </body>
+<%@include file="/WEB-INF/footer.jsp"%>
 
 </html>
