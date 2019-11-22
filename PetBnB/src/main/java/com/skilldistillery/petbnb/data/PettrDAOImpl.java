@@ -352,6 +352,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public ReviewOfHost writeHostReview(@Valid ReviewOfHost review) {
+		System.out.println(review);
 		Reservation reservation = em.find(Reservation.class, review.getReservation().getId());
 		review.setReservation(reservation);
 		em.persist(review);
