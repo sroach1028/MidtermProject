@@ -212,13 +212,11 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createHost.do", method = RequestMethod.GET)
-	public ModelAndView createHost(@RequestParam("imageURL") String imageURL,
-			@RequestParam("selections") int[] selections, @RequestParam("description") String description,
+	public ModelAndView createHost( @RequestParam("selections") int[] selections, @RequestParam("description") String description,
 			@RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Host host = pettrDAO.becomeHost(userId);
 		pettrDAO.addDescriptiontoHostById(description, host.getId());
-		pettrDAO.addImagetoHostById(imageURL, host.getId());
 		host = pettrDAO.addServicestoHostById(selections, host.getId());
 		session.setAttribute("sessionHost", host);
 		mv.addObject("host", host);
