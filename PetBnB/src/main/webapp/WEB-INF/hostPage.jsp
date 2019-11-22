@@ -41,33 +41,35 @@
 <meta charset="utf-8">
 </head>
 <body style = "background-color: #cce6f0">
-		<div class="container">
+		<br>
+	<div class="container">
 		<div class="row mx-sm-n5">
 			<div class="col-sm-4 px-sm">
 			</div>
-			
+			<br>
 			<div class="col-sm-4 px-sm">
 			<p></p>
 			</div>
-			
+			<br>
 			<div class="col-sm-4 px-sm">
 			</div>
 		</div>
 	</div>
 	<br>
-	
+	<br>
 	<div class="container">
 		<div class="row mx-md-n5">
 			
 			<div class="col-md-4 px-sm">
 			</div>
-			
+			<br>
 			<div class="col-md-4 px-sm">
 				<div class="p-3 border border-dark bg-light">
 					<div class="centerBlock">			
 						<p>
 							<strong><font size="10" face ="Verdana" >Host Profile</font></strong>
 						</p>
+						<br>
 					</div>
 				</div>		
 			</div>
@@ -77,6 +79,8 @@
 		</div>
 	</div>
 	
+		<br>
+		<br>
 	<div class="container">
 		<div class="row mx-md-n5">
 			<div class="col-md-4 px-md">

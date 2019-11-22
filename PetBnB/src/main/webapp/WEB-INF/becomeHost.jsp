@@ -96,7 +96,7 @@
 		
 		
   		<input type="hidden" name="userId" value="${sessionUser.id}" />
-  		<input type="submit" style="font-size : 24px" class="button btn btn-primary" value="Submit">
+  		<input type="submit" style="font-size : 22px" class="button btn btn-secondary" value="Submit">
 	</form>
 	
 		</div>
