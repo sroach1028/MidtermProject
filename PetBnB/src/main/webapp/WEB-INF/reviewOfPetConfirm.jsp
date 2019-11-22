@@ -61,15 +61,60 @@ body {
 					<br>
 		<div class="centerBlock">
 		<h5>
-			<strong>You gave ${petReview.reservation.pet.name} ${petReview.rating} out of 5!</strong>
+			<strong>You rated ${petReview.reservation.pet.name}</strong> 	
+			<c:if test="${petReview.rating == 1}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${petReview.rating == 2}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${petReview.rating == 3}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${petReview.rating == 4}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star"></span>
+											</c:if>
+											<c:if test="${petReview.rating == 5}">
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+												<span class="fa fa-star checked"></span>
+											</c:if>
 		</h5>
 		</div>
 		
 
 	</div>
 	</div>
+						<div class="row mx-md-n5">
+							<div class="col-md-12 px-md">
+								<br>
+								<div class="centerBlock">
+									<h5> "${petReview.review }"
+									</h5>
+								</div>
+							</div>
+						</div>
+		
 	</div>
-
 <%@include file="/WEB-INF/footer.jsp"%>
+
 </body>
 </html>
