@@ -105,8 +105,7 @@ body {
 							<h3>Pending review by ${reservation.pet.user.firstName} and their pet ${reservation.pet.name} </h3>
 					</c:if>
 						<c:if test="${empty reservation.petReview.review }">
-						<h3> Reviewed by ${reservation.pet.user.firstName} and their pet ${reservation.pet.name} </h3>
-						<a href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
+						<a href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
 					  a review for ${reservation.pet.name }</a>
 					</c:if>		
 								</div>

@@ -246,7 +246,7 @@ public class PettrDAOImpl implements PettrDAO {
 	}
 	
 	@Override
-	public Host updateServicestoHostById(int[] selections, int hostId) {
+	public Host updateServicestoHostById(Integer[] selections, int hostId) {
 		Host host = em.find(Host.class, hostId);
 
 		for (int i = 0; i < host.getServices().size(); i++) {
@@ -352,6 +352,7 @@ public class PettrDAOImpl implements PettrDAO {
 
 	@Override
 	public ReviewOfHost writeHostReview(@Valid ReviewOfHost review) {
+		System.out.println(review);
 		Reservation reservation = em.find(Reservation.class, review.getReservation().getId());
 		review.setReservation(reservation);
 		em.persist(review);

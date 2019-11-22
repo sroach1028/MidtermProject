@@ -3,6 +3,7 @@ package com.skilldistillery.petbnb.controllers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -246,8 +247,29 @@ public class UserController {
 
 	@RequestMapping(path = "updateHost.do", params = "hostId", method = RequestMethod.GET)
 	public ModelAndView updateHost(@RequestParam("description") String description,
-			@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
+			@RequestParam("selections") Integer[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if (selections.length < 2) {
+			mv.addObject("host", new Host());
+			mv.addObject("allServices", pettrDAO.getAllServices());
+			mv.addObject("oldHost", pettrDAO.getHostById(hostId));
+			mv.setViewName("updateHost");
+			return mv;
+		}
+		else {
+			// Get rid of dummy selection
+			Integer[] newSelections = new Integer[selections.length - 1];
+			for (int i=0, j=0; i<selections.length; i++, j++) {
+				if (selections[i] == 0) {
+					j--;
+					continue;
+				}
+				else {
+					newSelections[j] = selections[i];
+				}
+			}
+			selections = newSelections;
+		}
 		pettrDAO.updateDescriptiontoHostById(description, hostId);
 		Host host = pettrDAO.updateServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
@@ -367,9 +389,12 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "hostReservationHistory.do")
-	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId) {
+	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("host", pettrDAO.findHostById(hostId));
+		Host host = pettrDAO.findHostById(hostId);
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", host);
+		mv.addObject("host", host);
 		mv.setViewName("hostResHistory");
 		return mv;
 	}
@@ -388,14 +413,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createPetReview.do")
-	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("id") int hostId, HttpSession session) {
+	public ModelAndView createPetReview(@Valid ReviewOfPet review, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		ReviewOfPet petReview = pettrDAO.writePetReview(review);
-		Host host = pettrDAO.findHostById(hostId);
+		Host host = (Host) session.getAttribute("sessionHost");
+		Host h = pettrDAO.findHostById(host.getId());
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
 		mv.addObject("petReview", petReview);
-		mv.setViewName("hostResHistory");
+		mv.setViewName("reviewOfPetConfirm");
 		return mv;
 	}
 
@@ -403,7 +429,7 @@ public class UserController {
 	public ModelAndView goToCreateHostReview(@RequestParam("petId") int petId,
 			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
 		ModelAndView mv = new ModelAndView();
-		ReviewOfPet review = new ReviewOfPet();
+		ReviewOfHost review = new ReviewOfHost();
 		mv.addObject("petId", petId);
 		mv.addObject("hostId", hostId);
 		mv.addObject("reservationId", reservationId);
@@ -413,15 +439,16 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createHostReview.do")
-	public ModelAndView createHostReview(@Valid ReviewOfHost review, @RequestParam("id") int userId, HttpSession session) {
+	public ModelAndView createHostReview(@Valid ReviewOfHost review, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("UserController.createHostReview(): " + review);
 		ReviewOfHost hostReview = pettrDAO.writeHostReview(review);
-		User user = pettrDAO.findUserById(userId);
+		User user = (User) session.getAttribute("sessionUser");
+		User u = pettrDAO.findUserById(user.getId());
 		session.removeAttribute("sessionUser");
-		session.setAttribute("sessionUser", user);
+		session.setAttribute("sessionUser", u);
 		mv.addObject("hostReview", hostReview);
-		mv.setViewName("myPetReservations");
+		mv.setViewName("reviewOfHostConfirm");
 		return mv;
 	}
 
