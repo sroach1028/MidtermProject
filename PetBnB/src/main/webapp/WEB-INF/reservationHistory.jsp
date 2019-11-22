@@ -23,6 +23,12 @@ text-align: right;
 }
 p{
   text-indent: 100px;
+}
+body {
+	opacity: 1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 100% 32%;
 }  
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +44,8 @@ p{
 <meta charset="utf-8">
 </head>
 
-<body class ="bg-white">
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+
 	<div class="container text-dark ">
 		<br> <br>
 		<div class="row mx-md-n5">
@@ -117,7 +124,7 @@ p{
 				<br>
 			
 			<c:forEach items="${pet.reservations }" var="reservation">
-				<c:if test="${empty reservation.petReview.review }">
+				<c:if test="${empty reservation.hostReview.review }">
 					<li>
 						<div class="row mx-md-n5">
 							<div class="col-md-9">
