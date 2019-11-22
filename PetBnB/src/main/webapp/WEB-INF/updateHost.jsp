@@ -47,6 +47,7 @@
 					<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 				</c:forEach>
 			
+		  		<input type="hidden" name="selections" value="0" />
 		  		<input type="hidden" name="hostId" value="${sessionHost.id}" />
 		  		<input type="submit" class="btn btn-dark" value="Submit">
 		  		</form>			

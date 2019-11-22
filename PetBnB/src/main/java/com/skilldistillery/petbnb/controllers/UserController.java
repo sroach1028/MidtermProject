@@ -3,6 +3,7 @@ package com.skilldistillery.petbnb.controllers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -243,8 +244,29 @@ public class UserController {
 
 	@RequestMapping(path = "updateHost.do", params = "hostId", method = RequestMethod.GET)
 	public ModelAndView updateHost(@RequestParam("description") String description,
-			@RequestParam("selections") int[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
+			@RequestParam("selections") Integer[] selections, @RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if (selections.length < 2) {
+			mv.addObject("host", new Host());
+			mv.addObject("allServices", pettrDAO.getAllServices());
+			mv.addObject("oldHost", pettrDAO.getHostById(hostId));
+			mv.setViewName("updateHost");
+			return mv;
+		}
+		else {
+			// Get rid of dummy selection
+			Integer[] newSelections = new Integer[selections.length - 1];
+			for (int i=0, j=0; i<selections.length; i++, j++) {
+				if (selections[i] == 0) {
+					j--;
+					continue;
+				}
+				else {
+					newSelections[j] = selections[i];
+				}
+			}
+			selections = newSelections;
+		}
 		pettrDAO.updateDescriptiontoHostById(description, hostId);
 		Host host = pettrDAO.updateServicestoHostById(selections, hostId);
 		session.removeAttribute("sessionHost");
