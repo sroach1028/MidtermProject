@@ -389,9 +389,12 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "hostReservationHistory.do")
-	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId) {
+	public ModelAndView hostReservationHistory(@RequestParam("hostId") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("host", pettrDAO.findHostById(hostId));
+		Host host = pettrDAO.findHostById(hostId);
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", host);
+		mv.addObject("host", host);
 		mv.setViewName("hostResHistory");
 		return mv;
 	}
