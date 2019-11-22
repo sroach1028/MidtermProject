@@ -103,14 +103,7 @@
 						<form action="goToAddPet.do" method="GET">
 						<input type="submit" class="btn btn-dark" value="Add Pet" />
 						</form>
-						
-						<br>
-			
-						<form action="goAccountPage.do" method="GET">
-						<input type="hidden" name="id" value=${sessionUser.id } /> <input
-						type="submit" class="btn btn-dark" value="Account Details" />
-						</form>
-						<br>
+	
 						
 						<br>
 			
