@@ -62,12 +62,9 @@
 	<br>
 	<br>
 	<div class="container">
-
 		<div class="row">
 			<div class="col-md-4"></div>
-
 			<div class="col-md-4">
-
 				<div class="centerBlock">
 					<form action="createHost.do" method="GET">
 						<label for="about">About you: </label> <br>
@@ -76,14 +73,13 @@
 						<br> <br>
 						<p>Select the services you offer:</p>
 						<c:forEach items="${allServices }" var="service">
-							<input type="checkbox" name="selections" value="${service.id }" required="required"/>${service.name }<br>
+							<input type="checkbox" name="selections" value="${service.id }" />${service.name }<br>
 						</c:forEach>
 						<br> <input type="hidden" name="userId"
 							value="${sessionUser.id}" /> <input type="submit"
 							style="font-size: 24px" class="button btn btn-primary"
 							value="Submit">
 					</form>
-
 				</div>
 			</div>
 		</div>
