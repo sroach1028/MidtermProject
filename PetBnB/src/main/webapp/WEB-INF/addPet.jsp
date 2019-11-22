@@ -19,19 +19,64 @@
 	href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto:300,400"
 	rel="stylesheet">
 
+<style>
+.centerBlock {
+  display: table;
+  margin: auto;
+}
+</style>
 <title>Add a Pet</title>
 <%@include file="/WEB-INF/nav.jsp"%>
 </head>
-<body>
+<body style = "background-color: #cce6f0">
+	<div class="container">
+		<div class="row mx-sm-n5">
+			<div class="col-sm-4 px-sm">
+			</div>
+			
+			<div class="col-sm-4 px-sm">
+			<p></p>
+			</div>
+			
+			<div class="col-sm-4 px-sm">
+			</div>
+		</div>
+	</div>
+	<br>
+	
+	<div class="container">
+		<div class="row mx-md-n5">
+			
+			<div class="col-md-3 px-sm">
+			</div>
+			
+			<div class="col-md-6 px-sm">
+				<div class="p-3 border border-dark bg-light">
+					<div class="centerBlock">			
+						<p>
+							<strong><font size="9" face ="Verdana" >Add Your Pet</font></strong>
+						</p>
+					</div>
+				</div>		
+			</div>
+	
+				<div class="col-md-3 px-sm">
+			</div>
+		</div>
+	</div>
+	
 	<div class="row">
-		<div class="col-2 col-left"></div>
+		<div class="col-md-4">
+		
+		</div>
+		
+		<div class="col-md-4">
 
-		<div class="jumbotron col-9 col-center">
+							<div class="centerBlock">			
+		
 			<form:form action="addPet.do" method="GET" modelAttribute="pet">
-				<table class="col-9 col-centered table table-hover table-secondary">
-					<tr>
-						<th><h2>Add Your Pet</h2></th>
-					</tr>
+				<table class="col-5 col-centered table">
+					
 					<tr>
 						<form:label path="name"></form:label>
 						<td><form:input path="name" required="required"
@@ -72,15 +117,17 @@
 							<div align="center" class="input-group-append">
 								<input type="hidden" name="userId" value="${sessionUser.id }">
 								<input class="btn btn-secondary" type="submit"
-									value="Register Pet to Account !" />
+									value="Register Pet to Account" />
 							</div>
 						</td>
 					</tr>
 				</table>
 			</form:form>
 		</div>
-		<div class="col-2 col-right"></div>
 	</div>
+</div>
+	
+
 <%@include file="/WEB-INF/footer.jsp"%>
 
 </body>
