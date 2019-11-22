@@ -48,8 +48,7 @@ body {
 <meta charset="utf-8">
 </head>
 
-<body
-	style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 
 	<div class="container text-dark ">
 		<br> <br>
@@ -110,7 +109,8 @@ body {
 									</c:if>
 								</c:if>
 						<c:if test="${empty reservation.petReview.review }">
-							<h3>${reservation.pet.name } pending review by ${reservation.host.user.firstName}</h3>
+							<h3>${reservation.pet.name} has an appointment with ${reservation.host.user.firstName}
+							on ${reservation.openDate} </h3>
 					</c:if>
 						<c:if test="${empty reservation.hostReview.review }">
 						<h3>${reservation.pet.name } reviewed by ${reservation.host.user.firstName}</h3>
