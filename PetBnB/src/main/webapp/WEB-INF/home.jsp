@@ -140,8 +140,7 @@
 		</div>
 	</div> -->
 
-<%-- <%@include file="/WEB-INF/footer.jsp"%>
- --%>
+<%@include file="/WEB-INF/footer.jsp"%>
 	<!-- Optional JavaScript -->
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
