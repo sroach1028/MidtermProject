@@ -87,14 +87,14 @@
 							class="nav-link">Become a Host</a></li>
 					</c:if>
 					<li class="nav-item"><a
-						href="toPetReservations.do" class="nav-link">My
+						href="toPetReservations.do?id=${sessionUser.id }" class="nav-link">My
 							Pet Reservations</a></li>
 					<li class="nav-item"><a
 						href="toUserProfile.do?id=${sessionUser.id }" class="nav-link">My
 							User Profile</a></li>
-					<li class="nav-item"><a
+					<%-- <li class="nav-item"><a
 						href="goAccountPage.do?id=${sessionUser.id}" class="nav-link"
-						title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+						title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li> --%>
 					<li class="nav-item"><a href="logout.do"
 						class="btn btn-outline-secondary toggle"> Logout <span
 							class="caret"></span>

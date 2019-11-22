@@ -46,6 +46,7 @@
 			<%-- <form:input type="hidden" path="pet.id" value="${petId }"/> --%>
 			<%-- <form:input type="hidden" path="reservation.host.id" value="${hostId }"/> --%>
 			<form:input type="hidden" path="reservation.id" value="${reservationId }"/>
+			<input type="hidden" name="id" value="${sessionUser.id }" />
 			<input type="submit" class="btn btn-outline-light"
 				value="Submit Review" />
 		</div>

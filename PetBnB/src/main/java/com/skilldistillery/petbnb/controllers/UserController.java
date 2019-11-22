@@ -87,8 +87,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "toPetReservations.do", method = RequestMethod.GET)
-	public ModelAndView toPetReservations() {
+	public ModelAndView toPetReservations(@RequestParam("id") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		User user = pettrDAO.findUserById(userId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
 		mv.setViewName("myPetsReservations");
 		return mv;
 	}
@@ -385,11 +388,14 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createPetReview.do")
-	public ModelAndView createPetReview(@Valid ReviewOfPet review) {
+	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("id") int hostId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		ReviewOfPet petReview = pettrDAO.writePetReview(review);
+		Host host = pettrDAO.findHostById(hostId);
+		session.removeAttribute("sessionHost");
+		session.setAttribute("sessionHost", host);
 		mv.addObject("petReview", petReview);
-		mv.setViewName("account");
+		mv.setViewName("hostResHistory");
 		return mv;
 	}
 
@@ -407,12 +413,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createHostReview.do")
-	public ModelAndView createHostReview(@Valid ReviewOfHost review) {
+	public ModelAndView createHostReview(@Valid ReviewOfHost review, @RequestParam("id") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("UserController.createHostReview(): " + review);
 		ReviewOfHost hostReview = pettrDAO.writeHostReview(review);
+		User user = pettrDAO.findUserById(userId);
+		session.removeAttribute("sessionUser");
+		session.setAttribute("sessionUser", user);
 		mv.addObject("hostReview", hostReview);
-		mv.setViewName("account");
+		mv.setViewName("myPetReservations");
 		return mv;
 	}
 
