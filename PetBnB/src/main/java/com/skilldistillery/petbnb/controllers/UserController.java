@@ -216,9 +216,9 @@ public class UserController {
 			@RequestParam("selections") int[] selections, @RequestParam("description") String description,
 			@RequestParam("userId") int userId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		pettrDAO.addDescriptiontoHostById(description, userId);
-		pettrDAO.addImagetoHostById(imageURL, userId);
 		Host host = pettrDAO.becomeHost(userId);
+		pettrDAO.addDescriptiontoHostById(description, host.getId());
+		pettrDAO.addImagetoHostById(imageURL, host.getId());
 		host = pettrDAO.addServicestoHostById(selections, host.getId());
 		session.setAttribute("sessionHost", host);
 		mv.addObject("host", host);
