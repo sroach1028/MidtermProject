@@ -9,6 +9,9 @@
   display: table;
   margin: auto;
 }
+li {
+	list-style-type: none;
+}
 img {
   border-radius: 80%;
 }
@@ -36,100 +39,93 @@ body {
 <%@include file="nav.jsp"%><meta charset="UTF-8">
 <meta charset="utf-8">
 </head>
-<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+<body
+	style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 
-	<div class="container text-dark">
+	<div class="container text-dark ">
+		<br> <br>
 		<div class="row mx-md-n5">
-			<div class="col-md-6 px-md">
-				<h1>
-					<strong>Reservation History</strong>
-				</h1>
+			<div class="col-md-12 px-md">
+				<div class="centerBlock">
+					<br>
+		<div class="centerBlock">
+		<h4>
+			<strong> ${host.user.firstName}'s Reservation History </strong>
+		</h4>
+		</div>
+				<c:forEach items="${host.reservations }" var="reservation">
+					<li>
+						<div class="row mx-md-n5">
+							<div class="col-md-12">
+								<div class="p-5 lead border border-dark bg-light rounded-pill">
+				<c:if test="${not empty reservation.hostReview.review }">
+									<span><h5>&nbsp;&nbsp; Reviewed by ${reservation.pet.user.firstName} ${reservation.pet.user.lastName }
+									and their pet ${reservation.pet.name} </h5> &nbsp;&nbsp;
+									<img
+										src="${reservation.host.user.imageURL }" height="100"
+										width="100"/> </span>
+									<c:if test="${reservation.hostReview.rating == 1}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.hostReview.rating == 2}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.hostReview.rating == 3}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.hostReview.rating == 4}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.hostReview.rating == 5}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</c:if>
+					<h5>"${reservation.hostReview.review }"</h5>
+				</c:if>
+						<c:if test="${empty reservation.hostReview.review }">
+							<h3>Pending review by ${reservation.pet.user.firstName} and their pet ${reservation.pet.name} </h3>
+					</c:if>
+						<c:if test="${empty reservation.petReview.review }">
+						<h3> Reviewed by ${reservation.pet.user.firstName} and their pet ${reservation.pet.name} </h3>
+						<a href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
+					  a review for ${reservation.pet.name }</a>
+					</c:if>		
+								</div>
+							</div>
+						</div>
+					</li>
+					<br>
+		</c:forEach>
 			</div>
 		</div>
 		<br>
 
-		<table>
-		<thead><h3>Reservations</h3></thead>
-		<tbody></tbody>
-				<c:forEach items="${host.reservations }" var="reservation">
-				<a name="${reservation.id }" ></a>
-				<br><br>
-			<tr>
-					<div class="col-md-9">
-						<div class="lead border border-dark bg-light rounded">
-							<c:if test="${not empty reservation.hostReview.review }">
-								<h2>${reservation.openDate } to ${reservation.closeDate}</h2>
+		</div>
+		<ul>
+			<br>
 
-	<span><h5> &nbsp;&nbsp;&nbsp; Reviewed by ${ reservation.pet.user.firstName} and
-	${reservation.pet.name } the ${reservation.pet.petType.type}</h5> &nbsp;&nbsp;&nbsp; <img src="${reservation.pet.user.imageURL }" width="100" height="100"/></span>
-								<c:if test="${reservation.hostReview.rating == 1}">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</c:if>
-								<c:if test="${reservation.hostReview.rating == 2}">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</c:if>
-								<c:if test="${reservation.hostReview.rating == 3}">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</c:if>
-								<c:if test="${reservation.hostReview.rating == 4}">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-								</c:if>
-								<c:if test="${reservation.hostReview.rating == 5}">
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-								</c:if>
-							<div class="centerBlock">
-								<p>"${reservation.hostReview.review}"</p>
-						</div>
-						</div>
-							</c:if>
-						<br>
-					</div>
-			</tr><br>
-				</c:forEach>
-		</table>
-		<table>
-			<div class="col-md-3">
-				<div class="lead border bg-light">
-					<tr>
-						<c:forEach items="${host.reservations }" var="reservation">
-							<c:if test="${empty reservation.petReview.review }">
-								<br>
-								<div class="container">
-  <a class="btn btn-danger btn-block" href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}"> <h3>${reservation.openDate } to ${reservation.closeDate}</h3> Write a review for ${reservation.pet.name }</a>
-</div>
-								
-								<%-- <a href="goToCreatePetReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write a review for ${reservation.pet.name }</a> --%>
-							</c:if>
-						</c:forEach>
-					</tr>
-				</div>
-			</div>
-			</tr>
-		</table>
-		<c:if test="${empty host.reservations }">
-			<h3>You have no past reservations. Try marketing.</h3>
-		</c:if>
-		<%@include file="/WEB-INF/footer.jsp"%>
-		
+		</ul>
+	</div>
+
 </body>
 </html>
+<%@include file="/WEB-INF/footer.jsp"%>

@@ -14,10 +14,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Register</title>
 <%@include file="/WEB-INF/nav.jsp"%>
+<style type="text/css">
+body {
+	opacity: 1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 100% 32%;
+} 
+</style>
 </head>
 <br>
 <br>
 <br>
+<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 <body style = "background-color: #cce6f0">
 	<div class="container">
 		<div class="row mx-sm-n5">

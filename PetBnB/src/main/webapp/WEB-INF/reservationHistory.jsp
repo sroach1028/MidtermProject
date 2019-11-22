@@ -2,34 +2,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page import = "javax.servlet.*,java.text.*" %>
+<%@ page import="java.io.*,java.util.*"%>
+<%@ page import="javax.servlet.*,java.text.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <style type="text/css">
 .centerBlock {
-  display: table;
-  margin: auto;
+	display: table;
+	margin: auto;
 }
-li{
-    list-style-type: none;
+li {
+	list-style-type: none;
 }
+
 img {
-  border-radius: 80%;
+	border-radius: 80%;
 }
-h3{
-text-align: right;
+
+h3 {
+	text-align: right;
 }
-p{
-  text-indent: 100px;
+
+p {
+	text-indent: 100px;
 }
+
 body {
 	opacity: 1;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: 100% 32%;
-}  
+}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
@@ -44,110 +48,94 @@ body {
 <meta charset="utf-8">
 </head>
 
-<body style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
+<body
+	style="background-image: url('http://www.radiopetlady.com/wp-content/uploads/bfi_thumb/RPLN-Multi-Dog-and-cats-2-1920x731-6s69on2zlvwrb6dw71qibv1vbb06omlwrh8zuzntxgs.jpg');">
 
 	<div class="container text-dark ">
 		<br> <br>
 		<div class="row mx-md-n5">
-			<div class="col-md-6 px-md">
+			<div class="col-md-12 px-md">
 				<div class="centerBlock">
-					<br><h4><strong> ${pet.name}'s Reservation History </strong></h4>
-				</div>
-			</div>
+					<br>
+		<div class="centerBlock">
+		<h4>
+			<strong> ${pet.name}'s Reservation History </strong>
+		</h4>
 		</div>
-		<br>
-
-		<ul>
-			<c:forEach items="${pet.reservations }" var="reservation">
-				<c:if test="${not empty reservation.petReview.review }">
-						<li>
-						<div class="row mx-md-n5">
-							<div class="col-md-9">
-								<div class="p-5 lead border border-dark bg-light rounded-pill">
-									
-									<c:if test="${not empty reservation.petReview.review }">
-<!-- 									<div class="centerBlock">
- -->										<h3>${reservation.openDate } thru ${reservation.closeDate}</h3>
-<!-- 									</div>
- -->										<span><h5> &nbsp;&nbsp; Reviewed by Host ${reservation.host.user.firstName }
-											${reservation.host.user.lastName }</h5> 
-											 &nbsp;&nbsp;<img src="${reservation.host.user.imageURL }" height="100" width="100"/>
-											</span>
-										<c:if test="${reservation.petReview.rating == 1}">
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-										</c:if>
-										<c:if test="${reservation.petReview.rating == 2}">
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-										</c:if>
-										<c:if test="${reservation.petReview.rating == 3}">
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-										</c:if>
-										<c:if test="${reservation.petReview.rating == 4}">
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star"></span>
-										</c:if>
-										<c:if test="${reservation.petReview.rating == 5}">
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-											<span class="fa fa-star checked"></span>
-										</c:if>
-<!-- 										<div class="centerBlock">
- -->										<p>"${reservation.petReview.review}"</p>
-<!-- 										</div>
- -->									</c:if>
-								</div>
-							</div>
-						</div>
-						</li><br>
-						</c:if>
-			</c:forEach>
-			
-							
-					<h4><strong> Pending Reservations </strong></h4>
-				<br>
-			
-			<c:forEach items="${pet.reservations }" var="reservation">
-				<c:if test="${empty reservation.hostReview.review }">
+				<c:forEach items="${pet.reservations }" var="reservation">
 					<li>
 						<div class="row mx-md-n5">
-							<div class="col-md-9">
-								<div class="p-5 lead border border-warning bg-light rounded-pill">
-																	<div class="centerBlock">
-								
-									<h3>${reservation.openDate }-${reservation.closeDate}</h3>
-										</div>
-									<h5>
-										<a
-											href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
-											a review for ${reservation.host.user.firstName }
-											${reservation.host.user.lastName }</a>
-									</h5>
+							<div class="col-md-12">
+								<div class="p-5 lead border border-dark bg-light rounded-pill">
+				<c:if test="${not empty reservation.petReview.review }">
+									<span><h5>&nbsp;&nbsp; Reviewed by Host
+											${reservation.host.user.firstName }
+											${reservation.host.user.lastName }</h5> &nbsp;&nbsp;<img
+										src="${reservation.host.user.imageURL }" height="100"
+										width="100" /> </span>
+									<c:if test="${reservation.petReview.rating == 1}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.petReview.rating == 2}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.petReview.rating == 3}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.petReview.rating == 4}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+									</c:if>
+									<c:if test="${reservation.petReview.rating == 5}">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</c:if>
+								</c:if>
+						<c:if test="${empty reservation.petReview.review }">
+							<h3>${reservation.pet.name } pending review by ${reservation.host.user.firstName}</h3>
+					</c:if>
+						<c:if test="${empty reservation.hostReview.review }">
+						<h3>${reservation.pet.name } reviewed by ${reservation.host.user.firstName}</h3>
+						<a href="goToCreateHostReview.do?reservationId=${reservation.id}&petId=${reservation.pet.id}&hostId=${reservation.host.id}">Write
+					  a review for ${reservation.host.user.firstName }
+					${reservation.host.user.lastName }</a>
+						
+					</c:if>		
 								</div>
 							</div>
 						</div>
 					</li>
-				</c:if>
-			</c:forEach>
+					<br>
+		</c:forEach>
+			</div>
+		</div>
+		<br>
+
+		</div>
+		<ul>
+			<br>
+
 		</ul>
 	</div>
-	<%@include file="/WEB-INF/footer.jsp"%>
-	
+
 </body>
+<%@include file="/WEB-INF/footer.jsp"%>
 </html>
