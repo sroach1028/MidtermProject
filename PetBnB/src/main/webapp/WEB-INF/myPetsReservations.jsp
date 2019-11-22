@@ -112,8 +112,8 @@ body {
 											</c:if>
 										</c:if>
 										<c:if test="${empty reservation.petReview.review }">
-											<h3>${reservation.pet.name }pending review by
-												${reservation.host.user.firstName}</h3>
+											<h3>${reservation.pet.name } has an appointment with
+												${reservation.host.user.firstName} on ${reservation.openDate }</h3>
 										</c:if>
 										<c:if test="${empty reservation.hostReview.review }">
 											<h3>${reservation.pet.name } reviewed by
