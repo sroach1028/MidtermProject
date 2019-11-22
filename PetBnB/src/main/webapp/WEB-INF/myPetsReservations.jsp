@@ -111,9 +111,16 @@ body {
 												<span class="fa fa-star checked"></span>
 											</c:if>
 										</c:if>
-										<c:if test="${empty reservation.petReview.review }">
+										<c:if test="${empty reservation.petReview.review}">
+										<c:if test="${empty reservation.hostReview.review }">
 											<h3>${reservation.pet.name } has an appointment with
 												${reservation.host.user.firstName} on ${reservation.openDate }</h3>
+										</c:if>
+										</c:if>
+										<c:if test="${empty reservation.petReview.review}">
+										<c:if test="${not empty reservation.hostReview.review }">
+											<h3> ${reservation.host.user.firstName} has not yet written a review for ${reservation.pet.name } for the hosting on ${reservation.openDate }</h3>
+										</c:if>
 										</c:if>
 										<c:if test="${empty reservation.hostReview.review }">
 											
