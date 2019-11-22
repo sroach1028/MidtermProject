@@ -128,7 +128,7 @@
 			</div>
 		</div>
 	</div>
-<div class="container">
+<!-- <div class="container">
 		<div class="row mx-sm-n5">
 			<div class="col-sm-4 px-sm">
 			</div>
@@ -138,12 +138,10 @@
 			<div class="col-sm-4 px-sm">
 			</div>
 		</div>
-	</div>
-	<br>
-	<br>
-    <br>
-<%@include file="/WEB-INF/footer.jsp"%>
+	</div> -->
 
+<%-- <%@include file="/WEB-INF/footer.jsp"%>
+ --%>
 	<!-- Optional JavaScript -->
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
