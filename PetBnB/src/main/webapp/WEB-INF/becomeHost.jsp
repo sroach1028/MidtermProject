@@ -93,13 +93,15 @@
 		
   		<input type="hidden" name="userId" value="${sessionUser.id}" />
   		<input type="submit" style="font-size : 22px" class="button btn btn-secondary" value="Submit">
-	</form>
+	</form><br><br><br><br><br><br><br><br><br><br>
+
 	
 		</div>
 	</div>
 	<br>
 	</div>
 	</div>
+
 	
 	<%@include file="/WEB-INF/footer.jsp"%>
 
