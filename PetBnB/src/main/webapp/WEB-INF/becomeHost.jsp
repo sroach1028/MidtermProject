@@ -98,6 +98,9 @@
 		</div>
 	</div>
 	<br>
+	</div>
+	</div>
+	
 	<%@include file="/WEB-INF/footer.jsp"%>
 
 </body>
