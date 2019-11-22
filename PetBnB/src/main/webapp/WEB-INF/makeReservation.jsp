@@ -67,7 +67,9 @@
 				<select class="custom-select" align="center" name="petId"
 					style="width: 150px;">
 					<c:forEach items="${sessionUser.pets }" var="pet">
+					<c:if test="${pet.active == true }" >
 						<option value=${pet.id }>${pet.name}</option>
+						</c:if>
 					</c:forEach>
 				</select> <br> <br> <input type="hidden" name="hostId"
 					value=${hostId } /> <input type="hidden" name="serviceId"
