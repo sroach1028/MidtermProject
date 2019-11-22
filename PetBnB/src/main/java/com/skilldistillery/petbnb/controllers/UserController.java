@@ -388,14 +388,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createPetReview.do")
-	public ModelAndView createPetReview(@Valid ReviewOfPet review, @RequestParam("id") int hostId, HttpSession session) {
+	public ModelAndView createPetReview(@Valid ReviewOfPet review, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		ReviewOfPet petReview = pettrDAO.writePetReview(review);
-		Host host = pettrDAO.findHostById(hostId);
+		Host host = (Host) session.getAttribute("sessionHost");
+		Host h = pettrDAO.findHostById(host.getId());
 		session.removeAttribute("sessionHost");
 		session.setAttribute("sessionHost", host);
 		mv.addObject("petReview", petReview);
-		mv.setViewName("hostResHistory");
+		mv.setViewName("home");
 		return mv;
 	}
 
@@ -403,7 +404,7 @@ public class UserController {
 	public ModelAndView goToCreateHostReview(@RequestParam("petId") int petId,
 			@RequestParam("reservationId") int reservationId, @RequestParam("hostId") int hostId) {
 		ModelAndView mv = new ModelAndView();
-		ReviewOfPet review = new ReviewOfPet();
+		ReviewOfHost review = new ReviewOfHost();
 		mv.addObject("petId", petId);
 		mv.addObject("hostId", hostId);
 		mv.addObject("reservationId", reservationId);
@@ -413,15 +414,16 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createHostReview.do")
-	public ModelAndView createHostReview(@Valid ReviewOfHost review, @RequestParam("id") int userId, HttpSession session) {
+	public ModelAndView createHostReview(@Valid ReviewOfHost review, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("UserController.createHostReview(): " + review);
 		ReviewOfHost hostReview = pettrDAO.writeHostReview(review);
-		User user = pettrDAO.findUserById(userId);
+		User user = (User) session.getAttribute("sessionUser");
+		User u = pettrDAO.findUserById(user.getId());
 		session.removeAttribute("sessionUser");
-		session.setAttribute("sessionUser", user);
+		session.setAttribute("sessionUser", u);
 		mv.addObject("hostReview", hostReview);
-		mv.setViewName("myPetReservations");
+		mv.setViewName("home");
 		return mv;
 	}
 
