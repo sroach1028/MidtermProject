@@ -1,4 +1,4 @@
-# PET BnB - Pet Stay App
+# PET BnB - Pet Stay App - Boop
 ## Midterm Team Project for Skill Distillery
 ## Team Vehement Kitten: Members
 - `Scrum Master` Adam Onwan
@@ -54,7 +54,7 @@ To give hosts opportunity to take in pet owners pets and take care of them while
 ### Lessons Learned
 1. When doing layout frontend its important to keep user experience and expectations in mind
 2. Do frontend styling after bug fixes
-3. Think about error checking when making functions, we used checkboxes on our host services and had services in a foreach loop in the jsp, and that was solved by doing complex logic in the controller and the DAO to prevent errors from showing such as no checkboxes being selected, which it could have been simpler to fix if hardcoding the services since there was not that many choices and doing a required statement
+3. Think about error checking when making functions, such as we used checkboxes on our host services and had services in a foreach loop in the jsp, and that had us doing complex logic in the controller and the DAO to prevent errors from showing such as no checkboxes being selected, which it could have been simpler to fix if hardcoding each services since there was not that many choices and doing a required statement
 ### Stretch Goals
 1. Calendar feature for reservations, specifically blocking out dates the host cannot do, and showing what their availability is to users searching for a host
 2. Breeding matching, a place for people who want to breed their pet with another, and another stretch goal would be to have filters to be more specific of what they want their pet to breed with
