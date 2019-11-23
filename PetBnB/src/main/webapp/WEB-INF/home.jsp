@@ -30,7 +30,7 @@
 }
 </style>
 </head>
-<body background="https://media1.giphy.com/media/ETkaaaWirUgHC/giphy.gif">
+<body class="bg-dark">
 	<form:form action="findReservationById.do" method="GET">
 		<label style="font-family: Courier; color: Green;">Reservation
 			by ID:</label>
@@ -41,7 +41,7 @@
 
 
 	<div
-		class="jumbotron jumbo-vertical-center text-light text-center mb-0 radius-0">
+		class="jumbotron jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
 
 	<!-- 	<div class="container">
 				<div class="row mx-sm-n5">
