@@ -4,7 +4,7 @@
 - `Scrum Master` Adam Onwan
 - `Github Repo Owner` Jesse Trew
 - `Lead Developer` Noel Castillo
-- `DBA` Shaun Roach
+- `Full Stack Developer and DBA` Shaun Roach
 ### Overview
 To give hosts opportunity to take in pet owners pets and take care of them while the pet owners are away, usually for a profit. Also vice versa, give pet owners convenience of searching for reputable pet hosts or other services for their pets.
 ### How to use
